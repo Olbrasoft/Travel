@@ -131,6 +131,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Travel.BusinessLogicLayer\Olbrasoft.Travel.BusinessLogicLayer.csproj">
+      <Project>{5AD5D028-4C60-41E0-9EE1-B5055D361E64}</Project>
+      <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
