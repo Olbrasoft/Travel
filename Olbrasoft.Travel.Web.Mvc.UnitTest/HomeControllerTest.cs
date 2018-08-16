@@ -17,7 +17,7 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
         public void Setup()
         {
             var accommodationsFacade = new Mock<IAccommodationsFacade>();
-            HomeController = new HomeController(accommodationsFacade.Object);
+             HomeController = new HomeController(accommodationsFacade.Object);
         }
 
 
