@@ -14,11 +14,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
         {
             _accommodationQuery = accommodationQuery;
         }
-
-        public IEnumerable<AccommodationDataTransferObject> Get(IEnumerable<Accommodation> accommodations)
-        {
-            throw new System.NotImplementedException();
-        }
+        
 
         public IEnumerable<AccommodationDataTransferObject> Get(PageInfo pageInfo)
         {
