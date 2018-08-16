@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 using Olbrasoft.Travel.BusinessLogicLayer;
+using Olbrasoft.Travel.DataTransferObject;
 using Olbrasoft.Travel.Web.Mvc.Controllers;
 
 namespace Olbrasoft.Travel.Web.Mvc.UnitTest
@@ -34,7 +36,7 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
 
 
         [Test]
-        public void HomeControllerIndexTest()
+        public void IndexReturnsInstanceOfViewResultTest()
         {
             //Arrange
             var controller = HomeController;
@@ -46,5 +48,23 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
             Assert.IsInstanceOf<ViewResult>(result);
 
         }
+
+        [Test]
+        public void Index_ViewResult_ViewData_Model_IsInstanceOfIEnumerableOfAccommodationDataTransferObjectTest()
+        {
+
+            //Arrange
+            var controller = HomeController;
+            
+            //Act
+            var result = HomeController.Index() as ViewResult; ;
+            var accommodations =  result.ViewData.Model;
+
+            //Assert
+            Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(accommodations);
+        }
+
+
+
     }
 }

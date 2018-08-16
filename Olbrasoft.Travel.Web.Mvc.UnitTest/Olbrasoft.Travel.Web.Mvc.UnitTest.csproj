@@ -93,6 +93,10 @@
       <Project>{5AD5D028-4C60-41E0-9EE1-B5055D361E64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.DataTransferObject\Olbrasoft.Travel.DataTransferObject.csproj">
+      <Project>{909812E3-B95E-4F10-86E9-D3E73314DF00}</Project>
+      <Name>Olbrasoft.Travel.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Web.Mvc\Olbrasoft.Travel.Web.Mvc.csproj">
       <Project>{45FF8307-64D7-4CED-B398-FBC833FB9BFE}</Project>
       <Name>Olbrasoft.Travel.Web.Mvc</Name>

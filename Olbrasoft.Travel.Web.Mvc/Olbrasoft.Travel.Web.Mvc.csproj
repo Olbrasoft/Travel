@@ -100,7 +100,9 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -132,9 +134,17 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
+      <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
+      <Name>Olbrasoft.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.BusinessLogicLayer\Olbrasoft.Travel.BusinessLogicLayer.csproj">
       <Project>{5AD5D028-4C60-41E0-9EE1-B5055D361E64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.DataTransferObject\Olbrasoft.Travel.DataTransferObject.csproj">
+      <Project>{909812E3-B95E-4F10-86E9-D3E73314DF00}</Project>
+      <Name>Olbrasoft.Travel.DataTransferObject</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
