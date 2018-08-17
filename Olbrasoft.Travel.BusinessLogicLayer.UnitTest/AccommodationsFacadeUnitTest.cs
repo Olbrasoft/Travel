@@ -1,7 +1,10 @@
-﻿using Moq;
+﻿using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using Olbrasoft.DataAccessLayer;
+using Olbrasoft.Shared;
 using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.DataTransferObject;
 
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
@@ -12,9 +15,9 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         [Test]
         public void CreateInstanceOfTypeAccommodationsFacade()
         {
+
             //Arrange
-            var moqQuery = new Mock<IQuery<Accommodation>>();
-            var accommodationsFacade = new AccommodationsFacade(moqQuery.Object);
+            var accommodationsFacade = AccommodationsFacade();
 
             //Act
             var type = typeof(AccommodationsFacade);
@@ -23,5 +26,32 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             Assert.IsInstanceOf(type, accommodationsFacade);
 
         }
+
+        private static AccommodationsFacade AccommodationsFacade()
+        {
+            var moqQuery = new Mock<IQuery<Accommodation>>();
+
+            var accommodationsFacade = new AccommodationsFacade(moqQuery.Object);
+            return accommodationsFacade;
+        }
+
+        [Test]
+        public void AccommodationsFacade_GetTest()
+        {
+            //Arrange
+            var accommodationsFacade = AccommodationsFacade();
+            var pageInfo = new PageInfo();
+
+            //Act
+            var accommodations =  accommodationsFacade.Get(pageInfo);
+
+            //Assert
+            Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(accommodations);
+
+        }
+
+
+
+
     }
 }

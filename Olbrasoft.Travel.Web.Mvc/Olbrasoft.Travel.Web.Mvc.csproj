@@ -134,8 +134,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
-      <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
+    <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
+      <Project>{c0b70c19-fa51-4f92-bf74-d065749d4db6}</Project>
       <Name>Olbrasoft.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.BusinessLogicLayer\Olbrasoft.Travel.BusinessLogicLayer.csproj">
