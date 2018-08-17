@@ -17,7 +17,9 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
         public void Setup()
         {
             var accommodationsFacade = new Mock<IAccommodationsFacade>();
-             HomeController = new HomeController(accommodationsFacade.Object);
+
+
+            HomeController = new HomeController(accommodationsFacade.Object);
         }
 
 
@@ -52,7 +54,6 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
         [Test]
         public void Index_ViewResult_ViewData_Model_IsInstanceOfIEnumerableOfAccommodationDataTransferObjectTest()
         {
-
             //Arrange
             var controller = HomeController;
             
@@ -64,7 +65,7 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
             Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(accommodations);
         }
 
-
+                    
 
     }
 }

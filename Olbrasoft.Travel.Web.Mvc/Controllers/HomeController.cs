@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Olbrasoft.Shared;
+using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.BusinessLogicLayer;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers

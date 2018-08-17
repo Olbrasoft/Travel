@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Olbrasoft.DataAccessLayer;
 using Olbrasoft.Shared;
+using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
 
@@ -15,12 +17,10 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
             _accommodationQuery = accommodationQuery;
         }
         
-        public IEnumerable<AccommodationDataTransferObject> Get(PageInfo pageInfo)
-        {
-            return new AccommodationDataTransferObject[0];
-            //return _accommodationQuery.Execute();
-        }
-        
 
+        public IPageResult<AccommodationDataTransferObject> Get(IPageInfo pageInfo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

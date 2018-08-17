@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Olbrasoft.Shared.Pagination;
 
 namespace Olbrasoft.Shared.UnitTest
 {
@@ -34,7 +35,7 @@ namespace Olbrasoft.Shared.UnitTest
             var pageInfo = new PageInfo();
 
             //Act
-            var pageSize = pageInfo.Size;
+            var pageSize = pageInfo.PageSize;
 
             //Assert
             Assert.IsInstanceOf<int>(pageSize);
@@ -48,7 +49,7 @@ namespace Olbrasoft.Shared.UnitTest
             var pageInfo = new PageInfo();
 
             //Act
-            var pageNumber = pageInfo.Number;
+            var pageNumber = pageInfo.NumberOfSelectedPage;
 
             //Assert
             Assert.IsInstanceOf<int>(pageNumber);
@@ -61,7 +62,7 @@ namespace Olbrasoft.Shared.UnitTest
             var pageInfo = PageInfo;
 
             //Act
-            var pageSize = pageInfo.Size;
+            var pageSize = pageInfo.PageSize;
 
             //Assert 
             Assert.IsTrue(pageSize > 0);
@@ -75,7 +76,7 @@ namespace Olbrasoft.Shared.UnitTest
             var pageInfo = PageInfo;
 
             //Act
-            var pageNumber = pageInfo.Number;
+            var pageNumber = pageInfo.NumberOfSelectedPage;
 
             //Assert
             Assert.IsTrue(pageNumber == 1);

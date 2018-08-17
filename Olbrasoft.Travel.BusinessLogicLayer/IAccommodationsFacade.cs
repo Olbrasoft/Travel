@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using Olbrasoft.Shared;
+using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.DataTransferObject;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
     public interface IAccommodationsFacade
     {
-        IEnumerable<AccommodationDataTransferObject> Get(PageInfo pageInfo);
-
+        IPageResult<AccommodationDataTransferObject> Get(IPageInfo pageInfo);
+   
     }
+   
 }
