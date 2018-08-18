@@ -152,7 +152,7 @@
     <Compile Include="UsersFacade.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataAccessLayer\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj">
+    <ProjectReference Include="..\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj">
       <Project>{A4F4B929-C064-4146-801F-F4242EB2A7C4}</Project>
       <Name>Olbrasoft.DataAccessLayer</Name>
     </ProjectReference>

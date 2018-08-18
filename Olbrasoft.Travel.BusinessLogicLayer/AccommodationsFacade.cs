@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Olbrasoft.DataAccessLayer;
-using Olbrasoft.Shared;
 using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;

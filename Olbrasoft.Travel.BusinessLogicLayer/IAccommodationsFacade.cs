@@ -8,7 +8,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
     public interface IAccommodationsFacade
     {
         IPageResult<AccommodationDataTransferObject> Get(IPageInfo pageInfo);
-   
+  
     }
    
 }

@@ -2,6 +2,7 @@
 
 namespace Olbrasoft.Travel.DataTransferObject
 {
+    
     public class AccommodationDataTransferObject
     {
         public int Id { get; set; }
@@ -17,4 +18,7 @@ namespace Olbrasoft.Travel.DataTransferObject
         [StringLength(50)]
         public string Address { get; set; }
     }
+
+
+
 }

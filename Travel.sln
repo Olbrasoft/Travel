@@ -19,19 +19,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.BusinessLogicLayer.UnitTest", "Olbrasoft.Travel.BusinessLogicLayer.UnitTest\Olbrasoft.Travel.BusinessLogicLayer.UnitTest.csproj", "{032061CA-4CDC-4B7A-8DCD-862CF7A6CAAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.DataAccessLayer", "..\DataAccessLayer\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj", "{A4F4B929-C064-4146-801F-F4242EB2A7C4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.Travel.DataTransferObject", "Olbrasoft.Travel.DataTransferObject\Olbrasoft.Travel.DataTransferObject.csproj", "{909812E3-B95E-4F10-86E9-D3E73314DF00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Web.Mvc.UnitTest", "Olbrasoft.Travel.Web.Mvc.UnitTest\Olbrasoft.Travel.Web.Mvc.UnitTest.csproj", "{E8FEA2AC-08BB-4515-AF41-CAB94AB62391}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.DataAccessLayer.UnitTest", "..\DataAccessLayer\Olbrasoft.DataAccessLayer.UnitTest\Olbrasoft.DataAccessLayer.UnitTest.csproj", "{D812E018-95BA-4455-9E04-5CFCF28EFD36}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{4CA3E86B-5BE4-4952-BE7F-418148CD4D2E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Shared", "Olbrasoft.Shared\Olbrasoft.Shared.csproj", "{C0B70C19-FA51-4F92-BF74-D065749D4DB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Shared.UnitTest", "Olbrasoft.Shared.UnitTest\Olbrasoft.Shared.UnitTest.csproj", "{7F6412BE-0596-492D-A152-098A67569351}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.DataAccessLayer.UnitTest", "Olbrasoft.DataAccessLayer.UnitTest\Olbrasoft.DataAccessLayer.UnitTest.csproj", "{D812E018-95BA-4455-9E04-5CFCF28EFD36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.DataAccessLayer", "Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj", "{A4F4B929-C064-4146-801F-F4242EB2A7C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,6 @@ Global
 		{032061CA-4CDC-4B7A-8DCD-862CF7A6CAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032061CA-4CDC-4B7A-8DCD-862CF7A6CAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032061CA-4CDC-4B7A-8DCD-862CF7A6CAAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{909812E3-B95E-4F10-86E9-D3E73314DF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{909812E3-B95E-4F10-86E9-D3E73314DF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909812E3-B95E-4F10-86E9-D3E73314DF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -71,10 +67,6 @@ Global
 		{E8FEA2AC-08BB-4515-AF41-CAB94AB62391}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8FEA2AC-08BB-4515-AF41-CAB94AB62391}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8FEA2AC-08BB-4515-AF41-CAB94AB62391}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0B70C19-FA51-4F92-BF74-D065749D4DB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0B70C19-FA51-4F92-BF74-D065749D4DB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0B70C19-FA51-4F92-BF74-D065749D4DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,6 +75,14 @@ Global
 		{7F6412BE-0596-492D-A152-098A67569351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F6412BE-0596-492D-A152-098A67569351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F6412BE-0596-492D-A152-098A67569351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D812E018-95BA-4455-9E04-5CFCF28EFD36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F4B929-C064-4146-801F-F4242EB2A7C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,10 +92,10 @@ Global
 		{B47EE928-2611-4D10-8316-C1B0B1EE768B} = {646F988E-2666-45C3-BDAF-8C2E14C63F99}
 		{5AD5D028-4C60-41E0-9EE1-B5055D361E64} = {C4A007F3-FC74-4E10-B153-F03C4CFA5F3D}
 		{032061CA-4CDC-4B7A-8DCD-862CF7A6CAAA} = {C4A007F3-FC74-4E10-B153-F03C4CFA5F3D}
-		{A4F4B929-C064-4146-801F-F4242EB2A7C4} = {6B7098EC-E9FD-414C-BC88-7D4BF78330BF}
-		{D812E018-95BA-4455-9E04-5CFCF28EFD36} = {6B7098EC-E9FD-414C-BC88-7D4BF78330BF}
 		{C0B70C19-FA51-4F92-BF74-D065749D4DB6} = {4CA3E86B-5BE4-4952-BE7F-418148CD4D2E}
 		{7F6412BE-0596-492D-A152-098A67569351} = {4CA3E86B-5BE4-4952-BE7F-418148CD4D2E}
+		{D812E018-95BA-4455-9E04-5CFCF28EFD36} = {6B7098EC-E9FD-414C-BC88-7D4BF78330BF}
+		{A4F4B929-C064-4146-801F-F4242EB2A7C4} = {6B7098EC-E9FD-414C-BC88-7D4BF78330BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAFDBBA1-285A-4590-BF35-774C3B64E118}
