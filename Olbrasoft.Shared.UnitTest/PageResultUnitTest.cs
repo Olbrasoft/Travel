@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Olbrasoft.Shared.Pagination;
+using Olbrasoft.Shared.Pagination.Web.Mvc;
 
 namespace Olbrasoft.Shared.UnitTest
 {
@@ -20,10 +21,10 @@ namespace Olbrasoft.Shared.UnitTest
             var paging = new Paging(1, 1);
 
             //Act
-            var pageResult = new PageResult<SomeItem>(items, paging);
+            var pageResult = new PageModel<SomeItem>(items, paging);
 
             //Assert
-            Assert.IsInstanceOf<IPageResult<SomeItem>>(pageResult);
+            Assert.IsInstanceOf<IPageModel<SomeItem>>(pageResult);
         }
 
         [Test]
@@ -34,7 +35,7 @@ namespace Olbrasoft.Shared.UnitTest
             var paging = new Paging(1, 1);
 
 
-            var pageResult = new PageResult<SomeItem>(someItems, paging);
+            var pageResult = new PageModel<SomeItem>(someItems, paging);
 
             //Act
             var items = pageResult.Items;
@@ -48,7 +49,7 @@ namespace Olbrasoft.Shared.UnitTest
         public void PagingIsInstanceOfIPaging()
         {
             //Arrange
-            var pageResult = new PageResult<SomeItem>(new SomeItem[0],new Paging(3,2) );
+            var pageResult = new PageModel<SomeItem>(new SomeItem[0],new Paging(3,2) );
 
             //Act
             var paging = pageResult.Paging;

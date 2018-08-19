@@ -8,7 +8,4 @@ namespace Olbrasoft.DataAccessLayer
     {
         IQueryResult<T> Execute();
     }
-
-
-
 }

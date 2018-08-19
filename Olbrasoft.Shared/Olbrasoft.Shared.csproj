@@ -40,16 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IResult.cs" />
+    <Compile Include="IEnumerableItems.cs" />
     <Compile Include="Pagination\INumberSelectedPage.cs" />
     <Compile Include="Pagination\IPageInfo.cs" />
-    <Compile Include="Pagination\IPageResult.cs" />
+    <Compile Include="Pagination\IPageModel.cs" />
     <Compile Include="Pagination\IPaging.cs" />
     <Compile Include="Pagination\PageInfo.cs" />
-    <Compile Include="Pagination\PageResult.cs" />
+    <Compile Include="Pagination\PageModel.cs" />
     <Compile Include="Pagination\Paging.cs" />
+    <Compile Include="Pagination\Web\Mvc\IPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Result.cs" />
+    <Compile Include="EnumerableItems.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

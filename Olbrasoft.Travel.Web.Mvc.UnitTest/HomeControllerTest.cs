@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
+using Olbrasoft.Shared.Pagination;
+using Olbrasoft.Shared.Pagination.Web.Mvc;
 using Olbrasoft.Travel.BusinessLogicLayer;
 using Olbrasoft.Travel.DataTransferObject;
 using Olbrasoft.Travel.Web.Mvc.Controllers;
@@ -16,8 +18,14 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
         [SetUp]
         public void Setup()
         {
+            var pageInfo = new Mock<IPageInfo>();
             var accommodationsFacade = new Mock<IAccommodationsFacade>();
 
+            var items = new AccommodationDataTransferObject[10];
+            var paging = new Mock<IPaging>();
+            var pageModel = new PageModel<AccommodationDataTransferObject>(items, paging.Object);
+
+            accommodationsFacade.Setup(p => p.Get(It.IsAny<IPageInfo>())).Returns(pageModel);
 
             HomeController = new HomeController(accommodationsFacade.Object);
         }
@@ -51,21 +59,24 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
 
         }
 
+
         [Test]
         public void Index_ViewResult_ViewData_Model_IsInstanceOfIEnumerableOfAccommodationDataTransferObjectTest()
         {
             //Arrange
             var controller = HomeController;
-            
+            var type = typeof(IPageModel<AccommodationDataTransferObject>);
+
             //Act
-            var result = HomeController.Index() as ViewResult; ;
-            var accommodations =  result.ViewData.Model;
+            var result = controller.Index() as ViewResult; ;
+            var accommodations = result.Model ;
 
             //Assert
-            Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(accommodations);
+            Assert.IsInstanceOf(type, accommodations);
         }
 
-                    
-
+        
     }
+
+
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Olbrasoft.DataAccessLayer;
 using Olbrasoft.Shared.Pagination;
+using Olbrasoft.Shared.Pagination.Web.Mvc;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
 
@@ -16,7 +17,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
         }
         
 
-        public IPageResult<AccommodationDataTransferObject> Get(IPageInfo pageInfo)
+        public IPageModel<AccommodationDataTransferObject> Get(IPageInfo pageInfo)
         {
             throw new NotImplementedException();
         }

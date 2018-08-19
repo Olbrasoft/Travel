@@ -2,11 +2,11 @@
 
 namespace Olbrasoft.Shared
 {
-    public abstract class Result<T> :IResult<T>
+    public abstract class EnumerableItems<T> :IEnumerableItems<T>
     {
         public IEnumerable<T> Items { get; }
     
-        protected Result(IEnumerable<T> items )
+        protected EnumerableItems(IEnumerable<T> items )
         {
             Items = items;
         }

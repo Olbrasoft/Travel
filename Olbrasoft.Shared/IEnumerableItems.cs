@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Olbrasoft.Shared
 {
-    public interface IResult<out T>
+    public interface IEnumerableItems<out T>
     {
         IEnumerable<T> Items { get; }
     }

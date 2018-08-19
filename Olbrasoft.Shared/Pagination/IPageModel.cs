@@ -1,8 +1,9 @@
 ﻿namespace Olbrasoft.Shared.Pagination
 {
-    public interface IPageResult<out T> : IResult<T>
+    public interface IEnumerableItemsAndPaging<out T> : IEnumerableItems<T>
     {
         IPaging Paging { get; }
-
     }
+
+
 }

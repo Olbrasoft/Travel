@@ -89,6 +89,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
+      <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
+      <Name>Olbrasoft.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.BusinessLogicLayer\Olbrasoft.Travel.BusinessLogicLayer.csproj">
       <Project>{5AD5D028-4C60-41E0-9EE1-B5055D361E64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>

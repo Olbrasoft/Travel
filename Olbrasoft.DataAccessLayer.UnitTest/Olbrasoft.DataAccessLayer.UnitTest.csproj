@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryResultUnitTest.cs" />
-    <Compile Include="QueryTest.cs" />
     <Compile Include="SomeItem.cs" />
   </ItemGroup>
   <ItemGroup>
