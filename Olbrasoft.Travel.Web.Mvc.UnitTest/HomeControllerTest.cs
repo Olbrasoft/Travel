@@ -26,7 +26,6 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
             var pageModel = new PageModel<AccommodationDataTransferObject>(items, paging.Object);
 
             accommodationsFacade.Setup(p => p.Get(It.IsAny<IPageInfo>())).Returns(pageModel);
-
             HomeController = new HomeController(accommodationsFacade.Object);
         }
 
@@ -69,11 +68,13 @@ namespace Olbrasoft.Travel.Web.Mvc.UnitTest
 
             //Act
             var result = controller.Index() as ViewResult; ;
+            // ReSharper disable once PossibleNullReferenceException
             var accommodations = result.Model ;
 
             //Assert
             Assert.IsInstanceOf(type, accommodations);
         }
+
 
         
     }

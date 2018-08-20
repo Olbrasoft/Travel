@@ -62,6 +62,7 @@
     <Compile Include="Description.cs" />
     <Compile Include="FileExtension.cs" />
     <Compile Include="IAdditionalRegionInfo.cs" />
+    <Compile Include="ICreationInfo.cs" />
     <Compile Include="IHaveEanId.cs" />
     <Compile Include="IHaveName.cs" />
     <Compile Include="IKeyId.cs" />

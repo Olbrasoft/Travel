@@ -1,13 +1,13 @@
-﻿using System;
-using Olbrasoft.DataAccessLayer;
+﻿using Olbrasoft.DataAccessLayer;
 using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Shared.Pagination.Web.Mvc;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
+using System;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
-    public class AccommodationsFacade: IAccommodationsFacade
+    public class AccommodationsFacade : IAccommodationsFacade
     {
         private readonly IQuery<Accommodation> _accommodationQuery;
 
@@ -15,11 +15,14 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
         {
             _accommodationQuery = accommodationQuery;
         }
-        
 
-        public IPageModel<AccommodationDataTransferObject> Get(IPageInfo pageInfo)
+        public IPageModel<AccommodationDataTransferObject>  Get(IPageInfo    pageInfo)
         {
-            throw new NotImplementedException();
+            return new PageModel<AccommodationDataTransferObject>(null, new Paging(3, 2));
+
         }
+
+
+
     }
 }

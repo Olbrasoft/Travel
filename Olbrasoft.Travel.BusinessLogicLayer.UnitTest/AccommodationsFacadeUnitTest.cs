@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Olbrasoft.DataAccessLayer;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.Pagination;
+using Olbrasoft.Shared.Pagination.Web.Mvc;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
 
@@ -18,7 +19,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         {
 
             //Arrange
-            var accommodationsFacade = AccommodationsFacade();
+            var accommodationsFacade = AccommodationsFacade;
 
             //Act
             var type = typeof(AccommodationsFacade);
@@ -28,13 +29,39 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
         }
 
-        private static AccommodationsFacade AccommodationsFacade()
-        {
-            var moqQuery = new Mock<IQuery<Accommodation>>();
 
-            var accommodationsFacade = new AccommodationsFacade(moqQuery.Object);
-            return accommodationsFacade;
+        private static AccommodationsFacade AccommodationsFacade
+        {
+            get
+            {
+                var moqQuery = new Mock<IQuery<Accommodation>>();
+
+                var accommodationsFacade = new AccommodationsFacade(moqQuery.Object);
+                return accommodationsFacade;
+            }
         }
+
+
+        [Test]
+        public void GetReturnInstanceOf()
+        {
+            //Arrange
+            var accommodationsFacade = AccommodationsFacade;
+
+            //Act
+            var pageModel = AccommodationsFacade.Get(PageInfo);
+
+            //Assert
+            Assert.IsInstanceOf<IPageModel<AccommodationDataTransferObject>>(pageModel);
+        }
+
+
+
+        private static IPageInfo PageInfo
+        {
+            get { return new Mock<IPageInfo>().Object; }
+        }
+
 
         //[Test]
         //public void AccommodationsFacade_GetTest()

@@ -3,7 +3,7 @@ using Olbrasoft.Travel.DataAccessLayer;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
-    public class ImportsLogger :ILoggingImports
+    public class ImportsLogger : ILoggingImports
     {
         protected readonly ILogsOfImportsRepository Repository;
 
@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 
         public void Log(string textForLogging)
         {
-           LogIn(new LogOfImport(){Log = textForLogging});
+            LogIn(new LogOfImport() { Log = textForLogging });
         }
     }
 }
