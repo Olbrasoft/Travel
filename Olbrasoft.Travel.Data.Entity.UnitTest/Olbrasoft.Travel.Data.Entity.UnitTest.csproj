@@ -37,6 +37,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationPagedQueryTest.cs" />
     <Compile Include="CreationInfoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -44,6 +45,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity.UnitTest\Olbrasoft.Data.Entity.UnitTest.csproj">
+      <Project>{36AA3759-4E9A-4858-A260-2451423A8D47}</Project>
+      <Name>Olbrasoft.Data.Entity.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{A48273CE-118C-414A-8E5C-E7AEB1FBD921}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>

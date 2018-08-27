@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,7 @@
     <Compile Include="BaseName.cs" />
     <Compile Include="Caption.cs" />
     <Compile Include="Chain.cs" />
+    <Compile Include="ContextQuery.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="CreationInfo.cs" />
     <Compile Include="CreatorInfo.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="PhotoOfAccommodation.cs" />
     <Compile Include="PhotoOfAccommodationToTypeOfRoom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\AccommodationPagedQuery.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="RegionToRegion.cs" />
     <Compile Include="RegionToType.cs" />
@@ -359,6 +362,20 @@
     <EmbeddedResource Include="Migrations\201808121149135_control1.resx">
       <DependentUpon>201808121149135_control1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{A48273CE-118C-414A-8E5C-E7AEB1FBD921}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
+      <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
+      <Name>Olbrasoft.Design.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
+      <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
+      <Name>Olbrasoft.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

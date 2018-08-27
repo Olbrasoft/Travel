@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccommodationsFacadeUnitTest.cs" />
+    <Compile Include="ConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +72,10 @@
     <ProjectReference Include="..\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj">
       <Project>{A4F4B929-C064-4146-801F-F4242EB2A7C4}</Project>
       <Name>Olbrasoft.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
+      <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
+      <Name>Olbrasoft.Design.Pattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
       <Project>{c0b70c19-fa51-4f92-bf74-d065749d4db6}</Project>

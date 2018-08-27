@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using Olbrasoft.DataAccessLayer;
-using Olbrasoft.Shared;
 using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Shared.Pagination.Web.Mvc;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
-
+using System.Collections.Generic;
+using Olbrasoft.Design.Pattern.Behavior;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
@@ -17,7 +15,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         [Test]
         public void CreateInstanceOfTypeAccommodationsFacade()
         {
-
             //Arrange
             var accommodationsFacade = AccommodationsFacade;
 
@@ -26,9 +23,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
-
         }
-
 
         private static AccommodationsFacade AccommodationsFacade
         {
@@ -41,7 +36,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             }
         }
 
-
         [Test]
         public void GetReturnInstanceOf()
         {
@@ -49,19 +43,30 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             var accommodationsFacade = AccommodationsFacade;
 
             //Act
-            var pageModel = AccommodationsFacade.Get(PageInfo);
+            var pageModel = accommodationsFacade.Get(PageInfo);
 
             //Assert
             Assert.IsInstanceOf<IPageModel<AccommodationDataTransferObject>>(pageModel);
         }
 
+        [Test]
+        public void GetItemsInstanceOf()
+        {
+            //Arrange
+            var aF = AccommodationsFacade;
+            var pageModel = aF.Get(PageInfo);
 
+            //Act
+            var items = pageModel.Items;
+
+            //Assert
+            Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(items);
+        }
 
         private static IPageInfo PageInfo
         {
             get { return new Mock<IPageInfo>().Object; }
         }
-
 
         //[Test]
         //public void AccommodationsFacade_GetTest()
@@ -77,9 +82,5 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         //    Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(accommodations);
 
         //}
-
-
-
-
     }
 }

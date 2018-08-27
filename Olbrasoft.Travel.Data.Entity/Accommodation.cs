@@ -1,11 +1,25 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
+using System.Web.Script.Serialization;
 
 namespace Olbrasoft.Travel.Data.Entity
 {
     public class Accommodation : CreatorInfo, IHaveEanId<int>
     {
+        public Accommodation()
+        {
+            LocalizedAccommodations = new HashSet<LocalizedAccommodation>();
+
+            Descriptions = new HashSet<Description>();
+
+            PhotosOfAccommodations = new HashSet<PhotoOfAccommodation>();
+
+            TypesOfRooms = new HashSet<TypeOfRoom>();
+
+            AccommodationsToAttributes = new HashSet<AccommodationToAttribute>();
+        }
+
         public int SequenceNumber { get; set; }
 
         public decimal StarRating { get; set; }
@@ -18,6 +32,7 @@ namespace Olbrasoft.Travel.Data.Entity
         public string AdditionalAddress { get; set; }
 
         [Required]
+        [ScriptIgnore]
         public DbGeography CenterCoordinates { get; set; }
 
         public int TypeOfAccommodationId { get; set; }
@@ -30,22 +45,22 @@ namespace Olbrasoft.Travel.Data.Entity
 
         public int EanId { get; set; } = int.MinValue;
 
-        public virtual Country Country { get; set; }
+        public Country Country { get; set; }
 
-        public virtual TypeOfAccommodation TypeOfAccommodation { get; set; }
+        public TypeOfAccommodation TypeOfAccommodation { get; set; }
 
-        public virtual Chain Chain { get; set; }
+        public Chain Chain { get; set; }
 
-        public virtual Airport Airport { get; set; }
+        public Airport Airport { get; set; }
 
-        public virtual ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
+        public ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
 
-        public virtual ICollection<Description> Descriptions { get; set; }
+        public ICollection<Description> Descriptions { get; set; }
 
-        public virtual ICollection<PhotoOfAccommodation> PhotosOfAccommodations { get; set; }
+        public ICollection<PhotoOfAccommodation> PhotosOfAccommodations { get; set; }
 
-        public virtual ICollection<TypeOfRoom> TypesOfRooms { get; set; }
+        public ICollection<TypeOfRoom> TypesOfRooms { get; set; }
 
-        public virtual ICollection<AccommodationToAttribute> AccommodationsToAttributes { get; set; }
+        public ICollection<AccommodationToAttribute> AccommodationsToAttributes { get; set; }
     }
 }
