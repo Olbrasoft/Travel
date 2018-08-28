@@ -1,38 +1,31 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using Olbrasoft.Data.Entity;
+﻿using Olbrasoft.Data.Entity;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.Collections.Generic;
 using Olbrasoft.Shared.Pagination;
+using System.Data.Entity;
+using System.Linq;
+using X.PagedList;
 
 namespace Olbrasoft.Travel.Data.Entity.Query
 {
-    public class AccommodationPagedQuery : PagedQuery<Accommodation>
+    public class AccommodationPagedQuery : LocalizedPagedQuery<Accommodation>
     {
-        protected IQueryable<Accommodation> Accommodations { get; }
-
-        protected ILanguageService LanguageService { get; }
-
-        protected int LanguageId => LanguageService.CurrentLanguageId;
-
-        protected int TotalItemCount => Queryable.Count();
-
-        public AccommodationPagedQuery(IQueryable<Accommodation> queryable, IPageInfo pageInfo, ILanguageService languageService)
-            : base(queryable, pageInfo)
+        public AccommodationPagedQuery(IQueryable<Accommodation> queryable, IPageInfo pageInfo, ILanguageService languageService) : base(queryable, pageInfo, languageService)
         {
-            LanguageService = languageService;
-
-            Accommodations = Queryable;
         }
 
-        public override PagedCollection<Accommodation> Execute()
+        public AccommodationPagedQuery(IQueryable<Accommodation> queryable, ILanguageService languageService) : base(queryable, languageService)
         {
-           var localizedAccommodations = Queryable.SelectMany(p => p.LocalizedAccommodations);
+        }
+
+        public override IPagedList<Accommodation> Execute()
+        {
+            var localizedAccommodations = Queryable.SelectMany(p => p.LocalizedAccommodations);
 
             localizedAccommodations = localizedAccommodations
                 .Where(
                     la =>
-                        (Accommodations
+                        (Queryable
                              .OrderBy(a => a.SequenceNumber)
                              .Select(a => a.Id)
                              .Skip(Skip)
@@ -47,6 +40,4 @@ namespace Olbrasoft.Travel.Data.Entity.Query
             return new PagedCollection<Accommodation>(accommodations, PageInfo, TotalItemCount);
         }
     }
-
-
 }

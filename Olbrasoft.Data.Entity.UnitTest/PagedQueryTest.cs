@@ -7,6 +7,7 @@ using Moq;
 using NUnit.Framework;
 using Olbrasoft.Shared.Collections.Generic;
 using Olbrasoft.Shared.Pagination;
+using X.PagedList;
 
 namespace Olbrasoft.Data.Entity.UnitTest
 {
@@ -75,25 +76,69 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
         }
 
+        [Test]
+        public void Execute_has_been_set_to_pageinfo()
+        {
+            //Arrange
+            var queryable = new object[10].AsQueryable();
+            var pagedQuery = new SomePagedQuery(queryable);
+            
+            //Act
+            pagedQuery.Execute(PageInfo);
+
+            //Assert
+            Assert.IsTrue(pagedQuery.PageInfo.NumberOfSelectedPage == PageInfo.NumberOfSelectedPage &&
+                          pagedQuery.PageInfo.PageSize == PageInfo.PageSize);
+            
+        }
+
+        [Test]
+        public void TotalItemCount_return_100()
+        {
+            //Arrange
+            var queryable = new object[100].AsQueryable();
+            var pagedQuery = new SomePagedQuery(queryable);
+            
+            //Act
+            var totalItemCount = pagedQuery.TotalItemCount;
+
+            //Assert
+            Assert.IsTrue(totalItemCount == 100);
+
+        }
+
+
+
         private static PageInfo PageInfo => new PageInfo(42, 8);
 
 
         class SomePagedQuery : PagedQuery<object>
         {
+
+
+            public new int Take => base.Take;
+            public new int Skip => base.Skip;
+            
+            public new int TotalItemCount => base.TotalItemCount;
+
+            public new IPageInfo PageInfo => base.PageInfo;
+
+            public new IQueryable<object> Queryable => base.Queryable;
+        
+
             public SomePagedQuery(IQueryable<object> queryable, IPageInfo pageInfo) : base(queryable, pageInfo)
             {
             }
 
-            public new int Take => base.Take;
-            public new int Skip => base.Skip;
-
-            public new IQueryable<object> Queryable => base.Queryable;
-
-            
-            public override PagedCollection<object> Execute()
+            public SomePagedQuery(IQueryable<object> queryable) : base(queryable)
             {
-                throw new NotImplementedException();
             }
+
+            public override IPagedList<object> Execute()
+            {
+                return null;
+            }
+
         }
 
 

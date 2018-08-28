@@ -136,10 +136,14 @@
     <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
     </Reference>
+    <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.7.5.0\lib\net461\X.PagedList.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccommodationsFacade.cs" />
     <Compile Include="IAccommodationsFacade.cs" />
+    <Compile Include="IFacade.cs" />
     <Compile Include="ILanguagesFacade.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="ITravelFacade.cs" />
@@ -152,6 +156,10 @@
     <Compile Include="UsersFacade.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{A48273CE-118C-414A-8E5C-E7AEB1FBD921}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj">
       <Project>{A4F4B929-C064-4146-801F-F4242EB2A7C4}</Project>
       <Name>Olbrasoft.DataAccessLayer</Name>

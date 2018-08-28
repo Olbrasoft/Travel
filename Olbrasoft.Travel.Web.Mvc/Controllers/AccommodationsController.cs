@@ -16,6 +16,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
     public class AccommodationsController : Controller
     {
+        
         // GET: Accommodations
         public ActionResult Index(int page = 1)
         {

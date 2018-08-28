@@ -1,26 +1,36 @@
-﻿using System.Linq;
-using Olbrasoft.Design.Pattern.Behavior;
-using Olbrasoft.Shared.Collections.Generic;
+﻿using Olbrasoft.Design.Pattern.Behavior;
 using Olbrasoft.Shared.Pagination;
+using System.Linq;
+using X.PagedList;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class PagedQuery<T> : Query<PagedCollection<T>>, IPagedQuery<T>  where T : class
+    public abstract class PagedQuery<T> : Query<IPagedList<T>>, IPagedQuery<T> where T : class
     {
-        protected PagedQuery(IQueryable<T> queryable, IPageInfo pageInfo)
-        {
-            PageInfo = pageInfo;
-            Queryable = queryable;
-        }
-
         protected IQueryable<T> Queryable { get; }
 
-        protected IPageInfo PageInfo { get; }
+        protected IPageInfo PageInfo { get; private set; }
 
         protected int Take => GetTake(PageInfo);
 
         protected int Skip => GetSkip(PageInfo);
 
+        protected int TotalItemCount => GetTotalItemCount(Queryable);
+
+        private int GetTotalItemCount(IQueryable<T> queryable)
+        {
+            return queryable.Count();
+        }
+
+        protected PagedQuery(IQueryable<T> queryable, IPageInfo pageInfo) : this(queryable)
+        {
+            PageInfo = pageInfo;
+        }
+
+        protected PagedQuery(IQueryable<T> queryable)
+        {
+            Queryable = queryable;
+        }
 
         protected virtual int GetSkip(IPageInfo pageInfo)
         {
@@ -30,6 +40,12 @@ namespace Olbrasoft.Data.Entity
         protected virtual int GetTake(IPageInfo pageInfo)
         {
             return pageInfo.PageSize;
+        }
+
+        public IPagedList<T> Execute(IPageInfo pageInfo)
+        {
+            PageInfo = pageInfo;
+            return Execute();
         }
     }
 }

@@ -5,63 +5,129 @@ using Olbrasoft.Shared.Pagination.Web.Mvc;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
 using System.Collections.Generic;
+using Olbrasoft.Data.Entity;
 using Olbrasoft.Design.Pattern.Behavior;
+using X.PagedList;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
     [TestFixture]
     public class AccommodationsFacadeUnitTest
     {
+
         [Test]
-        public void CreateInstanceOfTypeAccommodationsFacade()
+        public void Is_Instance_Of_IAccommodationFacade()
         {
             //Arrange
-            var accommodationsFacade = AccommodationsFacade;
+            var type = typeof(IFacade);
+            var pagedQuery = new Mock<IQuery<IPagedList<Accommodation>>>();
 
             //Act
-            var type = typeof(AccommodationsFacade);
-
+            var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object);
+            
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
+
         }
 
-        private static AccommodationsFacade AccommodationsFacade
+        [Test]
+        public void GetPage_IsNotNull()
         {
-            get
+            //Arrange
+            var pagedQuery = new Mock<IQuery<IPagedList<Accommodation>>>();
+            var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object);
+            var pageInfo = new Mock<IPageInfo>();
+
+            //Act
+            var accommodations = accommodationsFacade.AccommodationDataTransferObjects(pageInfo.Object);
+
+            //Assert
+            Assert.IsNotNull(accommodations);
+        }
+
+
+        [Test]
+        public void Map_returns_an_bject_that_is_instance_of_IPagedList_of_AccommodationDataTransferObject()
+        {
+            //Arrange
+            var pagedQuery = new Mock<IQuery<IPagedList<Accommodation>>>();
+            var accommodationsFacade = new SomeAccommodationsFacade(pagedQuery.Object);
+            var pagedList = new Mock<IPagedList<Accommodation>>().Object;
+
+            //Act
+            var accommodations = accommodationsFacade.Map(pagedList);
+
+            //Assert
+            Assert.IsInstanceOf<IPagedList<AccommodationDataTransferObject>>(accommodations);
+        }
+
+        
+        
+        class SomeAccommodationsFacade:AccommodationsFacade
+        {
+            public SomeAccommodationsFacade(IQuery<IPagedList<Accommodation>> accommodationQuery) : base(accommodationQuery)
             {
-                var moqQuery = new Mock<IQuery<Accommodation>>();
-
-                var accommodationsFacade = new AccommodationsFacade(moqQuery.Object);
-                return accommodationsFacade;
             }
+
+            public new IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedList)
+            {
+                return base.Map(pagedList);
+            }
+
+
         }
 
-        [Test]
-        public void GetReturnInstanceOf()
-        {
-            //Arrange
-            var accommodationsFacade = AccommodationsFacade;
 
-            //Act
-            var pageModel = accommodationsFacade.Get(PageInfo);
+        //[Test]
+        //public void CreateInstanceOfTypeAccommodationsFacade()
+        //{
+        //    //Arrange
+        //    var accommodationsFacade = AccommodationsFacade;
 
-            //Assert
-            Assert.IsInstanceOf<IPageModel<AccommodationDataTransferObject>>(pageModel);
-        }
+        //    //Act
+        //    var type = typeof(AccommodationsFacade);
 
-        [Test]
-        public void GetItemsInstanceOf()
-        {
-            //Arrange
-            var aF = AccommodationsFacade;
-            var pageModel = aF.Get(PageInfo);
+        //    //Assert
+        //    Assert.IsInstanceOf(type, accommodationsFacade);
+        //}
 
-            //Act
-            var items = pageModel.Items;
+        //private static AccommodationsFacade AccommodationsFacade
+        //{
+        //    get
+        //    {
+        //        var moqQuery = new Mock<IQuery<Accommodation>>();
 
-            //Assert
-            Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(items);
-        }
+        //        var accommodationsFacade = new AccommodationsFacade(moqQuery.Object);
+        //        return accommodationsFacade;
+        //    }
+        //}
+
+        //[Test]
+        //public void GetReturnInstanceOf()
+        //{
+        //    //Arrange
+        //    var accommodationsFacade = AccommodationsFacade;
+
+        //    //Act
+        //    var pageModel = accommodationsFacade.Get(PageInfo);
+
+        //    //Assert
+        //    Assert.IsInstanceOf<IPageModel<AccommodationDataTransferObject>>(pageModel);
+        //}
+
+        //[Test]
+        //public void GetItemsInstanceOf()
+        //{
+        //    //Arrange
+        //    var aF = AccommodationsFacade;
+        //    var pageModel = aF.Get(PageInfo);
+
+        //    //Act
+        //    var items = pageModel.Items;
+
+        //    //Assert
+        //    Assert.IsInstanceOf<IEnumerable<AccommodationDataTransferObject>>(items);
+        //}
 
         private static IPageInfo PageInfo
         {

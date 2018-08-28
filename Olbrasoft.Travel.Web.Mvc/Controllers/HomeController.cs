@@ -22,7 +22,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
         public ActionResult Index(int page = 1)
         {
             var pageInfo = new PageInfo(3, page);
-            return View(_accommodationFacade.Get(pageInfo));
+            return View(_accommodationFacade.AccommodationDataTransferObjects(pageInfo));
         }
     }
 }
