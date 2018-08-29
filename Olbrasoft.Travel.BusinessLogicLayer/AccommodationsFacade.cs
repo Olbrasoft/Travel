@@ -34,5 +34,9 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
             return new PagedCollection<AccommodationDataTransferObject>(new AccommodationDataTransferObject[0],
                 new PageInfo(), 0);
         }
+
+
+
+
     }
 }

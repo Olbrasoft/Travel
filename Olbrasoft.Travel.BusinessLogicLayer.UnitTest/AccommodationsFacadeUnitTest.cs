@@ -47,12 +47,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             Assert.IsNotNull(accommodations);
         }
 
-        private static AccommodationsFacade AccommodationsFacade()
-        {
-            return new AccommodationsFacade(LocalizedPagedQuery.Object);
-        }
-
-
+        
         [Test]
         public void Map_returns_an_bject_that_is_instance_of_IPagedList_of_AccommodationDataTransferObject()
         {
@@ -65,6 +60,12 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
             //Assert
             Assert.IsInstanceOf<IPagedList<AccommodationDataTransferObject>>(accommodations);
+        }
+
+
+        private static AccommodationsFacade AccommodationsFacade()
+        {
+            return new AccommodationsFacade(LocalizedPagedQuery.Object);
         }
 
 
