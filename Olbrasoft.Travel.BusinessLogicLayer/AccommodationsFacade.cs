@@ -10,23 +10,24 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 {
     public class AccommodationsFacade : IAccommodationsFacade
     {
-        private readonly IQuery<IPagedList<Accommodation>> _accommodationQuery;
+
+        protected ILocalizedPagedQuery<Accommodation> Accommodations { get; }
 
 
-
-        public AccommodationsFacade(IQuery<IPagedList<Accommodation>> accommodationQuery)
+        public AccommodationsFacade(ILocalizedPagedQuery<Accommodation> accommodations)
         {
-            _accommodationQuery = accommodationQuery;
+            Accommodations = accommodations;
         }
-
+        
         public IPagedList<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo)
         {
-            var accommodations = _accommodationQuery.Execute();
+            var accommodations = Accommodations.Execute(pageInfo);
 
             var accommodationDataTransferObjects = Map(accommodations);
 
             return accommodationDataTransferObjects;
         }
+
 
         protected virtual IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedList)
         {

@@ -20,7 +20,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         {
             //Arrange
             var type = typeof(IFacade);
-            var pagedQuery = new Mock<IQuery<IPagedList<Accommodation>>>();
+            var pagedQuery = LocalizedPagedQuery;
 
             //Act
             var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object);
@@ -30,12 +30,14 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
         }
 
+        private static Mock<ILocalizedPagedQuery<Accommodation>> LocalizedPagedQuery => new Mock<ILocalizedPagedQuery<Accommodation>>();
+
         [Test]
         public void GetPage_IsNotNull()
         {
             //Arrange
-            var pagedQuery = new Mock<IQuery<IPagedList<Accommodation>>>();
-            var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object);
+            var accommodationsFacade = AccommodationsFacade();
+
             var pageInfo = new Mock<IPageInfo>();
 
             //Act
@@ -45,13 +47,17 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             Assert.IsNotNull(accommodations);
         }
 
+        private static AccommodationsFacade AccommodationsFacade()
+        {
+            return new AccommodationsFacade(LocalizedPagedQuery.Object);
+        }
+
 
         [Test]
         public void Map_returns_an_bject_that_is_instance_of_IPagedList_of_AccommodationDataTransferObject()
         {
             //Arrange
-            var pagedQuery = new Mock<IQuery<IPagedList<Accommodation>>>();
-            var accommodationsFacade = new SomeAccommodationsFacade(pagedQuery.Object);
+            var accommodationsFacade = new SomeAccommodationsFacade(LocalizedPagedQuery.Object);
             var pagedList = new Mock<IPagedList<Accommodation>>().Object;
 
             //Act
@@ -61,13 +67,10 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             Assert.IsInstanceOf<IPagedList<AccommodationDataTransferObject>>(accommodations);
         }
 
-        
-        
-        class SomeAccommodationsFacade:AccommodationsFacade
+
+        private class SomeAccommodationsFacade:AccommodationsFacade
         {
-            public SomeAccommodationsFacade(IQuery<IPagedList<Accommodation>> accommodationQuery) : base(accommodationQuery)
-            {
-            }
+        
 
             public new IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedList)
             {
@@ -75,6 +78,9 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             }
 
 
+            public SomeAccommodationsFacade(ILocalizedPagedQuery<Accommodation> accommodations) : base(accommodations)
+            {
+            }
         }
 
 
