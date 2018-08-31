@@ -11,7 +11,7 @@ namespace Olbrasoft.Design.Pattern.UnitTest
         public void IsInstanceOfQuery()
         {
             //Arrange
-            var type = typeof(Query<object>);
+            var type = typeof(IQuery<object>);
             var cmd = new Mock<ICommandWithResult<object>>();
 
             //Act

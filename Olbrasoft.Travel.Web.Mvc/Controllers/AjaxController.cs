@@ -7,6 +7,7 @@ using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Shared.UnitTest;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.Data.Entity.Query;
+using Olbrasoft.Shared.Linq;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
@@ -26,7 +27,8 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 
 		    var q = new AccommodationPagedQuery(new TravelContext().Accommodations, pageInfo, languageService);
 
-		    var accommodations = q.Execute();
+		    var accommodations = q.Execute().AsPagedList();
+            
             
 
             return Json(new

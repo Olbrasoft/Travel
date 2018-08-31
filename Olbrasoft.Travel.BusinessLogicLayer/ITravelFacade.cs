@@ -2,7 +2,7 @@
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
-    public interface ITravelFacade<T>where T:class
+    public interface ITravelFacade<in T>where T:class
     {
         void Add(T item);
         void Add(IEnumerable<T> items);

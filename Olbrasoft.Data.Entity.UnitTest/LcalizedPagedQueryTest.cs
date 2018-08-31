@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.Pagination;
-using X.PagedList;
+using System;
+using System.Linq;
+using Olbrasoft.Shared.Collections.Generic;
+
 
 namespace Olbrasoft.Data.Entity.UnitTest
 {
     [TestFixture]
-    class LcalizedPagedQueryTest
+    internal class LcalizedPagedQueryTest
     {
         [Test]
         public void Is_instance_of_ILocalizedPagedQuery()
         {
             //Arrange
             var type = typeof(ILocalizedPagedQuery<object>);
-            var queryableOfObjects = new Mock<IQueryable<object>>();
+            var queryableOfObjects = QueryableOfObjects;
             var languageService = new Mock<ILanguageService>();
 
             //Act
-            var localizedPagedQuery = new SomeLocalizedPagedQuery(queryableOfObjects.Object,languageService.Object);
+            var localizedPagedQuery = CreateSomeLocalizedPagedQuery(queryableOfObjects, languageService);
 
             //Assert
             Assert.IsInstanceOf(type, localizedPagedQuery);
-
         }
 
         [Test]
@@ -45,7 +42,6 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
             //Assert
             Assert.IsNotNull(result);
-
         }
 
         [Test]
@@ -64,17 +60,30 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
             //Assert
             Assert.IsTrue(languageId == 1033);
-
         }
 
-        class SomeLocalizedPagedQuery:LocalizedPagedQuery<Object>
+        private static SomeLocalizedPagedQuery CreateSomeLocalizedPagedQuery(Mock<IQueryable<object>> queryableOfObjects, Mock<ILanguageService> languageService)
+        {
+            var localizedPagedQuery = new SomeLocalizedPagedQuery(queryableOfObjects.Object, languageService.Object);
+            return localizedPagedQuery;
+        }
+
+        private static Mock<IQueryable<object>> QueryableOfObjects
+        {
+            get
+            {
+                var queryableOfObjects = new Mock<IQueryable<object>>();
+                return queryableOfObjects;
+            }
+        }
+
+        private class SomeLocalizedPagedQuery : LocalizedPagedQuery<Object>
         {
             public new ILanguageService LanguageService => base.LanguageService;
 
             public new int LanguageId => base.LanguageId;
 
-
-            public override IPagedList<object> Execute()
+            public override IPagedEnumerable<object> Execute()
             {
                 throw new NotImplementedException();
             }

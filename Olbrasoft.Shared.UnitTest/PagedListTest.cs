@@ -1,0 +1,91 @@
+﻿using Moq;
+using NUnit.Framework;
+using Olbrasoft.Shared.Linq;
+using Olbrasoft.Shared.Pagination;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Olbrasoft.Shared.UnitTest
+{
+    [TestFixture]
+    public class PagedListTest
+    {
+        [Test]
+        public void Is_Instance_Of_IEnumerable_Of_string()
+        {
+            //Arrange
+            var subSet = new string[0];
+            var pagedCollection = subSet.AsPagedEnumerable().AsPagedList();
+
+            //Act
+            var r = pagedCollection;
+
+            //Assert
+            Assert.IsInstanceOf<IEnumerable<string>>(r);
+        }
+
+        [Test]
+        public void Count_Is_10()
+        {
+            //Arrange
+            var subSet = new string[10];
+
+            var pagedStrings = subSet.AsPagedEnumerable().AsPagedList();
+
+            //Act
+            var count = pagedStrings.Count();
+
+            //Assert
+            Assert.IsTrue(count == 10);
+        }
+
+        [Test]
+        public void PageSize_Is_13()
+        {
+            //Arrange
+            var subSet = new string[13];
+            var pagedStrings = subSet.AsPagedEnumerable().AsPagedList();
+
+            //Act
+            var pageSize = pagedStrings.PageSize;
+
+            //Assert
+            Assert.IsTrue(pageSize == 13);
+        }
+
+        [Test]
+        public void PageNumber_Is_3()
+        {
+            //Arrange
+            var subSet = new string[13];
+            IPageInfo pageInfo = new PageInfo(13, 5);
+
+            var pagedStrings = subSet.AsPagedEnumerable(new Pagination.Pagination(pageInfo, subSet.Count)).AsPagedList();
+
+            //Act
+            var pageNumber = pagedStrings.PageNumber;
+
+            //Assert
+            Assert.IsTrue(pageNumber == 5);
+        }
+
+        [Test]
+        public void TotalItemCount_is_150()
+        {
+            //Arrange
+            var subSet = new string[13];
+            var pageInfo = new Mock<IPageInfo>();
+            var pagination = new Mock<IPagination>();
+            pagination.Setup(p => p.PageInfo).Returns(pageInfo.Object);
+            pagination.Setup(p => p.CountWithOutPaging()).Returns(150);
+
+            var pagedStrings = subSet.AsPagedEnumerable(pagination.Object).AsPagedList();
+
+            //Act
+            var totelItemCount = pagedStrings.TotalItemCount;
+
+            //Assert
+            Assert.IsTrue(totelItemCount == 150);
+        }
+    }
+}

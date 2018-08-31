@@ -1,10 +1,10 @@
 ﻿using Olbrasoft.Data.Entity;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.Collections.Generic;
+using Olbrasoft.Shared.Linq;
 using Olbrasoft.Shared.Pagination;
 using System.Data.Entity;
 using System.Linq;
-using X.PagedList;
 
 namespace Olbrasoft.Travel.Data.Entity.Query
 {
@@ -18,7 +18,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query
         {
         }
 
-        public override IPagedList<Accommodation> Execute()
+        public override IPagedEnumerable<Accommodation> Execute()
         {
             var localizedAccommodations = Queryable.SelectMany(p => p.LocalizedAccommodations);
 
@@ -37,7 +37,12 @@ namespace Olbrasoft.Travel.Data.Entity.Query
 
             var accommodations = localizedAccommodations.AsEnumerable().Select(la => la.Accommodation);
 
-            return new PagedCollection<Accommodation>(accommodations, PageInfo, TotalItemCount);
+            return accommodations.AsPagedEnumerable(CreatePagination());
+        }
+
+        private IPagination CreatePagination()
+        {
+            return new Pagination(PageInfo, Queryable.Count);
         }
     }
 }

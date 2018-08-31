@@ -1,6 +1,6 @@
 ﻿@using X.PagedList
 @using X.PagedList.Mvc
-@model Olbrasoft.Shared.Collections.Generic.PagedCollection<Olbrasoft.Travel.Data.Entity.Accommodation>
+@model Olbrasoft.Shared.Collections.Generic.IPagedList<Olbrasoft.Travel.Data.Entity.Accommodation>
 
 @{
     ViewBag.Title = "Index";
@@ -15,9 +15,11 @@
     </strong>
     <br />
     @accommodation.Address
+
+
     <hr />
 
- }
+}
 
 <h2>Out-of-the-box Pager Configurations</h2>
 
@@ -26,32 +28,32 @@
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
 <h3>Classic Paging Control (always shows Previous/Next links, but sometimes they are disabled)</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)
 
-    <h3>Classic Paging Control (Classic +First and Last links)</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+<h3>Classic Paging Control (Classic +First and Last links)</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
 
-    <h3>Minimal Paging Control</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Minimal)
+<h3>Minimal Paging Control</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Minimal)
 
-    <h3>Minimal Paging Control w/ Page Count Text</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+<h3>Minimal Paging Control w/ Page Count Text</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
 
-    <h3>Minimal Paging Control w/ Item Count Text</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+<h3>Minimal Paging Control w/ Item Count Text</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
 
-    <h3>Page Numbers Only</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+<h3>Page Numbers Only</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
 
-    <h3>Only Show Five Pages At A Time</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+<h3>Only Show Five Pages At A Time</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
-    <h2>Custom Pager Configurations</h2>
+<h2>Custom Pager Configurations</h2>
 
-    <h3>Custom Wording (<em>Spanish Translation Example</em>)</h3>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Primera", LinkToPreviousPageFormat = "< Anterior", LinkToNextPageFormat = "Siguiente >", LinkToLastPageFormat = "Última >>" })
+<h3>Custom Wording (<em>Spanish Translation Example</em>)</h3>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Primera", LinkToPreviousPageFormat = "< Anterior", LinkToNextPageFormat = "Siguiente >", LinkToLastPageFormat = "Última >>" })
 
-  @*<h3>Show Range of Items For Each Page</h3>
+@*<h3>Show Range of Items For Each Page</h3>
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { FunctionToDisplayEachPageNumber = page => ((page - 1) * ViewBag.Names.PageSize + 1).ToString() + "-" + (((page - 1) * ViewBag.Names.PageSize) + ViewBag.Names.PageSize).ToString(), MaximumPageNumbersToDisplay = 5 })*@
 
 <h3>Empty PagedList</h3>

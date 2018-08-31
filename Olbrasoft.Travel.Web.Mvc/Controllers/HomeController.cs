@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Olbrasoft.Shared;
+﻿using Olbrasoft.Shared.Linq;
 using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.BusinessLogicLayer;
+using System.Threading;
+using System.Web.Mvc;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
@@ -21,8 +18,14 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
         // GET: Home
         public ActionResult Index(int page = 1)
         {
-            var pageInfo = new PageInfo(3, page);
-            return View(_accommodationFacade.AccommodationDataTransferObjects(pageInfo));
+            var pageInfo = new PageInfo(10, page);
+
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
+
+            var pagedListOfAccommodation =
+                 _accommodationFacade.AccommodationDataTransferObjects(pageInfo).AsPagedList();
+
+            return View(pagedListOfAccommodation);
         }
     }
 }

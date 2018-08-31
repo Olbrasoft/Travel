@@ -1,25 +1,25 @@
 ﻿using Olbrasoft.Data.Entity;
-using Olbrasoft.Design.Pattern.Behavior;
 using Olbrasoft.Shared.Collections.Generic;
 using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
-using X.PagedList;
+using System.Collections.Generic;
+using System.Linq;
+using Olbrasoft.Shared.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
     public class AccommodationsFacade : IAccommodationsFacade
     {
-
         protected ILocalizedPagedQuery<Accommodation> Accommodations { get; }
-
 
         public AccommodationsFacade(ILocalizedPagedQuery<Accommodation> accommodations)
         {
             Accommodations = accommodations;
         }
-        
-        public IPagedList<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo)
+
+
+        public IPagedEnumerable<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo)
         {
             var accommodations = Accommodations.Execute(pageInfo);
 
@@ -27,16 +27,28 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 
             return accommodationDataTransferObjects;
         }
-
-
-        protected virtual IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedList)
+        
+        
+        protected virtual IPagedEnumerable<AccommodationDataTransferObject> Map(IPagedEnumerable<Accommodation> pagedEnumerable)
         {
-            return new PagedCollection<AccommodationDataTransferObject>(new AccommodationDataTransferObject[0],
-                new PageInfo(), 0);
+            var accommodationDataTransferObjects = new Queue<AccommodationDataTransferObject>();
+
+            foreach (var accommodation in pagedEnumerable)
+            {
+                var adto = new AccommodationDataTransferObject
+                {
+                    Id = accommodation.Id,
+                    Address = accommodation.Address,
+                    Name = accommodation.LocalizedAccommodations.FirstOrDefault()?.Name,
+                    Location = accommodation.LocalizedAccommodations.FirstOrDefault()?.Location
+                };
+
+                accommodationDataTransferObjects.Enqueue(adto);
+            }
+
+            var pagedCollection = accommodationDataTransferObjects.AsPagedEnumerable(pagedEnumerable.Pagination);
+             
+            return pagedCollection;
         }
-
-
-
-
     }
 }

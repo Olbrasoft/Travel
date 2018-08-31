@@ -1,11 +1,11 @@
 ﻿using Olbrasoft.Design.Pattern.Behavior;
+using Olbrasoft.Shared.Collections.Generic;
 using Olbrasoft.Shared.Pagination;
 using System.Linq;
-using X.PagedList;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class PagedQuery<T> : Query<IPagedList<T>>, IPagedQuery<T> where T : class
+    public abstract class PagedQuery<T> : Query<IPagedEnumerable<T>>, IPagedQuery<T> where T : class
     {
         protected IQueryable<T> Queryable { get; }
 
@@ -42,7 +42,7 @@ namespace Olbrasoft.Data.Entity
             return pageInfo.PageSize;
         }
 
-        public IPagedList<T> Execute(IPageInfo pageInfo)
+        public IPagedEnumerable<T> Execute(IPageInfo pageInfo)
         {
             PageInfo = pageInfo;
             return Execute();

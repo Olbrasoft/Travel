@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Shared.Collections.Generic;
 using Olbrasoft.Shared.Pagination;
-using X.PagedList;
+using System.Linq;
 
 namespace Olbrasoft.Data.Entity.UnitTest
 {
@@ -25,10 +20,8 @@ namespace Olbrasoft.Data.Entity.UnitTest
             //Act
             var pagedQuery = new Mock<PagedQuery<object>>(queryable, pageInfo).Object;
 
-
             //Assert
             Assert.IsInstanceOf(type, pagedQuery);
-
         }
 
         [Test]
@@ -45,7 +38,6 @@ namespace Olbrasoft.Data.Entity.UnitTest
             Assert.IsTrue(take == 42);
         }
 
-
         [Test]
         public void Skip_Return_294()
         {
@@ -58,7 +50,6 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
             //Assert
             Assert.IsTrue(skip == 294);
-
         }
 
         [Test]
@@ -73,7 +64,6 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
             //Assert
             Assert.IsTrue(count == 10);
-
         }
 
         [Test]
@@ -82,14 +72,13 @@ namespace Olbrasoft.Data.Entity.UnitTest
             //Arrange
             var queryable = new object[10].AsQueryable();
             var pagedQuery = new SomePagedQuery(queryable);
-            
+
             //Act
             pagedQuery.Execute(PageInfo);
 
             //Assert
             Assert.IsTrue(pagedQuery.PageInfo.NumberOfSelectedPage == PageInfo.NumberOfSelectedPage &&
                           pagedQuery.PageInfo.PageSize == PageInfo.PageSize);
-            
         }
 
         [Test]
@@ -98,33 +87,26 @@ namespace Olbrasoft.Data.Entity.UnitTest
             //Arrange
             var queryable = new object[100].AsQueryable();
             var pagedQuery = new SomePagedQuery(queryable);
-            
+
             //Act
             var totalItemCount = pagedQuery.TotalItemCount;
 
             //Assert
             Assert.IsTrue(totalItemCount == 100);
-
         }
-
-
 
         private static PageInfo PageInfo => new PageInfo(42, 8);
 
-
-        class SomePagedQuery : PagedQuery<object>
+        private class SomePagedQuery : PagedQuery<object>
         {
-
-
             public new int Take => base.Take;
             public new int Skip => base.Skip;
-            
+
             public new int TotalItemCount => base.TotalItemCount;
 
             public new IPageInfo PageInfo => base.PageInfo;
 
             public new IQueryable<object> Queryable => base.Queryable;
-        
 
             public SomePagedQuery(IQueryable<object> queryable, IPageInfo pageInfo) : base(queryable, pageInfo)
             {
@@ -134,14 +116,10 @@ namespace Olbrasoft.Data.Entity.UnitTest
             {
             }
 
-            public override IPagedList<object> Execute()
+            public override IPagedEnumerable<object> Execute()
             {
                 return null;
             }
-
         }
-
-
-
     }
 }

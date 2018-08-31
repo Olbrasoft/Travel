@@ -43,23 +43,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\Generic\PagedCollection.cs" />
-    <Compile Include="IEnumerableItems.cs" />
+    <Compile Include="Collections\Generic\IPagedList.cs" />
+    <Compile Include="Collections\Generic\IPagedEnumerable.cs" />
+    <Compile Include="Collections\Generic\PagedList.cs" />
+    <Compile Include="Collections\Generic\PagedEnumerable.cs" />
     <Compile Include="ILanguageService.cs" />
+    <Compile Include="Linq\Paged.cs" />
     <Compile Include="Pagination\INumberSelectedPage.cs" />
     <Compile Include="Pagination\IPageInfo.cs" />
-    <Compile Include="Pagination\IPageModel.cs" />
-    <Compile Include="Pagination\IPaging.cs" />
-    <Compile Include="Pagination\Paged.cs" />
+    <Compile Include="Pagination\IPagination.cs" />
     <Compile Include="Pagination\PageInfo.cs" />
-    <Compile Include="Pagination\PageModel.cs" />
-    <Compile Include="Pagination\Paging.cs" />
-    <Compile Include="Pagination\Web\Mvc\IPageModel.cs" />
+    <Compile Include="Pagination\BasePagination.cs" />
+    <Compile Include="Pagination\Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnumerableItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
