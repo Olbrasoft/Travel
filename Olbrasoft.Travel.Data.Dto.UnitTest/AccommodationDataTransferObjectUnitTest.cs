@@ -1,45 +1,45 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
-namespace Olbrasoft.Travel.DataTransferObject.UnitTest
+namespace Olbrasoft.Travel.Data.Dto.UnitTest
 {
-    [TestClass]
+    [TestFixture]
     public class AccommodationDataTransferObjectUnitTest
     {
-        [TestMethod]
+        [Test]
         public void CreateInstanceOfTypeAccommodationTransferObjectUnitTest()
         {
             //Arrange 
-            var accommodationDataTransferObject= new AccommodationDataTransferObject();
+            var accommodationDto= new AccommodationDto();
 
             //Act
-            var type = typeof(AccommodationDataTransferObject);
+            var type = typeof(AccommodationDto);
 
             //Assert
-            Assert.IsInstanceOfType(accommodationDataTransferObject, type);
+            Assert.IsInstanceOf(type, accommodationDto);
 
         }
 
-        [TestMethod]
+        [Test]
         public void AccommodationTransferObjectIdUnitTest()
         {
             //Arrange 
-            var accommodationDataTransferObject = new AccommodationDataTransferObject();
+            var accommodationDataTransferObject = new AccommodationDto();
 
             //Act
             var id = accommodationDataTransferObject.Id;
 
             //Assert
-            Assert.IsInstanceOfType(id, typeof(int));
+            Assert.IsInstanceOf<int>(id);
 
         }
 
 
-        [TestMethod]
+        [Test]
         public void AccommodationTransferObjectNameUnitTest()
         {
             //Arrange 
             const string testName = "testName";
-            var accommodationDataTransferObject = new AccommodationDataTransferObject {Name = testName};
+            var accommodationDataTransferObject = new AccommodationDto {Name = testName};
 
             //Act
             var name = accommodationDataTransferObject.Name;
@@ -49,12 +49,12 @@ namespace Olbrasoft.Travel.DataTransferObject.UnitTest
 
         }
         
-        [TestMethod]
+        [Test]
         public void AccommodationTransferObjectLocationUnitTest()
         {
             //Arrange 
             const string testLocation = "testLocation";
-            var accommodationDataTransferObject = new AccommodationDataTransferObject { Location = testLocation };
+            var accommodationDataTransferObject = new AccommodationDto { Location = testLocation };
 
             //Act
             var location = accommodationDataTransferObject.Location;
@@ -64,12 +64,12 @@ namespace Olbrasoft.Travel.DataTransferObject.UnitTest
 
         }
 
-        [TestMethod]
+        [Test]
         public void AccommodationTransferObjectAdressUnitTest()
         {
             //Arrange 
             const string testAdress = "testAdress";
-            var accommodationDataTransferObject = new AccommodationDataTransferObject { Address = testAdress };
+            var accommodationDataTransferObject = new AccommodationDto { Address = testAdress };
 
             //Act
             var adress = accommodationDataTransferObject.Address;
@@ -79,9 +79,6 @@ namespace Olbrasoft.Travel.DataTransferObject.UnitTest
 
         }
 
-
-
-
-
+        
     }
 }

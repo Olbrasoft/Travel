@@ -4,8 +4,8 @@ using Moq;
 using NUnit.Framework;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
+using Olbrasoft.Travel.Data.Dto;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataTransferObject;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
@@ -56,7 +56,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             var pagedAccommodation = accommodtions.AsPagedList();
             var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
             var mapper = config.CreateMapper();
-            var pagedMapper = new PagedListAutoMapper<Accommodation, AccommodationDataTransferObject>(mapper);
+            var pagedMapper = new PagedListAutoMapper<Accommodation, AccommodationDto>(mapper);
 
 
             //Act

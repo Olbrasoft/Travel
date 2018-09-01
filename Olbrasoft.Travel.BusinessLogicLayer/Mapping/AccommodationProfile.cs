@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using Olbrasoft.Travel.Data.Dto;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataTransferObject;
+using System.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
 {
@@ -13,9 +9,8 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
     {
         public AccommodationProfile()
         {
-            CreateMap<Accommodation, AccommodationDataTransferObject>()
+            CreateMap<Accommodation, AccommodationDto>()
                 .ForMember(d => d.Name, opt => opt.MapFrom(src => src.LocalizedAccommodations.FirstOrDefault().Name));
         }
     }
-
 }

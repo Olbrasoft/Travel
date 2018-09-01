@@ -207,6 +207,10 @@
       <Project>{c0b70c19-fa51-4f92-bf74-d065749d4db6}</Project>
       <Name>Olbrasoft.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Dto\Olbrasoft.Travel.Data.Dto.csproj">
+      <Project>{D79DAB91-5846-48F7-9073-40230BC4B7B9}</Project>
+      <Name>Olbrasoft.Travel.Data.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
@@ -214,10 +218,6 @@
     <ProjectReference Include="..\Olbrasoft.Travel.DataAccessLayer\Olbrasoft.Travel.DataAccessLayer.csproj">
       <Project>{0d3be7cb-5a9b-4883-a324-158615a6d656}</Project>
       <Name>Olbrasoft.Travel.DataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.DataTransferObject\Olbrasoft.Travel.DataTransferObject.csproj">
-      <Project>{C95C2DC3-3975-4A94-8BEA-3C1C329DC9EA}</Project>
-      <Name>Olbrasoft.Travel.DataTransferObject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

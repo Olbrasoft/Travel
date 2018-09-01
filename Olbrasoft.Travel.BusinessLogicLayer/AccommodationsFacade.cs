@@ -1,11 +1,11 @@
 ﻿using Olbrasoft.Data.Entity;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataTransferObject;
 using System.Collections.Generic;
 using System.Linq;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Travel.Data.Dto;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
         }
 
 
-        public IPagedList<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo)
+        public IPagedList<AccommodationDto> AccommodationDataTransferObjects(IPageInfo pageInfo)
         {
             var accommodations = LocalizedPagedQueryOfAccommodation.Execute(pageInfo);
 
@@ -29,13 +29,13 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
         }
        
         
-        protected virtual IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedListOfAccommodation)
+        protected virtual IPagedList<AccommodationDto> Map(IPagedList<Accommodation> pagedListOfAccommodation)
         {
-            var queueOfAccommodationDataTransferObject = new Queue<AccommodationDataTransferObject>();
+            var queueOfAccommodationDataTransferObject = new Queue<AccommodationDto>();
 
             foreach (var accommodation in pagedListOfAccommodation)
             {
-                var adto = new AccommodationDataTransferObject
+                var adto = new AccommodationDto
                 {
                     Id = accommodation.Id,
                     Address = accommodation.Address,

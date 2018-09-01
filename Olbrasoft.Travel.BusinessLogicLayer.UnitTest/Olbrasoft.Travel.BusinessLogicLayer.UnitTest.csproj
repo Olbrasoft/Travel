@@ -101,13 +101,13 @@
       <Project>{5ad5d028-4c60-41e0-9ee1-b5055d361e64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Dto\Olbrasoft.Travel.Data.Dto.csproj">
+      <Project>{D79DAB91-5846-48F7-9073-40230BC4B7B9}</Project>
+      <Name>Olbrasoft.Travel.Data.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.DataTransferObject\Olbrasoft.Travel.DataTransferObject.csproj">
-      <Project>{909812e3-b95e-4f10-86e9-d3e73314df00}</Project>
-      <Name>Olbrasoft.Travel.DataTransferObject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

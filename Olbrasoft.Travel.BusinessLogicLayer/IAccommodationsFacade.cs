@@ -1,11 +1,11 @@
 ﻿using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
-using Olbrasoft.Travel.DataTransferObject;
+using Olbrasoft.Travel.Data.Dto;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
     public interface IAccommodationsFacade : IFacade
     {
-        IPagedList<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo);
+        IPagedList<AccommodationDto> AccommodationDataTransferObjects(IPageInfo pageInfo);
     }
 }

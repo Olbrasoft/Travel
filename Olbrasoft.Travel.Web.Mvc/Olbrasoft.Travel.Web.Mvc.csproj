@@ -250,13 +250,13 @@
       <Project>{5AD5D028-4C60-41E0-9EE1-B5055D361E64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Dto\Olbrasoft.Travel.Data.Dto.csproj">
+      <Project>{d79dab91-5846-48f7-9073-40230bc4b7b9}</Project>
+      <Name>Olbrasoft.Travel.Data.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.DataTransferObject\Olbrasoft.Travel.DataTransferObject.csproj">
-      <Project>{909812E3-B95E-4F10-86E9-D3E73314DF00}</Project>
-      <Name>Olbrasoft.Travel.DataTransferObject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

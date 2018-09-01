@@ -59,7 +59,7 @@ namespace Olbrasoft.Pagination.UnitTest
             var subSet = new string[13];
             IPageInfo pageInfo = new PageInfo(13, 5);
 
-            var pagedStrings = subSet.AsPagedList(new Olbrasoft.Pagination.Pagination(pageInfo, subSet.Count));
+            var pagedStrings = subSet.AsPagedList(new Pagination(pageInfo, subSet.Count));
 
             //Act
             var pageNumber = pagedStrings.PageNumber;

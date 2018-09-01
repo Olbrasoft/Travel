@@ -3,8 +3,8 @@ using System.Linq;
 using AutoMapper;
 using NUnit.Framework;
 using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
+using Olbrasoft.Travel.Data.Dto;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataTransferObject;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
@@ -32,14 +32,14 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         public void Map_Accommodation_to_AccommodationDataTransferObject()
         {
             //Arrange
-            Mapper.Initialize (cfg=>cfg.CreateMap<Accommodation, AccommodationDataTransferObject>()
+            Mapper.Initialize (cfg=>cfg.CreateMap<Accommodation, AccommodationDto>()
                 .ForMember(d => d.Name, opt => opt.MapFrom(src => src.LocalizedAccommodations.FirstOrDefault().Name)));
 
             var accommodation = new Accommodation { Address="Olbramovice"};
             
             accommodation.LocalizedAccommodations.Add(new LocalizedAccommodation {Name = "Jirka"});
 
-            var accommodationDataTransferObject = new AccommodationDataTransferObject();
+            var accommodationDataTransferObject = new AccommodationDto();
              
             //Act
             accommodationDataTransferObject = Mapper.Map(accommodation, accommodationDataTransferObject);
@@ -65,7 +65,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             accommodations[1].LocalizedAccommodations.Add(new LocalizedAccommodation {Name = "Jirka"});
 
             //Act
-            var accommodationDataTransferObjects = mapper.Map<AccommodationDataTransferObject[]>(accommodations);
+            var accommodationDataTransferObjects = mapper.Map<AccommodationDto[]>(accommodations);
 
 
             //Assert

@@ -2,11 +2,11 @@
 using NUnit.Framework;
 using Olbrasoft.Data.Entity;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataTransferObject;
 using System.Linq;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Travel.Data.Dto;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
@@ -53,7 +53,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             var accommodations = accommodationsFacade.Map(pagedList);
 
             //Assert
-            Assert.IsInstanceOf<IPagedList<AccommodationDataTransferObject>>(accommodations);
+            Assert.IsInstanceOf<IPagedList<AccommodationDto>>(accommodations);
         }
 
         [Test]
@@ -115,7 +115,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
         private class SomeAccommodationsFacade : AccommodationsFacade
         {
-            public new IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedList)
+            public new IPagedList<AccommodationDto> Map(IPagedList<Accommodation> pagedList)
             {
                 return base.Map(pagedList);
             }

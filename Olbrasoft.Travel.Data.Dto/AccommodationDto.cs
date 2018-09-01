@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Olbrasoft.Travel.DataTransferObject
+namespace Olbrasoft.Travel.Data.Dto
 {
     
-    public class AccommodationDataTransferObject
+    public class AccommodationDto
     {
         public int Id { get; set; }
 
