@@ -4,8 +4,8 @@ using Moq;
 using NUnit.Framework;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
-using Olbrasoft.Travel.Data.Dto;
 using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {

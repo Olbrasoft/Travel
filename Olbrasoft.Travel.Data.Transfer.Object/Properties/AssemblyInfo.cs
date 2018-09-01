@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Olbrasoft.Travel.Data.Dto")]
+[assembly: AssemblyTitle("Olbrasoft.Travel.Data.Transfer.Object")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Olbrasoft.Travel.Data.Dto")]
+[assembly: AssemblyProduct("Olbrasoft.Travel.Data.Transfer.Object")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d79dab91-5846-48f7-9073-40230bc4b7b9")]
+[assembly: Guid("3c06f558-bb2c-4de5-a4bb-b72a618c8ea1")]
 
 // Version information for an assembly consists of the following four values:
 //

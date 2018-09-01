@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
-using Olbrasoft.Travel.Data.Dto;
+using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {

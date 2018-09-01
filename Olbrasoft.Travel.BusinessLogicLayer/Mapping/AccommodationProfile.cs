@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Olbrasoft.Travel.Data.Dto;
 using Olbrasoft.Travel.Data.Entity;
 using System.Linq;
+using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
 {

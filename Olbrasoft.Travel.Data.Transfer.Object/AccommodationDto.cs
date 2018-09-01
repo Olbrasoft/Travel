@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Olbrasoft.Travel.Data.Dto
+namespace Olbrasoft.Travel.Data.Transfer.Object
 {
-    
     public class AccommodationDto
     {
         public int Id { get; set; }
@@ -13,12 +12,9 @@ namespace Olbrasoft.Travel.Data.Dto
 
         [StringLength(80)]
         public string Location { get; set; }
-        
+
         [Required]
         [StringLength(50)]
         public string Address { get; set; }
     }
-
-
-
 }

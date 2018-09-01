@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Olbrasoft.Travel.Data.Dto.UnitTest
+namespace Olbrasoft.Travel.Data.Transfer.Object.UnitTest
 {
     [TestFixture]
     public class AccommodationDataTransferObjectUnitTest
