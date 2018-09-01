@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using Olbrasoft.Pagination;
 using Olbrasoft.Shared;
-using Olbrasoft.Shared.Pagination;
 
 namespace Olbrasoft.Data.Entity
 {

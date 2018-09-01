@@ -1,4 +1,4 @@
-﻿namespace Olbrasoft.Shared.Pagination
+﻿namespace Olbrasoft.Pagination
 {
     public interface INumberSelectedPage
     {

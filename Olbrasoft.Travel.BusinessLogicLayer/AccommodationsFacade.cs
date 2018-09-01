@@ -1,11 +1,11 @@
 ﻿using Olbrasoft.Data.Entity;
-using Olbrasoft.Shared.Collections.Generic;
-using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;
 using System.Collections.Generic;
 using System.Linq;
-using Olbrasoft.Shared.Linq;
+using Olbrasoft.Pagination;
+using Olbrasoft.Pagination.Collections.Generic;
+using Olbrasoft.Pagination.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {

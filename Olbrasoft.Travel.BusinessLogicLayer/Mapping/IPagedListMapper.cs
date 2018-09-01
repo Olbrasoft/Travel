@@ -1,8 +1,8 @@
-﻿using Olbrasoft.Shared.Collections.Generic;
+﻿using Olbrasoft.Pagination.Collections.Generic;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
 {
-    public interface IPagedEnumerableMapper<in TSource, out TDestination> 
+    public interface IPagedListMapper<in TSource, out TDestination> 
     {
         IPagedList<TDestination> Map(IPagedList<TSource> source);
     }

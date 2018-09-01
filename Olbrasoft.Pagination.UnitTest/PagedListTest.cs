@@ -1,11 +1,10 @@
-﻿using Moq;
-using NUnit.Framework;
-using Olbrasoft.Shared.Linq;
-using Olbrasoft.Shared.Pagination;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Moq;
+using NUnit.Framework;
+using Olbrasoft.Pagination.Linq;
 
-namespace Olbrasoft.Shared.UnitTest
+namespace Olbrasoft.Pagination.UnitTest
 {
     [TestFixture]
     public class PagedListTest
@@ -60,7 +59,7 @@ namespace Olbrasoft.Shared.UnitTest
             var subSet = new string[13];
             IPageInfo pageInfo = new PageInfo(13, 5);
 
-            var pagedStrings = subSet.AsPagedList(new Pagination.Pagination(pageInfo, subSet.Count));
+            var pagedStrings = subSet.AsPagedList(new Olbrasoft.Pagination.Pagination(pageInfo, subSet.Count));
 
             //Act
             var pageNumber = pagedStrings.PageNumber;

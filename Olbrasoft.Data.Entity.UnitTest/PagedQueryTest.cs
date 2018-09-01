@@ -1,8 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Olbrasoft.Shared.Collections.Generic;
-using Olbrasoft.Shared.Pagination;
 using System.Linq;
+using Olbrasoft.Pagination;
+using Olbrasoft.Pagination.Collections.Generic;
 
 namespace Olbrasoft.Data.Entity.UnitTest
 {

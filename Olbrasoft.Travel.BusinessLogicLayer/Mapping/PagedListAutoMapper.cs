@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Olbrasoft.Shared.Collections.Generic;
-using Olbrasoft.Shared.Linq;
+using Olbrasoft.Pagination.Collections.Generic;
+using Olbrasoft.Pagination.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
 {
-    public class PagedEnumerableAutoMapper<TSource, TDestination> : IPagedEnumerableMapper<TSource, TDestination>
+    public class PagedListAutoMapper<TSource, TDestination> : IPagedListMapper<TSource, TDestination>
     {
         protected AutoMapper.IMapper Mapper { get; }
 
-        public PagedEnumerableAutoMapper(AutoMapper.IMapper mapper )
+        public PagedListAutoMapper(AutoMapper.IMapper mapper )
         {
             Mapper = mapper;
         }

@@ -1,7 +1,7 @@
-﻿using Olbrasoft.Shared.Pagination;
-using Olbrasoft.Travel.BusinessLogicLayer;
+﻿using Olbrasoft.Travel.BusinessLogicLayer;
 using System.Threading;
 using System.Web.Mvc;
+using Olbrasoft.Pagination;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using Olbrasoft.Shared.Pagination;
 
-namespace Olbrasoft.Shared.UnitTest
+namespace Olbrasoft.Pagination.UnitTest
 {
     [TestFixture]
     class PaginationTest
@@ -15,7 +14,7 @@ namespace Olbrasoft.Shared.UnitTest
             
            
             //Act
-            var pagination = new Pagination.Pagination(PageInfo, GetThen );
+            var pagination = new Olbrasoft.Pagination.Pagination(PageInfo, GetThen );
 
             //Assert
             Assert.IsInstanceOf(type, pagination);
@@ -26,7 +25,7 @@ namespace Olbrasoft.Shared.UnitTest
         public void CountWithOutPaging_Is_Twenty()
         {
             //Arrange
-            var pagination = new Pagination.Pagination(PageInfo, GetTwenty);
+            var pagination = new Olbrasoft.Pagination.Pagination(PageInfo, GetTwenty);
 
             //Act
             var count = pagination.CountWithOutPaging();

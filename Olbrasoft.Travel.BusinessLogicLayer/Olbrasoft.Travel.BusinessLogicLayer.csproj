@@ -179,8 +179,8 @@
     <Compile Include="IUsersFacade.cs" />
     <Compile Include="LanguagesFacade.cs" />
     <Compile Include="Mapping\AccommodationProfile.cs" />
-    <Compile Include="Mapping\IPagedEnumerableMapper.cs" />
-    <Compile Include="Mapping\PagedEnumerableAutoMapper.cs" />
+    <Compile Include="Mapping\IPagedListMapper.cs" />
+    <Compile Include="Mapping\PagedListAutoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TravelFacade.cs" />
     <Compile Include="TypesOfRegionsFacade.cs" />
@@ -198,6 +198,10 @@
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
+      <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
+      <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
       <Project>{c0b70c19-fa51-4f92-bf74-d065749d4db6}</Project>

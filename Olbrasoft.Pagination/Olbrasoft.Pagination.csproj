@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</ProjectGuid>
+    <ProjectGuid>{91D6B045-C17B-4907-8058-A4DAE3F1DD49}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Olbrasoft.Shared</RootNamespace>
-    <AssemblyName>Olbrasoft.Shared</AssemblyName>
+    <RootNamespace>Olbrasoft.Pagination</RootNamespace>
+    <AssemblyName>Olbrasoft.Pagination</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,12 +43,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILanguageService.cs" />
+    <Compile Include="BasePagination.cs" />
+    <Compile Include="Collections\Generic\IPagedList.cs" />
+    <Compile Include="Collections\Generic\PagedList.cs" />
+    <Compile Include="INumberSelectedPage.cs" />
+    <Compile Include="IPageInfo.cs" />
+    <Compile Include="IPagination.cs" />
+    <Compile Include="Linq\Paged.cs" />
+    <Compile Include="PageInfo.cs" />
+    <Compile Include="Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

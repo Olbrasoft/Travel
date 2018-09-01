@@ -2,7 +2,7 @@
 using AutoMapper;
 using Moq;
 using NUnit.Framework;
-using Olbrasoft.Shared.Linq;
+using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataTransferObject;

@@ -1,10 +1,10 @@
 ﻿using Olbrasoft.Data.Entity;
 using Olbrasoft.Shared;
-using Olbrasoft.Shared.Collections.Generic;
-using Olbrasoft.Shared.Linq;
-using Olbrasoft.Shared.Pagination;
 using System.Data.Entity;
 using System.Linq;
+using Olbrasoft.Pagination;
+using Olbrasoft.Pagination.Collections.Generic;
+using Olbrasoft.Pagination.Linq;
 
 namespace Olbrasoft.Travel.Data.Entity.Query
 {
@@ -42,7 +42,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query
 
         private IPagination CreatePagination()
         {
-            return new Pagination(PageInfo, Queryable.Count);
+            return new Pagination.Pagination(PageInfo, Queryable.Count);
         }
 
        

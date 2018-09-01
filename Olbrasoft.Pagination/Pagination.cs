@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Olbrasoft.Shared.Pagination
+namespace Olbrasoft.Pagination
 {
     public class Pagination : BasePagination
     {

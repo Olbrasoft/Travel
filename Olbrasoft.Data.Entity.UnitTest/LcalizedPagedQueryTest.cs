@@ -1,10 +1,10 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Shared;
-using Olbrasoft.Shared.Pagination;
 using System;
 using System.Linq;
-using Olbrasoft.Shared.Collections.Generic;
+using Olbrasoft.Pagination;
+using Olbrasoft.Pagination.Collections.Generic;
 
 
 namespace Olbrasoft.Data.Entity.UnitTest

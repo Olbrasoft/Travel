@@ -1,5 +1,5 @@
-﻿using Olbrasoft.Shared.Collections.Generic;
-using Olbrasoft.Shared.Pagination;
+﻿using Olbrasoft.Pagination;
+using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Travel.DataTransferObject;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer

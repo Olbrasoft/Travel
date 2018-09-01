@@ -51,6 +51,10 @@
       <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
+      <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
+      <Name>Olbrasoft.Pagination</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
       <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
       <Name>Olbrasoft.Shared</Name>

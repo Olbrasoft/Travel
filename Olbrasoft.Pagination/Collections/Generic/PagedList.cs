@@ -1,10 +1,9 @@
-﻿using Olbrasoft.Shared.Pagination;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using X.PagedList;
 
-namespace Olbrasoft.Shared.Collections.Generic
+namespace Olbrasoft.Pagination.Collections.Generic
 {
-    internal class PagedList<T> : BasePagedList<T>,IPagedList<T>
+    internal class PagedList<T> : BasePagedList<T>, IPagedList<T>
     {
         public PagedList(IEnumerable<T> subSet, int pageNumber, int pageSize, int totalItemCount) : base(pageNumber, pageSize, totalItemCount)
         {

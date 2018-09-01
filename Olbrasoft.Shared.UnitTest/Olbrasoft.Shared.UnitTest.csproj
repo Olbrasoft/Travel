@@ -66,12 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PagedListTest.cs" />
-    <Compile Include="BasePaginationTest.cs" />
-    <Compile Include="PageInfoUnitTest.cs" />
-    <Compile Include="PaginationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SomePagination.cs" />
     <Compile Include="ThreadCultureLanguageServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>

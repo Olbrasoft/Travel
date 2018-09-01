@@ -1,7 +1,7 @@
 ﻿using Olbrasoft.Design.Pattern.Behavior;
-using Olbrasoft.Shared.Collections.Generic;
-using Olbrasoft.Shared.Pagination;
 using System.Linq;
+using Olbrasoft.Pagination;
+using Olbrasoft.Pagination.Collections.Generic;
 
 namespace Olbrasoft.Data.Entity
 {

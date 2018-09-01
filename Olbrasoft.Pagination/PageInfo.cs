@@ -1,4 +1,4 @@
-﻿namespace Olbrasoft.Shared.Pagination
+﻿namespace Olbrasoft.Pagination
 {
     public class PageInfo : IPageInfo
     {
