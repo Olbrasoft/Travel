@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Olbrasoft.Travel.Data.Transfer.Object
+namespace Olbrasoft.Travel.Data.Transfer.Objects
 {
     public class AccommodationDto
     {

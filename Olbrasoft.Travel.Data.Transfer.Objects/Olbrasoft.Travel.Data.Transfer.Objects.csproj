@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C06F558-BB2C-4DE5-A4BB-B72A618C8EA1}</ProjectGuid>
+    <ProjectGuid>{145FB572-FACE-4A40-B3F5-78DFCFF72F77}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Olbrasoft.Travel.Data.Transfer.Object</RootNamespace>
-    <AssemblyName>Olbrasoft.Travel.Data.Transfer.Object</AssemblyName>
+    <RootNamespace>Olbrasoft.Travel.Data.Transfer.Objects</RootNamespace>
+    <AssemblyName>Olbrasoft.Travel.Data.Transfer.Objects</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

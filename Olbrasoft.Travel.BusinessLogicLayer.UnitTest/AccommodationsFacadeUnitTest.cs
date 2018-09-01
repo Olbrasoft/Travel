@@ -6,7 +6,7 @@ using System.Linq;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
-using Olbrasoft.Travel.Data.Transfer.Object;
+using Olbrasoft.Travel.Data.Transfer.Objects;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {

@@ -105,9 +105,9 @@
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Object\Olbrasoft.Travel.Data.Transfer.Object.csproj">
-      <Project>{3c06f558-bb2c-4de5-a4bb-b72a618c8ea1}</Project>
-      <Name>Olbrasoft.Travel.Data.Transfer.Object</Name>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
+      <Project>{145fb572-face-4a40-b3f5-78dfcff72f77}</Project>
+      <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 
 namespace Olbrasoft.Travel.DataAccessLayer.EntityFramework
 {
+ 
     
     #region BaseRepository<T, TKey, TKey2>
     public abstract class BaseRepository<T, TKey, TKey2> : SharpRepository.EfRepository.EfRepository<T, TKey, TKey2>, IBaseRepository<T, TKey, TKey2> where T : class
