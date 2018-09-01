@@ -44,9 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\Generic\IPagedList.cs" />
-    <Compile Include="Collections\Generic\IPagedEnumerable.cs" />
     <Compile Include="Collections\Generic\PagedList.cs" />
-    <Compile Include="Collections\Generic\PagedEnumerable.cs" />
     <Compile Include="ILanguageService.cs" />
     <Compile Include="Linq\Paged.cs" />
     <Compile Include="Pagination\INumberSelectedPage.cs" />

@@ -53,7 +53,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             var accommodations = accommodationsFacade.Map(pagedList);
 
             //Assert
-            Assert.IsInstanceOf<IPagedEnumerable<AccommodationDataTransferObject>>(accommodations);
+            Assert.IsInstanceOf<IPagedList<AccommodationDataTransferObject>>(accommodations);
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
             arrayOfAccommodations.First().LocalizedAccommodations.Add(new LocalizedAccommodation { Name = "Jirka" });
 
-            var pagedCollection = arrayOfAccommodations.AsPagedEnumerable();
+            var pagedCollection = arrayOfAccommodations.AsPagedList();
 
             var accommodations = accommodationsFacade.Map(pagedCollection);
 
@@ -91,7 +91,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             return result;
         }
 
-        private static IPagedEnumerable<Accommodation> GetAccommodations()
+        private static IPagedList<Accommodation> GetAccommodations()
         {
             var arrayOfAccommodations = new[]
             {
@@ -99,7 +99,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             };
             arrayOfAccommodations.First().LocalizedAccommodations.Add(new LocalizedAccommodation { Name = "" });
 
-            return arrayOfAccommodations.AsPagedEnumerable();
+            return arrayOfAccommodations.AsPagedList();
         }
         
 
@@ -115,7 +115,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
         private class SomeAccommodationsFacade : AccommodationsFacade
         {
-            public new IPagedEnumerable<AccommodationDataTransferObject> Map(IPagedEnumerable<Accommodation> pagedList)
+            public new IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedList)
             {
                 return base.Map(pagedList);
             }

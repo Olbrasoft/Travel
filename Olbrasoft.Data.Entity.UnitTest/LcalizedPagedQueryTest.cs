@@ -83,10 +83,7 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
             public new int LanguageId => base.LanguageId;
 
-            public override IPagedEnumerable<object> Execute()
-            {
-                throw new NotImplementedException();
-            }
+           
 
             public SomeLocalizedPagedQuery(IQueryable<object> queryable, IPageInfo pageInfo, ILanguageService languageService) : base(queryable, pageInfo, languageService)
             {
@@ -94,6 +91,11 @@ namespace Olbrasoft.Data.Entity.UnitTest
 
             public SomeLocalizedPagedQuery(IQueryable<object> queryable, ILanguageService languageService) : base(queryable, languageService)
             {
+            }
+
+            public override IPagedList<object> Execute()
+            {
+                throw new NotImplementedException();
             }
         }
     }

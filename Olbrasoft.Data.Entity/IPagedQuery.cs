@@ -4,9 +4,9 @@ using Olbrasoft.Shared.Pagination;
 
 namespace Olbrasoft.Data.Entity
 {
-    public interface IPagedQuery<out T> : IQuery<IPagedEnumerable<T>>, IPagedQuery
+    public interface IPagedQuery<out T> : IQuery<IPagedList<T>>, IPagedQuery
     {
-        IPagedEnumerable<T> Execute(IPageInfo pageInfo);
+        IPagedList<T> Execute(IPageInfo pageInfo);
     }
 
     public interface IPagedQuery

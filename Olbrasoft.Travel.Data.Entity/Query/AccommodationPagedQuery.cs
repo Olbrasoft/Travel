@@ -18,7 +18,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query
         {
         }
 
-        public override IPagedEnumerable<Accommodation> Execute()
+        public override IPagedList<Accommodation> Execute()
         {
             var localizedAccommodations = Queryable.SelectMany(p => p.LocalizedAccommodations);
 
@@ -37,12 +37,14 @@ namespace Olbrasoft.Travel.Data.Entity.Query
 
             var accommodations = localizedAccommodations.AsEnumerable().Select(la => la.Accommodation);
 
-            return accommodations.AsPagedEnumerable(CreatePagination());
+            return accommodations.AsPagedList(CreatePagination());
         }
 
         private IPagination CreatePagination()
         {
             return new Pagination(PageInfo, Queryable.Count);
         }
+
+       
     }
 }

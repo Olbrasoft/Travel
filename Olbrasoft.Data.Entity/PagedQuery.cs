@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class PagedQuery<T> : Query<IPagedEnumerable<T>>, IPagedQuery<T> where T : class
+    public abstract class PagedQuery<T> : Query<IPagedList<T>>, IPagedQuery<T> where T : class
     {
         protected IQueryable<T> Queryable { get; }
 
@@ -42,7 +42,7 @@ namespace Olbrasoft.Data.Entity
             return pageInfo.PageSize;
         }
 
-        public IPagedEnumerable<T> Execute(IPageInfo pageInfo)
+        public IPagedList<T> Execute(IPageInfo pageInfo)
         {
             PageInfo = pageInfo;
             return Execute();

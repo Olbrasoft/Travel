@@ -1,5 +1,4 @@
-﻿using Olbrasoft.Shared.Linq;
-using Olbrasoft.Shared.Pagination;
+﻿using Olbrasoft.Shared.Pagination;
 using Olbrasoft.Travel.BusinessLogicLayer;
 using System.Threading;
 using System.Web.Mvc;
@@ -23,7 +22,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
             var pagedListOfAccommodation =
-                 _accommodationFacade.AccommodationDataTransferObjects(pageInfo).AsPagedList();
+                 _accommodationFacade.AccommodationDataTransferObjects(pageInfo);
 
             return View(pagedListOfAccommodation);
         }

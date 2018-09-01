@@ -14,5 +14,6 @@ namespace Olbrasoft.Shared.Collections.Generic
         public PagedList(IEnumerable<T> subSet, IPageInfo pageInfo, int totalItemCount) : this(subSet, pageInfo.NumberOfSelectedPage, pageInfo.PageSize, totalItemCount)
         {
         }
+        
     }
 }

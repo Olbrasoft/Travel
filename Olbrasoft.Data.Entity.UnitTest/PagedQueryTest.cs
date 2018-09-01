@@ -116,7 +116,7 @@ namespace Olbrasoft.Data.Entity.UnitTest
             {
             }
 
-            public override IPagedEnumerable<object> Execute()
+            public override IPagedList<object> Execute()
             {
                 return null;
             }

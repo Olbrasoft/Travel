@@ -11,29 +11,29 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 {
     public class AccommodationsFacade : IAccommodationsFacade
     {
-        protected ILocalizedPagedQuery<Accommodation> Accommodations { get; }
+        protected ILocalizedPagedQuery<Accommodation> LocalizedPagedQueryOfAccommodation { get; }
 
-        public AccommodationsFacade(ILocalizedPagedQuery<Accommodation> accommodations)
+        public AccommodationsFacade(ILocalizedPagedQuery<Accommodation> localizedPagedQueryOfAccommodation)
         {
-            Accommodations = accommodations;
+            LocalizedPagedQueryOfAccommodation = localizedPagedQueryOfAccommodation;
         }
 
 
-        public IPagedEnumerable<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo)
+        public IPagedList<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo)
         {
-            var accommodations = Accommodations.Execute(pageInfo);
+            var accommodations = LocalizedPagedQueryOfAccommodation.Execute(pageInfo);
 
-            var accommodationDataTransferObjects = Map(accommodations);
+            var pagedListOfAccommodationDataTransferObject = Map(accommodations);
 
-            return accommodationDataTransferObjects;
+            return pagedListOfAccommodationDataTransferObject;
         }
+       
         
-        
-        protected virtual IPagedEnumerable<AccommodationDataTransferObject> Map(IPagedEnumerable<Accommodation> pagedEnumerable)
+        protected virtual IPagedList<AccommodationDataTransferObject> Map(IPagedList<Accommodation> pagedListOfAccommodation)
         {
-            var accommodationDataTransferObjects = new Queue<AccommodationDataTransferObject>();
+            var queueOfAccommodationDataTransferObject = new Queue<AccommodationDataTransferObject>();
 
-            foreach (var accommodation in pagedEnumerable)
+            foreach (var accommodation in pagedListOfAccommodation)
             {
                 var adto = new AccommodationDataTransferObject
                 {
@@ -43,12 +43,10 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
                     Location = accommodation.LocalizedAccommodations.FirstOrDefault()?.Location
                 };
 
-                accommodationDataTransferObjects.Enqueue(adto);
+                queueOfAccommodationDataTransferObject.Enqueue(adto);
             }
-
-            var pagedCollection = accommodationDataTransferObjects.AsPagedEnumerable(pagedEnumerable.Pagination);
-             
-            return pagedCollection;
+            
+           return queueOfAccommodationDataTransferObject.AsPagedList(pagedListOfAccommodation.AsPagination());
         }
     }
 }

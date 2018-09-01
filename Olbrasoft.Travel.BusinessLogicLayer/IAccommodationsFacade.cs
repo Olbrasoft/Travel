@@ -6,6 +6,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 {
     public interface IAccommodationsFacade : IFacade
     {
-        IPagedEnumerable<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo);
+        IPagedList<AccommodationDataTransferObject> AccommodationDataTransferObjects(IPageInfo pageInfo);
     }
 }
