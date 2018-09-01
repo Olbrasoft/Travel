@@ -1,11 +1,11 @@
 ﻿using Olbrasoft.Data.Entity;
-using Olbrasoft.Travel.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
@@ -18,7 +18,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
             LocalizedPagedQueryOfAccommodation = localizedPagedQueryOfAccommodation;
         }
 
-
         public IPagedList<AccommodationDto> AccommodationDataTransferObjects(IPageInfo pageInfo)
         {
             var accommodations = LocalizedPagedQueryOfAccommodation.Execute(pageInfo);
@@ -27,8 +26,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 
             return pagedListOfAccommodationDataTransferObject;
         }
-       
-        
+
         protected virtual IPagedList<AccommodationDto> Map(IPagedList<Accommodation> pagedListOfAccommodation)
         {
             var queueOfAccommodationDataTransferObject = new Queue<AccommodationDto>();
@@ -45,8 +43,8 @@ namespace Olbrasoft.Travel.BusinessLogicLayer
 
                 queueOfAccommodationDataTransferObject.Enqueue(adto);
             }
-            
-           return queueOfAccommodationDataTransferObject.AsPagedList(pagedListOfAccommodation.AsPagination());
+
+            return queueOfAccommodationDataTransferObject.AsPagedList(pagedListOfAccommodation.AsPagination());
         }
     }
 }

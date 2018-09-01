@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Property;
-using Chain = Olbrasoft.Travel.Data.Entity.Chain;
+using System.Collections.Generic;
+using Chain = Olbrasoft.Travel.Data.Entities.Chain;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -32,7 +32,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             set => _chainsEanIdsToIds = value;
         }
 
-
         protected IReadOnlyDictionary<string, int> CountriesCodesToIds
         {
             get => _countriesCodesToIds ??
@@ -41,7 +40,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             set => _countriesCodesToIds = value;
         }
 
-
         protected IReadOnlyDictionary<string, int> AirportsCodesToIds
         {
             get => _airportsCodesToIds ??
@@ -49,7 +47,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             set => _airportsCodesToIds = value;
         }
-        
+
         public AccommodationsImporter(IProvider provider, IParserFactory parserFactory,
             IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, parserFactory, factoryOfRepositories, sharedProperties, logger)
@@ -74,7 +72,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             EanDataTransferObjects = null;
         }
-        
+
         private IReadOnlyDictionary<int, int> ImportAccommodations(
             IEnumerable<ActiveProperty> activeProperties,
             IMappedEntitiesRepository<Accommodation> repository,
@@ -85,7 +83,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             int creatorId
         )
         {
-            //todo Jedno ubytovani pravdepodobne neni validni vraci to builded 79 999 misto 80 000 
+            //todo Jedno ubytovani pravdepodobne neni validni vraci to builded 79 999 misto 80 000
             LogBuild<Accommodation>();
             var accommodations = BuildAccommodations(
                 activeProperties,
@@ -97,7 +95,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             );
             var count = accommodations.Length;
             LogBuilded(count);
-
 
             if (count <= 0) return repository.EanIdsToIds;
 

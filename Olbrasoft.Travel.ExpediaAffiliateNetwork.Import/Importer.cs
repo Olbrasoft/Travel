@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataAccessLayer;
 using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Geography;

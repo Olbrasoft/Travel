@@ -3,9 +3,9 @@ using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.UnitTest;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.Data.Entity.Query;
 using System.Linq;
 using System.Web.Mvc;
+using Olbrasoft.Travel.Data.Entity.Queries;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {

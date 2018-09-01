@@ -101,6 +101,10 @@
       <Project>{5ad5d028-4c60-41e0-9ee1-b5055d361e64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
+      <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
+      <Name>Olbrasoft.Travel.Data.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>

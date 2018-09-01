@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using NUnit.Framework;
 using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
-using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
@@ -16,37 +16,34 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         {
             //Arrange
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
-            var order = new Order {  Name = "Lenka" };
+            var order = new Order { Name = "Lenka" };
             var mapper = config.CreateMapper();
 
             //Act
             var dto = mapper.Map<OrderDto>(order);
-            
+
             //Assert
             Assert.IsTrue(dto.Name == "Lenka");
-
         }
-        
 
         [Test]
         public void Map_Accommodation_to_AccommodationDataTransferObject()
         {
             //Arrange
-            Mapper.Initialize (cfg=>cfg.CreateMap<Accommodation, AccommodationDto>()
-                .ForMember(d => d.Name, opt => opt.MapFrom(src => src.LocalizedAccommodations.FirstOrDefault().Name)));
+            Mapper.Initialize(cfg => cfg.CreateMap<Accommodation, AccommodationDto>()
+               .ForMember(d => d.Name, opt => opt.MapFrom(src => src.LocalizedAccommodations.FirstOrDefault().Name)));
 
-            var accommodation = new Accommodation { Address="Olbramovice"};
-            
-            accommodation.LocalizedAccommodations.Add(new LocalizedAccommodation {Name = "Jirka"});
+            var accommodation = new Accommodation { Address = "Olbramovice" };
+
+            accommodation.LocalizedAccommodations.Add(new LocalizedAccommodation { Name = "Jirka" });
 
             var accommodationDataTransferObject = new AccommodationDto();
-             
+
             //Act
             accommodationDataTransferObject = Mapper.Map(accommodation, accommodationDataTransferObject);
 
             //Assert
             Assert.IsTrue(accommodationDataTransferObject.Name == "Jirka");
-
         }
 
         [Test]
@@ -62,17 +59,14 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
                 new Accommodation {Id=2, Address = "Veselka 18"}
             };
 
-            accommodations[1].LocalizedAccommodations.Add(new LocalizedAccommodation {Name = "Jirka"});
+            accommodations[1].LocalizedAccommodations.Add(new LocalizedAccommodation { Name = "Jirka" });
 
             //Act
             var accommodationDataTransferObjects = mapper.Map<AccommodationDto[]>(accommodations);
 
-
             //Assert
-            Assert.IsTrue(accommodationDataTransferObjects[1].Name=="Jirka");
-            
+            Assert.IsTrue(accommodationDataTransferObjects[1].Name == "Jirka");
         }
-
 
         [Test]
         public void Map_Profile_Configuration__IEnumerable_Of_Order_To_IEnumerable_Of_OrderDto()
@@ -92,9 +86,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             var orderDtos = mapper.Map<IEnumerable<Order>>(orders);
 
             //Assert
-            Assert.IsTrue(orderDtos.Count()==3);
+            Assert.IsTrue(orderDtos.Count() == 3);
         }
-
-
     }
 }

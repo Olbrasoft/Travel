@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Geography;
-using Country = Olbrasoft.Travel.Data.Entity.Country;
+using System.Collections.Generic;
+using Country = Olbrasoft.Travel.Data.Entities.Country;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class AirportsImporter : Importer<AirportCoordinates>
     {
-       
         public AirportsImporter(IProvider provider, IParserFactory parserFactory, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, parserFactory, factoryOfRepositories, sharedProperties, logger)
         {
-           
         }
-        
+
         public override void Import(string path)
         {
             LoadData(path);
@@ -36,7 +34,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             ImpotRegionsToRegions(airportsCoordinates, FactoryOfRepositories.ManyToMany<RegionToRegion>(),
                 regionsEanIdsToIds, FactoryOfRepositories.AdditionalRegionsInfo<Country>().CodesToIds,
                 CreatorId);
-
         }
 
         private void ImpotRegionsToRegions(
@@ -59,7 +56,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<RegionToRegion>();
         }
 
-
         private RegionToRegion[] BuildRegionsToregions(IEnumerable<AirportCoordinates> eanAirportsCoordinates,
             IReadOnlyDictionary<long, int> eanRegionIdsToIds,
             IReadOnlyDictionary<string, int> eanCountryCodeToIds,
@@ -70,7 +66,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             foreach (var eanAirport in eanAirportsCoordinates)
             {
-
                 if (!eanRegionIdsToIds.TryGetValue(eanAirport.AirportID, out var id))
                 {
                     WriteLog($"Nenalezeno AirportID {eanAirport.AirportID}");
@@ -109,13 +104,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
                     regionsToregions.Enqueue(regionToRegion);
                 }
-
             }
 
             return regionsToregions.ToArray();
         }
-
-
 
         private void ImportRegionsToTypes(
             IEnumerable<AirportCoordinates> airportsCoordinates,
@@ -135,7 +127,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             repository.BulkSave(regionsToTypes);
             LogSaved<RegionToType>();
         }
-
 
         private static RegionToType[] BuildRegionsToTypes(IEnumerable<AirportCoordinates> eanAirportsCoordinates,
             IReadOnlyDictionary<long, int> eanAirportIdsToIds,
@@ -183,7 +174,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<Airport>();
         }
 
-
         private static Airport[] BuildAirports(
             IEnumerable<AirportCoordinates> eanAirportsCoordinates,
             IReadOnlyDictionary<long, int> eanAirportIdsToIds,
@@ -209,7 +199,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return airports.ToArray();
         }
 
-
         private void ImportLocalizedRegions(
             IEnumerable<AirportCoordinates> airportsCoordinates,
             ILocalizedRepository<LocalizedRegion> repository,
@@ -230,7 +219,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             repository.BulkSave(localizedRegions, count);
             LogSaved<LocalizedRegion>();
         }
-
 
         private static LocalizedRegion[] BuildLocalizedRegions(
             IEnumerable<AirportCoordinates> airportsCoordinates,
@@ -258,7 +246,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return localizedRegions.ToArray();
         }
-
 
         private IReadOnlyDictionary<long, int> ImportRegions(
             IEnumerable<AirportCoordinates> airportsCoordinates,
@@ -299,6 +286,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return regions.ToArray();
         }
-
     }
 }

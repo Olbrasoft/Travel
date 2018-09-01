@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
+using System;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -17,12 +17,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             set => _captionsToIds = value;
         }
-        
+
         public PhotosOfAccommodationsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories,
             SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
-
         }
 
         protected override void RowLoaded(string[] items)
@@ -45,7 +44,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return photoOfAccommodation;
         }
 
-
         public override void Import(string path)
         {
             LoadData(path);
@@ -58,7 +56,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             FactoryOfRepositories.PhotosOfAccommodations().BulkSave(PhotosOfAccommodations);
             LogSaved<PhotoOfAccommodation>();
         }
-
 
         public override void Dispose()
         {

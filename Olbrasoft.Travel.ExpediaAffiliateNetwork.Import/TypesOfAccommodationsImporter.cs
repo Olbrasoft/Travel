@@ -1,20 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class TypesOfAccommodationsImporter : Importer
     {
-        
         protected IDictionary<int, string> EanIdsToNames = new Dictionary<int, string>();
-
 
         public TypesOfAccommodationsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
-
         }
 
         protected override void RowLoaded(string[] items)
@@ -23,7 +20,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             EanIdsToNames.Add(eanId, items[2]);
         }
-
 
         public override void Import(string path)
         {
@@ -38,7 +34,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             EanIdsToNames = null;
         }
-
 
         private void ImportLocalizedTypesOfAccommodations(IDictionary<int, string> eanIdsToNames,
             ILocalizedRepository<LocalizedTypeOfAccommodation> repository,
@@ -57,7 +52,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             repository.BulkSave(localizedTypesOfAccommodations, count);
             LogSaved<LocalizedTypeOfAccommodation>();
         }
-
 
         private static LocalizedTypeOfAccommodation[] BuildLocalizedTypesOfAccommodations(
             IDictionary<int, string> eanIdsToNames,
@@ -81,7 +75,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 };
 
                 localizedTypesOfAccommodations.Enqueue(localizedTypeOfAccommodation);
-
             }
             return localizedTypesOfAccommodations.ToArray();
         }
@@ -97,7 +90,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var count = typesOfAccommodations.Length;
             LogBuilded(count);
 
-
             if (count <= 0) return repository.EanIdsToIds;
 
             LogSave<TypeOfAccommodation>();
@@ -106,7 +98,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return repository.EanIdsToIds;
         }
-
 
         private static TypeOfAccommodation[] BuildTypesOfAccommodations(IEnumerable<int> eanIds,
             int creatorId
@@ -118,7 +109,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 CreatorId = creatorId
             }).ToArray();
         }
-
-  
     }
 }

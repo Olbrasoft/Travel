@@ -207,6 +207,10 @@
       <Project>{c0b70c19-fa51-4f92-bf74-d065749d4db6}</Project>
       <Name>Olbrasoft.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
+      <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
+      <Name>Olbrasoft.Travel.Data.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>

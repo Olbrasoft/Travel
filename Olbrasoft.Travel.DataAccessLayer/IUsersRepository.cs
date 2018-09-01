@@ -1,9 +1,9 @@
-﻿using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.DataAccessLayer
 {
-    public interface IUsersRepository:IBaseRepository<User>
+    public interface IUsersRepository : IBaseRepository<User>
     {
-        User AddIfNotExist( User user);
+        User AddIfNotExist(User user);
     }
 }

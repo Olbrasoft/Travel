@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
+using System;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class LocalizedTypesOfRoomsImporter : Importer
     {
-
         private IReadOnlyDictionary<int, int> _accommodationsEanIdsToIds;
 
         private IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds
@@ -62,9 +61,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSave<LocalizedTypeOfRoom>();
             FactoryOfRepositories.Localized<LocalizedTypeOfRoom>().BulkSave(LocalizedTypesOfRooms, 270000);
             LogSaved<LocalizedTypeOfRoom>();
-            
         }
-
 
         public override void Dispose()
         {
@@ -75,6 +72,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             GC.SuppressFinalize(this);
             base.Dispose();
         }
-
     }
 }

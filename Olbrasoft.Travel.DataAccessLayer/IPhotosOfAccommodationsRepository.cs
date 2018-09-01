@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Olbrasoft.Travel.Data.Entities;
+using System;
 using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
 
 namespace Olbrasoft.Travel.DataAccessLayer
 {

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -11,17 +11,17 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
     {
         private IReadOnlyDictionary<int, int> _accommodationsEanIdsToIds;
 
-        private IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds {
-        get =>
-        _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
-        FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+        private IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds
+        {
+            get =>
+            _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
+            FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
             set => _accommodationsEanIdsToIds = value;
         }
 
-    protected HashSet<string> Paths = new HashSet<string>();
+        protected HashSet<string> Paths = new HashSet<string>();
         protected HashSet<string> Extensions = new HashSet<string>();
         protected HashSet<string> Captions = new HashSet<string>();
-
 
         public PathsExtensionsCaptionsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories,
             SharedProperties sharedProperties, ILoggingImports logger)
@@ -40,11 +40,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             ImportLocalizedCaptions(Captions, FactoryOfRepositories.LocalizedCaptions(), DefaultLanguageId, CreatorId);
         }
 
-
         private void ImportPathsToPhotos(IEnumerable<string> paths, IPathsToPhotosRepository repository, int creatorId)
         {
             LogBuild<PathToPhoto>();
-            var pathsToPhotos = paths.Select(p => new PathToPhoto {Path = p, CreatorId = creatorId}).ToArray();
+            var pathsToPhotos = paths.Select(p => new PathToPhoto { Path = p, CreatorId = creatorId }).ToArray();
             var count = pathsToPhotos.Length;
             LogBuilded(count);
 
@@ -54,12 +53,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<PathToPhoto>();
         }
 
-
         private void ImportFilesExtensions(IEnumerable<string> extensions, IFilesExtensionsRepository repository,
             int creatorId)
         {
             LogBuild<FileExtension>();
-            var filesExtensions = extensions.Select(p => new FileExtension {Extension = p, CreatorId = creatorId})
+            var filesExtensions = extensions.Select(p => new FileExtension { Extension = p, CreatorId = creatorId })
                 .ToArray();
             var count = filesExtensions.Length;
             LogBuilded(count);
@@ -70,13 +68,12 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<FileExtension>();
         }
 
-
         private void ImportLocalizedCaptions(IEnumerable<string> captions, ILocalizedCaptionsRepository repository,
             int languageId, int creatorId)
         {
             LogBuild<LocalizedCaption>();
             var localizedCaptions = captions
-                .Select(p => new LocalizedCaption() {Text = p, LanguageId = languageId, CreatorId = creatorId})
+                .Select(p => new LocalizedCaption() { Text = p, LanguageId = languageId, CreatorId = creatorId })
                 .ToArray();
             var count = localizedCaptions.Length;
             LogBuilded(count);
@@ -86,7 +83,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             repository.BulkSave(localizedCaptions);
             LogSaved<LocalizedCaption>();
         }
-
 
         protected override void RowLoaded(string[] items)
         {
@@ -115,12 +111,9 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             Paths = null;
             Extensions = null;
             Captions = null;
-            
+
             GC.SuppressFinalize(this);
             base.Dispose();
-
         }
-
     }
-
 }

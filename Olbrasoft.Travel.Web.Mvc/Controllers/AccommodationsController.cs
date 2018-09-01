@@ -1,11 +1,11 @@
 ﻿using Olbrasoft.Shared;
 using Olbrasoft.Shared.UnitTest;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.Data.Entity.Query;
 using System.Threading;
 using System.Web.Mvc;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Travel.Data.Entity.Queries;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {

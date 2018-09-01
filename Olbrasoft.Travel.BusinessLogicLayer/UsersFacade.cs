@@ -1,10 +1,9 @@
-﻿using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {
-
-    public class UsersFacade:TravelFacade<User>,IUsersFacade
+    public class UsersFacade : TravelFacade<User>, IUsersFacade
     {
         protected new readonly IUsersRepository Repository;
 

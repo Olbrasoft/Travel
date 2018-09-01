@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.DataAccessLayer
 {
@@ -7,8 +7,5 @@ namespace Olbrasoft.Travel.DataAccessLayer
         where T : CreatorInfo, IAdditionalRegionInfo
     {
         IReadOnlyDictionary<string, int> CodesToIds { get; }
-
     }
-
-
 }

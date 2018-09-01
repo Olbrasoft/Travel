@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Geography;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -11,7 +11,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         private readonly IParserFactory _parserFactory;
         protected IParser<ParentRegion> Parser;
         protected Queue<ParentRegion> ParentRegions = new Queue<ParentRegion>();
-
 
         public RegionsImporter(IProvider provider, IParserFactory parserFactory, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
@@ -48,14 +47,13 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             ParentRegions = null;
         }
-        
+
         private void ImportRegionsToRegions(IEnumerable<ParentRegion> parentRegions,
             IManyToManyRepository<RegionToRegion> repository,
             int batchSize,
             IReadOnlyDictionary<long, int> eanRegionIdsToIds,
             int creatorId)
         {
-
             LogBuild<RegionToRegion>();
             var regionsToRegions = BuildRegionsToRegions(
                 parentRegions,
@@ -93,7 +91,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                     Id = regionId,
                     ToId = parentRegionId,
                     CreatorId = creatorId
-
                 };
 
                 if (!regionsToRegions.Contains(regionToRegion))
@@ -253,8 +250,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return regionsToTypes.ToArray();
         }
 
-
-
         private IReadOnlyDictionary<string, int> ImportSubClasses(ITypesRepository<SubClass> repository, IEnumerable<string> subClassesNames, int creatorId)
         {
             LogBuild<SubClass>();
@@ -269,7 +264,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return repository.NamesToIds;
         }
-
 
         private IReadOnlyDictionary<long, int> ImportRegions(ParentRegion[] parentRegions,
             IRegionsRepository repository,

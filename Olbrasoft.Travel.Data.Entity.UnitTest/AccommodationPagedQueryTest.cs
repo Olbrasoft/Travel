@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Data.Entity;
-using Olbrasoft.Data.Entity.UnitTest;
+using Olbrasoft.Shared;
+using Olbrasoft.Travel.Data.Entities;
+using System.Linq;
+using Olbrasoft.Travel.Data.Entity.Queries;
 
 namespace Olbrasoft.Travel.Data.Entity.UnitTest
 {
@@ -16,13 +15,15 @@ namespace Olbrasoft.Travel.Data.Entity.UnitTest
         public void Is_Instance_Of_IPagedQuery()
         {
             //Arrange
-            var type = typeof(IPagedQuery<>);
+            var type = typeof(IPagedQuery<object>);
+            var mockQueryableOfAccommodation = new Mock<IQueryable<Accommodation>>();
+            var mockLanguageService = new Mock<ILanguageService>();
 
             //Act
-
+            var query = new AccommodationPagedQuery(mockQueryableOfAccommodation.Object, mockLanguageService.Object);
 
             //Assert
-
+            Assert.IsInstanceOf(type, query);
         }
     }
 }

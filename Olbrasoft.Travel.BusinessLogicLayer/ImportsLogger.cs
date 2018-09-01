@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer

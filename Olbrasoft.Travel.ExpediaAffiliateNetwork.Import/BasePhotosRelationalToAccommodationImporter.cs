@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal abstract class BasePhotosRelationalToAccommodationImporter : Importer
     {
-
         private IReadOnlyDictionary<int, int> _accommodationsEanIdsToIds;
 
         protected IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds
@@ -41,14 +40,12 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             set => _extensionsToIds = value;
         }
 
-    protected HashSet<PhotoOfAccommodation> PhotosOfAccommodations = new HashSet<PhotoOfAccommodation>();
+        protected HashSet<PhotoOfAccommodation> PhotosOfAccommodations = new HashSet<PhotoOfAccommodation>();
 
         protected BasePhotosRelationalToAccommodationImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
-
         }
-
 
         protected bool TryBuildPhotoOfAccommodation(string[] items, int urlIndex, out PhotoOfAccommodation photoOfAccommodation)
         {
@@ -76,8 +73,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return true;
         }
-        
-
 
         public override void Dispose()
         {
@@ -89,6 +84,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             GC.SuppressFinalize(this);
             base.Dispose();
         }
-
     }
 }

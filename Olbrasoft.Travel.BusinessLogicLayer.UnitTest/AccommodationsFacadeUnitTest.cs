@@ -1,12 +1,12 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Data.Entity;
-using Olbrasoft.Travel.Data.Entity;
-using System.Linq;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
+using System.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
@@ -84,7 +84,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         {
             var result = new Mock<ILocalizedPagedQuery<Accommodation>>();
 
-
             //result.Setup(p => p.Execute()).Returns(pagedCollection);
             result.Setup(p => p.Execute(It.IsAny<IPageInfo>())).Returns(GetAccommodations);
 
@@ -101,7 +100,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
             return arrayOfAccommodations.AsPagedList();
         }
-        
 
         private SomeAccommodationsFacade GetSomeAccommodationsFacade()
         {

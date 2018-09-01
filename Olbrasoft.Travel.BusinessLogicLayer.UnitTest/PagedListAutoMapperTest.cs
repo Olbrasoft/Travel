@@ -1,16 +1,16 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
-using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
+using System.Linq;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 {
     [TestFixture]
-    class PagedListAutoMapperTest
+    internal class PagedListAutoMapperTest
     {
         [Test]
         public void PagedEnumerableMapper_Is_Instance_Of_IPagedEnumerableMapper()
@@ -24,7 +24,6 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
             //Assert
             Assert.IsInstanceOf(type, pagedEnumerableMapper);
-
         }
 
         [Test]
@@ -36,12 +35,10 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
 
             //Act
             var mapper = pagedEnumerableMapper.Mapper;
-            
-            //Assert 
-            Assert.AreSame(mockMapper.Object,mapper);
 
+            //Assert
+            Assert.AreSame(mockMapper.Object, mapper);
         }
-
 
         [Test]
         public void Map()
@@ -52,27 +49,21 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
                 new Accommodation {Address = "Olbramovice Ves"},
                 new Accommodation {Address= "Veselka 18"}
             };
-            
+
             var pagedAccommodation = accommodtions.AsPagedList();
             var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
             var mapper = config.CreateMapper();
             var pagedMapper = new PagedListAutoMapper<Accommodation, AccommodationDto>(mapper);
 
-
             //Act
             var pagedAccommodationDataTransferObject = pagedMapper.Map(pagedAccommodation);
 
-          
             //Assert
 
             Assert.IsTrue(pagedAccommodationDataTransferObject.Last()?.Address == "Veselka 18");
-
         }
 
-
-
-
-        private class SomePagedListMapper<TSource,TDestination> :PagedListAutoMapper<TSource,TDestination>
+        private class SomePagedListMapper<TSource, TDestination> : PagedListAutoMapper<TSource, TDestination>
         {
             public new IMapper Mapper => base.Mapper;
 
@@ -80,7 +71,5 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
             {
             }
         }
-
-
     }
 }

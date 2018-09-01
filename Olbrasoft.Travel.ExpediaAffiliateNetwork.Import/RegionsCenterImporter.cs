@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Geography;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class RegionsCenterImporter : Importer<RegionCenter>
     {
-        public RegionsCenterImporter(IProvider provider, IParserFactory parserFactory, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger) 
+        public RegionsCenterImporter(IProvider provider, IParserFactory parserFactory, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, parserFactory, factoryOfRepositories, sharedProperties, logger)
         {
         }
@@ -17,13 +17,13 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LoadData(path);
 
             var eanIdsToIds = ImportRegions(EanDataTransferObjects, FactoryOfRepositories.Regions(), CreatorId);
-            
+
             ImportLocalizedRegions(EanDataTransferObjects, FactoryOfRepositories.Localized<LocalizedRegion>(), eanIdsToIds,
                 DefaultLanguageId, CreatorId);
-            
+
             EanDataTransferObjects = null;
         }
-        
+
         private IReadOnlyDictionary<long, int> ImportRegions(
             IEnumerable<RegionCenter> regionsCenter,
             IRegionsRepository repository,
@@ -43,7 +43,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return repository.EanIdsToIds;
         }
-        
+
         private static Region[] BuildRegions(IEnumerable<RegionCenter> eanEntities,
             int creatorId
         )

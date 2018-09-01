@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataAccessLayer;
 

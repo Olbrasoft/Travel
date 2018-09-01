@@ -1,8 +1,8 @@
-﻿using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.DataAccessLayer
 {
-    public interface ITypesOfRegionsRepository:ITypesRepository<TypeOfRegion>
+    public interface ITypesOfRegionsRepository : ITypesRepository<TypeOfRegion>
     {
     }
 }
