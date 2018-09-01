@@ -191,10 +191,6 @@
       <Project>{A48273CE-118C-414A-8E5C-E7AEB1FBD921}</Project>
       <Name>Olbrasoft.Data.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj">
-      <Project>{A4F4B929-C064-4146-801F-F4242EB2A7C4}</Project>
-      <Name>Olbrasoft.DataAccessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>

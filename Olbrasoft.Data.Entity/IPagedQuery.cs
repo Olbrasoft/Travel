@@ -1,5 +1,6 @@
 ﻿using Olbrasoft.Design.Pattern.Behavior;
 using Olbrasoft.Pagination;
+
 using Olbrasoft.Pagination.Collections.Generic;
 
 namespace Olbrasoft.Data.Entity
@@ -12,6 +13,6 @@ namespace Olbrasoft.Data.Entity
     public interface IPagedQuery
     {  
         
-    }
+    }  
 
 }

@@ -68,10 +68,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Olbrasoft.DataAccessLayer\Olbrasoft.DataAccessLayer.csproj">
-      <Project>{A4F4B929-C064-4146-801F-F4242EB2A7C4}</Project>
-      <Name>Olbrasoft.DataAccessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>

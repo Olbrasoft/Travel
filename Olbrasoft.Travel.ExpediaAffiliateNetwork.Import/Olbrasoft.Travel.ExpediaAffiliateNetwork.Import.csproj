@@ -277,10 +277,6 @@
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.DataAccessLayer.EntityFramework\Olbrasoft.Travel.DataAccessLayer.EntityFramework.csproj">
-      <Project>{b418d540-324d-46cb-b10f-6aee050acec5}</Project>
-      <Name>Olbrasoft.Travel.DataAccessLayer.EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.DataAccessLayer\Olbrasoft.Travel.DataAccessLayer.csproj">
       <Project>{0d3be7cb-5a9b-4883-a324-158615a6d656}</Project>
       <Name>Olbrasoft.Travel.DataAccessLayer</Name>
