@@ -1,8 +1,8 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using Olbrasoft.Travel.Data.Entities;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public interface ITypesOfRegionsFacade : ITravelFacade<TypeOfRegion>
     {

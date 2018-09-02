@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public interface ITravelFacade<in T>where T:class
     {

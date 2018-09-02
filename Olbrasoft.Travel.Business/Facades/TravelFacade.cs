@@ -1,7 +1,7 @@
-﻿using Olbrasoft.Travel.DataAccessLayer;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Olbrasoft.Travel.DataAccessLayer;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public class TravelFacade<T> : ITravelFacade<T> where T : class
     {

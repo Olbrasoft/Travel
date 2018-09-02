@@ -1,7 +1,7 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public class LanguagesFacade : TravelFacade<Language>, ILanguagesFacade
     {

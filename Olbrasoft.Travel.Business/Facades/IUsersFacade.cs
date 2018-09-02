@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public interface IUsersFacade : ITravelFacade<User>
     {

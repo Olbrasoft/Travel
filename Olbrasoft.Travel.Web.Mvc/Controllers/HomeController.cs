@@ -1,5 +1,4 @@
-﻿using Olbrasoft.Travel.BusinessLogicLayer;
-using System.Threading;
+﻿using System.Threading;
 using System.Web.Mvc;
 using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Business.Facades;

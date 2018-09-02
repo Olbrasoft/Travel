@@ -1,7 +1,7 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.DataAccessLayer;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business
 {
     public class ImportsLogger : ILoggingImports
     {
