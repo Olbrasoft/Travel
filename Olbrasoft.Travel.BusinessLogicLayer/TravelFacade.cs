@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.DataAccessLayer;
+﻿using Olbrasoft.Travel.DataAccessLayer;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.BusinessLogicLayer
 {

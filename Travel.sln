@@ -53,6 +53,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Entit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Entities", "Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj", "{E7A85485-F883-4246-AE5A-BB729BC0684F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Business.UnitTest", "Olbrasoft.Travel.Business.UnitTest\Olbrasoft.Travel.Business.UnitTest.csproj", "{BFDE00E9-3C45-4EAF-8834-D73A3320496F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Business", "Olbrasoft.Travel.Business\Olbrasoft.Travel.Business.csproj", "{5C7D643F-6620-48E5-9966-EF30FD6E6272}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +147,14 @@ Global
 		{E7A85485-F883-4246-AE5A-BB729BC0684F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7A85485-F883-4246-AE5A-BB729BC0684F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7A85485-F883-4246-AE5A-BB729BC0684F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDE00E9-3C45-4EAF-8834-D73A3320496F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDE00E9-3C45-4EAF-8834-D73A3320496F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDE00E9-3C45-4EAF-8834-D73A3320496F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDE00E9-3C45-4EAF-8834-D73A3320496F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7D643F-6620-48E5-9966-EF30FD6E6272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7D643F-6620-48E5-9966-EF30FD6E6272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7D643F-6620-48E5-9966-EF30FD6E6272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7D643F-6620-48E5-9966-EF30FD6E6272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +171,7 @@ Global
 		{9349A072-F80E-4CB2-972A-2298671832B3} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{D9440857-6E77-40CF-B9A3-DA43E0F6D8A0} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{DB17B98A-F40D-4AA9-A6DA-20EBE5F10329} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
+		{BFDE00E9-3C45-4EAF-8834-D73A3320496F} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAFDBBA1-285A-4590-BF35-774C3B64E118}

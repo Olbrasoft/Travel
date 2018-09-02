@@ -11,8 +11,6 @@ namespace Olbrasoft.Data.Entity
     }
 
     public interface IPagedQuery
-    {  
-        
-    }  
-
+    {
+    }
 }
