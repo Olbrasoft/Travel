@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.Business.Mapping
 
             var enumerable = Mapper.Map<IEnumerable<TDestination>>(source.AsEnumerable());
 
-            return Paged.AsPagedList<TDestination>(enumerable, source.AsPagination());
+            return enumerable.AsPagedList(source.AsPagination());
             
         }
     }

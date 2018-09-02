@@ -20,7 +20,7 @@ namespace Olbrasoft.Pagination.Linq
         {
             var enumerable = source as TSource[] ?? source.ToArray();
 
-            IPagination pagination = new Olbrasoft.Pagination.Pagination(new PageInfo(enumerable.Length), enumerable.Count);
+            IPagination pagination = new Pagination(new PageInfo(enumerable.Length), enumerable.Count);
 
             return enumerable.AsPagedList(pagination);
         }

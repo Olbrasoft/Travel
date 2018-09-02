@@ -11,7 +11,6 @@ namespace Olbrasoft.Pagination
             CountAllItems = countAllItems;
         }
 
-
         public override int CountWithOutPaging()
         {
             return CountAllItems();

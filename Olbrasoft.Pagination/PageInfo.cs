@@ -9,7 +9,6 @@
         {
             PageSize = pageSize;
             NumberOfSelectedPage = pageNumber;
-            
         }
     }
 }
