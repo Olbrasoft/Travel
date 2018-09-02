@@ -1,12 +1,12 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using NUnit.Framework;
-using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
+using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
+namespace Olbrasoft.Travel.Business.UnitTest
 {
     [TestFixture]
     internal class AutoMapperTest
@@ -31,7 +31,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         {
             //Arrange
             Mapper.Initialize(cfg => cfg.CreateMap<Accommodation, AccommodationDto>()
-               .ForMember(d => d.Name, opt => opt.MapFrom(src => src.LocalizedAccommodations.FirstOrDefault().Name)));
+               .ForMember(d => d.Name, opt => opt.MapFrom(src => Enumerable.FirstOrDefault<LocalizedAccommodation>(src.LocalizedAccommodations).Name)));
 
             var accommodation = new Accommodation { Address = "Olbramovice" };
 

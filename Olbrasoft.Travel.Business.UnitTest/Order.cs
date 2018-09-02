@@ -1,4 +1,4 @@
-﻿namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
+﻿namespace Olbrasoft.Travel.Business.UnitTest
 {
     internal class Order
     {

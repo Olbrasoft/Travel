@@ -1,14 +1,13 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Olbrasoft.Travel.Business.Facades;
+using Olbrasoft.Shared;
+using Olbrasoft.Shared.UnitTest;
 
 namespace Olbrasoft.Travel.Web.Mvc.Installers
 {
-    using Olbrasoft.Shared;
-    using Olbrasoft.Shared.UnitTest;
-    using Olbrasoft.Travel.BusinessLogicLayer;
-
-    public partial class ControllersInstaller
+   public partial class ControllersInstaller
     {
         public class BusinessLogicLayerInstaller : IWindsorInstaller
         {

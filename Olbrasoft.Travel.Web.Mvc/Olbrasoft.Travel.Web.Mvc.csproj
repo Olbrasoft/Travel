@@ -251,6 +251,10 @@
       <Project>{5AD5D028-4C60-41E0-9EE1-B5055D361E64}</Project>
       <Name>Olbrasoft.Travel.BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Business\Olbrasoft.Travel.Business.csproj">
+      <Project>{5c7d643f-6620-48e5-9966-ef30fd6e6272}</Project>
+      <Name>Olbrasoft.Travel.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
       <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>

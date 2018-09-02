@@ -3,7 +3,7 @@ using System.Linq;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
+namespace Olbrasoft.Travel.Business.Mapping
 {
     public class PagedListAutoMapper<TSource, TDestination> : IPagedListMapper<TSource, TDestination>
     {
@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
 
             var enumerable = Mapper.Map<IEnumerable<TDestination>>(source.AsEnumerable());
 
-            return enumerable.AsPagedList(source.AsPagination());
+            return Paged.AsPagedList<TDestination>(enumerable, source.AsPagination());
             
         }
     }

@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
-using System.Linq;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
+namespace Olbrasoft.Travel.Business.Mapping
 {
     public class AccommodationProfile : Profile
     {

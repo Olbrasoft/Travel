@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
+namespace Olbrasoft.Travel.Business.UnitTest
 {
-    public class OrderProfile:Profile
+    public class OrderProfile : Profile
     {
         public OrderProfile()
         {

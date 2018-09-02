@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Pagination.Collections.Generic;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.Mapping
+namespace Olbrasoft.Travel.Business.Mapping
 {
     public interface IPagedListMapper<in TSource, out TDestination> 
     {

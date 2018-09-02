@@ -2,12 +2,12 @@
 using Moq;
 using NUnit.Framework;
 using Olbrasoft.Pagination.Linq;
-using Olbrasoft.Travel.BusinessLogicLayer.Mapping;
+using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
 using System.Linq;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
+namespace Olbrasoft.Travel.Business.UnitTest
 {
     [TestFixture]
     internal class PagedListAutoMapperTest
@@ -17,7 +17,7 @@ namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
         {
             //Arrange
             var type = typeof(IPagedListMapper<object, object>);
-            var mapper = new Mock<AutoMapper.IMapper>();
+            var mapper = new Mock<IMapper>();
 
             //Act
             var pagedEnumerableMapper = new PagedListAutoMapper<object, object>(mapper.Object);

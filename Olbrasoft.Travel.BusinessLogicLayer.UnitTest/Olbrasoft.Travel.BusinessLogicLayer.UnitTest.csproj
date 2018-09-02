@@ -64,11 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMapperTest.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderDto.cs" />
-    <Compile Include="OrderProfile.cs" />
-    <Compile Include="PagedListAutoMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
