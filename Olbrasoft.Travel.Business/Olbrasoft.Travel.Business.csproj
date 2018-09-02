@@ -38,12 +38,40 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.7.5.0\lib\net461\X.PagedList.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facades\AccommodationsFacade.cs" />
+    <Compile Include="Facades\IAccommodationsFacade.cs" />
+    <Compile Include="Facades\IFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Facades\" />
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{a48273ce-118c-414a-8e5c-e7aeb1fbd921}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
+      <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
+      <Name>Olbrasoft.Design.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
+      <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
+      <Name>Olbrasoft.Pagination</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
+      <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
+      <Name>Olbrasoft.Travel.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
+      <Project>{145fb572-face-4a40-b3f5-78dfcff72f77}</Project>
+      <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

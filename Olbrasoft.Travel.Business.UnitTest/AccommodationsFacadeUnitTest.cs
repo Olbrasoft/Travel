@@ -1,14 +1,15 @@
-﻿using Moq;
+﻿using System.Linq;
+using Moq;
 using NUnit.Framework;
 using Olbrasoft.Data.Entity;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Travel.Business.Facades;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
-using System.Linq;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer.UnitTest
+namespace Olbrasoft.Travel.Business.UnitTest
 {
     [TestFixture]
     public class AccommodationsFacadeUnitTest

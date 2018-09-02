@@ -31,16 +31,59 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.9.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.9.0\lib\net45\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.7.5.0\lib\net461\X.PagedList.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationsFacadeUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{a48273ce-118c-414a-8e5c-e7aeb1fbd921}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
+      <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
+      <Name>Olbrasoft.Design.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
+      <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
+      <Name>Olbrasoft.Pagination</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Business\Olbrasoft.Travel.Business.csproj">
+      <Project>{5c7d643f-6620-48e5-9966-ef30fd6e6272}</Project>
+      <Name>Olbrasoft.Travel.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
+      <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
+      <Name>Olbrasoft.Travel.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
+      <Project>{145fb572-face-4a40-b3f5-78dfcff72f77}</Project>
+      <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

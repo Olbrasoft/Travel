@@ -169,9 +169,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccommodationsFacade.cs" />
-    <Compile Include="IAccommodationsFacade.cs" />
-    <Compile Include="IFacade.cs" />
     <Compile Include="ILanguagesFacade.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="ITravelFacade.cs" />

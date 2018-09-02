@@ -2,7 +2,7 @@
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Travel.Data.Transfer.Objects;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public interface IAccommodationsFacade : IFacade
     {

@@ -1,13 +1,13 @@
-﻿using Olbrasoft.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Olbrasoft.Data.Entity;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Olbrasoft.Travel.BusinessLogicLayer
+namespace Olbrasoft.Travel.Business.Facades
 {
     public class AccommodationsFacade : IAccommodationsFacade
     {
