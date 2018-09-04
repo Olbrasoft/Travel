@@ -6,6 +6,9 @@ namespace Olbrasoft.Travel.Business.Facades
 {
     public interface IAccommodationsFacade : IFacade
     {
-        IPagedList<AccommodationDto> AccommodationDataTransferObjects(IPageInfo pageInfo);
+        IPagedList<AccommodationDto> Get(IPageInfo pageInfo);
+
+
+       
     }
 }

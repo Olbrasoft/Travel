@@ -9,7 +9,6 @@ using Olbrasoft.Travel.Data.Entity.Queries;
 namespace Olbrasoft.Travel.Web.Mvc.Installers
 {
  
-
     public partial class ControllersInstaller
     {
         public class DataAccessLayerInstaller : IWindsorInstaller

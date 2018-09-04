@@ -22,7 +22,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
             var pagedListOfAccommodation =
-                 _accommodationFacade.AccommodationDataTransferObjects(pageInfo);
+                 _accommodationFacade.Get(pageInfo);
 
             return View(pagedListOfAccommodation);
         }

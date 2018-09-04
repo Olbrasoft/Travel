@@ -5,7 +5,6 @@ using Castle.Windsor;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.DataAccessLayer;
-using Olbrasoft.Travel.DataAccessLayer.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Net;
@@ -115,10 +114,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    chainsImporter.Import(@"D:\Ean\ChainList.txt");
             //}
 
-            //using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
-            //{
-            //    accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
-            //}
+            using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
+            {
+                accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
+            }
 
             //using (var descriptionsImporter = container.Resolve<IImporter>(nameof(DescriptionsImporter)))
             //{
@@ -253,7 +252,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 .WithService.AllInterfaces()
             );
 
-            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.DataAccessLayer.EntityFramework")
+            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity")
                    .Where(type => type.Name.EndsWith("Repository"))
                    .WithService.AllInterfaces()
                );

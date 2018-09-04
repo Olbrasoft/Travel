@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using Olbrasoft.Data.Entity;
@@ -6,6 +7,7 @@ using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.Business.Facades;
+using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
 
@@ -20,9 +22,10 @@ namespace Olbrasoft.Travel.Business.UnitTest
             //Arrange
             var type = typeof(IFacade);
             var pagedQuery = GetLocalizedPagedQuery();
+            var mockPagedListMapper = new Mock<IPagedListMapper<Accommodation,AccommodationDto>>();
 
             //Act
-            var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object);
+            var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object, mockPagedListMapper.Object);
 
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
@@ -37,7 +40,7 @@ namespace Olbrasoft.Travel.Business.UnitTest
             var pageInfo = new Mock<IPageInfo>();
 
             //Act
-            var accommodations = accommodationsFacade.AccommodationDataTransferObjects(pageInfo.Object);
+            var accommodations = accommodationsFacade.Get(pageInfo.Object);
 
             //Assert
             Assert.IsNotNull(accommodations);
@@ -104,12 +107,23 @@ namespace Olbrasoft.Travel.Business.UnitTest
 
         private SomeAccommodationsFacade GetSomeAccommodationsFacade()
         {
-            return new SomeAccommodationsFacade(GetLocalizedPagedQuery().Object);
+            var pagedListMapper = PagedListAutoMapper();
+            return new SomeAccommodationsFacade(GetLocalizedPagedQuery().Object, pagedListMapper);
+        }
+
+        private static PagedListAutoMapper<Accommodation, AccommodationDto> PagedListAutoMapper()
+        {
+            var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
+            var mapper = config.CreateMapper();
+
+            var pagedListMapper = new PagedListAutoMapper<Accommodation, AccommodationDto>(mapper);
+            return pagedListMapper;
         }
 
         private AccommodationsFacade CreateAccommodationsFacade()
         {
-            return new AccommodationsFacade(GetLocalizedPagedQuery().Object);
+            var pagedListMapper = PagedListAutoMapper();
+            return new AccommodationsFacade(GetLocalizedPagedQuery().Object,pagedListMapper);
         }
 
         private class SomeAccommodationsFacade : AccommodationsFacade
@@ -119,7 +133,7 @@ namespace Olbrasoft.Travel.Business.UnitTest
                 return base.Map(pagedList);
             }
 
-            public SomeAccommodationsFacade(ILocalizedPagedQuery<Accommodation> localizedPagedQueryOfAccommodation) : base(localizedPagedQueryOfAccommodation)
+            public SomeAccommodationsFacade(ILocalizedPagedQuery<Accommodation> localizedPagedQueryOfAccommodation, IPagedListMapper<Accommodation, AccommodationDto> mapper ) : base(localizedPagedQueryOfAccommodation,mapper)
             {
             }
         }

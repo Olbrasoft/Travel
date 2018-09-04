@@ -1,17 +1,16 @@
-﻿using Moq;
-using NUnit.Framework;
+﻿using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Olbrasoft.Data.Entity;
 using Olbrasoft.Shared;
 using Olbrasoft.Travel.Data.Entities;
-using System.Linq;
-using Olbrasoft.Travel.Data.Entity.Queries;
 
-namespace Olbrasoft.Travel.Data.Entity.UnitTest
+namespace Olbrasoft.Travel.Data.Entity.Queries.UnitTest
 {
-    [TestFixture]
+    [TestClass]
     public class AccommodationPagedQueryTest
     {
-        [Test]
+        [TestMethod]
         public void Is_Instance_Of_IPagedQuery()
         {
             //Arrange
@@ -23,7 +22,7 @@ namespace Olbrasoft.Travel.Data.Entity.UnitTest
             var query = new AccommodationPagedQuery(mockQueryableOfAccommodation.Object, mockLanguageService.Object);
 
             //Assert
-            Assert.IsInstanceOf(type, query);
+            Assert.IsInstanceOfType( query,type);
         }
     }
 }

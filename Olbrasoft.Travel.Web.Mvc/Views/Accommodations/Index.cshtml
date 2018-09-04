@@ -1,25 +1,26 @@
 ﻿@using X.PagedList
 @using X.PagedList.Mvc
-@model Olbrasoft.Shared.Collections.Generic.IPagedList<Olbrasoft.Travel.Data.Entity.Accommodation>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Accommodations</h2>
-
-@foreach (var accommodation in Model)
-{
-    <strong>
-        @accommodation.LocalizedAccommodations.FirstOrDefault().Name;
-    </strong>
-    <br />
-    @accommodation.Address
+@model Olbrasoft.Pagination.Collections.Generic.IPagedList<Olbrasoft.Travel.Data.Transfer.Objects.AccommodationDto>
 
 
-    <hr />
+<div class="list-group">
+    @foreach (var accommodation in Model)
+    {
+        <div class="list-group-item">
+            <h4>
+                @Html.ActionLink(accommodation.Name, "Detail", "Accommodations", new { id = accommodation.Id }, new { @class = "list-group-item-heading" })
+            </h4>
 
-}
+            <div class="list-group-item-text">
+                @accommodation.Address
+            </div>
+            <div class="list-group-item-text">
+                @accommodation.Location
+            </div>
+        </div>
+    }
+</div>
+
 
 <h2>Out-of-the-box Pager Configurations</h2>
 

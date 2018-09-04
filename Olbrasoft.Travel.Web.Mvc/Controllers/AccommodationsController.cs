@@ -1,30 +1,42 @@
-﻿using Olbrasoft.Shared;
-using Olbrasoft.Shared.UnitTest;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Pagination;
+using Olbrasoft.Travel.Business.Facades;
+using System.Net;
 using System.Threading;
 using System.Web.Mvc;
-using Olbrasoft.Pagination;
-using Olbrasoft.Pagination.Linq;
-using Olbrasoft.Travel.Data.Entity.Queries;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
     public class AccommodationsController : Controller
     {
         // GET: Accommodations
+        private readonly IAccommodationsFacade _accommodationFacade;
+
+        public AccommodationsController(IAccommodationsFacade accommodationFacade)
+        {
+            _accommodationFacade = accommodationFacade;
+        }
+
+        // GET: Home
         public ActionResult Index(int page = 1)
         {
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-Us");
+            var pageInfo = new PageInfo(10, page);
 
-            IPageInfo pageInfo = new PageInfo(10, page);
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
-            ILanguageService languageService = new ThreadCultureLanguageService();
+            var pagedListOfAccommodation =
+                _accommodationFacade.Get(pageInfo);
 
-            var q = new AccommodationPagedQuery(new TravelContext().Accommodations, pageInfo, languageService);
+            return View(pagedListOfAccommodation);
+        }
 
-            var pagedAccommodations = q.Execute().AsPagedList();
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-            return View(pagedAccommodations);
+            return View(id);
         }
     }
 }

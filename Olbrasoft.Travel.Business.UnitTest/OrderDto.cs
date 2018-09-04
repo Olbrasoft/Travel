@@ -1,6 +1,6 @@
 ﻿namespace Olbrasoft.Travel.Business.UnitTest
 {
-    internal class OrderDto
+    public class OrderDto : IOrderDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

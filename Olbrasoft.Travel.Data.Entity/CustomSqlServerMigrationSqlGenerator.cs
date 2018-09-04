@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations.Model;
 using System.Data.Entity.SqlServer;
 
-namespace Olbrasoft.Travel.DataAccessLayer.EntityFramework
+namespace Olbrasoft.Travel.Data.Entity
 {
     internal class CustomSqlServerMigrationSqlGenerator : SqlServerMigrationSqlGenerator
     {

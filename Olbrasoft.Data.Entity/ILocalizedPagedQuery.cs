@@ -2,6 +2,5 @@
 {
     public interface ILocalizedPagedQuery<out T> : IPagedQuery<T>
     {
-
     }
 }

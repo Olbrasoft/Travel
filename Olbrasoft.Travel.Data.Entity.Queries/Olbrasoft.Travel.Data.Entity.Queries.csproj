@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A48273CE-118C-414A-8E5C-E7AEB1FBD921}</ProjectGuid>
+    <ProjectGuid>{5273A6E8-A128-4894-A920-FD4E59C6ADB4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Olbrasoft.Data.Entity</RootNamespace>
-    <AssemblyName>Olbrasoft.Data.Entity</AssemblyName>
+    <RootNamespace>Olbrasoft.Travel.Data.Entity.Queries</RootNamespace>
+    <AssemblyName>Olbrasoft.Travel.Data.Entity.Queries</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -41,16 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILocalizedPagedQuery.cs" />
-    <Compile Include="IPagedQuery.cs" />
-    <Compile Include="LocalizedPagedQuery.cs" />
-    <Compile Include="LocalizeQuery.cs" />
-    <Compile Include="PagedQuery.cs" />
+    <Compile Include="AccommodationPagedQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{a48273ce-118c-414a-8e5c-e7aeb1fbd921}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
-      <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
+      <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
@@ -58,8 +64,12 @@
       <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
-      <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
+      <Project>{c0b70c19-fa51-4f92-bf74-d065749d4db6}</Project>
       <Name>Olbrasoft.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
+      <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
+      <Name>Olbrasoft.Travel.Data.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

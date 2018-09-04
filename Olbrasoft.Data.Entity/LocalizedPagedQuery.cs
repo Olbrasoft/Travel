@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using Olbrasoft.Pagination;
+﻿using Olbrasoft.Pagination;
 using Olbrasoft.Shared;
+using System.Linq;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class LocalizedPagedQuery<T> : PagedQuery<T>,ILocalizedPagedQuery<T> where T : class
+    public abstract class LocalizedPagedQuery<T> : PagedQuery<T>, ILocalizedPagedQuery<T> where T : class
     {
         protected ILanguageService LanguageService { get; }
 
@@ -20,4 +20,7 @@ namespace Olbrasoft.Data.Entity
             LanguageService = languageService;
         }
     }
+
+
+
 }

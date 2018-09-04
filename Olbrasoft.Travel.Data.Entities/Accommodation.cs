@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
-using System.Web.Script.Serialization;
 
 namespace Olbrasoft.Travel.Data.Entities
 {
@@ -30,9 +29,8 @@ namespace Olbrasoft.Travel.Data.Entities
 
         [StringLength(50)]
         public string AdditionalAddress { get; set; }
-
+        
         [Required]
-        [ScriptIgnore]
         public DbGeography CenterCoordinates { get; set; }
 
         public int TypeOfAccommodationId { get; set; }

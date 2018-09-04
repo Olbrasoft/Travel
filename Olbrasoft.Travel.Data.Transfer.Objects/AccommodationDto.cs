@@ -17,4 +17,7 @@ namespace Olbrasoft.Travel.Data.Transfer.Objects
         [StringLength(50)]
         public string Address { get; set; }
     }
+
+  
+
 }

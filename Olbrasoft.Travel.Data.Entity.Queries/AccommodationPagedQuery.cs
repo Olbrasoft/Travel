@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.Data.Entity.Queries
         {
         }
 
-        public override IPagedList<Accommodation> Execute() 
+        public override IPagedList<Accommodation> Execute( ) 
         {
             var localizedAccommodations = Queryable.SelectMany(p => p.LocalizedAccommodations);
 
@@ -29,7 +29,7 @@ namespace Olbrasoft.Travel.Data.Entity.Queries
                         (Queryable
                              .OrderBy(a => a.SequenceNumber)
                              .Select(a => a.Id)
-                             .Skip(Skip)
+                             .Skip<int>(Skip)
                              .Take(Take)
                              .Contains(la.Id) &&
                          (la.LanguageId == LanguageId)

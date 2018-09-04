@@ -31,7 +31,7 @@ namespace Olbrasoft.Travel.Business.UnitTest
         {
             //Arrange
             Mapper.Initialize(cfg => cfg.CreateMap<Accommodation, AccommodationDto>()
-               .ForMember(d => d.Name, opt => opt.MapFrom(src => Enumerable.FirstOrDefault<LocalizedAccommodation>(src.LocalizedAccommodations).Name)));
+               .ForMember(d => d.Name, opt => opt.MapFrom(src => src.LocalizedAccommodations.FirstOrDefault().Name)));
 
             var accommodation = new Accommodation { Address = "Olbramovice" };
 
@@ -88,5 +88,25 @@ namespace Olbrasoft.Travel.Business.UnitTest
             //Assert
             Assert.IsTrue(orderDtos.Count() == 3);
         }
+
+        [Test]
+        public void MapperConfiguration_From_Interface()
+        {
+           
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
+
+            IOrder order = new Order { Name = "Lenka" };
+            var mapper = config.CreateMapper();
+
+            IOrderDto orderDto =new OrderDto();
+
+            //Act
+            orderDto = mapper.Map<IOrderDto>(order);
+
+            //Assert
+            Assert.IsTrue(orderDto.Name == "Lenka");
+
+        }
+
     }
 }

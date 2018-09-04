@@ -1,11 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Olbrasoft.Design.Pattern.GangOfFour.Behavior;
-
 
 namespace Olbrasoft.Design.Pattern.UnitTest
 {
@@ -35,14 +29,10 @@ namespace Olbrasoft.Design.Pattern.UnitTest
             c.Execute();
 
             //Assert
-
         }
-
     }
 
-
-
-    public class CommandPattern:ICommand
+    public class CommandPattern : ICommand
 
     {
         public void Execute()
