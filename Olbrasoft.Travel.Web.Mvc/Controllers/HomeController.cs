@@ -7,11 +7,11 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IAccommodationsFacade _accommodationFacade;
+        private readonly ILocalizedAccommodationsFacade _localizedAccommodationFacade;
 
-        public HomeController(IAccommodationsFacade accommodationFacade)
+        public HomeController(ILocalizedAccommodationsFacade localizedAccommodationFacade)
         {
-            _accommodationFacade = accommodationFacade;
+            _localizedAccommodationFacade = localizedAccommodationFacade;
         }
 
         // GET: Home
@@ -22,7 +22,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
             var pagedListOfAccommodation =
-                 _accommodationFacade.Get(pageInfo);
+                 _localizedAccommodationFacade.Get(pageInfo);
 
             return View(pagedListOfAccommodation);
         }

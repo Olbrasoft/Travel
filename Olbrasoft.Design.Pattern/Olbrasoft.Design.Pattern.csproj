@@ -44,6 +44,7 @@
     <Compile Include="Behavior\CommandWithResult.cs" />
     <Compile Include="Behavior\ICommandWithResult.cs" />
     <Compile Include="Behavior\IQuery.cs" />
+    <Compile Include="Behavior\IQueryArgument.cs" />
     <Compile Include="Behavior\Query.cs" />
     <Compile Include="GangOfFour\Behavior\ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -88,6 +88,7 @@
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
       <Private>True</Private>
@@ -169,20 +170,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facades\AccommodationsFacade.cs" />
-    <Compile Include="Facades\IAccommodationsFacade.cs" />
+    <Compile Include="Facades\ILocalizedAccommodationsFacade.cs" />
     <Compile Include="Facades\IFacade.cs" />
     <Compile Include="Facades\ILanguagesFacade.cs" />
     <Compile Include="Facades\ITravelFacade.cs" />
     <Compile Include="Facades\ITypesOfRegionsFacade.cs" />
     <Compile Include="Facades\IUsersFacade.cs" />
     <Compile Include="Facades\LanguagesFacade.cs" />
+    <Compile Include="Facades\LocalizedAccommodationsFacade.cs" />
     <Compile Include="Facades\TravelFacade.cs" />
     <Compile Include="Facades\TypesOfRegionsFacade.cs" />
     <Compile Include="Facades\UsersFacade.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="Mapping\AccommodationProfile.cs" />
     <Compile Include="Mapping\IPagedListMapper.cs" />
+    <Compile Include="Mapping\LocalizedAccommodationProfile.cs" />
     <Compile Include="Mapping\PagedListAutoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -190,6 +192,10 @@
     <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
       <Project>{a48273ce-118c-414a-8e5c-e7aeb1fbd921}</Project>
       <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
+      <Project>{c38f7833-3953-4e1c-af9c-1e9a2c3b738b}</Project>
+      <Name>Olbrasoft.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
@@ -199,9 +205,17 @@
       <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
       <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Shared\Olbrasoft.Shared.csproj">
+      <Project>{C0B70C19-FA51-4F92-BF74-D065749D4DB6}</Project>
+      <Name>Olbrasoft.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
       <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Queries\Olbrasoft.Travel.Data.Entity.Queries.csproj">
+      <Project>{5273A6E8-A128-4894-A920-FD4E59C6ADB4}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity.Queries</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
       <Project>{145fb572-face-4a40-b3f5-78dfcff72f77}</Project>
@@ -210,6 +224,10 @@
     <ProjectReference Include="..\Olbrasoft.Travel.DataAccessLayer\Olbrasoft.Travel.DataAccessLayer.csproj">
       <Project>{0d3be7cb-5a9b-4883-a324-158615a6d656}</Project>
       <Name>Olbrasoft.Travel.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
+      <Project>{8a74e643-324d-4769-a8c5-2f013819a6dd}</Project>
+      <Name>Olbrasoft.Travel.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

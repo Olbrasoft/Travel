@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Pagination;
+﻿using System;
+using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.UnitTest;
@@ -11,27 +12,30 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
     public class AjaxController : Controller
     {
-        // Ajax Paging
+        // Ajax PageInfo
         public ViewResult Index()
         {
             return View();
         }
 
-        // Ajax Paging (cont'd)
+        // Ajax PageInfo (cont'd)
         public ActionResult AjaxPage(int page = 1)
         {
-            IPageInfo pageInfo = new PageInfo(10, page);
-            ILanguageService languageService = new ThreadCultureLanguageService();
+            //IPageInfo pageInfo = new PageInfo(10, page);
+            //ILanguageService languageService = new ThreadCultureLanguageService();
 
-            var q = new AccommodationPagedQuery(new TravelContext().Accommodations, pageInfo, languageService);
+            //var q = new AccommodationPagedQuery(new TravelContext().Accommodations, pageInfo, languageService);
 
-            var accommodations = q.Execute().AsPagedList();
+            //var accommodations = q.Execute().AsPagedList();
 
-            return Json(new
-            {
-                names = accommodations.ToArray(),
-                pager = accommodations.GetMetaData()
-            }, JsonRequestBehavior.AllowGet);
+            //return Json(new
+            //{
+            //    names = accommodations.ToArray(),
+            //    pager = accommodations.GetMetaData()
+            //}, JsonRequestBehavior.AllowGet);
+
+           throw new NotImplementedException();
+
         }
     }
 }

@@ -1,20 +1,23 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Moq;
 using NUnit.Framework;
-using Olbrasoft.Data.Entity;
+using Olbrasoft.Design.Pattern.Behavior;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Pagination.UnitTest;
+using Olbrasoft.Shared;
 using Olbrasoft.Travel.Business.Facades;
 using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
+using System.Linq;
+using Olbrasoft.Data;
 
 namespace Olbrasoft.Travel.Business.UnitTest
 {
     [TestFixture]
-    public class AccommodationsFacadeUnitTest
+    public class LocalizedAccommodationsFacadeUnitTest
     {
         [Test]
         public void Is_Instance_Of_IAccommodationFacade()
@@ -22,10 +25,13 @@ namespace Olbrasoft.Travel.Business.UnitTest
             //Arrange
             var type = typeof(IFacade);
             var pagedQuery = GetLocalizedPagedQuery();
-            var mockPagedListMapper = new Mock<IPagedListMapper<Accommodation,AccommodationDto>>();
+            var mockPagedListMapper = new Mock<IPagedListMapper<LocalizedAccommodation, AccommodationDto>>();
+            var mockLanguageService = new Mock<ILanguageService>();
+            var queryProcessorMock = new Mock<IQueryProcessor>();
+
 
             //Act
-            var accommodationsFacade = new AccommodationsFacade(pagedQuery.Object, mockPagedListMapper.Object);
+            var accommodationsFacade = new LocalizedAccommodationsFacade(pagedQuery.Object, mockLanguageService.Object, mockPagedListMapper.Object, queryProcessorMock.Object);
 
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
@@ -46,96 +52,45 @@ namespace Olbrasoft.Travel.Business.UnitTest
             Assert.IsNotNull(accommodations);
         }
 
-        [Test]
-        public void Map_returns_an_bject_that_is_instance_of_IPagedEnumerable_of_AccommodationDataTransferObject()
+        private static Mock<Design.Pattern.Behavior.IQuery<IQueryArgument, IPagedList<LocalizedAccommodation>>> GetLocalizedPagedQuery()
         {
-            //Arrange
-            var accommodationsFacade = GetSomeAccommodationsFacade();
-            var pagedList = GetAccommodations();
-
-            //Act
-            var accommodations = accommodationsFacade.Map(pagedList);
-
-            //Assert
-            Assert.IsInstanceOf<IPagedList<AccommodationDto>>(accommodations);
-        }
-
-        [Test]
-        public void Map_First_Name_Is_Jirka()
-        {
-            //Arrange
-            var accommodationsFacade = GetSomeAccommodationsFacade();
-
-            var arrayOfAccommodations = new[]
-            {
-                new Accommodation()
-            };
-
-            arrayOfAccommodations.First().LocalizedAccommodations.Add(new LocalizedAccommodation { Name = "Jirka" });
-
-            var pagedCollection = arrayOfAccommodations.AsPagedList();
-
-            var accommodations = accommodationsFacade.Map(pagedCollection);
-
-            //Act
-            var result = accommodations.FirstOrDefault()?.Name;
-
-            //Assert
-            Assert.IsTrue(result == "Jirka");
-        }
-
-        private static Mock<ILocalizedPagedQuery<Accommodation>> GetLocalizedPagedQuery()
-        {
-            var result = new Mock<ILocalizedPagedQuery<Accommodation>>();
-
-            //result.Setup(p => p.Execute()).Returns(pagedCollection);
-            result.Setup(p => p.Execute(It.IsAny<IPageInfo>())).Returns(GetAccommodations);
+            var result = new Mock<Design.Pattern.Behavior.IQuery< IQueryArgument, IPagedList<LocalizedAccommodation>>>();
+            
+            result.Setup(p => p.Execute(It.IsAny<IQueryArgument>())).Returns(GetAccommodations());
 
             return result;
         }
 
-        private static IPagedList<Accommodation> GetAccommodations()
+        private static IPagedList<LocalizedAccommodation> GetAccommodations()
         {
             var arrayOfAccommodations = new[]
             {
-                new Accommodation()
+                new LocalizedAccommodation(),
             };
-            arrayOfAccommodations.First().LocalizedAccommodations.Add(new LocalizedAccommodation { Name = "" });
+
+            var accommodation= new Accommodation(){Address = ""};
+
+            arrayOfAccommodations.First().Accommodation = accommodation;
 
             return arrayOfAccommodations.AsPagedList();
         }
 
-        private SomeAccommodationsFacade GetSomeAccommodationsFacade()
+        private static PagedListAutoMapper<LocalizedAccommodation, AccommodationDto> PagedListAutoMapper()
         {
-            var pagedListMapper = PagedListAutoMapper();
-            return new SomeAccommodationsFacade(GetLocalizedPagedQuery().Object, pagedListMapper);
-        }
-
-        private static PagedListAutoMapper<Accommodation, AccommodationDto> PagedListAutoMapper()
-        {
-            var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
+            var config = new MapperConfiguration(cfg => cfg.AddProfile<LocalizedAccommodationProfile>());
             var mapper = config.CreateMapper();
 
-            var pagedListMapper = new PagedListAutoMapper<Accommodation, AccommodationDto>(mapper);
+            var pagedListMapper = new PagedListAutoMapper<LocalizedAccommodation, AccommodationDto>(mapper);
             return pagedListMapper;
         }
 
-        private AccommodationsFacade CreateAccommodationsFacade()
+        private LocalizedAccommodationsFacade CreateAccommodationsFacade()
         {
             var pagedListMapper = PagedListAutoMapper();
-            return new AccommodationsFacade(GetLocalizedPagedQuery().Object,pagedListMapper);
-        }
+            var languageService = new ThreadCultureLanguageService();
+            var queryProcessorMock = new Mock<IQueryProcessor>();
 
-        private class SomeAccommodationsFacade : AccommodationsFacade
-        {
-            public new IPagedList<AccommodationDto> Map(IPagedList<Accommodation> pagedList)
-            {
-                return base.Map(pagedList);
-            }
-
-            public SomeAccommodationsFacade(ILocalizedPagedQuery<Accommodation> localizedPagedQueryOfAccommodation, IPagedListMapper<Accommodation, AccommodationDto> mapper ) : base(localizedPagedQueryOfAccommodation,mapper)
-            {
-            }
+            return new LocalizedAccommodationsFacade(GetLocalizedPagedQuery().Object, languageService, pagedListMapper, queryProcessorMock.Object);
         }
 
         //[Test]

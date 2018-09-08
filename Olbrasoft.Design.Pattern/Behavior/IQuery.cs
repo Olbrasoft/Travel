@@ -4,4 +4,10 @@
     {
         T Execute();
     }
+    
+
+    public interface IQuery<in TArgument, out TResult> where TArgument : IQueryArgument
+    {
+        TResult Execute(TArgument argument);
+    }
 }

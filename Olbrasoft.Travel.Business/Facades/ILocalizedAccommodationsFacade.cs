@@ -4,11 +4,9 @@ using Olbrasoft.Travel.Data.Transfer.Objects;
 
 namespace Olbrasoft.Travel.Business.Facades
 {
-    public interface IAccommodationsFacade : IFacade
+    public interface ILocalizedAccommodationsFacade : IFacade
     {
         IPagedList<AccommodationDto> Get(IPageInfo pageInfo);
-
-
-       
+        
     }
 }

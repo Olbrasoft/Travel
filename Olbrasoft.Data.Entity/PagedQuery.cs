@@ -1,11 +1,10 @@
-﻿using Olbrasoft.Design.Pattern.Behavior;
-using Olbrasoft.Pagination;
+﻿using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using System.Linq;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class PagedQuery<T> : Query<IPagedList<T>>, IPagedQuery<T> where T : class
+    public abstract class PagedQuery<T> : Design.Pattern.Behavior.Query<IPagedList<T>>, IPagedQuery<T> where T : class
     {
         protected IQueryable<T> Queryable { get; }
 

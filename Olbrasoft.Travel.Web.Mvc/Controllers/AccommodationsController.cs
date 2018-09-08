@@ -9,11 +9,11 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
     public class AccommodationsController : Controller
     {
         // GET: Accommodations
-        private readonly IAccommodationsFacade _accommodationFacade;
+        private readonly ILocalizedAccommodationsFacade _localizedAccommodationFacade;
 
-        public AccommodationsController(IAccommodationsFacade accommodationFacade)
+        public AccommodationsController(ILocalizedAccommodationsFacade localizedAccommodationFacade)
         {
-            _accommodationFacade = accommodationFacade;
+            _localizedAccommodationFacade = localizedAccommodationFacade;
         }
 
         // GET: Home
@@ -23,10 +23,10 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
-            var pagedListOfAccommodation =
-                _accommodationFacade.Get(pageInfo);
+            var pagedListOfLocalizedAccommodation =
+                _localizedAccommodationFacade.Get(pageInfo);
 
-            return View(pagedListOfAccommodation);
+            return View(pagedListOfLocalizedAccommodation);
         }
 
         public ActionResult Detail(int? id)

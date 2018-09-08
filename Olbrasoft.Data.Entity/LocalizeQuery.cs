@@ -3,7 +3,7 @@ using Olbrasoft.Shared;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class LocalizeQuery<T> : Query<T>
+    public abstract class LocalizeQuery<T> : Olbrasoft.Design.Pattern.Behavior.Query<T>
     {
         protected ILanguageService LanguageService { get; }
 

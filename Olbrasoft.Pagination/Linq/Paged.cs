@@ -25,6 +25,25 @@ namespace Olbrasoft.Pagination.Linq
             return enumerable.AsPagedList(pagination);
         }
 
+        //public static Paged<T> Page<T>(this IEnumerable<T> collection, PageInfo paging)
+        //{
+        //    paging = paging ?? new PageInfo();
+        //    return new Paged<T>
+        //    {
+        //        Items = collection.Skip(paging.PageIndex * paging.PageSize).Take(paging.PageSize).ToArray(),
+        //        Paging = paging,
+        //    };
+        //}
+
+        public static IPagedList<T> AsPagedList<T>(this IQueryable<T> collection, IPageInfo paging)
+        {
+            paging = paging ?? new PageInfo();
+
+            var pagedList =  new X.PagedList.PagedList<T>(collection,paging.NumberOfSelectedPage,paging.PageSize);
+
+            return new PagedList<T>(pagedList,pagedList.PageNumber,pagedList.PageSize,pagedList.TotalItemCount);
+        }
+
         public static IPagination AsPagination<TSource>(this IPagedList<TSource> sources) =>
             new Olbrasoft.Pagination.Pagination(new PageInfo(sources.PageSize, sources.PageNumber), () => sources.TotalItemCount);
     }
