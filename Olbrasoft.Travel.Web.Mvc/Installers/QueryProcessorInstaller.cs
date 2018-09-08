@@ -7,7 +7,6 @@ using Olbrasoft.Data;
 
 namespace Olbrasoft.Travel.Web.Mvc.Installers
 {
-
     /// <summary>
     /// QueryProcessor without concrete implementation
     /// </summary>

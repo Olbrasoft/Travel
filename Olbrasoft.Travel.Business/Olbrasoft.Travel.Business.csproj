@@ -183,8 +183,10 @@
     <Compile Include="Facades\UsersFacade.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="Mapping\AccommodationProfile.cs" />
+    <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="Mapping\IPagedListMapper.cs" />
     <Compile Include="Mapping\LocalizedAccommodationProfile.cs" />
+    <Compile Include="Mapping\Mapper.cs" />
     <Compile Include="Mapping\PagedListAutoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

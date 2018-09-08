@@ -6,5 +6,7 @@ namespace Olbrasoft.Travel.Data.Queries
     public class LocalizedAccommodationByIdQuery : BaseQuery<LocalizedAccommodation, LocalizedAccommodation>
     {
         public int Id { get; set; }
+        public int LanguageId { get; set; }
+
     }
 }

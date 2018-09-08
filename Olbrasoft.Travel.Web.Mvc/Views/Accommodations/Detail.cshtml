@@ -1,8 +1,18 @@
-﻿
+﻿@model Olbrasoft.Travel.Data.Transfer.Objects.AccommodationDetailDto
+
+
 @{
     ViewBag.Title = "Detail";
 }
 
 <h2>Detail</h2>
 
-@Model
+
+@Model.Id
+
+
+<h1>@Model.Name</h1>
+
+@Model.Address
+<br />
+@Html.Raw(Model.Description)

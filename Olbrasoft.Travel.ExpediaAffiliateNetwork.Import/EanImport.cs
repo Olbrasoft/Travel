@@ -114,10 +114,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    chainsImporter.Import(@"D:\Ean\ChainList.txt");
             //}
 
-            using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
-            {
-                accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
-            }
+            //using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
+            //{
+            //    accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
+            //}
 
             //using (var descriptionsImporter = container.Resolve<IImporter>(nameof(DescriptionsImporter)))
             //{

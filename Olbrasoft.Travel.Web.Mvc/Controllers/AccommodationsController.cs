@@ -8,7 +8,6 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
     public class AccommodationsController : Controller
     {
-        // GET: Accommodations
         private readonly ILocalizedAccommodationsFacade _localizedAccommodationFacade;
 
         public AccommodationsController(ILocalizedAccommodationsFacade localizedAccommodationFacade)
@@ -16,7 +15,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             _localizedAccommodationFacade = localizedAccommodationFacade;
         }
 
-        // GET: Home
+        // GET: Accommodations
         public ActionResult Index(int page = 1)
         {
             var pageInfo = new PageInfo(10, page);
@@ -36,7 +35,12 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            return View(id);
+            var accommodationId = (int)id;
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
+
+            var accommodationDetailDto = _localizedAccommodationFacade.Get(accommodationId);
+
+            return View(accommodationDetailDto);
         }
     }
 }

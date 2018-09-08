@@ -21,6 +21,7 @@ namespace Olbrasoft.Travel.Data.QueryHandlers
             return PreProcessQuery(query);
         }
 
+        
         private IPagedList<LocalizedAccommodation> PreProcessQuery(LocalizedAccommodationsPagedQuery query)
         {
             var queryable = Queryable;

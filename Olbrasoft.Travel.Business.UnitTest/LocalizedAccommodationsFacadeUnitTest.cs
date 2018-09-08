@@ -28,10 +28,10 @@ namespace Olbrasoft.Travel.Business.UnitTest
             var mockPagedListMapper = new Mock<IPagedListMapper<LocalizedAccommodation, AccommodationDto>>();
             var mockLanguageService = new Mock<ILanguageService>();
             var queryProcessorMock = new Mock<IQueryProcessor>();
-
+            var mapperMock = new Mock<Olbrasoft.Travel.Business.Mapping.IMapper<LocalizedAccommodation, AccommodationDetailDto>>();
 
             //Act
-            var accommodationsFacade = new LocalizedAccommodationsFacade(pagedQuery.Object, mockLanguageService.Object, mockPagedListMapper.Object, queryProcessorMock.Object);
+            var accommodationsFacade = new LocalizedAccommodationsFacade(pagedQuery.Object, mockLanguageService.Object, mockPagedListMapper.Object, queryProcessorMock.Object,mapperMock.Object);
 
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
@@ -88,9 +88,11 @@ namespace Olbrasoft.Travel.Business.UnitTest
         {
             var pagedListMapper = PagedListAutoMapper();
             var languageService = new ThreadCultureLanguageService();
+            var mapperMock = new Mock<Olbrasoft.Travel.Business.Mapping.IMapper<LocalizedAccommodation,AccommodationDetailDto>>();
             var queryProcessorMock = new Mock<IQueryProcessor>();
 
-            return new LocalizedAccommodationsFacade(GetLocalizedPagedQuery().Object, languageService, pagedListMapper, queryProcessorMock.Object);
+
+            return new LocalizedAccommodationsFacade(GetLocalizedPagedQuery().Object, languageService, pagedListMapper, queryProcessorMock.Object,mapperMock.Object);
         }
 
         //[Test]

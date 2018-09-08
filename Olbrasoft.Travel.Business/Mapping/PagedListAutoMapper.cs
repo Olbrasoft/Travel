@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Olbrasoft.Pagination.Collections.Generic;
+﻿using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Olbrasoft.Travel.Business.Mapping
 {
@@ -9,18 +9,16 @@ namespace Olbrasoft.Travel.Business.Mapping
     {
         protected AutoMapper.IMapper Mapper { get; }
 
-        public PagedListAutoMapper(AutoMapper.IMapper mapper )
+        public PagedListAutoMapper(AutoMapper.IMapper mapper)
         {
             Mapper = mapper;
         }
 
         public IPagedList<TDestination> Map(IPagedList<TSource> source)
         {
-
             var enumerable = Mapper.Map<IEnumerable<TDestination>>(source.AsEnumerable());
 
             return enumerable.AsPagedList(source.AsPagination());
-            
         }
     }
 }

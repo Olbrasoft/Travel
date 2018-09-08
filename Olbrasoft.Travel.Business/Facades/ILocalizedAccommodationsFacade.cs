@@ -7,6 +7,6 @@ namespace Olbrasoft.Travel.Business.Facades
     public interface ILocalizedAccommodationsFacade : IFacade
     {
         IPagedList<AccommodationDto> Get(IPageInfo pageInfo);
-        
+        AccommodationDetailDto Get(int id);
     }
 }
