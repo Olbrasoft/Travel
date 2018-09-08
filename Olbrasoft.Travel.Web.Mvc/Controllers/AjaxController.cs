@@ -1,12 +1,5 @@
 ﻿using System;
-using Olbrasoft.Pagination;
-using Olbrasoft.Pagination.Linq;
-using Olbrasoft.Shared;
-using Olbrasoft.Shared.UnitTest;
-using Olbrasoft.Travel.Data.Entity;
-using System.Linq;
 using System.Web.Mvc;
-using Olbrasoft.Travel.Data.Entity.Queries;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
@@ -34,8 +27,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             //    pager = accommodations.GetMetaData()
             //}, JsonRequestBehavior.AllowGet);
 
-           throw new NotImplementedException();
-
+            throw new NotImplementedException();
         }
     }
 }

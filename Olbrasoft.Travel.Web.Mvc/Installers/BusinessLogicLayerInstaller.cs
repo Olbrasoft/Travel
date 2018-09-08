@@ -20,13 +20,9 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
 
             var config = new MapperConfiguration(cfg => cfg.AddProfile<LocalizedAccommodationProfile>());
             var mapper = config.CreateMapper();
-
-            container.Register(Component.For<IPagedListMapper<LocalizedAccommodation, AccommodationDto>>()
-                .ImplementedBy<PagedListAutoMapper<LocalizedAccommodation, AccommodationDto>>()
-                .DependsOn(Dependency.OnValue(typeof(IMapper), mapper)).LifestylePerWebRequest());
-
-            container.Register(Component.For<Olbrasoft.Travel.Business.Mapping.IMapper<LocalizedAccommodation, AccommodationDetailDto>>()
-                .ImplementedBy<Olbrasoft.Travel.Business.Mapping.Mapper<LocalizedAccommodation, AccommodationDetailDto>>()
+            
+            container.Register(Component.For<IMapper<LocalizedAccommodation, AccommodationDetailDto>>()
+                .ImplementedBy<AutoMapper<LocalizedAccommodation, AccommodationDetailDto>>()
                 .DependsOn(Dependency.OnValue(typeof(IMapper), mapper)).LifestylePerWebRequest());
 
             container.Register(Component.For<ILocalizedAccommodationsFacade>().ImplementedBy<LocalizedAccommodationsFacade>().LifestylePerWebRequest());

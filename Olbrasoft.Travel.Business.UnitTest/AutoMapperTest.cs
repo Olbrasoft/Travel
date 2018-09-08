@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Moq;
 using NUnit.Framework;
+using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
@@ -98,15 +100,77 @@ namespace Olbrasoft.Travel.Business.UnitTest
             IOrder order = new Order { Name = "Lenka" };
             var mapper = config.CreateMapper();
 
-            IOrderDto orderDto =new OrderDto();
-
             //Act
-            orderDto = mapper.Map<IOrderDto>(order);
+            var orderDto = mapper.Map<IOrderDto>(order);
 
             //Assert
             Assert.IsTrue(orderDto.Name == "Lenka");
 
         }
+
+
+
+        [Test]
+        public void PagedEnumerableMapper_Is_Instance_Of_IPagedEnumerableMapper()
+        {
+            //Arrange
+            var type = typeof(IMapper<object, object>);
+            var mapper = new Mock<IMapper>();
+
+            //Act
+            var pagedEnumerableMapper = new AutoMapper<object, object>(mapper.Object);
+
+            //Assert
+            Assert.IsInstanceOf(type, pagedEnumerableMapper);
+        }
+
+        [Test]
+        public void Mapper_is_the_same_object_that_was_passed_as_an_argument_in_the_constructor()
+        {
+            //Arrange
+            var mockMapper = new Mock<IMapper>();
+            var someMapper = new SomeAutoMapper<object, object>(mockMapper.Object);
+
+            //Act
+            var mapper = someMapper.Mapper;
+
+            //Assert
+            Assert.AreSame(mockMapper.Object, mapper);
+        }
+
+        [Test]
+        public void Map()
+        {
+            //Arrange
+            var accommodtions = new[]
+            {
+                new Accommodation {Address = "Olbramovice Ves"},
+                new Accommodation {Address= "Veselka 18"}
+            };
+
+            var pagedAccommodation = accommodtions.AsPagedList();
+            var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
+            var mapper = config.CreateMapper();
+            var pagedMapper = new AutoMapper<Accommodation, AccommodationDto>(mapper);
+
+            //Act
+            var pagedAccommodationDataTransferObject = pagedMapper.Map(pagedAccommodation);
+
+            //Assert
+
+            Assert.IsTrue(pagedAccommodationDataTransferObject.Last()?.Address == "Veselka 18");
+        }
+
+        private class SomeAutoMapper<TSource, TDestination> : AutoMapper<TSource, TDestination>
+        {
+
+            public new IMapper Mapper => base.Mapper;
+
+            public SomeAutoMapper(IMapper mapper) : base(mapper)
+            {
+            }
+        }
+
 
     }
 }

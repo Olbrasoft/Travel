@@ -454,10 +454,6 @@
       <Project>{96f5e96a-b233-4e65-a114-1733dd1a49d5}</Project>
       <Name>Olbrasoft.Data.Entity.Bulk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
-      <Project>{a48273ce-118c-414a-8e5c-e7aeb1fbd921}</Project>
-      <Name>Olbrasoft.Data.Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
