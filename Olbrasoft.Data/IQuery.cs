@@ -8,7 +8,7 @@ namespace Olbrasoft.Data
 {
     public interface IQuery
     {
-        IPageInfo Paging { set; }
+        IPageInfo Paging { get; set; }
 
         /// <summary>
         /// Adds a specified sort criteria to the query.
@@ -21,7 +21,7 @@ namespace Olbrasoft.Data
         void ClearSorting();
     }
 
-    public interface IQuery<TResult>
+    public interface IQuery<TResult> : IQuery
     {
     }
 

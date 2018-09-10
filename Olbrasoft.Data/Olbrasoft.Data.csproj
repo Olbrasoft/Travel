@@ -41,10 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseQuery.cs" />
+    <Compile Include="ExIQuery.cs" />
     <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryBuilder.cs" />
+    <Compile Include="IQueryFactory.cs" />
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="IQueryProcesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryBuilder.cs" />
     <Compile Include="SortDirection.cs" />
   </ItemGroup>
   <ItemGroup>

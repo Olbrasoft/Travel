@@ -2,10 +2,9 @@
 
 namespace Olbrasoft.Travel.Business.Mapping
 {
-    public interface IMapper<in TSource,out TDestination>
+    public interface IMapper<in TSource>
     {
-        TDestination Map(TSource source);
-        IPagedList<TDestination> Map(IPagedList<TSource> source);
-
+        TDestination Map<TDestination>(TSource source);
+        IPagedList<TDestination> Map<TDestination>(IPagedList<TSource> source);
     }
 }

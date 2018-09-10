@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Olbrasoft.Travel.Business.Mapping
 {
-    public class AutoMapper<TSource, TDestination> : IMapper<TSource, TDestination>
+    public class AutoMapper<TSource> : IMapper<TSource>
     {
         protected IMapper Mapper { get; }
 
@@ -15,12 +15,12 @@ namespace Olbrasoft.Travel.Business.Mapping
             Mapper = mapper;
         }
 
-        public TDestination Map(TSource source)
+        public TDestination Map<TDestination>(TSource source)
         {
             return Mapper.Map<TDestination>(source);
-        }  
+        }
 
-        public IPagedList<TDestination> Map(IPagedList<TSource> source)
+        public IPagedList<TDestination> Map<TDestination>(IPagedList<TSource> source)
         {
             var enumerable = Mapper.Map<IEnumerable<TDestination>>(source.AsEnumerable());
 

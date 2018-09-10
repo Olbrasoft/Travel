@@ -7,7 +7,6 @@ using Olbrasoft.Shared.UnitTest;
 using Olbrasoft.Travel.Business.Facades;
 using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Transfer.Objects;
 
 namespace Olbrasoft.Travel.Web.Mvc.Installers
 {
@@ -20,9 +19,9 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
 
             var config = new MapperConfiguration(cfg => cfg.AddProfile<LocalizedAccommodationProfile>());
             var mapper = config.CreateMapper();
-            
-            container.Register(Component.For<IMapper<LocalizedAccommodation, AccommodationDetailDto>>()
-                .ImplementedBy<AutoMapper<LocalizedAccommodation, AccommodationDetailDto>>()
+
+            container.Register(Component.For<IMapper<LocalizedAccommodation>>()
+                .ImplementedBy<AutoMapper<LocalizedAccommodation>>()
                 .DependsOn(Dependency.OnValue(typeof(IMapper), mapper)).LifestylePerWebRequest());
 
             container.Register(Component.For<ILocalizedAccommodationsFacade>().ImplementedBy<LocalizedAccommodationsFacade>().LifestylePerWebRequest());

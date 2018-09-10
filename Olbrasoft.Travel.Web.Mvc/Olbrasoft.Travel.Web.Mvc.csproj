@@ -194,6 +194,9 @@
     <Compile Include="Installers\BusinessLogicLayerInstaller.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\DataAccessLayerInstaller.cs" />
+    <Compile Include="Installers\QueriesInstaller.cs" />
+    <Compile Include="Installers\QueryBuilderInstaller.cs" />
+    <Compile Include="Installers\QueryFactoryInstaller.cs" />
     <Compile Include="Installers\QueryHandlersInstaller.cs" />
     <Compile Include="Installers\QueryProcessorInstaller.cs" />
     <Compile Include="Models\Pager.cs" />

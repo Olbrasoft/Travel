@@ -114,11 +114,11 @@ namespace Olbrasoft.Travel.Business.UnitTest
         public void PagedEnumerableMapper_Is_Instance_Of_IPagedEnumerableMapper()
         {
             //Arrange
-            var type = typeof(IMapper<object, object>);
+            var type = typeof(IMapper<object>);
             var mapper = new Mock<IMapper>();
 
             //Act
-            var pagedEnumerableMapper = new AutoMapper<object, object>(mapper.Object);
+            var pagedEnumerableMapper = new AutoMapper<object>(mapper.Object);
 
             //Assert
             Assert.IsInstanceOf(type, pagedEnumerableMapper);
@@ -129,7 +129,7 @@ namespace Olbrasoft.Travel.Business.UnitTest
         {
             //Arrange
             var mockMapper = new Mock<IMapper>();
-            var someMapper = new SomeAutoMapper<object, object>(mockMapper.Object);
+            var someMapper = new SomeAutoMapper<object>(mockMapper.Object);
 
             //Act
             var mapper = someMapper.Mapper;
@@ -151,17 +151,17 @@ namespace Olbrasoft.Travel.Business.UnitTest
             var pagedAccommodation = accommodtions.AsPagedList();
             var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
             var mapper = config.CreateMapper();
-            var pagedMapper = new AutoMapper<Accommodation, AccommodationDto>(mapper);
+            var pagedMapper = new AutoMapper<Accommodation>(mapper);
 
             //Act
-            var pagedAccommodationDataTransferObject = pagedMapper.Map(pagedAccommodation);
+            var pagedAccommodationDataTransferObject = pagedMapper.Map<AccommodationDto>(pagedAccommodation);
 
             //Assert
 
             Assert.IsTrue(pagedAccommodationDataTransferObject.Last()?.Address == "Veselka 18");
         }
 
-        private class SomeAutoMapper<TSource, TDestination> : AutoMapper<TSource, TDestination>
+        private class SomeAutoMapper<TSource> : AutoMapper<TSource>
         {
 
             public new IMapper Mapper => base.Mapper;

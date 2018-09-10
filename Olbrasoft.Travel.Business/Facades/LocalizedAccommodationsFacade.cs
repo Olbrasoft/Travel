@@ -6,67 +6,55 @@ using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Queries;
 using Olbrasoft.Travel.Data.Transfer.Objects;
-using LocalizedAccommodationsPagedQuery = Olbrasoft.Travel.Data.Queries.LocalizedAccommodationsPagedQuery;
 
 namespace Olbrasoft.Travel.Business.Facades
 {
     public class LocalizedAccommodationsFacade : ILocalizedAccommodationsFacade
     {
-        protected IQueryProcessor QueryProcessor { get; }
+        protected virtual IQueryBuilder QueryBuilder { get; }
 
-        protected IMapper<LocalizedAccommodation, AccommodationDetailDto> Mapper { get; }
+        protected virtual IQueryProcessor QueryProcessor { get; }
+
+        protected virtual IMapper<LocalizedAccommodation> Mapper { get; }
 
         protected ILanguageService LanguageService { get; }
 
         public LocalizedAccommodationsFacade(
             ILanguageService languageService,
-           IQueryProcessor queryProcessor, IMapper<LocalizedAccommodation, AccommodationDetailDto> mapper)
+            IQueryBuilder queryBuilder, IQueryProcessor queryProcessor, IMapper<LocalizedAccommodation> mapper)
         {
+            LanguageService = languageService;
+            QueryBuilder = queryBuilder;
             QueryProcessor = queryProcessor;
             Mapper = mapper;
-            LanguageService = languageService;
         }
 
         public virtual IPagedList<AccommodationDto> Get(IPageInfo pageInfo)
         {
-            var localizedPagedQuery =
-                BuildLocalizedAccommodationsPagedQuery(pageInfo, LanguageService.CurrentLanguageId);
+           
+            var localizedPagedQuery = QueryBuilder
+                .Build<ILocalizedAccommodationsPagedQuery>(p => p.LanguageId, LanguageService.CurrentLanguageId)
+                .SetAndReturn(p => p.Paging, pageInfo);
 
             var pagedListOfLocalizedAccommodation = QueryProcessor.Execute(localizedPagedQuery);
 
-            var pagedListOfAccommodationDto = Mapper.Map(pagedListOfLocalizedAccommodation);
+            var pagedListOfAccommodationDto = Mapper.Map<AccommodationDto>(pagedListOfLocalizedAccommodation);
 
             return pagedListOfAccommodationDto;
         }
-
+        
         public AccommodationDetailDto Get(int id)
         {
-            var localizedAccommodationByIdQuery =
-                BuildLocalizedAccommodationByIdQuery(id, LanguageService.CurrentLanguageId);
-
+            var localizedAccommodationByIdQuery = QueryBuilder.Build<ILocalizedAccommodationByIdQuery>(p => p.Id, id)
+                .SetAndReturn(p => p.LanguageId, LanguageService.CurrentLanguageId);
+            
             var localizedAccommodation = QueryProcessor.Execute(localizedAccommodationByIdQuery);
 
-            var localizedAccommodationDetailDto = Mapper.Map(localizedAccommodation);
+            var localizedAccommodationDetailDto = Mapper.Map<AccommodationDetailDto>(localizedAccommodation);
 
             return localizedAccommodationDetailDto;
         }
+        
 
-        private LocalizedAccommodationByIdQuery BuildLocalizedAccommodationByIdQuery(int id, int languageId)
-        {
-            var localizedAccommodationByIdQuery = new LocalizedAccommodationByIdQuery { Id = id, LanguageId = languageId };
-
-            return localizedAccommodationByIdQuery;
-        }
-
-        protected virtual LocalizedAccommodationsPagedQuery BuildLocalizedAccommodationsPagedQuery(
-            IPageInfo pageInfo, int languageId)
-        {
-            var localizedAccommodationsPagedQuery = new LocalizedAccommodationsPagedQuery { LanguageId = languageId, Paging = pageInfo };
-
-            localizedAccommodationsPagedQuery.AddSorting(p => p.Accommodation.SequenceNumber);
-            localizedAccommodationsPagedQuery.AddSorting(p => p.Id);
-
-            return localizedAccommodationsPagedQuery;
-        }
     }
 }

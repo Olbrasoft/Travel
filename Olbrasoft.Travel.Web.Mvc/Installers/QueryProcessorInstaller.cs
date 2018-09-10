@@ -14,7 +14,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.AddFacility<TypedFactoryFacility>();
+           // container.AddFacility<TypedFactoryFacility>();
 
             container.Register(
                 Component.For(typeof(IQueryProcessor))

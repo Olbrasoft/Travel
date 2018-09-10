@@ -5,7 +5,6 @@ using Olbrasoft.Shared;
 using Olbrasoft.Travel.Business.Facades;
 using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Transfer.Objects;
 
 namespace Olbrasoft.Travel.Business.UnitTest
 {
@@ -18,11 +17,13 @@ namespace Olbrasoft.Travel.Business.UnitTest
             //Arrange
             var type = typeof(IFacade);
             var mockLanguageService = new Mock<ILanguageService>();
+
+            var queryBuilderMock = new Mock<IQueryBuilder>();
             var queryProcessorMock = new Mock<IQueryProcessor>();
-            var mapperMock = new Mock<IMapper<LocalizedAccommodation, AccommodationDetailDto>>();
+            var mapperMock = new Mock<IMapper<LocalizedAccommodation>>();
 
             //Act
-            var accommodationsFacade = new LocalizedAccommodationsFacade(mockLanguageService.Object, queryProcessorMock.Object, mapperMock.Object);
+            var accommodationsFacade = new LocalizedAccommodationsFacade(mockLanguageService.Object, queryBuilderMock.Object, queryProcessorMock.Object, mapperMock.Object);
 
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
