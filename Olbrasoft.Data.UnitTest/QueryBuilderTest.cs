@@ -30,9 +30,9 @@ namespace Olbrasoft.Data.UnitTest
         [TestMethod]
         public void Container_Resolve_ISome_Query()
         {
-            var type = typeof(ISomeQuery);
+            var type = typeof(ISomeQueryWithSorting);
 
-            var query = _container.Resolve<ISomeQuery>();
+            var query = _container.Resolve<ISomeQueryWithSorting>();
 
             Assert.IsInstanceOfType(query, type);
 
@@ -47,10 +47,10 @@ namespace Olbrasoft.Data.UnitTest
         public void SomeQuery_Is_Instance_Of_ISomeQuery()
         {
             //Arrange
-            var type = typeof(ISomeQuery);
+            var type = typeof(ISomeQueryWithSorting);
 
             //Act
-            var someQuery = new SomeQuery();
+            var someQuery = new SomeQueryWithSorting();
 
             //Assert
             Assert.IsInstanceOfType(someQuery, type);
@@ -74,10 +74,10 @@ namespace Olbrasoft.Data.UnitTest
         {
             //Arrange
             var someQueryBuilder = GetQueryBuilder();
-            var type = typeof(ISomeQuery);
+            var type = typeof(ISomeQueryWithSorting);
 
             //Act
-            var query = someQueryBuilder.Build<ISomeQuery>();
+            var query = someQueryBuilder.Build<ISomeQueryWithSorting>();
 
             //Assert
             Assert.IsInstanceOfType(query, type);
@@ -90,7 +90,7 @@ namespace Olbrasoft.Data.UnitTest
             var type = typeof(IAnotherQuery);
 
             //Act
-            var anotherQuery = new AnotherQuery();
+            var anotherQuery = new AnotherQueryWithSorting();
 
             //Assert
             Assert.IsInstanceOfType(anotherQuery, type);
@@ -103,7 +103,7 @@ namespace Olbrasoft.Data.UnitTest
             var type = typeof(IQuery<object>);
 
             //Act
-            var someQuery = new SomeQuery();
+            var someQuery = new SomeQueryWithSorting();
 
             //Assert
             Assert.IsInstanceOfType(someQuery, type);
@@ -116,7 +116,7 @@ namespace Olbrasoft.Data.UnitTest
 
             queryBuilder.Build<IAnotherQuery>();
 
-            Assert.IsTrue(typeof(AnotherQuery).IsClass);
+            Assert.IsTrue(typeof(AnotherQueryWithSorting).IsClass);
         }
 
         [TestMethod]
@@ -134,7 +134,7 @@ namespace Olbrasoft.Data.UnitTest
         {
             var type = typeof(IQuery);
 
-            var query = new AnotherQuery();
+            var query = new AnotherQueryWithSorting();
 
             Assert.IsInstanceOfType(query, type);
         }
@@ -156,7 +156,7 @@ namespace Olbrasoft.Data.UnitTest
         {
             var builder = GetQueryBuilder();
 
-            var query = builder.Build<ISomeQuery>().SetAndReturn(p => p.Id, 5);
+            var query = builder.Build<ISomeQueryWithSorting>().SetAndReturn(p => p.Id, 5);
 
             Assert.IsTrue(query.Id == 5);
         }
@@ -186,7 +186,7 @@ namespace Olbrasoft.Data.UnitTest
         }
     }
 
-    public class AnotherQuery : BaseQuery<object, string>, IAnotherQuery
+    public class AnotherQueryWithSorting : QueryWithSorting<object, string>, IAnotherQuery
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -199,7 +199,7 @@ namespace Olbrasoft.Data.UnitTest
     }
 
 
-    public class SomeQuery : BaseQuery<object, object>, ISomeQuery
+    public class SomeQueryWithSorting : QueryWithSorting<object, object>, ISomeQueryWithSorting
     {
         public int Id { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Olbrasoft.Data.UnitTest
 {
-    public interface ISomeQuery : IQuery<object, object>
+    public interface ISomeQueryWithSorting : IQueryWithSorting<object, object>
     {
         int Id { get; set; }
     }

@@ -1,4 +1,6 @@
-﻿using Olbrasoft.Data;
+﻿using System;
+using System.Linq;
+using Olbrasoft.Data;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Shared;
@@ -17,6 +19,7 @@ namespace Olbrasoft.Travel.Business.Facades
 
         protected virtual IMapper<LocalizedAccommodation> Mapper { get; }
 
+
         protected ILanguageService LanguageService { get; }
 
         public LocalizedAccommodationsFacade(
@@ -29,12 +32,13 @@ namespace Olbrasoft.Travel.Business.Facades
             Mapper = mapper;
         }
 
-        public virtual IPagedList<AccommodationDto> Get(IPageInfo pageInfo)
+        public virtual IPagedList<AccommodationDto> Get(IPageInfo pageInfo, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting)
         {
-           
             var localizedPagedQuery = QueryBuilder
                 .Build<ILocalizedAccommodationsPagedQuery>(p => p.LanguageId, LanguageService.CurrentLanguageId)
-                .SetAndReturn(p => p.Paging, pageInfo);
+                .SetAndReturn(p => p.Paging, pageInfo)
+                .SetAndReturn(p=>p.Sorting,sorting)
+                ;
 
             var pagedListOfLocalizedAccommodation = QueryProcessor.Execute(localizedPagedQuery);
 
@@ -42,6 +46,7 @@ namespace Olbrasoft.Travel.Business.Facades
 
             return pagedListOfAccommodationDto;
         }
+        
         
         public AccommodationDetailDto Get(int id)
         {

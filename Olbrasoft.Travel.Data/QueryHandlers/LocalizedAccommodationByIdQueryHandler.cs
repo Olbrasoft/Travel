@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Olbrasoft.Travel.Data.QueryHandlers
 {
-    public class LocalizedAccommodationByIdQueryHandler : IQueryHandler<LocalizedAccommodationByIdQuery, LocalizedAccommodation>
+    public class LocalizedAccommodationByIdQueryHandler : IQueryHandler<LocalizedAccommodationById, LocalizedAccommodation>
     {
         protected IQueryable<LocalizedAccommodation> Queryable { get; }
 
@@ -15,14 +15,10 @@ namespace Olbrasoft.Travel.Data.QueryHandlers
             Queryable = queryable;
         }
 
-        public LocalizedAccommodation Handle(LocalizedAccommodationByIdQuery query)
+        public LocalizedAccommodation Handle(LocalizedAccommodationById query)
         {
-            var queryable = Queryable;
-
-            queryable = queryable.Where(la => la.Id == query.Id && la.LanguageId == query.LanguageId);
-
-            var localizedAccommodations = queryable.ToArray();
-
+            var localizedAccommodations = Queryable.Where(la => la.Id == query.Id && la.LanguageId == query.LanguageId).ToArray();
+            
             var count = localizedAccommodations.Length;
 
             if (count != 1) throw new Exception("Must return one record");

@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseQuery.cs" />
+    <Compile Include="QueryWithSorting.cs" />
     <Compile Include="ExIQuery.cs" />
     <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryWithSorting.cs" />
     <Compile Include="IQueryBuilder.cs" />
     <Compile Include="IQueryFactory.cs" />
     <Compile Include="IQueryHandler.cs" />

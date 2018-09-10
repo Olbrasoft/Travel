@@ -20,17 +20,14 @@ namespace Olbrasoft.Travel.Data.QueryHandlers
         {
             return PreProcessQuery(query);
         }
-
         
         private IPagedList<LocalizedAccommodation> PreProcessQuery(LocalizedAccommodationsPagedQuery query)
         {
-            var queryable = Queryable;
+            var localizedAccommodationQueryable = Queryable.Where(p => p.LanguageId == query.LanguageId);
 
-            queryable = queryable.Where(p => p.LanguageId == query.LanguageId);
+            var localizedAccommodationOrderedQueryable = query.Sorting(localizedAccommodationQueryable);
 
-            queryable = queryable.OrderBy(p => p.Accommodation.SequenceNumber).ThenBy(p => p.Accommodation.Id);
-
-            return queryable.AsPagedList(query.Paging);
+            return localizedAccommodationOrderedQueryable.AsPagedList(query.Paging);
         }
     }
 }

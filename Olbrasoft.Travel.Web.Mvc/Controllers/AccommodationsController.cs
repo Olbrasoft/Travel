@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Pagination;
+﻿using System.Linq;
+using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Business.Facades;
 using System.Net;
 using System.Threading;
@@ -23,7 +24,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
             var pagedListOfLocalizedAccommodation =
-                _localizedAccommodationFacade.Get(pageInfo);
+                _localizedAccommodationFacade.Get(pageInfo,p=>p.OrderBy(la=>la.Accommodation.SequenceNumber).ThenBy(la=>la.Id));
 
             return View(pagedListOfLocalizedAccommodation);
         }
