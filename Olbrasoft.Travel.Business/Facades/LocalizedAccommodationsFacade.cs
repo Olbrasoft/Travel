@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Olbrasoft.Data;
+﻿using Olbrasoft.Data;
 using Olbrasoft.Pagination;
 using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Shared;
@@ -8,9 +6,12 @@ using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Queries;
 using Olbrasoft.Travel.Data.Transfer.Objects;
+using System;
+using System.Linq;
 
 namespace Olbrasoft.Travel.Business.Facades
 {
+    
     public class LocalizedAccommodationsFacade : ILocalizedAccommodationsFacade
     {
         protected virtual IQueryBuilder QueryBuilder { get; }
@@ -19,9 +20,8 @@ namespace Olbrasoft.Travel.Business.Facades
 
         protected virtual IMapper<LocalizedAccommodation> Mapper { get; }
 
-
         protected ILanguageService LanguageService { get; }
-
+         
         public LocalizedAccommodationsFacade(
             ILanguageService languageService,
             IQueryBuilder queryBuilder, IQueryProcessor queryProcessor, IMapper<LocalizedAccommodation> mapper)
@@ -37,7 +37,7 @@ namespace Olbrasoft.Travel.Business.Facades
             var localizedPagedQuery = QueryBuilder
                 .Build<ILocalizedAccommodationsPagedQuery>(p => p.LanguageId, LanguageService.CurrentLanguageId)
                 .SetAndReturn(p => p.Paging, pageInfo)
-                .SetAndReturn(p=>p.Sorting,sorting)
+                .SetAndReturn(p => p.Sorting, sorting)
                 ;
 
             var pagedListOfLocalizedAccommodation = QueryProcessor.Execute(localizedPagedQuery);
@@ -46,20 +46,17 @@ namespace Olbrasoft.Travel.Business.Facades
 
             return pagedListOfAccommodationDto;
         }
-        
-        
+
         public AccommodationDetailDto Get(int id)
         {
             var localizedAccommodationByIdQuery = QueryBuilder.Build<ILocalizedAccommodationByIdQuery>(p => p.Id, id)
                 .SetAndReturn(p => p.LanguageId, LanguageService.CurrentLanguageId);
-            
+
             var localizedAccommodation = QueryProcessor.Execute(localizedAccommodationByIdQuery);
 
             var localizedAccommodationDetailDto = Mapper.Map<AccommodationDetailDto>(localizedAccommodation);
 
             return localizedAccommodationDetailDto;
         }
-        
-
     }
 }

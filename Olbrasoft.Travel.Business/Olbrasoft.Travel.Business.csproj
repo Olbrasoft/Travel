@@ -171,7 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facades\ILocalizedAccommodationsFacade.cs" />
-    <Compile Include="Facades\IFacade.cs" />
     <Compile Include="Facades\ILanguagesFacade.cs" />
     <Compile Include="Facades\ITravelFacade.cs" />
     <Compile Include="Facades\ITypesOfRegionsFacade.cs" />
@@ -183,12 +182,18 @@
     <Compile Include="Facades\UsersFacade.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="Mapping\AccommodationProfile.cs" />
+    <Compile Include="Mapping\ILocalizedAccommodationMapper.cs" />
     <Compile Include="Mapping\IMapper.cs" />
+    <Compile Include="Mapping\LocalizedAccommodationAutoMapper.cs" />
     <Compile Include="Mapping\LocalizedAccommodationProfile.cs" />
     <Compile Include="Mapping\AutoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Business\Olbrasoft.Business.csproj">
+      <Project>{9e9089a2-2b27-4d35-bd0b-56ab1c3f2a9c}</Project>
+      <Name>Olbrasoft.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{c38f7833-3953-4e1c-af9c-1e9a2c3b738b}</Project>
       <Name>Olbrasoft.Data</Name>

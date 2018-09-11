@@ -50,7 +50,7 @@ namespace Olbrasoft.Data.UnitTest
             var type = typeof(ISomeQueryWithSorting);
 
             //Act
-            var someQuery = new SomeQueryWithSorting();
+            var someQuery = new SomQuery();
 
             //Assert
             Assert.IsInstanceOfType(someQuery, type);
@@ -90,7 +90,7 @@ namespace Olbrasoft.Data.UnitTest
             var type = typeof(IAnotherQuery);
 
             //Act
-            var anotherQuery = new AnotherQueryWithSorting();
+            var anotherQuery = new AnotherQueryWithSortingQuery();
 
             //Assert
             Assert.IsInstanceOfType(anotherQuery, type);
@@ -103,7 +103,7 @@ namespace Olbrasoft.Data.UnitTest
             var type = typeof(IQuery<object>);
 
             //Act
-            var someQuery = new SomeQueryWithSorting();
+            var someQuery = new SomQuery();
 
             //Assert
             Assert.IsInstanceOfType(someQuery, type);
@@ -112,11 +112,11 @@ namespace Olbrasoft.Data.UnitTest
         [TestMethod]
         public void Build_Of_Concrete_Class()
         {
-            var queryBuilder = GetQueryBuilder();
+            var queryBuilder = Builder();
 
-            queryBuilder.Build<IAnotherQuery>();
+            var query = queryBuilder.Build<IAnotherQuery>();
 
-            Assert.IsTrue(typeof(AnotherQueryWithSorting).IsClass);
+            Assert.IsTrue(typeof(AnotherQueryWithSortingQuery).IsClass);
         }
 
         [TestMethod]
@@ -134,7 +134,7 @@ namespace Olbrasoft.Data.UnitTest
         {
             var type = typeof(IQuery);
 
-            var query = new AnotherQueryWithSorting();
+            var query = new AnotherQueryWithSortingQuery();
 
             Assert.IsInstanceOfType(query, type);
         }
@@ -147,8 +147,7 @@ namespace Olbrasoft.Data.UnitTest
 
             var query = builder.Build<IAnotherQuery>();
 
-            Assert.IsInstanceOfType(query,type);
-
+            Assert.IsInstanceOfType(query, type);
         }
 
         [TestMethod]
@@ -186,7 +185,7 @@ namespace Olbrasoft.Data.UnitTest
         }
     }
 
-    public class AnotherQueryWithSorting : QueryWithSorting<object, string>, IAnotherQuery
+    public class AnotherQueryWithSortingQuery : QueryWithSorting<object, string>, IAnotherQuery
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -196,11 +195,5 @@ namespace Olbrasoft.Data.UnitTest
     {
         int Id { get; set; }
         string Name { get; set; }
-    }
-
-
-    public class SomeQueryWithSorting : QueryWithSorting<object, object>, ISomeQueryWithSorting
-    {
-        public int Id { get; set; }
     }
 }

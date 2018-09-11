@@ -36,7 +36,7 @@ namespace Olbrasoft.Data.UnitTest
         public void Resolve_with_set_Id_Error_Get()
         {
             //Arrange
-            const int id = 5;
+           // const int id = 5;
 
             //Act
             var query = _container.Resolve<IQueryWithOutImplementation>();

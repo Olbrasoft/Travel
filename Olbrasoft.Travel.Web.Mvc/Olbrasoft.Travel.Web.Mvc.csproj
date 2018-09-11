@@ -237,6 +237,10 @@
     <Folder Include="Code\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Business\Olbrasoft.Business.csproj">
+      <Project>{9e9089a2-2b27-4d35-bd0b-56ab1c3f2a9c}</Project>
+      <Name>Olbrasoft.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Castle\Olbrasoft.Castle.csproj">
       <Project>{cdae0ee0-6555-44f6-b1c3-fb7866318756}</Project>
       <Name>Olbrasoft.Castle</Name>
