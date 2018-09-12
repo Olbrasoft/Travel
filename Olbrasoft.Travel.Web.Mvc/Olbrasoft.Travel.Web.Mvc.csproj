@@ -198,6 +198,7 @@
     <Compile Include="Installers\QueryBuilderInstaller.cs" />
     <Compile Include="Installers\QueryFactoryInstaller.cs" />
     <Compile Include="Installers\QueryHandlersInstaller.cs" />
+    <Compile Include="Installers\QueryManagerInstaller.cs" />
     <Compile Include="Installers\QueryProcessorInstaller.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />

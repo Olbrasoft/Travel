@@ -17,18 +17,18 @@ namespace Olbrasoft.Travel.Business.UnitTest
         {
             //Arrange
             var type = typeof(IFacade);
-            var mockLanguageService = new Mock<ILanguageService>();
-
-            var queryBuilderMock = new Mock<IQueryBuilder>();
-            var queryProcessorMock = new Mock<IQueryProcessor>();
+            var languageServiceMock = new Mock<ILanguageService>();
+            var queryManagerMock= new Mock<IQueryManager>();
             var mapperMock = new Mock<IMapper<LocalizedAccommodation>>();
 
             //Act
-            var accommodationsFacade = new LocalizedAccommodationsFacade(mockLanguageService.Object, queryBuilderMock.Object, queryProcessorMock.Object, mapperMock.Object);
+            var accommodationsFacade = new LocalizedAccommodationsFacade(queryManagerMock.Object, mapperMock.Object,
+                languageServiceMock.Object);
 
             //Assert
             Assert.IsInstanceOf(type, accommodationsFacade);
         }
+
 
         //[Test]
         //public void CreateInstanceOfTypeAccommodationsFacade()

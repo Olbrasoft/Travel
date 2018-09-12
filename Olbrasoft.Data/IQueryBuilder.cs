@@ -5,8 +5,8 @@ namespace Olbrasoft.Data
 {
     public interface IQueryBuilder
     {
-        T Build<T>() where T : IQuery;
+        TQuery Build<TQuery>() where TQuery : IQuery;
 
-        T Build<T>(Expression<Func<T,object>> memberSelector, object value) where T : IQuery;
+        TQuery Build<TQuery>(Expression<Func<TQuery,object>> memberSelector, object value) where TQuery : IQuery;
     }
 }

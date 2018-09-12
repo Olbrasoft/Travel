@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IQueryManager.cs" />
+    <Compile Include="QueryHandler.cs" />
     <Compile Include="QueryManager.cs" />
     <Compile Include="QueryWithSorting.cs" />
     <Compile Include="ExIQuery.cs" />

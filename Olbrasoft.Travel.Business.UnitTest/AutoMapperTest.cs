@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using Moq;
 using NUnit.Framework;
+using Olbrasoft.Business;
 using Olbrasoft.Pagination.Linq;
 using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;

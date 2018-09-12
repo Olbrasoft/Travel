@@ -2,6 +2,7 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Olbrasoft.Business;
 using Olbrasoft.Shared;
 using Olbrasoft.Shared.UnitTest;
 using Olbrasoft.Travel.Business.Facades;

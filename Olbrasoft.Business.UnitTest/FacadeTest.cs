@@ -41,7 +41,7 @@ namespace Olbrasoft.Business.UnitTest
             var facade = GetFacade();
 
             //Act
-            var queryBuilder = facade.QueryBuilder;
+            var queryBuilder = facade.QueryManager;
 
             //Assert
             Assert.IsInstanceOf(type, queryBuilder);
@@ -64,14 +64,14 @@ namespace Olbrasoft.Business.UnitTest
         public void QueryBuilder_Is_Instance_Of_IFadeQueryBuilder()
         {
             //Arrange
-            var type = typeof(ISomeQueryBuilder);
+            var type = typeof(ISomeQueryManager);
             var facade = GetFacade();
 
             //Act
-            var queryBuilder = facade.QueryBuilder;
+            var queryManager = facade.QueryManager;
 
             //Assert
-            Assert.IsInstanceOf(type, queryBuilder);
+            Assert.IsInstanceOf(type, queryManager);
         }
 
         [Test]
@@ -90,24 +90,30 @@ namespace Olbrasoft.Business.UnitTest
 
 
 
+
+
         private static SomeFacade GetFacade()
         {
-            var queryBuilderMock = new Mock<ISomeQueryBuilder>();
+            var queryManagerMock = new Mock<ISomeQueryManager>();
 
-            return new SomeFacade(queryBuilderMock.Object);
+            return new SomeFacade(queryManagerMock.Object);
         }
     }
 
+
+
     internal interface ISomeFacade : IFacade
     {
-        ISomeQueryBuilder QueryBuilder { get; }
+        ISomeQueryManager QueryManager { get; }
 
-        IQueryBuilder GetBaseQueryBuilder();
+        IQueryManager GetBaseQueryBuilder();
+
+
 
 
     }
 
-    public interface ISomeQueryBuilder : IQueryBuilder
+    public interface ISomeQueryManager : IQueryManager
     {
     }
 
@@ -116,16 +122,20 @@ namespace Olbrasoft.Business.UnitTest
 
     internal class SomeFacade : BaseFacade, ISomeFacade
     {
-        public new ISomeQueryBuilder QueryBuilder { get; }
-
-        public IQueryBuilder GetBaseQueryBuilder()
+        public new ISomeQueryManager QueryManager { get; }
+        public IQueryManager GetBaseQueryBuilder()
         {
-            return base.QueryBuilder;
+            return base.QueryManager;
         }
 
-        public SomeFacade(ISomeQueryBuilder queryBuilder) : base(queryBuilder)
+        
+        public SomeFacade(ISomeQueryManager queryManager) : base(queryManager)
         {
-            QueryBuilder = queryBuilder;
+            QueryManager = queryManager;
         }
+
+
+
+
     }
 }

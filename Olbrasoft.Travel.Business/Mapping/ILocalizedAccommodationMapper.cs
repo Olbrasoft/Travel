@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿using Olbrasoft.Business;
+using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Business.Mapping
 {

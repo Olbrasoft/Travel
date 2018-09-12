@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Pagination.Collections.Generic;
 
-namespace Olbrasoft.Travel.Business.Mapping
+namespace Olbrasoft.Business
 {
     public interface IMapper<in TSource>
     {

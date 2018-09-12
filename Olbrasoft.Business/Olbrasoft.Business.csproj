@@ -42,12 +42,17 @@
   <ItemGroup>
     <Compile Include="BaseFacade.cs" />
     <Compile Include="IFacade.cs" />
+    <Compile Include="IMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
+      <Project>{91D6B045-C17B-4907-8058-A4DAE3F1DD49}</Project>
+      <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

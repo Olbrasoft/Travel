@@ -45,8 +45,6 @@
     <Compile Include="Queries\ILocalizedAccommodationsPagedQuery.cs" />
     <Compile Include="Queries\LocalizedAccommodationById.cs" />
     <Compile Include="Queries\LocalizedAccommodationsPagedQuery.cs" />
-    <Compile Include="QueryHandlers\LocalizedAccommodationByIdQueryHandler.cs" />
-    <Compile Include="QueryHandlers\LocalizedAccommodationsQueryHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">

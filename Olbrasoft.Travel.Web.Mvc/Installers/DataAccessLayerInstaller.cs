@@ -3,7 +3,6 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity;
-using System.Data.Entity;
 using System.Linq;
 
 namespace Olbrasoft.Travel.Web.Mvc.Installers
@@ -12,7 +11,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            var queryable = new TravelContext().LocalizedAccommodations.Include(p => p.Accommodation);
+            var queryable = new TravelContext().LocalizedAccommodations;
 
             container.Register(Component.For<IQueryable<LocalizedAccommodation>>().Instance(queryable));
 

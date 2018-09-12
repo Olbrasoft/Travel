@@ -5,8 +5,8 @@ namespace Olbrasoft.Data
 {
     public class QueryManager : IQueryManager
     {
-        public IQueryBuilder QueryBuilder { get; }
-        public IQueryProcessor QueryProcessor { get; }
+        protected IQueryBuilder QueryBuilder { get; }
+        protected IQueryProcessor QueryProcessor { get; }
 
         public QueryManager(IQueryBuilder queryBuilder, IQueryProcessor queryProcessor)
         {

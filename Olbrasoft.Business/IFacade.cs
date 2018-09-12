@@ -2,6 +2,9 @@
 {
     public interface IFacade
     {
+    }
 
+    public interface IFacade<T> : IFacade
+    {
     }
 }

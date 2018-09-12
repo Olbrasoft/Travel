@@ -183,7 +183,6 @@
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="Mapping\AccommodationProfile.cs" />
     <Compile Include="Mapping\ILocalizedAccommodationMapper.cs" />
-    <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="Mapping\LocalizedAccommodationAutoMapper.cs" />
     <Compile Include="Mapping\LocalizedAccommodationProfile.cs" />
     <Compile Include="Mapping\AutoMapper.cs" />
