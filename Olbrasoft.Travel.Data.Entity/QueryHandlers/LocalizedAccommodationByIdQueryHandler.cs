@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Olbrasoft.Travel.Data.Entity.QueryHandlers
 {
-    public class LocalizedAccommodationByIdQueryHandler : QueryHandler<LocalizedAccommodationById, LocalizedAccommodation>
+    public class LocalizedAccommodationByIdQueryHandler : QueryHandler<LocalizedAccommodationByIdQuery, LocalizedAccommodation>
     {
         private IQueryable<LocalizedAccommodation> Queryable { get; }
 
@@ -18,19 +18,19 @@ namespace Olbrasoft.Travel.Data.Entity.QueryHandlers
             Queryable = queryable;
         }
         
-        private IQueryable<LocalizedAccommodation> LocalizedAccommodationsQueryable(LocalizedAccommodationById query)
+        private IQueryable<LocalizedAccommodation> LocalizedAccommodationsQueryable(LocalizedAccommodationByIdQuery query)
         {
             return Queryable.Where(la => la.Id == query.Id && la.LanguageId == query.LanguageId);
         }
 
-        private IQueryable<Description> DescriptionsQueryable(LocalizedAccommodationById query)
+        private IQueryable<Description> DescriptionsQueryable(LocalizedAccommodationByIdQuery query)
         {
             return Queryable.SelectMany(p => p.Accommodation.Descriptions)
                .Where(p => p.AccommodationId == query.Id && p.LanguageId == query.LanguageId);
         }
 
 
-        public override LocalizedAccommodation Handle(LocalizedAccommodationById query)
+        public override LocalizedAccommodation Handle(LocalizedAccommodationByIdQuery query)
         {
             var localizedAccommodations = LocalizedAccommodationsQueryable(query).ToArray();
 
@@ -47,7 +47,7 @@ namespace Olbrasoft.Travel.Data.Entity.QueryHandlers
             return localizedAccommodation;
         }
 
-        public override async Task<LocalizedAccommodation> HandleAsync(LocalizedAccommodationById query, CancellationToken cancellationToken)
+        public override async Task<LocalizedAccommodation> HandleAsync(LocalizedAccommodationByIdQuery query, CancellationToken cancellationToken)
         {
             var localizedAccommodations = await LocalizedAccommodationsQueryable(query).ToArrayAsync(cancellationToken);
 

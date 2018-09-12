@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Business.UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Business", "Olbrasoft.Business\Olbrasoft.Business.csproj", "{9E9089A2-2B27-4D35-BD0B-56AB1C3F2A9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Unit.Tests", "Olbrasoft.Travel.Data.Unit.Tests\Olbrasoft.Travel.Data.Unit.Tests.csproj", "{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{9E9089A2-2B27-4D35-BD0B-56AB1C3F2A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E9089A2-2B27-4D35-BD0B-56AB1C3F2A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E9089A2-2B27-4D35-BD0B-56AB1C3F2A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +180,7 @@ Global
 		{06B038B4-9778-481C-807C-A9C7B623B284} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{676D810A-B427-4865-9C9F-1883E6D59FE9} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{37B77D47-BAE0-4E55-BB4A-F415751244A3} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
+		{B8685B8C-0185-4CD4-B286-8F5990EFCCE7} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAFDBBA1-285A-4590-BF35-774C3B64E118}
