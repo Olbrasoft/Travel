@@ -1,5 +1,5 @@
-﻿using Olbrasoft.Data;
-using Olbrasoft.Pagination.Collections.Generic;
+﻿using Olbrasoft.Collections.Generic;
+using Olbrasoft.Data;
 using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Queries

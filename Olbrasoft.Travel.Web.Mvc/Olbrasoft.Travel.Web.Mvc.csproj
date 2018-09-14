@@ -194,6 +194,7 @@
     <Compile Include="Installers\BusinessLogicLayerInstaller.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\DataAccessLayerInstaller.cs" />
+    <Compile Include="Installers\DynamicQueryProcessor.cs" />
     <Compile Include="Installers\QueriesInstaller.cs" />
     <Compile Include="Installers\QueryBuilderInstaller.cs" />
     <Compile Include="Installers\QueryFactoryInstaller.cs" />
@@ -235,7 +236,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Code\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Business\Olbrasoft.Business.csproj">
@@ -245,6 +245,10 @@
     <ProjectReference Include="..\Olbrasoft.Castle\Olbrasoft.Castle.csproj">
       <Project>{cdae0ee0-6555-44f6-b1c3-fb7866318756}</Project>
       <Name>Olbrasoft.Castle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
+      <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
+      <Name>Olbrasoft.Collections</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{c38f7833-3953-4e1c-af9c-1e9a2c3b738b}</Project>
@@ -274,6 +278,10 @@
       <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Query\Olbrasoft.Travel.Data.Entity.Query.csproj">
+      <Project>{fcad3133-caf2-45fb-ba14-496fbfd83d16}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity.Query</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
@@ -281,6 +289,10 @@
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
       <Project>{145fb572-face-4a40-b3f5-78dfcff72f77}</Project>
       <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
+      <Project>{8A74E643-324D-4769-A8C5-2F013819A6DD}</Project>
+      <Name>Olbrasoft.Travel.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
+      <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
+      <Name>Olbrasoft.Collections</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>

@@ -9,11 +9,11 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             
-            var classes = Classes.FromAssemblyNamed("Olbrasoft.Travel.Data");
+            var classes = Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity.Query");
             
             container.Register(classes
             .Where(type => type.Name.EndsWith("QueryHandler"))
-            .WithServiceFirstInterface()
+                .WithServiceFirstInterface()
             .LifestyleTransient());
         }
     }

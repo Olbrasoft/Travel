@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Olbrasoft.Data
 {
@@ -21,12 +23,22 @@ namespace Olbrasoft.Data
 
         public T Build<T>(Expression<Func<T, object>> memberSelector, object value) where T : IQuery
         {
-            return QueryBuilder.Build<T>(memberSelector, value);
+            return QueryBuilder.Build(memberSelector, value);
         }
 
-        public TResult Execute<TResult>(IQuery<TResult> query)
+        public TResult Process<TResult>(IQuery<TResult> query)
         {
-            return QueryProcessor.Execute(query);
+            return QueryProcessor.Process(query);
+        }
+
+        public Task<TResult> ProcessAsync<TResult>(IQuery<TResult> query)
+        {
+            return QueryProcessor.ProcessAsync(query);
+        }
+
+        public Task<TResult> ProcessAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken)
+        {
+            return QueryProcessor.ProcessAsync(query, cancellationToken);
         }
     }
 }

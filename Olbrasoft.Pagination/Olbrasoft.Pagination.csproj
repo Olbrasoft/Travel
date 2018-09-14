@@ -44,9 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasePagination.cs" />
-    <Compile Include="Collections\Generic\IPagedList.cs" />
-    <Compile Include="Collections\Generic\PagedList.cs" />
-    <Compile Include="INumberSelectedPage.cs" />
     <Compile Include="IPageInfo.cs" />
     <Compile Include="IPagination.cs" />
     <Compile Include="Linq\Paged.cs" />
@@ -56,6 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
+      <Project>{60e9c8de-cad1-4bc3-8bbd-249b0437fbee}</Project>
+      <Name>Olbrasoft.Collections</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

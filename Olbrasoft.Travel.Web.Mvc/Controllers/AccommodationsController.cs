@@ -3,6 +3,7 @@ using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Business.Facades;
 using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
@@ -29,19 +30,18 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             return View(pagedListOfLocalizedAccommodation);
         }
 
-        public ActionResult Detail(int? id)
+        public async Task<ActionResult> Detail(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var accommodationId = (int)id;
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
-            var accommodationDetailDto = _localizedAccommodationFacade.Get(accommodationId);
+            var accommodationDetailDto = await _localizedAccommodationFacade.GetAsync(accommodationId);
 
-            return View(accommodationDetailDto);
+            return View( accommodationDetailDto);
+
         }
     }
 }

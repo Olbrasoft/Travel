@@ -84,6 +84,10 @@
       <Project>{9e9089a2-2b27-4d35-bd0b-56ab1c3f2a9c}</Project>
       <Name>Olbrasoft.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
+      <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
+      <Name>Olbrasoft.Collections</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>

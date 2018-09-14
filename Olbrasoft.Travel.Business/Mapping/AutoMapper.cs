@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Pagination.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using Olbrasoft.Business;
+using Olbrasoft.Collections.Generic;
 
 namespace Olbrasoft.Travel.Business.Mapping
 {

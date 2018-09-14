@@ -3,13 +3,20 @@ using System.Threading.Tasks;
 
 namespace Olbrasoft.Data
 {
-    public abstract class QueryHandler<TQuery, TResult> : IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
+    public abstract class QueryHandler<TQuery, TSource, TResult> : IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
     {
+        protected TSource Source { get; }
+
+        protected QueryHandler(TSource source)
+        {
+            Source = source;
+        }
+
         public abstract TResult Handle(TQuery query);
 
-        public async Task<TResult> HandleAsync(TQuery query)
+        public Task<TResult> HandleAsync(TQuery query)
         {
-            return await HandleAsync(query, default(CancellationToken));
+           return HandleAsync(query, default(CancellationToken));
         }
 
         public abstract Task<TResult> HandleAsync(TQuery query, CancellationToken cancellationToken);

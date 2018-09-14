@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Pagination.Collections.Generic;
+﻿using Olbrasoft.Collections.Generic;
 
 namespace Olbrasoft.Business
 {

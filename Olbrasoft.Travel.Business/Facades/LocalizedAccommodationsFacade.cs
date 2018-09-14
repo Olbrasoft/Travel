@@ -1,13 +1,14 @@
 ﻿using Olbrasoft.Business;
 using Olbrasoft.Data;
 using Olbrasoft.Pagination;
-using Olbrasoft.Pagination.Collections.Generic;
 using Olbrasoft.Shared;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Queries;
 using Olbrasoft.Travel.Data.Transfer.Objects;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Olbrasoft.Collections.Generic;
 
 namespace Olbrasoft.Travel.Business.Facades
 {
@@ -28,11 +29,10 @@ namespace Olbrasoft.Travel.Business.Facades
 
             return pagedListOfAccommodationDto;
         }
-
+        
         public AccommodationDetailDto Get(int id)
         {
-            var localizedAccommodationByIdQuery = Build<ILocalizedAccommodationByIdQuery>(p => p.Id, id)
-                .SetAndReturn(p => p.LanguageId, LanguageService.CurrentLanguageId);
+            var localizedAccommodationByIdQuery = BuildLocalizedAccommodationByIdQuery(id);
 
             var localizedAccommodation = Execute(localizedAccommodationByIdQuery);
 
@@ -41,6 +41,25 @@ namespace Olbrasoft.Travel.Business.Facades
             return localizedAccommodationDetailDto;
         }
 
+        public async Task<AccommodationDetailDto> GetAsync(int id)
+        {
+            var localizedAccommodationByIdQuery = BuildLocalizedAccommodationByIdQuery(id);
+
+            var localizedAccommodation = await ExecuteAsync(localizedAccommodationByIdQuery);
+            
+            var localizedAccommodationDetailDto = Mapper.Map<AccommodationDetailDto>(localizedAccommodation);
+
+            return localizedAccommodationDetailDto;
+        }
+
+        private ILocalizedAccommodationByIdQuery BuildLocalizedAccommodationByIdQuery(int id)
+        {
+            var localizedAccommodationByIdQuery = Build<ILocalizedAccommodationByIdQuery>(p => p.Id, id)
+                .SetAndReturn(p => p.LanguageId, LanguageService.CurrentLanguageId);
+            return localizedAccommodationByIdQuery;
+        }
+
+        
         public LocalizedAccommodationsFacade(IQueryManager queryManager, IMapper<LocalizedAccommodation> mapper, ILanguageService languageService) : base(queryManager, mapper)
         {
             LanguageService = languageService;

@@ -13,6 +13,9 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
             container.Register(classes
                 .Where(type => type.Name.EndsWith("Query"))
                 .WithServiceAllInterfaces().LifestylePerWebRequest());
+
+            //container.Register(Component.For<ILocalizedAccommodationByIdQuery>()
+            //    .ImplementedBy(typeof(LocalizedAccommodationByIdQuery)));
         }
     }
 }

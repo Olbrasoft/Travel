@@ -14,6 +14,11 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
             container.AddFacility<TypedFactoryFacility>();
             container.Register(Component.For<IQueryFactory>()
                 .AsFactory());
+
+
+
         }
     }
+    
+    
 }

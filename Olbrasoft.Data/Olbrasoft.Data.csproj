@@ -43,7 +43,6 @@
     <Compile Include="IQueryManager.cs" />
     <Compile Include="QueryHandler.cs" />
     <Compile Include="QueryManager.cs" />
-    <Compile Include="QueryWithSorting.cs" />
     <Compile Include="ExIQuery.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="IQueryWithSorting.cs" />
@@ -53,6 +52,7 @@
     <Compile Include="IQueryProcesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBuilder.cs" />
+    <Compile Include="QueryWithSorting.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">

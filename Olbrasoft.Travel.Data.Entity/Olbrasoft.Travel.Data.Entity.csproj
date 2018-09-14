@@ -314,8 +314,6 @@
     </Compile>
     <Compile Include="Migrations\TravelMigrationsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryHandlers\LocalizedAccommodationByIdQueryHandler.cs" />
-    <Compile Include="QueryHandlers\LocalizedAccommodationsQueryHandler.cs" />
     <Compile Include="Repositories\AccommodationsToAttributesRepository.cs" />
     <Compile Include="Repositories\AdditionalRegionsInfoRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />

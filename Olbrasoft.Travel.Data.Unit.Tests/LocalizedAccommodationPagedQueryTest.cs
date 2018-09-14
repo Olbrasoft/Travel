@@ -1,12 +1,11 @@
 ﻿using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Data.Queries;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     internal class LocalizedAccommodationPagedQueryTest
     {
         [Test]
@@ -35,7 +34,6 @@ namespace Olbrasoft.Travel.Data.Unit.Tests
             Assert.IsTrue(resultLanguageId == 8);
         }
 
-
         [Test]
         public void Paging_Set_Get()
         {
@@ -45,14 +43,12 @@ namespace Olbrasoft.Travel.Data.Unit.Tests
 
             ILocalizedAccommodationsPagedQuery query = new LocalizedAccommodationsPagedQuery();
             query.Paging = pageInfo;
-            
+
             //Act
             IPageInfo resultPageInfo = query.Paging;
 
             //Assert
-            Assert.AreSame(resultPageInfo,pageInfo);
-
+            Assert.AreSame(resultPageInfo, pageInfo);
         }
-
     }
 }

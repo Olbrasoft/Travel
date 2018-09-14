@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Olbrasoft.Pagination.Collections.Generic;
+using Olbrasoft.Collections.Generic;
 
 namespace Olbrasoft.Pagination.Linq
 {
@@ -13,7 +13,7 @@ namespace Olbrasoft.Pagination.Linq
         /// <returns>The input sequence typed as <see cref="T:Olbrasoft.Collections.Generic.IPagedList`1" />.</returns>
         public static IPagedList<TSource> AsPagedList<TSource>(this IEnumerable<TSource> source, IPagination pagination)
         {
-            return new PagedList<TSource>(source, pagination.PageInfo, pagination.CountWithOutPaging());
+            return new PagedList<TSource>(source,pagination.PageInfo.NumberOfSelectedPage, pagination.PageInfo.PageSize, pagination.CountWithOutPaging());
         }
 
         public static IPagedList<TSource> AsPagedList<TSource>(this IEnumerable<TSource> source)
