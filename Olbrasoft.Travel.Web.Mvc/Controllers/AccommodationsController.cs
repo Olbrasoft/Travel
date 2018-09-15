@@ -18,14 +18,14 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
         }
 
         // GET: Accommodations
-        public ActionResult Index(int page = 1)
+        public async Task<ActionResult> Index(int page = 1)
         {
             var pageInfo = new PageInfo(10, page);
 
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
 
-            var pagedListOfLocalizedAccommodation =
-                _localizedAccommodationFacade.Get(pageInfo,p=>p.OrderBy(la=>la.Accommodation.SequenceNumber).ThenBy(la=>la.Id));
+            var pagedListOfLocalizedAccommodation = await 
+                _localizedAccommodationFacade.GetAsync(pageInfo,p=>p.OrderBy(la=>la.Accommodation.SequenceNumber).ThenBy(la=>la.Id));
 
             return View(pagedListOfLocalizedAccommodation);
         }

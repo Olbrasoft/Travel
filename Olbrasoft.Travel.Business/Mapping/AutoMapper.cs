@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Olbrasoft.Pagination.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using Olbrasoft.Business;
 using Olbrasoft.Collections.Generic;
+using Olbrasoft.Pagination;
 
 namespace Olbrasoft.Travel.Business.Mapping
 {
@@ -23,9 +23,9 @@ namespace Olbrasoft.Travel.Business.Mapping
 
         public IPagedList<TDestination> Map<TDestination>(IPagedList<TSource> source)
         {
-            var enumerable = Mapper.Map<IEnumerable<TDestination>>(source.AsEnumerable());
+            var destinations = Mapper.Map<IEnumerable<TDestination>>(source.AsEnumerable());
 
-            return enumerable.AsPagedList(source.AsPagination());
+            return destinations.ToPagedList(source.AsPagination());
         }
     }
 }

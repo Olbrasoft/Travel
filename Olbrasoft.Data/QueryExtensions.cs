@@ -4,11 +4,9 @@ using System.Reflection;
 
 namespace Olbrasoft.Data
 {
-    public static class ExIQuery
+    public static class QueryExtensions
     {
-
-       
-       private static PropertyInfo Property<T>(Expression<Func<T, object>> property)
+        private static PropertyInfo Property<T>(Expression<Func<T, object>> property)
         {
             var lambda = (LambdaExpression)property;
             MemberExpression memberExpression;
@@ -17,22 +15,20 @@ namespace Olbrasoft.Data
             {
                 var unaryExpression = expression;
 
-                memberExpression = (MemberExpression)(unaryExpression.Operand);
+                memberExpression = (MemberExpression)unaryExpression.Operand;
             }
             else
             {
-                memberExpression = (MemberExpression)(lambda.Body);
+                memberExpression = (MemberExpression)lambda.Body;
             }
 
-            return ((PropertyInfo)memberExpression.Member);
+            return (PropertyInfo)memberExpression.Member;
         }
-
 
         public static T SetAndReturn<T, TValue>(this T target, Expression<Func<T, object>> memberSelector, TValue value) where T : IQuery
         {
-
             var property = Property(memberSelector);
-            
+
             if (property != null)
             {
                 property.SetValue(target, value, null);

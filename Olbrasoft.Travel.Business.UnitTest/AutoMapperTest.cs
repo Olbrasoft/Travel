@@ -4,7 +4,7 @@ using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using Olbrasoft.Business;
-using Olbrasoft.Pagination.Linq;
+using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Business.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Objects;
@@ -149,7 +149,7 @@ namespace Olbrasoft.Travel.Business.UnitTest
                 new Accommodation {Address= "Veselka 18"}
             };
 
-            var pagedAccommodation = accommodtions.AsPagedList();
+            var pagedAccommodation = accommodtions.ToPagedList();
             var config = new MapperConfiguration(cfg => cfg.AddProfile<AccommodationProfile>());
             var mapper = config.CreateMapper();
             var pagedMapper = new AutoMapper<Accommodation>(mapper);

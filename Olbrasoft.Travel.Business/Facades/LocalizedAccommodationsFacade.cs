@@ -29,7 +29,21 @@ namespace Olbrasoft.Travel.Business.Facades
 
             return pagedListOfAccommodationDto;
         }
-        
+
+        public async Task<IPagedList<AccommodationDto>> GetAsync(IPageInfo pageInfo, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting)
+        {
+            var localizedPagedQuery = Build<ILocalizedAccommodationsPagedQuery>(p => p.LanguageId, LanguageService.CurrentLanguageId)
+                    .SetAndReturn(p => p.Paging, pageInfo)
+                    .SetAndReturn(p => p.Sorting, sorting)
+                ;
+
+            var pagedListOfLocalizedAccommodation = await ExecuteAsync(localizedPagedQuery);
+
+            var pagedListOfAccommodationDto = Mapper.Map<AccommodationDto>(pagedListOfLocalizedAccommodation);
+
+            return pagedListOfAccommodationDto;
+        }
+
         public AccommodationDetailDto Get(int id)
         {
             var localizedAccommodationByIdQuery = BuildLocalizedAccommodationByIdQuery(id);

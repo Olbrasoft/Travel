@@ -2,6 +2,5 @@
 {
     public interface IQueryManager : IQueryBuilder, IQueryProcessor
     {
-      
     }
 }

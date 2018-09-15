@@ -12,6 +12,8 @@ namespace Olbrasoft.Travel.Business.Facades
     public interface ILocalizedAccommodationsFacade : IFacade<LocalizedAccommodation> 
     {
         IPagedList<AccommodationDto> Get(IPageInfo pageInfo, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting);
+        Task<IPagedList<AccommodationDto>> GetAsync(IPageInfo pageInfo, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting);
+
         AccommodationDetailDto Get(int id);
         Task<AccommodationDetailDto> GetAsync(int id);
     }

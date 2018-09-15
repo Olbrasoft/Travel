@@ -2,7 +2,6 @@
 using System.Linq;
 using Moq;
 using NUnit.Framework;
-using Olbrasoft.Pagination.Linq;
 
 namespace Olbrasoft.Pagination.UnitTest
 {
@@ -14,7 +13,7 @@ namespace Olbrasoft.Pagination.UnitTest
         {
             //Arrange
             var subSet = new string[0];
-            var pagedCollection = subSet.AsPagedList();
+            var pagedCollection = subSet.ToPagedList();
 
             //Act
             var r = pagedCollection;
@@ -29,7 +28,7 @@ namespace Olbrasoft.Pagination.UnitTest
             //Arrange
             var subSet = new string[10];
 
-            var pagedStrings = subSet.AsPagedList();
+            var pagedStrings = subSet.ToPagedList();
 
             //Act
             var count = pagedStrings.Count();
@@ -43,7 +42,7 @@ namespace Olbrasoft.Pagination.UnitTest
         {
             //Arrange
             var subSet = new string[13];
-            var pagedStrings = subSet.AsPagedList();
+            var pagedStrings = subSet.ToPagedList();
 
             //Act
             var pageSize = pagedStrings.PageSize;
@@ -59,7 +58,7 @@ namespace Olbrasoft.Pagination.UnitTest
             var subSet = new string[13];
             IPageInfo pageInfo = new PageInfo(13, 5);
 
-            var pagedStrings = subSet.AsPagedList(new Pagination(pageInfo, subSet.Count));
+            var pagedStrings = subSet.ToPagedList(new Pagination(pageInfo, subSet.Count));
 
             //Act
             var pageNumber = pagedStrings.PageNumber;
@@ -78,7 +77,7 @@ namespace Olbrasoft.Pagination.UnitTest
             mockOfPagination.Setup(p => p.PageInfo).Returns(pageInfo.Object);
             mockOfPagination.Setup(p => p.CountWithOutPaging()).Returns(150);
 
-            var pagedStrings = subSet.AsPagedList(mockOfPagination.Object);
+            var pagedStrings = subSet.ToPagedList(mockOfPagination.Object);
 
             //Act
             var totelItemCount = pagedStrings.TotalItemCount;
@@ -99,7 +98,7 @@ namespace Olbrasoft.Pagination.UnitTest
             mockOfPagination.Setup(p => p.CountWithOutPaging()).Returns(1000);
             
             //Act
-            var pagedListOfAccommodation = subSet.AsPagedList(mockOfPagination.Object);
+            var pagedListOfAccommodation = subSet.ToPagedList(mockOfPagination.Object);
 
             //Assert
             Assert.IsTrue(pagedListOfAccommodation.TotalItemCount== 1000);
