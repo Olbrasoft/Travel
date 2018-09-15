@@ -23,10 +23,10 @@ namespace Olbrasoft.Travel.Data.Entity.Query
             return PreHandle(query).AsPagedList(query.Paging);
         }
 
-        public override async Task<IPagedList<LocalizedAccommodation>> HandleAsync(
+        public override Task<IPagedList<LocalizedAccommodation>> HandleAsync(
             ILocalizedAccommodationsPagedQuery query, CancellationToken cancellationToken)
         {
-            return await PreHandle(query).ToPagedListAsync(query.Paging, cancellationToken);
+            return PreHandle(query).AsPagedListAsync(query.Paging, cancellationToken);
         }
 
         private IQueryable<LocalizedAccommodation> PreHandle(ILocalizedAccommodationsPagedQuery query)

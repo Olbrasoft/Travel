@@ -25,9 +25,5 @@ namespace Olbrasoft.Pagination
 
             return new PagedList<TSource>(pagedList, pagedList.PageNumber, pagedList.PageSize, pagedList.TotalItemCount);
         }
-
-
-
-
     }
 }
