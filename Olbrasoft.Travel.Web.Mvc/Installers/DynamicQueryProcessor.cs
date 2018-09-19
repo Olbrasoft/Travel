@@ -44,7 +44,11 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
 
             var queryInterfaceType = minimalInterfaces.FirstOrDefault();
 
-            var handlerType = typeof(IQueryHandler<,>).MakeGenericType(queryInterfaceType, typeof(TResult));
+            var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
+
+            // var handlerType = typeof(IQueryHandler<,>).MakeGenericType(queryInterfaceType, typeof(TResult));
+
+
 
             return _container.Resolve(handlerType);
         }

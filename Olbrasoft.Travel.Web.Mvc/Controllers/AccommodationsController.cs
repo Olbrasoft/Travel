@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using Olbrasoft.Pagination;
-using Olbrasoft.Travel.Business.Facades;
+﻿using Olbrasoft.Pagination;
+using Olbrasoft.Travel.Business;
+using System.Linq;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -10,38 +9,34 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
     public class AccommodationsController : Controller
     {
-        private readonly ILocalizedAccommodationsFacade _localizedAccommodationFacade;
+        private readonly IAccommodations _accommodations;
 
-        public AccommodationsController(ILocalizedAccommodationsFacade localizedAccommodationFacade)
+        public AccommodationsController(IAccommodations accommodations)
         {
-            _localizedAccommodationFacade = localizedAccommodationFacade;
+            _accommodations = accommodations;
         }
+
 
         // GET: Accommodations
         public async Task<ActionResult> Index(int page = 1)
         {
             var pageInfo = new PageInfo(10, page);
+            
+            var accommodationsItems = await _accommodations.GetAsync(pageInfo, 1033,
+                localizedAccommodations =>
+                    localizedAccommodations.OrderBy(p => p.Accommodation.SequenceNumber).ThenBy(p => p.Id));
 
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
-
-            var pagedListOfLocalizedAccommodation = await 
-                _localizedAccommodationFacade.GetAsync(pageInfo,p=>p.OrderBy(la=>la.Accommodation.SequenceNumber).ThenBy(la=>la.Id));
-
-            return View(pagedListOfLocalizedAccommodation);
+            return View(accommodationsItems);
         }
 
+         
         public async Task<ActionResult> Detail(int? id)
         {
-        
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var accommodationId = (int)id;
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(1033);
+            var accommodationDetail = await _accommodations.GetAsync((int)id, 1033);
 
-            var accommodationDetailDto = await _localizedAccommodationFacade.GetAsync(accommodationId);
-
-            return View( accommodationDetailDto);
-
+            return View(accommodationDetail);
         }
     }
 }

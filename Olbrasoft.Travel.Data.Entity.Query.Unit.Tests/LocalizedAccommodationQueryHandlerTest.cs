@@ -1,10 +1,10 @@
 ﻿using Moq;
 using NUnit.Framework;
+using Olbrasoft.Collections.Generic;
 using Olbrasoft.Data;
 using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Queries;
+using Olbrasoft.Travel.Data.Unit.Tests;
 using System.Linq;
-using Olbrasoft.Collections.Generic;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
 {
@@ -36,13 +36,15 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
                 new LocalizedAccommodation()
             }.AsQueryable();
 
-            var handler = new LocalizedAccommodationsPagedQueryHandler(localizedAccommodationsQueryable);
+           var result = new LocalizedAccommodationsPagedQueryHandler(localizedAccommodationsQueryable);
 
             var queryMock = new Mock<ILocalizedAccommodationsPagedQuery>();
             queryMock.Setup(p => p.Sorting).Returns(queryable => queryable.OrderBy(p => p.Id));
             queryMock.Setup(p => p.Paging.PageSize).Returns(2);
 
             var query = queryMock.Object;
+
+            Assert.IsInstanceOf<ILocalizedAccommodationsPagedQuery>(query);
 
             ////Act
             //var result = handler.Handle(query);

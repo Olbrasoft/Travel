@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseFacade.cs" />
     <Compile Include="IFacade.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

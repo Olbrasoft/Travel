@@ -66,7 +66,6 @@
     <Compile Include="IHaveEanId.cs" />
     <Compile Include="IHaveName.cs" />
     <Compile Include="IKeyId.cs" />
-    <Compile Include="ILocalized.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Localized.cs" />
     <Compile Include="LocalizedAccommodation.cs" />
@@ -96,6 +95,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
+      <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
+      <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>
+      <Name>Olbrasoft.Globalization</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

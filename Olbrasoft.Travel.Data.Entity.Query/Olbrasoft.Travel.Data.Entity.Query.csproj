@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -39,6 +42,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,8 +55,8 @@
     <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocalizedAccommodationByIdQueryHandler.cs" />
-    <Compile Include="LocalizedAccommodationsPagedQueryHandler.cs" />
+    <Compile Include="GetAccommodationByIdQueryHandler.cs" />
+    <Compile Include="GetPagedAccommodationItemsQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +79,10 @@
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
       <Project>{E7A85485-F883-4246-AE5A-BB729BC0684F}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
+      <Project>{145FB572-FACE-4A40-B3F5-78DFCFF72F77}</Project>
+      <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
       <Project>{8A74E643-324D-4769-A8C5-2F013819A6DD}</Project>

@@ -40,21 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IQueryManager.cs" />
+    <Compile Include="QueryWithDependentQueryProcessor.cs" />
     <Compile Include="QueryHandler.cs" />
-    <Compile Include="QueryManager.cs" />
-    <Compile Include="QueryExtensions.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="IQueryWithSorting.cs" />
-    <Compile Include="IQueryBuilder.cs" />
     <Compile Include="IQueryFactory.cs" />
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="IQueryProcesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryBuilder.cs" />
-    <Compile Include="QueryWithSorting.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>
+      <Name>Olbrasoft.Globalization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
       <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
       <Name>Olbrasoft.Pagination</Name>

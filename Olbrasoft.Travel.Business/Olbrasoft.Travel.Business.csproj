@@ -170,16 +170,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facades\ILocalizedAccommodationsFacade.cs" />
+    <Compile Include="Facades\AccommodationsFacade.cs" />
     <Compile Include="Facades\ILanguagesFacade.cs" />
     <Compile Include="Facades\ITravelFacade.cs" />
     <Compile Include="Facades\ITypesOfRegionsFacade.cs" />
     <Compile Include="Facades\IUsersFacade.cs" />
     <Compile Include="Facades\LanguagesFacade.cs" />
-    <Compile Include="Facades\LocalizedAccommodationsFacade.cs" />
     <Compile Include="Facades\TravelFacade.cs" />
     <Compile Include="Facades\TypesOfRegionsFacade.cs" />
     <Compile Include="Facades\UsersFacade.cs" />
+    <Compile Include="IAccommodations.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="Mapping\AccommodationProfile.cs" />
     <Compile Include="Mapping\ILocalizedAccommodationMapper.cs" />
@@ -204,6 +204,10 @@
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>
+      <Name>Olbrasoft.Globalization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
       <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>

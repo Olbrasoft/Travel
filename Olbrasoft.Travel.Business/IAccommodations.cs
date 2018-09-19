@@ -1,0 +1,37 @@
+﻿using Olbrasoft.Collections.Generic;
+using Olbrasoft.Pagination;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Transfer.Objects;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Olbrasoft.Travel.Business
+{
+    public interface IAccommodations
+    {
+        AccommodationDetail Get(int id, int languageId);
+
+        //Task<AccommodationDetail> GetAsync(int id, int languageId);
+
+        Task<AccommodationDetail> GetAsync(int id, int languageId, CancellationToken cancellationToken = default(CancellationToken));
+
+        IPagedList<AccommodationItem> Get(
+            IPageInfo pagingSettings, int languageId, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting
+        );
+
+        Task<IPagedList<AccommodationItem>> GetAsync(
+            IPageInfo pagingSettings,
+            int languageId,
+            Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting,
+            CancellationToken cancellationToken = default(CancellationToken)
+        );
+
+        //Task<IPagedList<AccommodationItem>> GetAsync(
+        //    IPageInfo pagingSettings,
+        //    int languageId,
+        //    Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting
+        //);
+    }
+}

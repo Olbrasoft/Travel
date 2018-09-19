@@ -11,6 +11,5 @@ namespace Olbrasoft.Data
 
         Task<TResult> HandleAsync(TQuery query, CancellationToken cancellationToken);
 
-        
     }
 }
