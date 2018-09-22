@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnotherQueryWithSortingQuery.cs" />
+    <Compile Include="Entity\CreationInfoTest.cs" />
+    <Compile Include="Entity\CreatorInfoTest.cs" />
+    <Compile Include="Entity\UserTest.cs" />
     <Compile Include="IAnotherQuery.cs" />
     <Compile Include="ILocalizedQuery.cs" />
     <Compile Include="IQueryBuilder.cs" />
@@ -87,7 +90,7 @@
     <Compile Include="QueryHandlerTest.cs" />
     <Compile Include="QueryWithOutImplementationTest.cs" />
     <Compile Include="QueryWithSorting.cs" />
-    <Compile Include="SomeQueryHandler.cs" />
+    <Compile Include="SomeHandlerWithDependentSource.cs" />
     <Compile Include="SomQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

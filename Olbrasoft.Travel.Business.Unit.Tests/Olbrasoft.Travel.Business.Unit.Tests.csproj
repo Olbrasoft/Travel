@@ -59,6 +59,7 @@
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -76,7 +77,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationDto.cs" />
+    <Compile Include="AccommodationDtoTest.cs" />
+    <Compile Include="AccommodationProfile.cs" />
     <Compile Include="AccommodationsFacadeTest.cs" />
+    <Compile Include="AutoMapper.cs" />
     <Compile Include="AutoMapperTest.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="IOrderDto.cs" />
@@ -115,12 +120,8 @@
       <Name>Olbrasoft.Travel.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
-      <Project>{E7A85485-F883-4246-AE5A-BB729BC0684F}</Project>
+      <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
-      <Project>{145FB572-FACE-4A40-B3F5-78DFCFF72F77}</Project>
-      <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
       <Project>{8A74E643-324D-4769-A8C5-2F013819A6DD}</Project>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Entities
 {

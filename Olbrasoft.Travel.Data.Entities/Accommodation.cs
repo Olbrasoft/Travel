@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
 
+
 namespace Olbrasoft.Travel.Data.Entities
 {
-    public class Accommodation : CreatorInfo,IAccommodation
+    public class Accommodation : CreatorInfo,IHaveEanId<int>
     {
         public Accommodation()
         {
@@ -29,9 +30,9 @@ namespace Olbrasoft.Travel.Data.Entities
 
         [StringLength(50)]
         public string AdditionalAddress { get; set; }
-        
+
         [Required]
-        public DbGeography CenterCoordinates { get; set; }
+        public  DbGeography CenterCoordinates { get; set; }
 
         public int TypeOfAccommodationId { get; set; }
 

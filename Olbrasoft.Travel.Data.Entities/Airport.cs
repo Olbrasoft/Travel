@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Olbrasoft.Travel.Data.Entities
 {
-    public class Airport : CreatorInfo , IAdditionalRegionInfo
+    public class Airport : CreatorInfo, IAdditionalRegionInfo
     {
         [Required]
         [StringLength(3)]
         public string Code { get; set; }
 
-        public virtual Region Region { get; set; }
+        public Region Region { get; set; }
 
-        public virtual ICollection<Accommodation> Accommodations { get; set; }
+        public ICollection<Accommodation> Accommodations { get; set; }
     }
 }

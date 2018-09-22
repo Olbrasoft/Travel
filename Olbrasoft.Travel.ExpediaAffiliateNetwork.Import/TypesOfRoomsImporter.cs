@@ -1,7 +1,9 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -9,8 +11,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
     {
         private IReadOnlyDictionary<int, int> _accommodationsEanIdsToIds;
 
-        private IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds
-        {
+        private IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds {
+
             get => _accommodationsEanIdsToIds ?? (
                        _accommodationsEanIdsToIds =
                            FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
@@ -19,7 +21,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         }
 
         protected Queue<TypeOfRoom> TypesOfRooms = new Queue<TypeOfRoom>();
-
+        
         public TypesOfRoomsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
@@ -38,8 +40,9 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 CreatorId = CreatorId
             };
 
-            TypesOfRooms.Enqueue(typeOfRoom);
+           TypesOfRooms.Enqueue(typeOfRoom);
         }
+
 
         public override void Import(string path)
         {
@@ -47,9 +50,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             if (TypesOfRooms.Count <= 0) return;
             LogSave<TypeOfRoom>();
-            FactoryOfRepositories.MappedEntities<TypeOfRoom>().BulkSave(TypesOfRooms, 270000);
+            FactoryOfRepositories.MappedEntities<TypeOfRoom>().BulkSave(TypesOfRooms,270000);
             LogSaved<TypeOfRoom>();
         }
+
 
         public override void Dispose()
         {

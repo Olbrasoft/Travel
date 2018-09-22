@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Attribute = Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Property.Attribute;
+using Attribute = Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property.Attribute;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import.Development
 {

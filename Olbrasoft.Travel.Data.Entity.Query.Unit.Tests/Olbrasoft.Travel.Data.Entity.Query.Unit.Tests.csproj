@@ -78,10 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocalizedAccommodationByIdQueryHandler.cs" />
+    <Compile Include="LocalizedAccommodationByIdHandlerWithDependentSource.cs" />
     <Compile Include="LocalizedAccommodationQueryHandlerTest.cs" />
-    <Compile Include="LocalizedAccommodationsPagedQueryHandler.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="LocalizedAccommodationsPagedHandlerWithDependentSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -110,12 +109,8 @@
       <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
-      <Project>{E7A85485-F883-4246-AE5A-BB729BC0684F}</Project>
+      <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Query\Olbrasoft.Travel.Data.Entity.Query.csproj">
-      <Project>{fcad3133-caf2-45fb-ba14-496fbfd83d16}</Project>
-      <Name>Olbrasoft.Travel.Data.Entity.Query</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Unit.Tests\Olbrasoft.Travel.Data.Unit.Tests.csproj">
       <Project>{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}</Project>

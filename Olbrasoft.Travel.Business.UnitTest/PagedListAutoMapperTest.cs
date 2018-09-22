@@ -1,16 +1,9 @@
-﻿using AutoMapper;
-using Moq;
-using NUnit.Framework;
-using Olbrasoft.Travel.Business.Mapping;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Transfer.Objects;
-using System.Linq;
+﻿using NUnit.Framework;
 
 namespace Olbrasoft.Travel.Business.UnitTest
 {
     [TestFixture]
     internal class MapperTest
     {
-        
     }
 }

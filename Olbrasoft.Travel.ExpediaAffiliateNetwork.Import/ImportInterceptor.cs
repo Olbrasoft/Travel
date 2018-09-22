@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Castle.DynamicProxy;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

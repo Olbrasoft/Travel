@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
-using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Geography;
+﻿using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Expedia.Affiliate.Network;
+using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class TrainMetroStationsImporter : Importer<TrainMetroStationCoordinates>
     {
-        public TrainMetroStationsImporter(IProvider provider, IParserFactory parserFactory, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger) 
+        public TrainMetroStationsImporter(IProvider provider, IParserFactory parserFactory, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, parserFactory, factoryOfRepositories, sharedProperties, logger)
         {
         }
@@ -21,20 +21,19 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             ImportLocalizedRegions(EanDataTransferObjects, FactoryOfRepositories.Localized<LocalizedRegion>(), eanIdsToIds,
                 DefaultLanguageId, CreatorId);
-            
+
             ImportRegionsToTypes(EanDataTransferObjects, FactoryOfRepositories.RegionsToTypes(), eanIdsToIds,
                 FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("Train Station"),
                 FactoryOfRepositories.BaseNames<SubClass>().GetId("train"), CreatorId);
 
             EanDataTransferObjects = null;
         }
-        
 
         private void ImportRegionsToTypes(
             IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinateses,
             IRegionsToTypesRepository repository,
-            IReadOnlyDictionary<long, int> eanIdsToIds, 
-            int typeOfRegionTrainStationId, 
+            IReadOnlyDictionary<long, int> eanIdsToIds,
+            int typeOfRegionTrainStationId,
             int subClassTrainId,
             int creatorId
             )
@@ -54,7 +53,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             repository.BulkSave(regionsToTypes);
             LogSaved<RegionToType>();
         }
-
 
         //private void ImportLocalizedRegions(
         //    IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinateses,
@@ -76,7 +74,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         //    LogSaved<LocalizedRegion>();
         //}
 
-
         private IReadOnlyDictionary<long, int> ImportRegions(
             IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinateses,
             IRegionsRepository repository,
@@ -95,9 +92,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<Region>();
 
             return repository.EanIdsToIds;
-
         }
     }
-
-
 }

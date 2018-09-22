@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Olbrasoft.Travel.Data.Queries;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests
 {

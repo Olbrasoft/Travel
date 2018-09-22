@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Olbrasoft.Travel.Data.Entities
 {
-    public class Country : CreatorInfo , IAdditionalRegionInfo
+    public class Country : CreatorInfo, IAdditionalRegionInfo
     {
         //todo change https://en.wikipedia.org/wiki/ISO_3166-1
 
@@ -14,8 +14,5 @@ namespace Olbrasoft.Travel.Data.Entities
         public virtual Region Region { get; set; }
 
         public virtual ICollection<Accommodation> Accommodations { get; set; }
-
     }
-    
-
 }

@@ -1,24 +1,26 @@
-﻿using Castle.DynamicProxy;
+﻿using System;
+using System.Data.Entity;
+using System.Net;
+using Castle.DynamicProxy;
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
-using System;
-using System.Data.Entity;
-using System.Net;
 using Olbrasoft.Travel.Data.Entity.Repositories;
+using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Expedia.Affiliate.Network;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
-    internal class EanImport
+    class EanImport
     {
         public static ILogger Logger = new ConsoleLogger();
         //public static int UserId;
 
         // ReSharper disable once UnusedParameter.Local
-        private static void Main(string[] args)
+        static void Main(string[] args)
         {
             var user = new User
             {
@@ -34,11 +36,13 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             Write($"Id to a user with a UserName {user.UserName} is {user.Id}.");
 
+
             // var url = "https://www.ian.com/affiliatecenter/include/V2/ParentRegionList.zip";
 
             //// DownloadFile(url, runningStatus, importsFacade, import);
 
             //// todo Extract
+
 
             container.Register(Component.For<User>().Instance(user));
 
@@ -56,22 +60,25 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 };
                 languagesRepository.Add(defaultLanguage);
             }
-
+           
             container.Register(
                 Component.For<SharedProperties>()
                     .ImplementedBy<SharedProperties>()
                     .DependsOn(Dependency.OnValue("creatorId", user.Id), Dependency.OnValue("defaultLanguageId", defaultLanguage.Id))
             );
 
+
             //using (var regionsImporter = container.Resolve<IImporter>(nameof(RegionsImporter)))
             //{
             //    regionsImporter.Import(@"D:\Ean\ParentRegionList.txt");
             //}
 
+
             //using (var countriesImporter = container.Resolve<IImporter>(nameof(CountriesImporter)))
             //{
             //    countriesImporter.Import(@"D:\Ean\CountryList.txt");
             //}
+
 
             //using (var neighborhoodsImporter = container.Resolve<IImporter>(nameof(NeighborhoodsImporter)))
             //{
@@ -119,10 +126,12 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
             //}
 
+
             //using (var descriptionsImporter = container.Resolve<IImporter>(nameof(DescriptionsImporter)))
             //{
             //    descriptionsImporter.Import(@"D:\Ean\PropertyDescriptionList.txt");
             //}
+
 
             //using (var pathsExtensionsCaptionsImporter =
             //    container.Resolve<IImporter>(nameof(PathsExtensionsCaptionsImporter)))
@@ -130,11 +139,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    pathsExtensionsCaptionsImporter.Import(@"D:\Ean\HotelImageList.txt");
             //}
 
-            //using (var photosOfAccommodationsImporter =
-            //    container.Resolve<IImporter>(nameof(PhotosOfAccommodationsImporter)))
-            //{
-            //    photosOfAccommodationsImporter.Import(@"D:\Ean\HotelImageList.txt");
-            //}
+            using (var photosOfAccommodationsImporter =
+                container.Resolve<IImporter>(nameof(PhotosOfAccommodationsImporter)))
+            {
+                photosOfAccommodationsImporter.Import(@"D:\Ean\HotelImageList.txt");
+            }
 
             //using (var typesOfRoomsImporter = container.Resolve<IImporter>(nameof(TypesOfRoomsImporter)))
             //{
@@ -172,6 +181,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    accommodationsToAttributesDefaultLanguageImporter.Import(@"D:\Ean\PropertyAttributeLink.txt");
             //}
 
+
             var language = languagesRepository.Get(1031);
 
             //if (language == null)
@@ -190,13 +200,15 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    accommodationsMultiLanguageImporter.Import(@"D:\Ean\ActivePropertyList_de_DE.txt");
             //}
 
-            language = languagesRepository.Get(3082);
+
+
+            //language = languagesRepository.Get(1034);
 
             //if (language == null)
             //{
             //    language = new Language
             //    {
-            //        Id = 3082,
+            //        Id = 1034,
             //        EanLanguageCode = "es_ES",
             //        CreatorId = user.Id
             //    };
@@ -208,14 +220,19 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    accommodationsMultiLanguageImporter.Import(@"D:\Ean\ActivePropertyList_es_ES.txt");
             //}
 
+
+
             Write("Imported");
 #if DEBUG
             Console.ReadLine();
 #endif
         }
 
+
+
         private static async void DownloadFile(string url)
         {
+
             var fileName = System.IO.Path.GetFileName(url);
 
             using (var wc = new WebClient())
@@ -223,6 +240,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 await wc.DownloadFileTaskAsync(new Uri(url), @"D:\Ean\" + fileName);
             }
         }
+
 
         private static void WriteContent(IWindsorContainer container)
         {
@@ -252,7 +270,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 .WithService.AllInterfaces()
             );
 
-            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity")
+
+            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity.Repositories")
                    .Where(type => type.Name.EndsWith("Repository"))
                    .WithService.AllInterfaces()
                );
@@ -260,9 +279,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 #if DEBUG
             container.Register(Component.For<ILoggingImports>().ImplementedBy<ConsoleLogger>());
 
+
 #else
             container.Register(Component.For<ILoggingImports>().ImplementedBy<ConsoleLogger>());
 
+              
 #endif
             container.Register(Component.For<IParserFactory>().ImplementedBy<ParserFactory>());
 
@@ -289,8 +310,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return container;
         }
 
+
         private static WindsorContainer RegisterImporters(WindsorContainer container)
         {
+
             RegisterGeoImporters(container);
 
             RegisterAccoImporters(container);
@@ -312,14 +335,17 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<DescriptionsImporter>()
                 .Named(nameof(DescriptionsImporter)).Interceptors<IInterceptor>());
 
+
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<PathsExtensionsCaptionsImporter>()
                 .Named(nameof(PathsExtensionsCaptionsImporter)).Interceptors<IInterceptor>());
 
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<PhotosOfAccommodationsImporter>()
                 .Named(nameof(PhotosOfAccommodationsImporter)).Interceptors<IInterceptor>());
 
+
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<TypesOfRoomsImporter>()
                 .Named(nameof(TypesOfRoomsImporter)).Interceptors<IInterceptor>());
+
 
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<LocalizedTypesOfRoomsImporter>()
                 .Named(nameof(LocalizedTypesOfRoomsImporter)).Interceptors<IInterceptor>());
@@ -327,9 +353,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<RoomsTypesImagesImporter>()
                 .Named(nameof(RoomsTypesImagesImporter)).Interceptors<IInterceptor>());
 
+
             container.Register(Component.For(typeof(IImporter))
                 .ImplementedBy<PhotosOfAccommodationsToTypesOfRoomsImporter>()
                 .Named(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)).Interceptors<IInterceptor>());
+
 
             container.Register(Component.For(typeof(IImporter)).ImplementedBy<AttributesImporter>()
                 .Named(nameof(AttributesImporter)).Interceptors<IInterceptor>());
@@ -345,7 +373,9 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             container.Register(Component.For(typeof(IImporter))
                 .ImplementedBy<AccommodationsMultiLanguageImporter>()
                 .Named(nameof(AccommodationsMultiLanguageImporter)).Interceptors<IInterceptor>());
+
         }
+
 
         private static void RegisterGeoImporters(IWindsorContainer container)
         {
@@ -374,6 +404,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 .Named(nameof(RegionsCenterImporter)).Interceptors<IInterceptor>());
         }
 
+
         public static void Write(object s)
         {
 #if DEBUG
@@ -381,4 +412,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 #endif
         }
     }
+
 }

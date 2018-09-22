@@ -5,7 +5,6 @@ namespace Olbrasoft.Travel.Data.Entities
 {
     public class Region : CreatorInfo
     {
-
         public Region()
         {
             RegionsToTypes = new HashSet<RegionToType>();
@@ -13,7 +12,6 @@ namespace Olbrasoft.Travel.Data.Entities
         }
 
         // public int TypeOfRegionId { get; set; }
-
         public DbGeography Coordinates { get; set; }
 
         public DbGeography CenterCoordinates { get; set; }
@@ -25,7 +23,7 @@ namespace Olbrasoft.Travel.Data.Entities
         public ICollection<LocalizedRegion> LocalizedRegions { get; set; }
 
         //public TypeOfRegion TypeOfRegion { get; set; }
-        
+
         public ICollection<RegionToRegion> ToParentRegions { get; set; }
 
         public ICollection<RegionToRegion> ToChildRegions { get; set; }

@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Queries;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests
 {

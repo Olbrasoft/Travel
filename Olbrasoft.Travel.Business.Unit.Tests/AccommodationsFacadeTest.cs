@@ -3,11 +3,12 @@ using NUnit.Framework;
 using Olbrasoft.Collections.Generic;
 using Olbrasoft.Data;
 using Olbrasoft.Pagination;
-using Olbrasoft.Travel.Data.Queries;
-using Olbrasoft.Travel.Data.Transfer.Objects;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Query;
 using Olbrasoft.Travel.Business.Facades;
+using Olbrasoft.Travel.Data.Query;
+using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Business.Unit.Tests
 {
@@ -123,20 +124,20 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
 
         private static AccommodationsFacade CreateAccommodationsFacade()
         {
-            var queryProcessorMock = new Mock<IQueryProcessor>();
+            var queryDispatcher = new Mock<IDispatcher>();
 
-            queryProcessorMock.Setup(p => p.Process(It.IsAny<GetAccommodationDetailById>()))
+            queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetAccommodationDetailById>()))
                 .Returns(new AccommodationDetail());
 
-            queryProcessorMock.Setup(p => p.Process(It.IsAny<GetPagedAccommodationItems>())).Returns(new AccommodationItem[1].ToPagedList());
+            queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetPagedAccommodationItems>())).Returns(new AccommodationItem[1].ToPagedList());
 
-            var queryFactoryMock = new Mock<IQueryFactory>();
+            var queryFactoryMock = new Mock<IFactory>();
 
             queryFactoryMock.Setup(p => p.Create<GetAccommodationDetailById>())
-                .Returns(new GetAccommodationDetailById(queryProcessorMock.Object));
+                .Returns(new GetAccommodationDetailById(queryDispatcher.Object));
 
             queryFactoryMock.Setup(p => p.Create<GetPagedAccommodationItems>())
-                .Returns(new GetPagedAccommodationItems(queryProcessorMock.Object));
+                .Returns(new GetPagedAccommodationItems(queryDispatcher.Object));
 
             return new AccommodationsFacade(queryFactoryMock.Object);
         }

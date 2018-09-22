@@ -1,4 +1,6 @@
-﻿namespace Olbrasoft.Data.Unit.Tests
+﻿using Olbrasoft.Data.Query;
+
+namespace Olbrasoft.Data.Unit.Tests
 {
     public interface IAnotherQuery : IQuery
     {

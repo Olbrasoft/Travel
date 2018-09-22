@@ -196,11 +196,13 @@
     <Compile Include="Installers\BusinessLogicLayerInstaller.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\DataAccessLayerInstaller.cs" />
-    <Compile Include="Installers\DynamicQueryProcessor.cs" />
-    <Compile Include="Installers\QueriesInstaller.cs" />
-    <Compile Include="Installers\QueryFactoryInstaller.cs" />
-    <Compile Include="Installers\QueryHandlersInstaller.cs" />
-    <Compile Include="Installers\QueryProcessorInstaller.cs" />
+    <Compile Include="Installers\OwnLocalizedAccommodationsInstaller.cs" />
+    <Compile Include="Installers\Query\Dispatcher.cs" />
+    <Compile Include="Installers\Query\Queries.cs" />
+    <Compile Include="Installers\Query\Factory.cs" />
+    <Compile Include="Installers\Query\Handlers.cs" />
+    <Compile Include="Installers\Resolver.cs" />
+    <Compile Include="Installers\TravelContextInstaller.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,6 +256,10 @@
       <Project>{c38f7833-3953-4e1c-af9c-1e9a2c3b738b}</Project>
       <Name>Olbrasoft.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Dependence\Olbrasoft.Dependence.csproj">
+      <Project>{83F1CF06-CC30-4EE3-9AC2-8F6F5AA4A7EB}</Project>
+      <Name>Olbrasoft.Dependence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
       <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
@@ -275,20 +281,12 @@
       <Name>Olbrasoft.Travel.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
-      <Project>{e7a85485-f883-4246-ae5a-bb729bc0684f}</Project>
+      <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Query\Olbrasoft.Travel.Data.Entity.Query.csproj">
-      <Project>{fcad3133-caf2-45fb-ba14-496fbfd83d16}</Project>
-      <Name>Olbrasoft.Travel.Data.Entity.Query</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Transfer.Objects\Olbrasoft.Travel.Data.Transfer.Objects.csproj">
-      <Project>{145fb572-face-4a40-b3f5-78dfcff72f77}</Project>
-      <Name>Olbrasoft.Travel.Data.Transfer.Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
       <Project>{8A74E643-324D-4769-A8C5-2F013819A6DD}</Project>

@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Globalization;
+﻿using Olbrasoft.Data.Query;
+using Olbrasoft.Globalization;
 
 namespace Olbrasoft.Data.Unit.Tests
 {

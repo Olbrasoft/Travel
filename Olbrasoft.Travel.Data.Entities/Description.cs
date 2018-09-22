@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Olbrasoft.Globalization;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Olbrasoft.Data;
-using Olbrasoft.Globalization;
 
 namespace Olbrasoft.Travel.Data.Entities
 {
@@ -30,10 +29,9 @@ namespace Olbrasoft.Travel.Data.Entities
         public virtual Accommodation Accommodation { get; set; }
 
         public virtual TypeOfDescription TypeOfDescription { get; set; }
-         
-        public virtual  Language Language { get; set; }
+
+        public virtual Language Language { get; set; }
 
         public User Creator { get; set; }
-        
     }
 }

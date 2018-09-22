@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using Olbrasoft.Business;
 using Olbrasoft.Pagination;
-using Olbrasoft.Travel.Business.Mapping;
+using System.Collections.Generic;
+using System.Linq;
+using Olbrasoft.Travel.Data;
 using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Transfer.Objects;
 
 namespace Olbrasoft.Travel.Business.Unit.Tests
 {
@@ -95,7 +94,6 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
         [Test]
         public void MapperConfiguration_From_Interface()
         {
-           
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
 
             IOrder order = new Order { Name = "Lenka" };
@@ -106,10 +104,7 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
 
             //Assert
             Assert.IsTrue(orderDto.Name == "Lenka");
-
         }
-
-
 
         [Test]
         public void PagedEnumerableMapper_Is_Instance_Of_IPagedEnumerableMapper()
@@ -164,14 +159,11 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
 
         private class SomeAutoMapper<TSource> : AutoMapper<TSource>
         {
-
             public new IMapper Mapper => base.Mapper;
 
             public SomeAutoMapper(IMapper mapper) : base(mapper)
             {
             }
         }
-
-
     }
 }

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8FB0C30-EDA5-4AA5-B558-E07D16257418}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Olbrasoft.Travel.Expedia.Affiliate.Network</RootNamespace>
+    <AssemblyName>Olbrasoft.Travel.Expedia.Affiliate.Network</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseParser.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\AirportCoordinates.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\CityCoordinates.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\CityNeighborhood.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\Country.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\CountryMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\IHaveRegionId.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\IHaveRegionIdLatitudeLongitude.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\IHaveRegionIdRegionName.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\IHaveRegionIdRegionNameRegionNameLong.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\NeighborhoodCoordinates.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\ParentRegion.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\PointOfInterestCoordinates.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\RegionCenter.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\RegionEANHotelIDMapping.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\RegionMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Geography\TrainMetroStationCoordinates.cs" />
+    <Compile Include="Data\Transfer\Object\Property\ActiveProperty.cs" />
+    <Compile Include="Data\Transfer\Object\Property\ActivePropertyMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Amenities.cs" />
+    <Compile Include="Data\Transfer\Object\Property\AmenitiesMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\AreaAttractions.cs" />
+    <Compile Include="Data\Transfer\Object\Property\AreaAttractionsMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Attribute.cs" />
+    <Compile Include="Data\Transfer\Object\Property\BusinessAmenities.cs" />
+    <Compile Include="Data\Transfer\Object\Property\BusinessAmenitiesMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Chain.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Description.cs" />
+    <Compile Include="Data\Transfer\Object\Property\DescriptionMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\DiningDescription.cs" />
+    <Compile Include="Data\Transfer\Object\Property\DiningDescriptionMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\HotelImage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Location.cs" />
+    <Compile Include="Data\Transfer\Object\Property\LocationMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\NationalRatings.cs" />
+    <Compile Include="Data\Transfer\Object\Property\NationalRatingsMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PathToHotelImage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PolicyDescription.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PolicyDescriptionMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PropertyFees.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PropertyFeesMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PropertyMandatoryFees.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PropertyMandatoryFeesMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PropertyType.cs" />
+    <Compile Include="Data\Transfer\Object\Property\PropertyTypeMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\RecreationDescription.cs" />
+    <Compile Include="Data\Transfer\Object\Property\RecreationDescriptionMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Renovations.cs" />
+    <Compile Include="Data\Transfer\Object\Property\RenovationsMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\Rooms.cs" />
+    <Compile Include="Data\Transfer\Object\Property\RoomsMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\RoomType.cs" />
+    <Compile Include="Data\Transfer\Object\Property\SpaDescription.cs" />
+    <Compile Include="Data\Transfer\Object\Property\SpaDescriptionMultiLanguage.cs" />
+    <Compile Include="Data\Transfer\Object\Property\WhatToExpectDescription.cs" />
+    <Compile Include="Data\Transfer\Object\Property\WhatToExpectMultiLanguage.cs" />
+    <Compile Include="EanFile.cs" />
+    <Compile Include="EanFiles.cs" />
+    <Compile Include="EanLanguage.cs" />
+    <Compile Include="EanLanguages.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="IParserFactory.cs" />
+    <Compile Include="IPathsHotelsImagesParser.cs" />
+    <Compile Include="IToLocalizedAccommodation.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="ParserFactory.cs" />
+    <Compile Include="PathsHotelsImages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeOfEanFile.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -2,6 +2,7 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.SqlServer;
 
 namespace Olbrasoft.Travel.Data.Entity.Migrations
 {

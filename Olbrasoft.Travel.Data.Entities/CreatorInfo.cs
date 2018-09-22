@@ -1,10 +1,9 @@
-﻿namespace Olbrasoft.Travel.Data.Entities
+﻿using Olbrasoft.Data.Entity;
+
+namespace Olbrasoft.Travel.Data.Entities
 {
-    public class CreatorInfo : CreationInfo
+    public class CreatorInfo : CreatorInfo<int, int>
     {
-        public int CreatorId { get; set; }
-
-        public User Creator { get; set; }
-
+        public new User Creator { get; set; }
     }
 }

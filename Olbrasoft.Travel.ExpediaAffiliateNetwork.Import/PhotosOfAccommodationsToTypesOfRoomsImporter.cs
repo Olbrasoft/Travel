@@ -1,8 +1,10 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -38,6 +40,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             private set => _pathsToIds = value;
         }
 
+
         private IReadOnlyDictionary<string, int> _extensionsToIds;
 
         public IReadOnlyDictionary<string, int> ExtensionsToIds
@@ -46,6 +49,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             private set => _extensionsToIds = value;
         }
+
 
         protected Queue<PhotoOfAccommodationToTypeOfRoom> PhotosOfAccommodationsToTypesOfRooms = new Queue<PhotoOfAccommodationToTypeOfRoom>();
 
@@ -77,6 +81,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             };
 
             PhotosOfAccommodationsToTypesOfRooms.Enqueue(photoOfAccommodationToTypeOfRoom);
+
         }
 
         public override void Import(string path)
@@ -91,6 +96,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSave<PhotoOfAccommodationToTypeOfRoom>();
             FactoryOfRepositories.ManyToMany<PhotoOfAccommodationToTypeOfRoom>().BulkSave(PhotosOfAccommodationsToTypesOfRooms);
             LogSaved<PhotoOfAccommodationToTypeOfRoom>();
+
         }
 
         public override void Dispose()
@@ -104,5 +110,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             GC.SuppressFinalize(this);
             base.Dispose();
         }
+
     }
 }

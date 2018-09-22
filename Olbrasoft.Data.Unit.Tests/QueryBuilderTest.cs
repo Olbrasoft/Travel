@@ -2,6 +2,7 @@
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
 {
@@ -22,7 +23,7 @@ namespace Olbrasoft.Data.Unit.Tests
                 .LifestyleTransient());
 
             _container.AddFacility<TypedFactoryFacility>();
-            _container.Register(Component.For<IQueryFactory>()
+            _container.Register(Component.For<IFactory>()
                 .AsFactory());
         }
 
@@ -35,7 +36,7 @@ namespace Olbrasoft.Data.Unit.Tests
 
             Assert.IsInstanceOfType(query, type);
 
-            var queryFactory = _container.Resolve<IQueryFactory>();
+            var queryFactory = _container.Resolve<IFactory>();
 
             var instance = queryFactory.Create<IAnotherQuery>();
 
@@ -178,7 +179,7 @@ namespace Olbrasoft.Data.Unit.Tests
 
         private IQueryBuilder GetQueryBuilder()
         {
-            var queryFactory = _container.Resolve<IQueryFactory>();
+            var queryFactory = _container.Resolve<IFactory>();
             var queryBuilder = new QueryBuilder(queryFactory);
             return queryBuilder;
         }

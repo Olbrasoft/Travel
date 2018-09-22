@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Olbrasoft.Data.Entity;
+
 
 namespace Olbrasoft.Travel.Data.Entities
 {

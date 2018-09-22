@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Olbrasoft.Data;
 using Olbrasoft.Globalization;
 
 namespace Olbrasoft.Travel.Data.Entities

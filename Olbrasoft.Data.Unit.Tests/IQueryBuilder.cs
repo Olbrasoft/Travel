@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
 {

@@ -1,18 +1,15 @@
-﻿using System;
+﻿using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class RoomsTypesImagesImporter : BasePhotosRelationalToAccommodationImporter
     {
-        
-
         protected HashSet<PhotoOfRoom> Photos = new HashSet<PhotoOfRoom>();
-        
+
         public RoomsTypesImagesImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
@@ -22,15 +19,18 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             if (!TryBuildPhotoOfAccommodation(items, 3, out var photoOfAccommodation)) return;
 
-           
+            
 
             var photo = new PhotoOfRoom
             {
                 AccommodationId = photoOfAccommodation.AccommodationId,
                 PathId = photoOfAccommodation.PathToPhotoId,
                 FileName = photoOfAccommodation.FileName,
-                ExtensionId = photoOfAccommodation.FileExtensionId
+                ExtensionId = photoOfAccommodation.FileExtensionId,
+                IsDefault = photoOfAccommodation.IsDefault
+                
             };
+
             
             Photos.Add(photo);
         }
@@ -45,10 +45,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 PathToPhotoId = p.PathId,
                 FileName = p.FileName,
                 FileExtensionId = p.ExtensionId,
-                CreatorId = CreatorId
-
+                CreatorId = CreatorId,
+                IsDefault = p.IsDefault
+                
             }));
-            
+
             var count = PhotosOfAccommodations.Count;
 
             WriteLog($"Builded {count} {typeof(PhotoOfAccommodation)}.");
@@ -56,9 +57,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSave<PhotoOfAccommodation>();
             FactoryOfRepositories.PhotosOfAccommodations().BulkSave(PhotosOfAccommodations, p => p.CaptionId, p => p.IsDefault);
             LogSaved<PhotoOfAccommodation>();
-            
         }
-
 
         public override void Dispose()
         {
@@ -67,6 +66,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             GC.SuppressFinalize(this);
             base.Dispose();
         }
-
     }
 }

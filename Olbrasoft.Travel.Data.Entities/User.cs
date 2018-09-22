@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using Olbrasoft.Data.Entity;
+using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Entities
 {
-    public class User : CreationInfo
+    public class User : User<int>
     {
-        [Required]
-        [StringLength(255)]
-        public string UserName { get; set; }
-
         #region Child Properties
 
         public virtual ICollection<TypeOfRegion> CreatedTypesOfRegions { get; set; }
@@ -41,7 +38,7 @@ namespace Olbrasoft.Travel.Data.Entities
 
         /// <summary>
         /// Linking Regions To Regions created by the User.
-        /// Eaxample Contry to Continent or City to Country.
+        /// Example Country to Continent or City to Country.
         /// </summary>
         public virtual ICollection<RegionToRegion> RegionsToRegions { get; set; }
 
@@ -53,7 +50,7 @@ namespace Olbrasoft.Travel.Data.Entities
         /// <summary>
         /// Airports created by the User.
         /// </summary>
-        public virtual ICollection<Airport> Airports { get; set; }
+        public ICollection<Airport> Airports { get; set; }
 
         /// <summary>
         /// TypesOfAccommodations created by the User.
@@ -75,10 +72,10 @@ namespace Olbrasoft.Travel.Data.Entities
         /// </summary>
         public virtual ICollection<Accommodation> Accommodations { get; set; }
 
-        /// <summary>
-        /// LocalizedAccommodations created by the User.
-        /// </summary>
-        public virtual ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
+        ///// <summary>
+        ///// LocalizedAccommodations created by the User.
+        ///// </summary>
+        //public virtual ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
 
         /// <summary>
         /// Types of Descriptions created by the User.
@@ -86,7 +83,7 @@ namespace Olbrasoft.Travel.Data.Entities
         public virtual ICollection<TypeOfDescription> TypesOfDescriptions { get; set; }
 
         /// <summary>
-        /// Descriptions Of Accommodations is Loacalized and Categorized 
+        /// Descriptions Of Accommodations is Localized and Categorized
         /// </summary>
         public virtual ICollection<Description> Descriptions { get; set; }
 
@@ -150,15 +147,16 @@ namespace Olbrasoft.Travel.Data.Entities
         /// </summary>
         public virtual ICollection<LocalizedAttribute> LocalizedAttributes { get; set; }
 
-
         /// <summary>
         /// Accommodations to Attributes created by the User.
         /// </summary>
         public virtual ICollection<AccommodationToAttribute> AccommodationsToAttributes { get; set; }
 
+        /// <summary>
+        /// LocalizedAccommodations created by the User.
+        /// </summary>
+        public ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
 
-
-
-        #endregion
+        #endregion Child Properties
     }
 }

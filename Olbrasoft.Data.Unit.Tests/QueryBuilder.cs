@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
 {
     public class QueryBuilder : IQueryBuilder
     {
-        private readonly IQueryFactory _queryFactory;
+        private readonly IFactory _factory;
 
-        public QueryBuilder(IQueryFactory queryFactory)
+        public QueryBuilder(IFactory factory)
         {
-            _queryFactory = queryFactory;
+            _factory = factory;
         }
 
         public T Build<T>() where T : IQuery
         {
-            return _queryFactory.Create<T>();
+            return _factory.Create<T>();
         }
 
         public T Build<T>(Expression<Func<T, object>> memberSelector, object value) where T : IQuery

@@ -2,9 +2,11 @@
 using System.Data.Entity;
 using Olbrasoft.Travel.Data.Entities;
 
+
+
 namespace Olbrasoft.Travel.Data.Entity
 {
-    public class TravelContext : DbContext
+    public class TravelContext : DbContext, ITravelContext
     {
         public virtual IDbSet<User> Users { get; set; }
         public virtual IDbSet<LogOfImport> LogsOfImports { get; set; }
@@ -37,10 +39,9 @@ namespace Olbrasoft.Travel.Data.Entity
         public virtual IDbSet<Attribute> Attributes { get; set; }
         public virtual IDbSet<LocalizedAttribute> LocalizedAttributes { get; set; }
         public virtual IDbSet<AccommodationToAttribute> AccommodationsToAttributes { get; set; }
-        
+
         public TravelContext() : base("name=Travel")
         {
-            
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -58,9 +59,7 @@ namespace Olbrasoft.Travel.Data.Entity
             OnLocalizedCaptions(modelBuilder);
 
             OnAccoCreating(modelBuilder, "acco");
-
         }
-
 
         private void OnGeoCreating(DbModelBuilder modelBuilder, string dbSchema)
         {
@@ -73,7 +72,6 @@ namespace Olbrasoft.Travel.Data.Entity
             OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
             OnAirportsCreating(modelBuilder, dbSchema, nameof(Airports));
         }
-
 
         private void OnAccoCreating(DbModelBuilder modelBuilder, string dbSchema)
         {
@@ -111,7 +109,6 @@ namespace Olbrasoft.Travel.Data.Entity
 
             modelBuilder.Entity<AccommodationToAttribute>().HasRequired(ata => ata.Creator)
                 .WithMany(u => u.AccommodationsToAttributes).WillCascadeOnDelete(false);
-
         }
 
         private static void OnLocalizedAttributesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
@@ -122,7 +119,6 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<LocalizedAttribute>().HasRequired(la => la.Language)
                 .WithMany(l => l.LocalizedAttributes).WillCascadeOnDelete(false);
         }
-
 
         private static void OnAttributesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -135,12 +131,10 @@ namespace Olbrasoft.Travel.Data.Entity
                 .WillCascadeOnDelete(false);
         }
 
-
         private static void OnSubTypesOfAttributesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
             modelBuilder.Entity<SubTypeOfAttribute>().ToTable(tableName, dbSchema).HasIndex(p => p.Name).IsUnique();
         }
-
 
         private static void OnTypesOfAttributesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -153,11 +147,10 @@ namespace Olbrasoft.Travel.Data.Entity
                 .HasRequired(p => p.Creator).WithMany(u => u.PhotosOfAccommodationsToTypesOfRooms)
                 .WillCascadeOnDelete(false);
 
+
             modelBuilder.Entity<PhotoOfAccommodationToTypeOfRoom>().HasRequired(p => p.TypeOfRoom)
                 .WithMany(tor => tor.PhotosOfAccommodationsToTypesOfRooms).HasForeignKey(p => p.ToId).WillCascadeOnDelete(false);
-
         }
-
 
         private static void OnLocalizedTypesOfRoomsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -169,7 +162,6 @@ namespace Olbrasoft.Travel.Data.Entity
                 .HasRequired(ltor => ltor.Language).WithMany(l => l.LocalizedTypesOfRooms).WillCascadeOnDelete(false);
         }
 
-
         private static void OnLocalizedCaptions(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LocalizedCaption>()
@@ -177,7 +169,6 @@ namespace Olbrasoft.Travel.Data.Entity
 
             modelBuilder.Entity<LocalizedCaption>().HasRequired(lc => lc.Creator).WithMany(u => u.LocalizedCaptions)
                 .WillCascadeOnDelete(false);
-
         }
 
         private static void OnTypesOfRoomsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
@@ -193,7 +184,6 @@ namespace Olbrasoft.Travel.Data.Entity
                 ;
         }
 
-
         private void OnCaptionsCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Caption>().Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
@@ -203,7 +193,6 @@ namespace Olbrasoft.Travel.Data.Entity
         {
             modelBuilder.Entity<FileExtension>().ToTable(nameof(FilesExtensions)).HasIndex(fe => fe.Extension)
                 .IsUnique();
-
         }
 
         private void OnPathsToPhotosCreating(DbModelBuilder modelBuilder)
@@ -234,7 +223,7 @@ namespace Olbrasoft.Travel.Data.Entity
         {
             modelBuilder.Entity<Description>().ToTable(tableName, dbSchema).Property(p => p.DateAndTimeOfCreation)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
-            
+
             modelBuilder.Entity<Description>().HasRequired(d => d.Accommodation)
                 .WithMany(a => a.Descriptions).WillCascadeOnDelete(true);
 
@@ -244,7 +233,6 @@ namespace Olbrasoft.Travel.Data.Entity
 
             modelBuilder.Entity<Description>().HasRequired(d => d.Creator).WithMany(u => u.Descriptions).WillCascadeOnDelete(false);
         }
-
 
         private static void OnLocalizedAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -259,14 +247,12 @@ namespace Olbrasoft.Travel.Data.Entity
                 .WithMany(l => l.LocalizedAccommodations).WillCascadeOnDelete(false);
         }
 
-
         private static void OnChainsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
             modelBuilder.Entity<Chain>().ToTable(tableName, dbSchema).HasIndex(p => p.EanId).IsUnique();
 
             modelBuilder.Entity<Chain>().HasRequired(ch => ch.Creator).WithMany(user => user.Chains)
                 .WillCascadeOnDelete(true);
-
         }
 
         private static void OnLocalizedTypesOfAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
@@ -297,7 +283,6 @@ namespace Olbrasoft.Travel.Data.Entity
 
             modelBuilder.Entity<RegionToType>().HasRequired(rtt => rtt.TypeOfRegion).WithMany(tor => tor.RegionsToTypes)
                 .HasForeignKey(p => p.ToId).WillCascadeOnDelete(false);
-
         }
 
         private static void OnAirportsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
@@ -309,7 +294,6 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<Airport>().HasIndex(c => c.Code).IsUnique();
             modelBuilder.Entity<Airport>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalAirportProperties).WillCascadeOnDelete(true);
         }
-
 
         private static void OnCountriesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -339,9 +323,7 @@ namespace Olbrasoft.Travel.Data.Entity
                 .WithMany(region => region.ToParentRegions)
                 .HasForeignKey(regionToRegion => regionToRegion.ToId)
                 .WillCascadeOnDelete(true);
-
         }
-
 
         private static void OnLocalizedRegions(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -352,16 +334,13 @@ namespace Olbrasoft.Travel.Data.Entity
                 .HasRequired(lr => lr.Language)
                 .WithMany(l => l.LocalizedRegions)
                 .WillCascadeOnDelete(false);
-
         }
-
 
         private static void OnRegionsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
             modelBuilder.Entity<Region>().ToTable(tableName, dbSchema).HasIndex(p => p.EanId).IsUnique();
 
             modelBuilder.Entity<Region>().HasRequired(r => r.Creator).WithMany(u => u.Regions).WillCascadeOnDelete(false);
-
         }
 
         private static void OnTypesOfRegionsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
@@ -369,15 +348,12 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<TypeOfRegion>()
                 .ToTable(tableName, dbSchema)
                 .HasIndex(typeOfRegion => typeOfRegion.Name).IsUnique();
-
         }
 
         private static void OnSubClassesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
             modelBuilder.Entity<SubClass>().ToTable(tableName, dbSchema).HasIndex(p => p.Name).IsUnique();
-
         }
-
 
         private void OnLanguagesCreating(DbModelBuilder modelBuilder)
         {
@@ -396,7 +372,6 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<Language>().HasRequired(l => l.Creator).WithMany(u => u.Languages);
         }
 
-
         private void OnLogsOfImportsCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LogOfImport>()
@@ -404,7 +379,6 @@ namespace Olbrasoft.Travel.Data.Entity
                 .Property(e => e.DateAndTimeOfCreation)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
         }
-
 
         private void OnUsersCreating(DbModelBuilder modelBuilder)
         {
@@ -415,7 +389,6 @@ namespace Olbrasoft.Travel.Data.Entity
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
         }
 
-
         private static void OnTypesOfDescriptionsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
             modelBuilder.Entity<TypeOfDescription>()
@@ -425,7 +398,6 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<TypeOfDescription>().HasRequired(tod => tod.Creator)
                 .WithMany(user => user.TypesOfDescriptions).WillCascadeOnDelete(true);
         }
-
 
         private void OnAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
@@ -439,9 +411,6 @@ namespace Olbrasoft.Travel.Data.Entity
 
             modelBuilder.Entity<Accommodation>().HasRequired(a => a.Country).WithMany(c => c.Accommodations)
                 .WillCascadeOnDelete(false);
-
         }
-
     }
-
 }

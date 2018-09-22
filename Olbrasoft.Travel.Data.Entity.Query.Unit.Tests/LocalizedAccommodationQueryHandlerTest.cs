@@ -2,9 +2,10 @@
 using NUnit.Framework;
 using Olbrasoft.Collections.Generic;
 using Olbrasoft.Data;
-using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Unit.Tests;
 using System.Linq;
+using Olbrasoft.Data.Query;
+using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
 {
@@ -15,12 +16,12 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
         public void Is_Instance_Of_IQueryHandler()
         {
             //Arrange
-            var type = typeof(IQueryHandler<LocalizedAccommodationsPagedQuery, IPagedList<LocalizedAccommodation>>);
+            var type = typeof(IHandler<LocalizedAccommodationsPagedQuery, IPagedList<LocalizedAccommodation>>);
 
             var localizedAccommodationsQueryableMock = new Mock<IQueryable<LocalizedAccommodation>>();
 
             //Act
-            var handler = new LocalizedAccommodationsPagedQueryHandler(localizedAccommodationsQueryableMock.Object);
+            var handler = new LocalizedAccommodationsPagedHandlerWithDependentSource(localizedAccommodationsQueryableMock.Object);
 
             //Assert
             Assert.IsInstanceOf(type, handler);
@@ -36,7 +37,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
                 new LocalizedAccommodation()
             }.AsQueryable();
 
-           var result = new LocalizedAccommodationsPagedQueryHandler(localizedAccommodationsQueryable);
+           var result = new LocalizedAccommodationsPagedHandlerWithDependentSource(localizedAccommodationsQueryable);
 
             var queryMock = new Mock<ILocalizedAccommodationsPagedQuery>();
             queryMock.Setup(p => p.Sorting).Returns(queryable => queryable.OrderBy(p => p.Id));

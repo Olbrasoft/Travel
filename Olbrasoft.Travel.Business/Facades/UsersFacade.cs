@@ -1,5 +1,5 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
 
 namespace Olbrasoft.Travel.Business.Facades
 {
@@ -14,7 +14,6 @@ namespace Olbrasoft.Travel.Business.Facades
 
         public void AddIfNotExist(ref User user)
         {
-            
             var userIn = user;
             var storedUser = Repository.Find(u => u.Id == userIn.Id || u.UserName == userIn.UserName);
 

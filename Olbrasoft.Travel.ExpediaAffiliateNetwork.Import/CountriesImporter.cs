@@ -1,7 +1,8 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
 using System.Collections.Generic;
-using Country = Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Geography.Country;
+using Olbrasoft.Travel.Expedia.Affiliate.Network;
+using Country = Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography.Country;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

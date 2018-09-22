@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.Business.Facades
 {

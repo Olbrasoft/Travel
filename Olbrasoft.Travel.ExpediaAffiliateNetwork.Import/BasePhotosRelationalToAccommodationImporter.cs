@@ -1,5 +1,5 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -56,7 +56,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 !AccommodationsEanIdsToIds.TryGetValue(eanHotelId, out var accommodationId) ||
                 !PathsToIds.TryGetValue(ParsePath(url), out var pathToPhotoId) ||
                 !ExtensionsToIds.TryGetValue(Path.GetExtension(url).ToLower(),
-                    out var fileExtensionId))
+                    out var fileExtensionId) 
+                )
             {
                 photoOfAccommodation = null;
                 return false;
@@ -68,8 +69,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 PathToPhotoId = pathToPhotoId,
                 FileName = RebuildFileName(url),
                 FileExtensionId = fileExtensionId,
-                CreatorId = CreatorId
-            };
+                CreatorId = CreatorId,
+             };
+
+            if (items[7] == "1") photoOfAccommodation.IsDefault = true;
 
             return true;
         }

@@ -1,12 +1,12 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class RegionsTypesOfCitiesImporter : RegionsTypesOfCitiesAndNeighborhoodsImporter
     {
-        public RegionsTypesOfCitiesImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger) 
+        public RegionsTypesOfCitiesImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
             TypeOfRegionId = FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("City");

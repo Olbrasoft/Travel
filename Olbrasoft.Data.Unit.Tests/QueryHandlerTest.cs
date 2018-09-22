@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using System.Linq;
+using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
 {
@@ -12,7 +13,7 @@ namespace Olbrasoft.Data.Unit.Tests
         public void Is_Instance_Of_IQueryHandler()
         {
             //Arrange
-            var type = typeof(IQueryHandler<SomQuery, object>);
+            var type = typeof(IHandler<SomQuery, object>);
 
             //Act
             var someQueryHandler = CreateSomeQueryHandler();
@@ -21,20 +22,20 @@ namespace Olbrasoft.Data.Unit.Tests
             Assert.IsInstanceOf(type, someQueryHandler);
         }
 
-        private static SomeQueryHandler CreateSomeQueryHandler()
+        private static SomeHandlerWithDependentSource CreateSomeQueryHandler()
         {
             var objectQueryableMock = new Mock<IQueryable<object>>();
 
             var source = objectQueryableMock.Object;
 
-            return new SomeQueryHandler(source);
+            return new SomeHandlerWithDependentSource(source);
         }
 
         [Test]
         public void Is_Instance_Of_QueryHandler()
         {
             //Arrange
-            var type = typeof(QueryHandler<SomQuery, IQueryable<object>, object>);
+            var type = typeof(HandlerWithDependentSource<SomQuery, IQueryable<object>, object>);
 
             //Act
             var handler = CreateSomeQueryHandler();

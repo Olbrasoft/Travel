@@ -1,16 +1,20 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Repository;
+
 using Attribute = Olbrasoft.Travel.Data.Entities.Attribute;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
-    internal class AttributesImporter : Importer
+    class AttributesImporter : Importer
     {
         public AttributesImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
+
         }
 
         private IReadOnlyDictionary<string, int> _typesOfAttributesNamesToIds;
@@ -33,6 +37,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             set => _subTypesOfAttributesNamesToIds = value;
         }
 
+
         protected HashSet<Attribute> Attributes = new HashSet<Attribute>();
 
         protected override void RowLoaded(string[] items)
@@ -52,6 +57,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             Attributes.Add(attribute);
         }
+        
 
         protected static string AdaptSubTypeOfAttributeName(string subTypeAttributeName)
         {
@@ -59,6 +65,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 .Replace("PropertyAmenity", "AmenityOfAccommodation")
                 .Replace("RoomAmenity", "AmenityOfRoom");
         }
+
 
         protected static string AdaptTypeOfAttributeName(string typeOfAttributeName)
         {
@@ -87,5 +94,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             GC.SuppressFinalize(this);
             base.Dispose();
         }
+
     }
 }

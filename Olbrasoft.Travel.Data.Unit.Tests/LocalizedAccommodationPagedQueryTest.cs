@@ -1,7 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Pagination;
-using Olbrasoft.Travel.Data.Queries;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests
 {
@@ -41,8 +40,10 @@ namespace Olbrasoft.Travel.Data.Unit.Tests
             var pageInfoMock = new Mock<IPageInfo>();
             var pageInfo = pageInfoMock.Object;
 
-            ILocalizedAccommodationsPagedQuery query = new LocalizedAccommodationsPagedQuery();
-            query.Paging = pageInfo;
+            ILocalizedAccommodationsPagedQuery query = new LocalizedAccommodationsPagedQuery
+            {
+                Paging = pageInfo
+            };
 
             //Act
             IPageInfo resultPageInfo = query.Paging;

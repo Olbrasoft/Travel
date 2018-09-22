@@ -1,7 +1,9 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Repository;
+
 using Attribute = Olbrasoft.Travel.Data.Entities.Attribute;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
@@ -73,5 +75,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             GC.SuppressFinalize(this);
             base.Dispose();
         }
+
     }
 }

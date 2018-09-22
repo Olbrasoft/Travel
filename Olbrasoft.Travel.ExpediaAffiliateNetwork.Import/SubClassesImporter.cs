@@ -2,7 +2,8 @@
 using System.Linq;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.DataAccessLayer;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

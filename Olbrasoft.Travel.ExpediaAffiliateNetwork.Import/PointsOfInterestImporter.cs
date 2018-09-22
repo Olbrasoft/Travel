@@ -1,8 +1,10 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Repository;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -27,6 +29,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
         }
 
+
         protected override void RowLoaded(string[] items)
         {
             if (!long.TryParse(items[0], out var eanRegionId) ||
@@ -44,9 +47,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             var subClassName = GetSubClassName(items[5]);
 
+
             if (string.IsNullOrEmpty(subClassName) || !SubClassesNamesToIds.TryGetValue(subClassName, out var subClassId)) return;
 
             RegionsEanIdsToSubClassIds.Add(eanRegionId, subClassId);
+
         }
 
         public override void Import(string path)
@@ -54,7 +59,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<Region>();
 
             LoadData(path);
-
+            
             SubClassesNamesToIds = null;
 
             var eanIdsToIds = ImportRegions(Regions.ToArray(), FactoryOfRepositories.Regions(), 100000, p => p.Coordinates);
@@ -69,6 +74,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             ImportRegionsToTypes(regionsEanIds, FactoryOfRepositories.RegionsToTypes(), RegionsEanIdsToSubClassIds,
                 eanIdsToIds, FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("Point of Interest"), CreatorId);
+
         }
 
         private void ImportRegionsToTypes(
@@ -80,6 +86,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             int creatorId
             )
         {
+
             LogBuild<RegionToType>();
             var regionsToTypes = BuildRegionsToTypes(regionsEanIds, regionsEanIdsToSubClassIds, eanIdsToIds, typeOfRegionId, creatorId);
             var count = regionsToTypes.Length;
@@ -87,7 +94,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             if (count <= 0) return;
             LogSave<RegionToType>();
-            repository.BulkSave(regionsToTypes, count);
+            repository.BulkSave(regionsToTypes,count);
             LogSaved<RegionToType>();
         }
 
@@ -99,6 +106,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             int creatorId
             )
         {
+
             var regionsToTypes = new Queue<RegionToType>();
 
             foreach (var regionEanId in regionsEanIds)
@@ -122,5 +130,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             return regionsToTypes.ToArray();
         }
+
+      
     }
 }

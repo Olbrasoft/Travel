@@ -5,6 +5,7 @@ using System.Reflection;
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel;
 using Olbrasoft.Data;
+using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Castle.Facilities.TypedFactory
 {
@@ -30,19 +31,19 @@ namespace Olbrasoft.Castle.Facilities.TypedFactory
             if (method.Name == "Execute" && arguments.Length == 1 && isQueryType(arguments[0].GetType()))
             {
                 var handlerType =
-                    typeof(IQueryHandler<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
+                    typeof(IHandler<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
 
                 return handlerType;
             }
 
-            //if (method.Name == "ProcessAsync" && arguments.Length == 1
-            //                                  && isQueryType(arguments[0].GetType()))
-            //{
-            //    var handlerType =
-            //        typeof(IQueryHandler<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
+            if (method.Name == "ProcessAsync" && arguments.Length == 1
+                                              && isQueryType(arguments[0].GetType()))
+            {
+                var handlerType =
+                    typeof(IHandler<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
 
-            //    return handlerType;
-            //}
+                return handlerType;
+            }
 
             throw new ArgumentException("Invalid method called on Query processor. To add a new one you must update " + GetType().FullName);
         }

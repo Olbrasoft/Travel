@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entities;
-
-using Olbrasoft.Travel.DataAccessLayer;
-
+﻿using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Repository;
+using System.Collections.Generic;
+using Description = Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property.Description;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -31,8 +30,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected int TypeOfDescriptionId { get; set; }
 
         protected Queue<Data.Entities.Description> Descriptions = new Queue<Data.Entities.Description>();
-        
-        public DescriptionsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger) 
+
+        public DescriptionsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
         }
@@ -44,7 +43,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 !AccommodationsEanIdsToIds.TryGetValue(eanHotelId, out var accommodationId) ||
                 !LanguagesEanLangueageCodesToIds.TryGetValue(items[1], out var languageId)
             ) return;
-            
+
             var description = new Data.Entities.Description
             {
                 AccommodationId = accommodationId,
@@ -64,7 +63,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             if (!typesOfDescriptionsRepository.NamesToIds.ContainsKey(general))
             {
-                typesOfDescriptionsRepository.Add(new TypeOfDescription {Name = general, CreatorId = CreatorId});
+                typesOfDescriptionsRepository.Add(new TypeOfDescription { Name = general, CreatorId = CreatorId });
             }
 
             TypeOfDescriptionId = typesOfDescriptionsRepository.GetId(general);
@@ -73,7 +72,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             AccommodationsEanIdsToIds = null;
             LanguagesEanLangueageCodesToIds = null;
-            
+
             if (Descriptions.Count <= 0) return;
 
             LogSave<Description>();
@@ -82,7 +81,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             Descriptions = null;
         }
-
-
     }
 }
