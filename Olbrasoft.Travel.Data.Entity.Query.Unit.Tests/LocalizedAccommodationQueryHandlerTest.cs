@@ -16,7 +16,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
         public void Is_Instance_Of_IQueryHandler()
         {
             //Arrange
-            var type = typeof(IHandler<LocalizedAccommodationsPagedQuery, IPagedList<LocalizedAccommodation>>);
+            var type = typeof(IHandle<LocalizedAccommodationsPagedQuery, IPagedList<LocalizedAccommodation>>);
 
             var localizedAccommodationsQueryableMock = new Mock<IQueryable<LocalizedAccommodation>>();
 

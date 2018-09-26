@@ -14,8 +14,6 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers.Query
                 .Where(type => type.Namespace != null && type.Namespace.EndsWith("Query"))
                 .WithServiceSelf());
 
-            //container.Register(Component.For<ILocalizedAccommodationByIdQuery>()
-            //    .ImplementedBy(typeof(LocalizedAccommodationByIdQuery)));
         }
     }
 }

@@ -9,11 +9,5 @@ namespace Olbrasoft.Collections.Generic
         {
             Subset.AddRange(subSet);
         }
-
-        //public PagedList(IEnumerable<T> subSet, IPageInfo pageInfo, int totalItemCount) : this(subSet, pageInfo.NumberOfSelectedPage, pageInfo.PageSize, totalItemCount)
-        //{
-        //}
-
-
     }
-} 
+}

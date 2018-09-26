@@ -21,7 +21,6 @@ namespace Olbrasoft.Data.Entity
             return source.ToPagedListAsync(paging, default(CancellationToken));
         }
 
-
         public static async Task<PagedList<TSource>> ToPagedListAsync<TSource>(this IQueryable<TSource> source, IPageInfo paging, CancellationToken cancellationToken)
         {
             if (source == null)
@@ -30,7 +29,7 @@ namespace Olbrasoft.Data.Entity
             if (paging == null)
                 throw new ArgumentNullException(nameof(paging));
 
-            if (cancellationToken==null)
+            if (cancellationToken == null)
                 throw new ArgumentNullException(nameof(cancellationToken));
 
             var countWithOutPaging = await source.CountAsync(cancellationToken);
@@ -39,32 +38,11 @@ namespace Olbrasoft.Data.Entity
                 .Take(paging.PageSize).ToArrayAsync(cancellationToken);
 
             return new PagedList<TSource>(sourceArray, paging.NumberOfSelectedPage, paging.PageSize, countWithOutPaging);
-
-         
         }
 
         public static async Task<IPagedList<TSource>> AsPagedListAsync<TSource>(this IQueryable<TSource> source, IPageInfo paging, CancellationToken cancellationToken)
         {
-            //if (source == null)
-            //    throw new ArgumentNullException(nameof(source));
-
-            //if (paging == null)
-            //    throw new ArgumentNullException(nameof(paging));
-
-            //if (cancellationToken == null)
-            //    throw new ArgumentNullException(nameof(cancellationToken));
-
-            //var countWithOutPaging = await source.CountAsync(cancellationToken);
-
-            //var sourceArray = await source.Skip(paging.CalculateSkip())
-            //    .Take(paging.PageSize).ToArrayAsync(cancellationToken);
-
-           //return new PagedList<TSource>(sourceArray, paging.NumberOfSelectedPage, paging.PageSize, countWithOutPaging);
-
             return await source.ToPagedListAsync(paging, cancellationToken);
         }
-
-        
-
     }
 }

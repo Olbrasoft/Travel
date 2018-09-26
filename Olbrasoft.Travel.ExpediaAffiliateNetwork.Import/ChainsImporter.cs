@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Repository;
-
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -10,7 +8,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
     {
         protected Queue<Chain> Chains = new Queue<Chain>();
 
-        public ChainsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger) 
+        public ChainsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
         }
@@ -30,7 +28,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         public override void Import(string path)
         {
             LoadData(path);
-            
+
             if (Chains.Count <= 0) return;
 
             LogSave<Chain>();
@@ -39,6 +37,5 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             Chains = null;
         }
-        
     }
 }

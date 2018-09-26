@@ -1,12 +1,11 @@
 ﻿using Olbrasoft.Collections.Generic;
 using Olbrasoft.Pagination;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Transfer.Object;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Olbrasoft.Travel.Data;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Business
 {
@@ -14,16 +13,13 @@ namespace Olbrasoft.Travel.Business
     {
         AccommodationDetail Get(int id, int languageId);
 
-        //Task<AccommodationDetail> GetAsync(int id, int languageId);
-
-     
         Task<AccommodationDetail> GetAsync(int id, int languageId, CancellationToken cancellationToken = default(CancellationToken));
 
-        IPagedList<AccommodationItem> Get(
+        IResultWithTotalCount<AccommodationItem> Get(
             IPageInfo pagingSettings, int languageId, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting
         );
 
-        Task<IPagedList<AccommodationItem>> GetAsync(
+        Task<IResultWithTotalCount<AccommodationItem>> GetAsync(
             IPageInfo pagingSettings,
             int languageId,
             Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting,

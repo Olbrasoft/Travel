@@ -7,6 +7,5 @@
         public string FileName;
         public int ExtensionId;
         public bool IsDefault;
-
     }
 }

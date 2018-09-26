@@ -16,7 +16,7 @@ namespace Olbrasoft.Data.Query
 
         public Task<TResult> HandleAsync(TQuery query)
         {
-           return HandleAsync(query, default(CancellationToken));
+            return HandleAsync(query, default(CancellationToken));
         }
 
         public abstract Task<TResult> HandleAsync(TQuery query, CancellationToken cancellationToken);

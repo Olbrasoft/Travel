@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using Olbrasoft.Travel.Data.Repository;
-
+using System.Diagnostics;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -24,7 +23,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             //After method execution
             stopwatch.Stop();
-            
+
             _logger.Log(
                 $"DurationInterceptor: {invocation.MethodInvocationTarget.Name}" +
                 $" executed in {stopwatch.Elapsed.TotalMilliseconds:0.000} milliseconds."

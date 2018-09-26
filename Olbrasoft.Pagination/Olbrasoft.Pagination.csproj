@@ -45,19 +45,22 @@
   <ItemGroup>
     <Compile Include="BasePagination.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="IMerge.cs" />
     <Compile Include="IPageInfo.cs" />
     <Compile Include="IPagination.cs" />
+    <Compile Include="IResultWithTotalCount.cs" />
     <Compile Include="PagedListExtensions.cs" />
     <Compile Include="PageInfo.cs" />
     <Compile Include="PageInfoExtensions.cs" />
     <Compile Include="Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryableExtensions.cs" />
+    <Compile Include="ResultWithTotalCount.cs" />
+    <Compile Include="ResultWithTotalCountExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
       <Project>{60e9c8de-cad1-4bc3-8bbd-249b0437fbee}</Project>

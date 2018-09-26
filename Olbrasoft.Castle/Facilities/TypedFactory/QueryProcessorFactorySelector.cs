@@ -31,7 +31,7 @@ namespace Olbrasoft.Castle.Facilities.TypedFactory
             if (method.Name == "Execute" && arguments.Length == 1 && isQueryType(arguments[0].GetType()))
             {
                 var handlerType =
-                    typeof(IHandler<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
+                    typeof(IHandle<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
 
                 return handlerType;
             }
@@ -40,7 +40,7 @@ namespace Olbrasoft.Castle.Facilities.TypedFactory
                                               && isQueryType(arguments[0].GetType()))
             {
                 var handlerType =
-                    typeof(IHandler<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
+                    typeof(IHandle<,>).MakeGenericType(arguments[0].GetType(), method.GetGenericArguments()[0]);
 
                 return handlerType;
             }

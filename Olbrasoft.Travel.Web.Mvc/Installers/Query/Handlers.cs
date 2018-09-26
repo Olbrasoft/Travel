@@ -11,7 +11,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers.Query
             var classes = Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity");
             
             container.Register(classes
-            .Where(ns=>ns.Namespace != null && ns.Namespace.EndsWith("Query.Handlers"))
+            .Where(ns=>ns.Namespace != null && ns.Namespace.EndsWith("Query.Handler"))
                 .WithServiceFirstInterface()
             .LifestylePerWebRequest());
 

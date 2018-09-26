@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Entity;
+﻿using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Repository;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -29,7 +27,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         public override void Import(string path)
         {
             LoadData(path);
-            
+
             LogBuild<SubClass>();
             var subClasses = SubClassesNames.Select(s => new SubClass { Name = s, CreatorId = CreatorId }).ToArray();
             SubClassesNames = null;

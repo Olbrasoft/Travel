@@ -5,6 +5,7 @@ using System.Data.Entity.Spatial;
 
 namespace Olbrasoft.Travel.Data.Entities
 {
+
     public class Accommodation : CreatorInfo,IHaveEanId<int>
     {
         public Accommodation()

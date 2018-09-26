@@ -25,7 +25,7 @@ namespace Olbrasoft.Travel.Data.Entity.Repositories
                 accommodationsToAttributesArray =
                     accommodationsToAttributesArray.Where(p => p.LanguageId == languageId).ToArray();
 
-                if (!Queryable.Any<AccommodationToAttribute>(AsQueryable(), l => l.LanguageId == languageId))
+                if (!AsQueryable().Any(l => l.LanguageId == languageId))
                 {
                     Context.BulkInsert(accommodationsToAttributesArray.Where(ata => ata.LanguageId == languageId), OnSaved, 2000000);
                 }
@@ -63,7 +63,7 @@ namespace Olbrasoft.Travel.Data.Entity.Repositories
 
         public HashSet<Tuple<int, int>> FindAccommodationsIdsAttributesIds(int languageId)
         {
-            return new HashSet<Tuple<int, int>>(Queryable.Where(AsQueryable(), lr => lr.LanguageId == languageId)
+            return new HashSet<Tuple<int, int>>(AsQueryable().Where(lr => lr.LanguageId == languageId)
                 .Select(ata => new { ata.AccommodationId, ata.AttributeId }).ToArray()
                 .Select(p => new Tuple<int, int>(p.AccommodationId, p.AttributeId)));
         }

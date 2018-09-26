@@ -1,18 +1,70 @@
 ﻿@model Olbrasoft.Travel.Data.Transfer.Object.AccommodationDetail
 
-
 @{
     ViewBag.Title = "Detail";
 }
+<style type="text/css">
+    div#package-carousel.carousel.slide {
+        width: 350px;
+        text-align: center
+    }
 
-<h2>Detail</h2>
+    div#map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
 
-
-@Model.Id
-
+@{
+    var active = "active";
+}
 
 <h1>@Model.Name</h1>
 
 @Model.Address
 <br />
+<div id="package-carousel" class="carousel slide" data-ride="carousel">
+
+    <div class="carousel-inner">
+        @foreach (var photo in Model.Photos)
+        {
+
+            <div class="item @active">
+                <img alt="" src="@photo">
+            </div>
+
+            active = string.Empty;
+
+        }
+    </div>
+    <a class="left carousel-control" href="#package-carousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#package-carousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 @Html.Raw(Model.Description)
+
+<div id="map"></div>
+<script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClWgMtjkbBjUJJx8DunzJKINP8tDouRIY&callback=initMap"></script>
+<script>
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: @Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), lng: @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) },
+            zoom: 8
+        });
+        //var map = new google.maps.Map(document.getElementById('map'), { zoom: 8 });
+
+        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        var beachMarker = new google.maps.Marker({
+            position: {lat:  @Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), lng:  @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) },
+            map: map,
+            icon: image
+        });
+
+    }
+</script>

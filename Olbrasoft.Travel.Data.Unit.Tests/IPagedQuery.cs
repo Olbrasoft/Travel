@@ -1,4 +1,5 @@
 ﻿using Olbrasoft.Data;
+using Olbrasoft.Data.Query;
 using Olbrasoft.Pagination;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests

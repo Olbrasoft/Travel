@@ -1,14 +1,12 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Olbrasoft.Collections.Generic;
-using Olbrasoft.Data;
-using Olbrasoft.Pagination;
-using System.Threading;
-using System.Threading.Tasks;
 using Olbrasoft.Data.Query;
+using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Business.Facades;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Olbrasoft.Travel.Business.Unit.Tests
 {
@@ -88,7 +86,7 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
             var accommodationItems = facade.Get(pagingMock.Object, languageId, null);
 
             //Assert
-            Assert.IsInstanceOf<IPagedList<AccommodationItem>>(accommodationItems);
+            Assert.IsInstanceOf<IResultWithTotalCount<AccommodationItem>>(accommodationItems);
         }
 
         [Test]
@@ -104,7 +102,7 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
             var accommodationItemsTask = facade.GetAsync(pagingMock.Object, languageId, null, cancellationToken);
 
             //Assert
-            Assert.IsInstanceOf<Task<IPagedList<AccommodationItem>>>(accommodationItemsTask);
+            Assert.IsInstanceOf<Task<IResultWithTotalCount<AccommodationItem>>>(accommodationItemsTask);
         }
 
         [Test]
@@ -119,7 +117,7 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
             var accommodationItemsTask = facade.GetAsync(pagingMock.Object, languageId, null);
 
             //Assert
-            Assert.IsInstanceOf<Task<IPagedList<AccommodationItem>>>(accommodationItemsTask);
+            Assert.IsInstanceOf<Task<IResultWithTotalCount<AccommodationItem>>>(accommodationItemsTask);
         }
 
         private static AccommodationsFacade CreateAccommodationsFacade()
@@ -129,7 +127,20 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
             queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetAccommodationDetailById>()))
                 .Returns(new AccommodationDetail());
 
-            queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetPagedAccommodationItems>())).Returns(new AccommodationItem[1].ToPagedList());
+            var items = new[]
+            {
+               new AccommodationItem
+               {
+                   Id = 1
+               }
+            };
+
+            var result = new ResultWithTotalCount<AccommodationItem>()
+            {
+                Result = items
+            };
+
+            queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetPagedAccommodationItems>())).Returns(result);
 
             var queryFactoryMock = new Mock<IFactory>();
 
@@ -139,7 +150,12 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
             queryFactoryMock.Setup(p => p.Create<GetPagedAccommodationItems>())
                 .Returns(new GetPagedAccommodationItems(queryDispatcher.Object));
 
-            return new AccommodationsFacade(queryFactoryMock.Object);
+            queryFactoryMock.Setup(p => p.Create<GetPhotosOfAccommodations>())
+                .Returns(new GetPhotosOfAccommodations(queryDispatcher.Object));
+
+            var mockMerger = new AccommodationItemPhotoMerge();
+
+            return new AccommodationsFacade(queryFactoryMock.Object, mockMerger);
         }
     }
 }

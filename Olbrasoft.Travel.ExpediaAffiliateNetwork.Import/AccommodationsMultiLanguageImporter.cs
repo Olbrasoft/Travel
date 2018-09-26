@@ -2,7 +2,6 @@
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property;
-using Olbrasoft.Travel.ExpediaAffiliateNetwork.DataTransferObject.Property;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

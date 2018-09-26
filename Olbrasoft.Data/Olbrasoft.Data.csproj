@@ -57,15 +57,19 @@
     <Compile Include="Entity\IHaveUserName.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="IHaveKeyId.cs" />
-    <Compile Include="QueryWithDependentDispatcher.cs" />
-    <Compile Include="IQueryWithSorting.cs" />
+    <Compile Include="Geography\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\AsyncHandlerWithDependentSource.cs" />
     <Compile Include="Query\DispatcherWithWrapperAndDependentResolver.cs" />
     <Compile Include="Query\HandlerWithDependentSource.cs" />
     <Compile Include="Query\IDispatcher.cs" />
-    <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\IHandleAsync.cs" />
     <Compile Include="Query\IHandler.cs" />
+    <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\IHandle.cs" />
     <Compile Include="Query\IFactory.cs" />
+    <Compile Include="Query\IQueryWithSorting.cs" />
+    <Compile Include="Query\QueryWithDependentDispatcher.cs" />
     <Compile Include="Repository\Bulk\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>

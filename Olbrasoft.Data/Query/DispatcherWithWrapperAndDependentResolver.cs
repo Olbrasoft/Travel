@@ -50,10 +50,12 @@ namespace Olbrasoft.Data.Query
         public class WrapperWithDependentHandler<TQuery, TResult> : IWrapper<TResult> where TQuery : IQuery<TResult>
         {
             private readonly IHandler<TQuery, TResult> _handler;
+          
 
             public WrapperWithDependentHandler(IHandler<TQuery, TResult> handler)
             {
                 _handler = handler;
+           
             }
 
             public TResult Handle(IQuery<TResult> query)

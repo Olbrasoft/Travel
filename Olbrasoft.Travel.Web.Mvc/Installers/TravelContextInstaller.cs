@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Olbrasoft.Travel.Data.Entities;
@@ -16,6 +12,8 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
         {
             container.Register(Component.For<ITravelContext>().ImplementedBy<TravelContext>().LifestylePerWebRequest());
 
+            container.Register(Component.For<IHaveQueryable<LocalizedAccommodation>>().ImplementedBy<QueryableOwner<LocalizedAccommodation>>().LifestylePerWebRequest());
+            container.Register(Component.For<IHaveQueryable<PhotoOfAccommodation>>().ImplementedBy<QueryableOwner<PhotoOfAccommodation>>().LifestylePerWebRequest());
         }
     }
 }

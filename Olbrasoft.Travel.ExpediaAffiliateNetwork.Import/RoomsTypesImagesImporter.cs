@@ -19,8 +19,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             if (!TryBuildPhotoOfAccommodation(items, 3, out var photoOfAccommodation)) return;
 
-            
-
             var photo = new PhotoOfRoom
             {
                 AccommodationId = photoOfAccommodation.AccommodationId,
@@ -28,10 +26,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 FileName = photoOfAccommodation.FileName,
                 ExtensionId = photoOfAccommodation.FileExtensionId,
                 IsDefault = photoOfAccommodation.IsDefault
-                
             };
 
-            
             Photos.Add(photo);
         }
 
@@ -47,7 +43,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 FileExtensionId = p.ExtensionId,
                 CreatorId = CreatorId,
                 IsDefault = p.IsDefault
-                
             }));
 
             var count = PhotosOfAccommodations.Count;

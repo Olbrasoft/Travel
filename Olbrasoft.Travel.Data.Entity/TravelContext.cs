@@ -42,6 +42,8 @@ namespace Olbrasoft.Travel.Data.Entity
 
         public TravelContext() : base("name=Travel")
         {
+          
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

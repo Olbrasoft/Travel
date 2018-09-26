@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             using (var reader = new StreamReader(path))
             {
                 //skip first line
-                 reader.ReadLine();
+                reader.ReadLine();
 
                 while (!reader.EndOfStream)
                 {

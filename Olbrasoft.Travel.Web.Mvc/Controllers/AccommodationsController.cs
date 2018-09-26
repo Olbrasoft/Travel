@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Olbrasoft.Collections.Generic;
+using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {
@@ -26,7 +28,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
                 localizedAccommodations =>
                     localizedAccommodations.OrderBy(p => p.Accommodation.SequenceNumber).ThenBy(p => p.Id));
 
-            return View(accommodationsItems);
+            return View(accommodationsItems.AsPagedList(pageInfo));
         }
 
          

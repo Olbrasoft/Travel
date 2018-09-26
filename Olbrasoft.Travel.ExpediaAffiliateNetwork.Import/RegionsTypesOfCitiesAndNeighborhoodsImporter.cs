@@ -1,24 +1,20 @@
-﻿using System;
+﻿using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Text;
-using Olbrasoft.Travel.Data.Entities;
-using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.Data.Repository;
-
-using Olbrasoft.Travel.EAN.Import;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class RegionsTypesOfCitiesAndNeighborhoodsImporter : Importer
     {
-
         protected int TypeOfRegionId;
         protected int SubClassId;
 
         protected Queue<Region> Regions = new Queue<Region>();
- 
+
         protected IDictionary<long, Tuple<string, string>> AdeptsToLocalizedRegions = new Dictionary<long, Tuple<string, string>>();
 
         public RegionsTypesOfCitiesAndNeighborhoodsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
@@ -35,7 +31,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var region = new Region
             {
                 EanId = eanRegionId,
-                Coordinates = CreatePoligon(items[2]),
+                Coordinates = CreatePolygon(items[2]),
                 CreatorId = CreatorId
             };
 
@@ -60,9 +56,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             ImportRegionsToTypes(regionsEanIds, FactoryOfRepositories.RegionsToTypes(), eanIdsToIds, TypeOfRegionId,
                 SubClassId, CreatorId);
-
         }
-        
+
         private void ImportRegionsToTypes(
             ICollection<long> regionsEanIds,
             IRegionsToTypesRepository repository,
@@ -83,8 +78,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             repository.BulkSave(regionsToTypes, count, rtt => rtt.SubClassId);
             LogSaved<RegionToType>();
         }
-        
-
 
         protected RegionToType[] BuildRegionsToTypes(
             ICollection<long> regionsEanIds,
@@ -94,7 +87,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             int creatorId
         )
         {
-
             var regionsToTypes = new Queue<RegionToType>();
 
             foreach (var regionEanId in regionsEanIds)
@@ -114,7 +106,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return regionsToTypes.ToArray();
         }
 
-        public DbGeography CreatePoligon(string s)
+        public DbGeography CreatePolygon(string s)
         {
             var spl = s.Split(':');
             var pointsString = new StringBuilder();

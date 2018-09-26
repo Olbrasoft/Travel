@@ -19,7 +19,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         private IReadOnlyDictionary<string, int> _languagesEanLanguageCodesToIds;
 
-        protected IReadOnlyDictionary<string, int> LanguagesEanLangueageCodesToIds
+        protected IReadOnlyDictionary<string, int> LanguagesEanLanguageCodesToIds
         {
             get => _languagesEanLanguageCodesToIds ?? (_languagesEanLanguageCodesToIds =
                        FactoryOfRepositories.Languages().EanLanguageCodesToIds);
@@ -41,7 +41,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             if (
                 !int.TryParse(items[0], out var eanHotelId) ||
                 !AccommodationsEanIdsToIds.TryGetValue(eanHotelId, out var accommodationId) ||
-                !LanguagesEanLangueageCodesToIds.TryGetValue(items[1], out var languageId)
+                !LanguagesEanLanguageCodesToIds.TryGetValue(items[1], out var languageId)
             ) return;
 
             var description = new Data.Entities.Description
@@ -71,7 +71,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LoadData(path);
 
             AccommodationsEanIdsToIds = null;
-            LanguagesEanLangueageCodesToIds = null;
+            LanguagesEanLanguageCodesToIds = null;
 
             if (Descriptions.Count <= 0) return;
 
