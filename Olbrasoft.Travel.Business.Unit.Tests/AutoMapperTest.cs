@@ -83,6 +83,7 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
             };
 
             var config = new MapperConfiguration(cfg => cfg.AddProfile<OrderProfile>());
+           
             var mapper = config.CreateMapper();
 
             //Act
