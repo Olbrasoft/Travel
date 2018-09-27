@@ -117,8 +117,6 @@
     </Compile>
     <Compile Include="Installers\Business.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
-    <Compile Include="Installers\Query\Dispatcher.cs" />
-    <Compile Include="Installers\Query\Factory.cs" />
     <Compile Include="Installers\Query\Handlers.cs" />
     <Compile Include="Installers\Query\Queries.cs" />
     <Compile Include="Installers\Resolver.cs" />

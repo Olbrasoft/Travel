@@ -122,9 +122,9 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
 
         private static AccommodationsFacade CreateAccommodationsFacade()
         {
-            var queryDispatcher = new Mock<IDispatcher>();
+            var queryDispatcher = new Mock<IProvider>();
 
-            queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetAccommodationDetailById>()))
+            queryDispatcher.Setup(p => p.Execute(It.IsAny<GetAccommodationDetailById>()))
                 .Returns(new AccommodationDetail());
 
             var items = new[]
@@ -140,22 +140,22 @@ namespace Olbrasoft.Travel.Business.Unit.Tests
                 Result = items
             };
 
-            queryDispatcher.Setup(p => p.Dispatch(It.IsAny<GetPagedAccommodationItems>())).Returns(result);
+            queryDispatcher.Setup(p => p.Execute(It.IsAny<GetPagedAccommodationItems>())).Returns(result);
 
-            var queryFactoryMock = new Mock<IFactory>();
+            var providerMock = new Mock<IProvider>();
 
-            queryFactoryMock.Setup(p => p.Create<GetAccommodationDetailById>())
+            providerMock.Setup(p => p.Create<GetAccommodationDetailById>())
                 .Returns(new GetAccommodationDetailById(queryDispatcher.Object));
 
-            queryFactoryMock.Setup(p => p.Create<GetPagedAccommodationItems>())
+            providerMock.Setup(p => p.Create<GetPagedAccommodationItems>())
                 .Returns(new GetPagedAccommodationItems(queryDispatcher.Object));
 
-            queryFactoryMock.Setup(p => p.Create<GetPhotosOfAccommodations>())
+            providerMock.Setup(p => p.Create<GetPhotosOfAccommodations>())
                 .Returns(new GetPhotosOfAccommodations(queryDispatcher.Object));
 
             var mockMerger = new AccommodationItemPhotoMerge();
 
-            return new AccommodationsFacade(queryFactoryMock.Object, mockMerger);
+            return new AccommodationsFacade(providerMock.Object, mockMerger);
         }
     }
 }

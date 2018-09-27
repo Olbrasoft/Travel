@@ -112,6 +112,10 @@
       <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
+      <Project>{B47EE928-2611-4D10-8316-C1B0B1EE768B}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Unit.Tests\Olbrasoft.Travel.Data.Unit.Tests.csproj">
       <Project>{B8685B8C-0185-4CD4-B286-8F5990EFCCE7}</Project>
       <Name>Olbrasoft.Travel.Data.Unit.Tests</Name>

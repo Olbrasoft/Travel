@@ -7,12 +7,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Mapping;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class PagedAccommodationItems : HandlerWithDependentSource<GetPagedAccommodationItems, IQueryable<LocalizedAccommodation>, IResultWithTotalCount<AccommodationItem>>
     {
-        public PagedAccommodationItems(IHaveQueryable<LocalizedAccommodation> queryableOwner) : base(queryableOwner.Queryable)
+        public PagedAccommodationItems(IHaveQueryable<LocalizedAccommodation> source, IProjection projector) : base(source.Queryable, projector)
         {
         }
 
@@ -20,7 +21,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
         {
             var localizedAccommodations = PreHandle(Source, query);
 
-            var accommodationItems = ProjectToAccommodationItems(localizedAccommodations);
+            var accommodationItems = ProjectTo<AccommodationItem>(localizedAccommodations);
 
             var result = new ResultWithTotalCount<AccommodationItem>
             {
@@ -36,7 +37,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
         {
             var localizedAccommodations = PreHandle(Source, query);
 
-            var accommodationItems = ProjectToAccommodationItems(localizedAccommodations);
+            var accommodationItems = ProjectTo<AccommodationItem>(localizedAccommodations);
 
             var result = new ResultWithTotalCount<AccommodationItem>
             {
@@ -47,20 +48,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             return result;
         }
-
-        private static IQueryable<AccommodationItem> ProjectToAccommodationItems(IQueryable<LocalizedAccommodation> localizedAccommodations)
-        {
-            return from la in localizedAccommodations
-                   select new AccommodationItem
-                   {
-                       Id = la.Id,
-                       Address = la.Accommodation.Address,
-                       Name = la.Name,
-                       Location = la.Location,
-                       StarRating = la.Accommodation.StarRating
-                   };
-        }
-
+        
         private static IQueryable<LocalizedAccommodation> PreHandle(IQueryable<LocalizedAccommodation> source, GetPagedAccommodationItems query)
         {
             var localizedAccommodationQueryable = source.Include(p => p.Accommodation).Where(p => p.LanguageId == query.LanguageId);
@@ -69,5 +57,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             return localizedAccommodationOrderedQueryable;
         }
+
+       
     }
 }

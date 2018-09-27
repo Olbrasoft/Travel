@@ -204,9 +204,9 @@
     </Compile>
     <Compile Include="Installers\Business.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
-    <Compile Include="Installers\Query\Dispatcher.cs" />
+    <Compile Include="Installers\Mapping.cs" />
+    <Compile Include="Installers\Query\Provider.cs" />
     <Compile Include="Installers\Query\Queries.cs" />
-    <Compile Include="Installers\Query\Factory.cs" />
     <Compile Include="Installers\Query\Handlers.cs" />
     <Compile Include="Installers\Resolver.cs" />
     <Compile Include="Installers\TravelContextInstaller.cs" />
@@ -297,6 +297,10 @@
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Mapping\Olbrasoft.Travel.Data.Mapping.csproj">
+      <Project>{1BA2606F-1A5C-4D3A-A2E9-B8872581ED4A}</Project>
+      <Name>Olbrasoft.Travel.Data.Mapping</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
       <Project>{8A74E643-324D-4769-A8C5-2F013819A6DD}</Project>

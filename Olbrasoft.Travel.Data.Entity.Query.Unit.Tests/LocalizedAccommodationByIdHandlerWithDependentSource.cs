@@ -4,15 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
 {
     public class LocalizedAccommodationByIdHandlerWithDependentSource : HandlerWithDependentSource<ILocalizedAccommodationByIdQuery, IQueryable<LocalizedAccommodation>, LocalizedAccommodation>
     {
-        public LocalizedAccommodationByIdHandlerWithDependentSource(IQueryable<LocalizedAccommodation> source) : base(source)
-        {
-        }
 
         private IQueryable<LocalizedAccommodation> PreHandle(ILocalizedAccommodationByIdQuery query)
         {
@@ -62,6 +60,10 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
             localizedAccommodation.Accommodation.Descriptions = descriptions;
 
             return localizedAccommodation;
+        }
+
+        public LocalizedAccommodationByIdHandlerWithDependentSource(IHaveQueryable<LocalizedAccommodation> source, IProjection projector) : base(source.Queryable, projector)
+        {
         }
     }
 }

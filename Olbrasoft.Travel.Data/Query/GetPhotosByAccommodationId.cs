@@ -4,11 +4,11 @@ using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Data.Query
 {
-    public class GetPhotosByAccommodationId : QueryWithDependentDispatcher<IEnumerable<AccommodationPhoto>>
+    public class GetPhotosByAccommodationId : QueryWithDependentProvider<IEnumerable<AccommodationPhoto>>
     {
         public int AccommodationId { get; set; }
-
-        public GetPhotosByAccommodationId(IDispatcher queryDispatcher) : base(queryDispatcher)
+        
+        public GetPhotosByAccommodationId(IProvider queryProvider) : base(queryProvider)
         {
         }
     }

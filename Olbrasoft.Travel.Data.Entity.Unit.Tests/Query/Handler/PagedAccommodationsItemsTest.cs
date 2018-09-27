@@ -7,6 +7,7 @@ using Olbrasoft.Travel.Data.Entity.Query.Handler;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Linq;
+using Olbrasoft.Data.Mapping;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
 {
@@ -22,8 +23,9 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
             var localizedAccommodationsMock = new Mock<IHaveQueryable<LocalizedAccommodation>>();
             localizedAccommodationsMock.Setup(p => p.Queryable).Returns(localizedAccommodationsQueryableMock.Object);
 
+            var projectionMock = new Mock<IProjection>();
             //Act
-            var handler = new PagedAccommodationItems(localizedAccommodationsMock.Object);
+            var handler = new PagedAccommodationItems(localizedAccommodationsMock.Object,projectionMock.Object);
 
             //Assert
             Assert.IsInstanceOf<IHandle<GetPagedAccommodationItems, IResultWithTotalCount<AccommodationItem>>>(handler);

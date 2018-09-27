@@ -6,12 +6,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Mapping;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class AccommodationDetailById : HandlerWithDependentSource<GetAccommodationDetailById, IQueryable<LocalizedAccommodation>, AccommodationDetail>
     {
-        public AccommodationDetailById(IHaveQueryable<LocalizedAccommodation> queryableOwner) : base(queryableOwner.Queryable)
+        public AccommodationDetailById(IHaveQueryable<LocalizedAccommodation> source, IProjection projector) : base(source.Queryable, projector)
         {
         }
 
@@ -40,31 +41,23 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
             return accommodationDetail;
         }
 
-        private static IQueryable<AccommodationDescription> ProjectToAccommodationDescriptions(IQueryable<LocalizedAccommodation> source, GetAccommodationDetailById query)
+        private  IQueryable<AccommodationDescription> ProjectToAccommodationDescriptions(IQueryable<LocalizedAccommodation> source, GetAccommodationDetailById query)
         {
-            return source
-                .SelectMany(p => p.Accommodation.Descriptions)
-                .Where(p => p.AccommodationId == query.Id && p.LanguageId == query.LanguageId)
-                .Select(des => new AccommodationDescription
-                {
-                    TypeOfDescriptionId = des.TypeOfDescriptionId,
-                    Text = des.Text
-                });
+            var descriptions = source
+                    .SelectMany(p => p.Accommodation.Descriptions)
+                    .Where(p => p.AccommodationId == query.Id && p.LanguageId == query.LanguageId);
+
+            return ProjectTo<AccommodationDescription>(descriptions);
         }
 
-        private static IQueryable<AccommodationDetail> ProjectToAccommodationsDetails(IQueryable<LocalizedAccommodation> source, GetAccommodationDetailById query)
+        private  IQueryable<AccommodationDetail> ProjectToAccommodationsDetails(IQueryable<LocalizedAccommodation> source, GetAccommodationDetailById query)
         {
-            return from la in source.Include(p => p.Accommodation).Where(la => la.Id == query.Id && la.LanguageId == query.LanguageId)
-                   select new AccommodationDetail
-                   {
-                       Id = la.Id,
-                       Name = la.Name,
-                       Address = la.Accommodation.Address,
-                       Location = la.Location,
-                       Latitude = (double)la.Accommodation.CenterCoordinates.Latitude,
-                       Longitude = (double)la.Accommodation.CenterCoordinates.Longitude,
-                       StarRating = la.Accommodation.StarRating
-                   };
+            var localizedAccommodations = source.Include(p => p.Accommodation).Where(la => la.Id == query.Id && la.LanguageId == query.LanguageId);
+             
+            return ProjectTo<AccommodationDetail>(localizedAccommodations);
+            
         }
+
+      
     }
 }

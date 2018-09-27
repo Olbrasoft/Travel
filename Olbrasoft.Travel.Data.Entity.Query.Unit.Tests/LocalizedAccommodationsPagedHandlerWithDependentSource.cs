@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
@@ -14,9 +15,6 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
     public class LocalizedAccommodationsPagedHandlerWithDependentSource : HandlerWithDependentSource<ILocalizedAccommodationsPagedQuery,
         IQueryable<LocalizedAccommodation>, IPagedList<LocalizedAccommodation>>
     {
-        public LocalizedAccommodationsPagedHandlerWithDependentSource(IQueryable<LocalizedAccommodation> source) : base(source)
-        {
-        }
 
         public override IPagedList<LocalizedAccommodation> Handle(ILocalizedAccommodationsPagedQuery query)
         {
@@ -37,6 +35,10 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
             var localizedAccommodationOrderedQueryable = query.Sorting(localizedAccommodationQueryable);
 
             return localizedAccommodationOrderedQueryable;
+        }
+
+        public LocalizedAccommodationsPagedHandlerWithDependentSource(IHaveQueryable<LocalizedAccommodation> source , IProjection projector) : base(source.Queryable, projector)
+        {
         }
     }
 }

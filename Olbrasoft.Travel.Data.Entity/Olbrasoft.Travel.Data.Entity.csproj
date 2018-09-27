@@ -383,6 +383,10 @@
       <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
       <Name>Olbrasoft.Travel.Data.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Mapping\Olbrasoft.Travel.Data.Mapping.csproj">
+      <Project>{1BA2606F-1A5C-4D3A-A2E9-B8872581ED4A}</Project>
+      <Name>Olbrasoft.Travel.Data.Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj">
       <Project>{8A74E643-324D-4769-A8C5-2F013819A6DD}</Project>
       <Name>Olbrasoft.Travel.Data</Name>

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity.Query.Handler;
 
@@ -36,7 +37,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         {
             //Arrange
             var handler = CreateHandler();
-            var dispatcher= new Mock<IDispatcher>();
+            var dispatcher= new Mock<IProvider>();
             var query = new GetPhotosOfAccommodations(dispatcher.Object);
 
             //Act
@@ -52,7 +53,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         {
             //Arrange
             var handler = CreateHandler();
-            var dispatcher = new Mock<IDispatcher>();
+            var dispatcher = new Mock<IProvider>();
             var query = new GetPhotosOfAccommodations(dispatcher.Object);
 
             //Act
@@ -67,10 +68,11 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
             var photos = new Entities.PhotoOfAccommodation[1].AsQueryable();
             var ownPhotosOfAccommodationsMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
 
+
             ownPhotosOfAccommodationsMock.Setup(p => p.Queryable).Returns(photos);
+            var projectionMock = new Mock<IProjection>();
 
-
-            return new PhotosOfAccommodations(ownPhotosOfAccommodationsMock.Object);
+            return new PhotosOfAccommodations(ownPhotosOfAccommodationsMock.Object,projectionMock.Object);
         }
     }
 }

@@ -4,26 +4,31 @@ using System.Threading.Tasks;
 
 namespace Olbrasoft.Data.Query
 {
-    public class DispatcherWithWrapperAndDependentResolver : IDispatcher
+    public class ProviderWithWrapperAndDependentResolver : IProvider
     {
         protected IResolver ObjectResolver { get; }
 
-        public DispatcherWithWrapperAndDependentResolver(IResolver objectResolver)
+        public ProviderWithWrapperAndDependentResolver(IResolver objectResolver)
         {
             ObjectResolver = objectResolver;
         }
 
-        public TResult Dispatch<TResult>(IQuery<TResult> query)
+        public T Create<T>() where T : IQuery
+        {
+            return (T)ObjectResolver.Resolve(typeof(T));
+        }
+
+        public TResult Execute<TResult>(IQuery<TResult> query)
         {
             return GetHandler(query).Handle(query);
         }
 
-        public Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken)
+        public Task<TResult> ExecuteAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken)
         {
             return GetHandler(query).HandleAsync(query, cancellationToken);
         }
 
-        public Task<TResult> DispatchAsync<TResult>(IQuery<TResult> query)
+        public Task<TResult> ExecuteAsync<TResult>(IQuery<TResult> query)
         {
             return GetHandler(query).HandleAsync(query);
         }
@@ -50,12 +55,10 @@ namespace Olbrasoft.Data.Query
         public class WrapperWithDependentHandler<TQuery, TResult> : IWrapper<TResult> where TQuery : IQuery<TResult>
         {
             private readonly IHandler<TQuery, TResult> _handler;
-          
 
             public WrapperWithDependentHandler(IHandler<TQuery, TResult> handler)
             {
                 _handler = handler;
-           
             }
 
             public TResult Handle(IQuery<TResult> query)

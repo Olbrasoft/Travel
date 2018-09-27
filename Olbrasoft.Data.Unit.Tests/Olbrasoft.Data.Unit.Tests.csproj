@@ -86,8 +86,6 @@
     <Compile Include="ISomeQueryWithSorting.cs" />
     <Compile Include="LocalizedQuery.cs" />
     <Compile Include="LocalizedQueryTest.cs" />
-    <Compile Include="QueryBuilder.cs" />
-    <Compile Include="QueryBuilderTest.cs" />
     <Compile Include="QueryExtensions.cs" />
     <Compile Include="Query\HandlerWithDependentSourceTest.cs" />
     <Compile Include="QueryWithOutImplementationTest.cs" />

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Moq;
 using NUnit.Framework;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests.Query
@@ -24,10 +25,11 @@ namespace Olbrasoft.Data.Unit.Tests.Query
         private static SomeAsyncHandlerWithDependentSource SomeAsyncHandler()
         {
             var objectQueryableMock = new Mock<IQueryable<object>>();
+            var projectionMock = new Mock<IProjection>();
 
             var source = objectQueryableMock.Object;
 
-            return new SomeAsyncHandlerWithDependentSource(source);
+            return new SomeAsyncHandlerWithDependentSource(source,projectionMock.Object);
         }
 
         [Test]

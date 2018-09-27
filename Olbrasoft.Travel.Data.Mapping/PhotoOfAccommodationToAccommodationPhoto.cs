@@ -14,7 +14,6 @@ namespace Olbrasoft.Travel.Data.Mapping
                 .ForMember(d => d.Path, opt => opt.MapFrom(src => src.PathToPhoto.Path))
                 .ForMember(d => d.Extension, opt => opt.MapFrom(src => src.FileExtension.Extension))
                 ;
-
         }
     }
 }

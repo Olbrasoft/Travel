@@ -28,7 +28,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Query
         public void Instance_Is_QueryWithDependentDispatcher_Of_IEnumerable_OfAccommodationPhoto()
         {
             //Arrange
-            var type = typeof(QueryWithDependentDispatcher<IEnumerable<AccommodationPhoto>>);
+            var type = typeof(QueryWithDependentProvider<IEnumerable<AccommodationPhoto>>);
 
             //Act
             var query = CreateQuery();
@@ -70,9 +70,9 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Query
 
         private static GetPhotosOfAccommodations CreateQuery()
         {
-            var dispatcher = new Mock<IDispatcher>();
+            var dispatcher = new Mock<IProvider>();
 
             return new GetPhotosOfAccommodations(dispatcher.Object);
         }
     }
-}
+} 

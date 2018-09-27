@@ -13,12 +13,12 @@ namespace Olbrasoft.Travel.Business.Facades
 {
     public class AccommodationsFacade : IAccommodations
     {
-        protected IFactory Factory { get; }
+        protected IProvider QueryProvider { get; }
         protected IAccommodationItemPhotoMerge Merger { get; }
 
-        public AccommodationsFacade(IFactory factory, IAccommodationItemPhotoMerge merger)
+        public AccommodationsFacade(IProvider queryProvider, IAccommodationItemPhotoMerge merger)
         {
-            Factory = factory;
+            QueryProvider = queryProvider;
             Merger = merger;
         }
 
@@ -48,7 +48,7 @@ namespace Olbrasoft.Travel.Business.Facades
 
         private GetPhotosByAccommodationId GetPhotosByAccommodationId(int accommodationId)
         {
-            var query = Factory.Create<GetPhotosByAccommodationId>();
+            var query = QueryProvider.Create<GetPhotosByAccommodationId>();
             query.AccommodationId = accommodationId;
             return query;
         }
@@ -94,7 +94,7 @@ namespace Olbrasoft.Travel.Business.Facades
 
         private GetPhotosOfAccommodations GetDefaultPhotosOfAccommodations(IEnumerable<int> accommodationIds)
         {
-            var query = Factory.Create<GetPhotosOfAccommodations>();
+            var query = QueryProvider.Create<GetPhotosOfAccommodations>();
             query.AccommodationIds = accommodationIds;
             query.OnlyDefaultPhotos = true;
             return query;
@@ -104,7 +104,7 @@ namespace Olbrasoft.Travel.Business.Facades
             IPageInfo pagingSettings, int languageId, Func<IQueryable<LocalizedAccommodation>, IOrderedQueryable<LocalizedAccommodation>> sorting
         )
         {
-            var query = Factory.Create<GetPagedAccommodationItems>();
+            var query = QueryProvider.Create<GetPagedAccommodationItems>();
             query.Paging = pagingSettings;
             query.LanguageId = languageId;
             query.Sorting = sorting;
@@ -113,7 +113,7 @@ namespace Olbrasoft.Travel.Business.Facades
 
         private GetAccommodationDetailById GetAccommodationDetailById(int id, int languageId)
         {
-            var query = Factory.Create<GetAccommodationDetailById>();
+            var query = QueryProvider.Create<GetAccommodationDetailById>();
 
             query.Id = id;
             query.LanguageId = languageId;

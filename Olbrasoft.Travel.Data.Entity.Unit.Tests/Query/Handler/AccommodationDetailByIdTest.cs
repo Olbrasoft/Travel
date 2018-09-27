@@ -1,5 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity.Query.Handler;
@@ -17,8 +18,10 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
             //Arrange
             var localizedAccommodationsMock = new Mock<IHaveQueryable<LocalizedAccommodation>>();
 
+            var projectionMock = new Mock<IProjection>();
+
             //Act
-            var handler = new AccommodationDetailById(localizedAccommodationsMock.Object);
+            var handler = new AccommodationDetailById(localizedAccommodationsMock.Object,projectionMock.Object);
 
             //Assert
             Assert.IsInstanceOf<IHandle<GetAccommodationDetailById, AccommodationDetail>>(handler);

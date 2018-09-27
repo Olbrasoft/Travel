@@ -13,7 +13,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Query
         public void Instance_Implement_Interface_IQueryOfAccommodationDetail()
         {
             //Arrange
-            var dispatcherMock = new Mock<IDispatcher>();
+            var dispatcherMock = new Mock<IProvider>();
 
             //Act
             var query = new GetAccommodationDetailById(dispatcherMock.Object);
@@ -26,7 +26,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Query
         public void LanguageId()
         {
             //Arrange
-            var dispatcherMock = new Mock<IDispatcher>();
+            var dispatcherMock = new Mock<IProvider>();
             var query = new GetAccommodationDetailById(dispatcherMock.Object)
             {
                 LanguageId = 1033,
@@ -43,7 +43,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Query
         public void Id()
         {
             //Arrange
-            var dispatcherMock = new Mock<IDispatcher>();
+            var dispatcherMock = new Mock<IProvider>();
             var query = new GetAccommodationDetailById(dispatcherMock.Object)
             {
                 Id = 42,

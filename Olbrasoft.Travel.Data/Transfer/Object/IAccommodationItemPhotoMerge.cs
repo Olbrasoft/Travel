@@ -1,5 +1,4 @@
-﻿using Olbrasoft.Collections.Generic;
-using Olbrasoft.Pagination;
+﻿using Olbrasoft.Pagination;
 
 namespace Olbrasoft.Travel.Data.Transfer.Object
 {

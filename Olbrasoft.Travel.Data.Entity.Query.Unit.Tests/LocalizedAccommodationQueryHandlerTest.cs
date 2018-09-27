@@ -4,13 +4,14 @@ using Olbrasoft.Collections.Generic;
 using Olbrasoft.Data;
 using Olbrasoft.Travel.Data.Unit.Tests;
 using System.Linq;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 using Olbrasoft.Travel.Data.Entities;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
 {
     [TestFixture]
-    internal class LocalizedAccommodationsPagedQueryHandlerTest
+    internal class LocalizedAccommodationsPagedQueryHandlerTest : IHaveQueryable<LocalizedAccommodation>
     {
         [Test]
         public void Is_Instance_Of_IQueryHandler()
@@ -18,10 +19,13 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
             //Arrange
             var type = typeof(IHandle<LocalizedAccommodationsPagedQuery, IPagedList<LocalizedAccommodation>>);
 
-            var localizedAccommodationsQueryableMock = new Mock<IQueryable<LocalizedAccommodation>>();
+            var localizedAccommodationsQueryableMock = new Mock<IHaveQueryable<LocalizedAccommodation>>();
+            var projectionMock = new Mock<IProjection>();
 
             //Act
-            var handler = new LocalizedAccommodationsPagedHandlerWithDependentSource(localizedAccommodationsQueryableMock.Object);
+            var handler =
+                new LocalizedAccommodationsPagedHandlerWithDependentSource(localizedAccommodationsQueryableMock.Object,
+                    projectionMock.Object);
 
             //Assert
             Assert.IsInstanceOf(type, handler);
@@ -31,13 +35,14 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
         public void Handle()
         {
             //Arrange
-            var localizedAccommodationsQueryable = new[]
-            {
-                new LocalizedAccommodation(),
-                new LocalizedAccommodation()
-            }.AsQueryable();
 
-           var result = new LocalizedAccommodationsPagedHandlerWithDependentSource(localizedAccommodationsQueryable);
+
+
+
+            var projectionMock = new Mock<IProjection>();
+            var result =
+                new LocalizedAccommodationsPagedHandlerWithDependentSource(this,
+                    projectionMock.Object);
 
             var queryMock = new Mock<ILocalizedAccommodationsPagedQuery>();
             queryMock.Setup(p => p.Sorting).Returns(queryable => queryable.OrderBy(p => p.Id));
@@ -53,5 +58,12 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Unit.Tests
             ////Assert
             //Assert.IsTrue(result.Count == 2);
         }
+
+        public IQueryable<LocalizedAccommodation> Queryable => new[]
+        {
+            new LocalizedAccommodation(),
+            new LocalizedAccommodation()
+        }.AsQueryable();
     }
 }
+

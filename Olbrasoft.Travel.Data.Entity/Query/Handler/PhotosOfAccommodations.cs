@@ -7,16 +7,17 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data.Mapping;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class PhotosOfAccommodations : HandlerWithDependentSource<GetPhotosOfAccommodations,
         IQueryable<PhotoOfAccommodation>, IEnumerable<AccommodationPhoto>>
     {
-        public PhotosOfAccommodations(IHaveQueryable<PhotoOfAccommodation> queryableOwner) : base(queryableOwner.Queryable)
+        public PhotosOfAccommodations(IHaveQueryable<PhotoOfAccommodation> source, IProjection projector) : base(source.Queryable, projector)
         {
         }
-
+        
         public override IEnumerable<AccommodationPhoto> Handle(GetPhotosOfAccommodations query)
         {
             var projection = ProjectToQueryableOfAccommodationPhoto(Source, query);
@@ -24,7 +25,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
             return projection;
         }
 
-        private static IQueryable<AccommodationPhoto> ProjectToQueryableOfAccommodationPhoto(IQueryable<PhotoOfAccommodation> source, GetPhotosOfAccommodations query)
+        private IQueryable<AccommodationPhoto> ProjectToQueryableOfAccommodationPhoto(IQueryable<PhotoOfAccommodation> source, GetPhotosOfAccommodations query)
         {
             var photoOfAccommodations = source.Include(p => p.PathToPhoto).Include(p => p.FileExtension);
 
@@ -34,16 +35,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             if (query.OnlyDefaultPhotos) photoOfAccommodations = photoOfAccommodations.Where(p => p.IsDefault);
 
-            var result = from p in photoOfAccommodations
-                         select new AccommodationPhoto
-                         {
-                             AccommodationId = p.AccommodationId,
-                             Path = p.PathToPhoto.Path,
-                             Name = p.FileName,
-                             Extension = p.FileExtension.Extension
-                         };
-
-            return result;
+            return ProjectTo<AccommodationPhoto>(photoOfAccommodations);
         }
 
         public override async Task<IEnumerable<AccommodationPhoto>> HandleAsync(GetPhotosOfAccommodations query, CancellationToken cancellationToken)
@@ -52,5 +44,6 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             return await projection.ToArrayAsync(cancellationToken);
         }
+
     }
 }

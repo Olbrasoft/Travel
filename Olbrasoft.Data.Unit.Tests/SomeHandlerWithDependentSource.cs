@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Moq;
+using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
@@ -8,7 +10,7 @@ namespace Olbrasoft.Data.Unit.Tests
     internal class SomeHandlerWithDependentSource : HandlerWithDependentSource<SomQuery,IQueryable<object>, object>
     {
     
-        public SomeHandlerWithDependentSource(IQueryable<object> source) : base(source)
+        public SomeHandlerWithDependentSource(IQueryable<object> source) : base(source,new Mock<IProjection>().Object)
         {
         }
 
