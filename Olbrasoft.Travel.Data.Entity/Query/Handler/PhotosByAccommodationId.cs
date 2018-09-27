@@ -8,14 +8,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class PhotosByAccommodationId : AsyncHandlerWithDependentSource<GetPhotosByAccommodationId,
-        IQueryable<PhotoOfAccommodation>,
+        PhotoOfAccommodation,
         IEnumerable<AccommodationPhoto>>
     {
-        public PhotosByAccommodationId(IHaveQueryable<PhotoOfAccommodation> source, IProjection projector) : base(source.Queryable, projector)
+        public PhotosByAccommodationId(IHaveQueryable<PhotoOfAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 

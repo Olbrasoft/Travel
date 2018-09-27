@@ -194,7 +194,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IHaveQueryable.cs" />
     <Compile Include="Migrations\201803132033312_Init.cs" />
     <Compile Include="Migrations\201803132033312_Init.Designer.cs">
       <DependentUpon>201803132033312_Init.cs</DependentUpon>

@@ -23,7 +23,7 @@ namespace Olbrasoft.Data.Unit.Tests.Query
 
         private static SomeHandlerWithDependentSource CreateSomeQueryHandler()
         {
-            var objectQueryableMock = new Mock<IQueryable<object>>();
+            var objectQueryableMock = new Mock<IHaveQueryable<object>>();
 
             var source = objectQueryableMock.Object;
 

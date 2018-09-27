@@ -24,7 +24,7 @@ namespace Olbrasoft.Data.Unit.Tests.Query
 
         private static SomeAsyncHandlerWithDependentSource SomeAsyncHandler()
         {
-            var objectQueryableMock = new Mock<IQueryable<object>>();
+            var objectQueryableMock = new Mock<IHaveQueryable<object>>();
             var projectionMock = new Mock<IProjection>();
 
             var source = objectQueryableMock.Object;

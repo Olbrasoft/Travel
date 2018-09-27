@@ -7,12 +7,12 @@ namespace Olbrasoft.Data.Query
 {
     public abstract class AsyncHandlerWithDependentSource<TQuery, TSource, TResult> : IHandler<TQuery, TResult> where TQuery : IQuery<TResult>
     {
-        protected TSource Source { get; }
+        protected IQueryable<TSource> Source { get; }
         protected IProjection Projector { get; }
         
-        protected AsyncHandlerWithDependentSource(TSource source, IProjection projector)
+        protected AsyncHandlerWithDependentSource(IHaveQueryable<TSource> ownerQueryable, IProjection projector)
         {
-            Source = source;
+            Source = ownerQueryable.Queryable;
             Projector = projector;
         }
 

@@ -1,5 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
+using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 using Olbrasoft.Travel.Data.Entities;

@@ -7,10 +7,10 @@ using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
 {
-    internal class SomeHandlerWithDependentSource : HandlerWithDependentSource<SomQuery,IQueryable<object>, object>
+    internal class SomeHandlerWithDependentSource : HandlerWithDependentSource<SomQuery,object, object>
     {
     
-        public SomeHandlerWithDependentSource(IQueryable<object> source) : base(source,new Mock<IProjection>().Object)
+        public SomeHandlerWithDependentSource(IHaveQueryable<object> source) : base(source,new Mock<IProjection>().Object)
         {
         }
 

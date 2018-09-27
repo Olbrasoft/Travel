@@ -8,6 +8,7 @@ using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler

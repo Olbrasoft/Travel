@@ -1,5 +1,6 @@
 ﻿using Olbrasoft.Travel.Data.Entities;
 using System.Linq;
+using Olbrasoft.Data;
 
 namespace Olbrasoft.Travel.Data.Entity
 {

@@ -6,8 +6,9 @@ using Olbrasoft.Data.Query;
 
 namespace Olbrasoft.Data.Unit.Tests
 {
-    internal class SomeAsyncHandlerWithDependentSource : AsyncHandlerWithDependentSource<SomQuery, IQueryable<object>, object>
+    internal class SomeAsyncHandlerWithDependentSource : AsyncHandlerWithDependentSource<SomQuery,object, object>
     {
+
 
 
         public new object Handle(SomQuery query)
@@ -23,7 +24,8 @@ namespace Olbrasoft.Data.Unit.Tests
             throw new System.NotImplementedException();
         }
 
-        public SomeAsyncHandlerWithDependentSource(IQueryable<object> source, IProjection projector) : base(source, projector)
+
+        public SomeAsyncHandlerWithDependentSource(IHaveQueryable<object> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
     }

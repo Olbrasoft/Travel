@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Entity.Query.Handler;

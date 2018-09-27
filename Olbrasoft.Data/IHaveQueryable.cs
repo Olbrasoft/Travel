@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Olbrasoft.Travel.Data.Entity
+namespace Olbrasoft.Data
 {
     public interface IHaveQueryable<out T>
     {

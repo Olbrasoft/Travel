@@ -7,13 +7,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
-    public class PagedAccommodationItems : HandlerWithDependentSource<GetPagedAccommodationItems, IQueryable<LocalizedAccommodation>, IResultWithTotalCount<AccommodationItem>>
+    public class PagedAccommodationItems : HandlerWithDependentSource<GetPagedAccommodationItems, LocalizedAccommodation, IResultWithTotalCount<AccommodationItem>>
     {
-        public PagedAccommodationItems(IHaveQueryable<LocalizedAccommodation> source, IProjection projector) : base(source.Queryable, projector)
+        public PagedAccommodationItems(IHaveQueryable<LocalizedAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 

@@ -78,9 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocalizedAccommodationByIdHandlerWithDependentSource.cs" />
-    <Compile Include="LocalizedAccommodationQueryHandlerTest.cs" />
-    <Compile Include="LocalizedAccommodationsPagedHandlerWithDependentSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

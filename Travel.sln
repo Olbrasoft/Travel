@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Business",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Data", "Olbrasoft.Data\Olbrasoft.Data.csproj", "{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Castle", "Olbrasoft.Castle\Olbrasoft.Castle.csproj", "{CDAE0EE0-6555-44F6-B1C3-FB7866318756}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data", "Olbrasoft.Travel.Data\Olbrasoft.Travel.Data.csproj", "{8A74E643-324D-4769-A8C5-2F013819A6DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Design.Pattern.UnitTest", "Olbrasoft.Design.Pattern.UnitTest\Olbrasoft.Design.Pattern.UnitTest.csproj", "{676D810A-B427-4865-9C9F-1883E6D59FE9}"
@@ -139,10 +137,6 @@ Global
 		{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDAE0EE0-6555-44F6-B1C3-FB7866318756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDAE0EE0-6555-44F6-B1C3-FB7866318756}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDAE0EE0-6555-44F6-B1C3-FB7866318756}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDAE0EE0-6555-44F6-B1C3-FB7866318756}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8A74E643-324D-4769-A8C5-2F013819A6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8A74E643-324D-4769-A8C5-2F013819A6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A74E643-324D-4769-A8C5-2F013819A6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU

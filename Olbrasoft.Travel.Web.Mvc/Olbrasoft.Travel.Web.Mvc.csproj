@@ -250,10 +250,6 @@
       <Project>{9e9089a2-2b27-4d35-bd0b-56ab1c3f2a9c}</Project>
       <Name>Olbrasoft.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Castle\Olbrasoft.Castle.csproj">
-      <Project>{cdae0ee0-6555-44f6-b1c3-fb7866318756}</Project>
-      <Name>Olbrasoft.Castle</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
       <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
       <Name>Olbrasoft.Collections</Name>
