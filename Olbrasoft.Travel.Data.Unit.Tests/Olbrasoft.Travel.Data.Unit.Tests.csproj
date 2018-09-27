@@ -69,6 +69,7 @@
     <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationTest.cs" />
     <Compile Include="ILocalizedAccommodationByIdQuery.cs" />
     <Compile Include="ILocalizedAccommodationsPagedQuery.cs" />
     <Compile Include="IPagedListOfAccommodationItemLocalizedQuery.cs" />
@@ -102,6 +103,10 @@
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Extensions\Olbrasoft.Extensions.csproj">
+      <Project>{2C48AF1D-9528-4996-BC30-3A767902C830}</Project>
+      <Name>Olbrasoft.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
       <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>

@@ -62,7 +62,8 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
                        Address = la.Accommodation.Address,
                        Location = la.Location,
                        Latitude = (double)la.Accommodation.CenterCoordinates.Latitude,
-                       Longitude = (double)la.Accommodation.CenterCoordinates.Longitude
+                       Longitude = (double)la.Accommodation.CenterCoordinates.Longitude,
+                       StarRating = la.Accommodation.StarRating
                    };
         }
     }

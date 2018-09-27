@@ -270,6 +270,10 @@
       <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Extensions\Olbrasoft.Extensions.csproj">
+      <Project>{2c48af1d-9528-4996-bc30-3a767902c830}</Project>
+      <Name>Olbrasoft.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
       <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
       <Name>Olbrasoft.Pagination</Name>

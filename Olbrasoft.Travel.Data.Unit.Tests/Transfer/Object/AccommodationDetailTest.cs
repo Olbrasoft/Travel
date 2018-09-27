@@ -22,8 +22,6 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
             {
 
             };
-
-
             
             //Assert
             Assert.IsInstanceOf(type, accommodationDetail);

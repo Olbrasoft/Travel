@@ -1,8 +1,20 @@
-﻿@using X.PagedList
+﻿@using Olbrasoft.Extensions
+@using X.PagedList
 @using X.PagedList.Mvc
 @using X.PagedList.Mvc.Common
+
 @model Olbrasoft.Collections.Generic.IPagedList<Olbrasoft.Travel.Data.Transfer.Object.AccommodationItem>
 
+<style type="text/css">
+  
+    i.glyphicon-star, i.glyphicon-star-empty {
+        color: orange;
+    }
+    
+    .bis.glyphicon-star {
+        text-shadow: 0 0 1px black,0 0 1px black,0 0 1px black,0 0 1px black;
+    }
+</style>
 
 <div class="list-group">
     @foreach (var accommodation in Model)
@@ -11,7 +23,16 @@
         <h4>
             @Html.ActionLink(accommodation.Name, "Detail", "Accommodations", new { id = accommodation.Id }, new { @class = "list-group-item-heading" })
         </h4>
-
+        <ul class="list-inline">
+            @for (var i = 0; i < (int)accommodation.StarRating; i++)
+            {
+                <li><i title="*" class="glyphicon glyphicon-star "></i></li>
+            }
+            @if (!accommodation.StarRating.IsInteger())
+            {
+                <li><i class="glyphicon glyphicon-star-empty"></i></li>
+            }
+        </ul>
         <div class="list-group-item-text">
             @accommodation.Address
         </div>

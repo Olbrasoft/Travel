@@ -22,7 +22,7 @@ namespace Olbrasoft.Travel.Data.Entity
         public virtual IDbSet<TypeOfAccommodation> TypesOfAccommodations { get; set; }
         public virtual IDbSet<LocalizedTypeOfAccommodation> LocalizedTypesOfAccommodations { get; set; }
         public virtual IDbSet<Chain> Chains { get; set; }
-        public virtual IDbSet<Accommodation> Accommodations { get; set; }
+        public virtual IDbSet<Entities.Accommodation> Accommodations { get; set; }
         public virtual IDbSet<LocalizedAccommodation> LocalizedAccommodations { get; set; }
         public virtual IDbSet<TypeOfDescription> TypesOfDescriptions { get; set; }
         public virtual IDbSet<Description> Descriptions { get; set; }
@@ -403,15 +403,15 @@ namespace Olbrasoft.Travel.Data.Entity
 
         private void OnAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
-            modelBuilder.Entity<Accommodation>().ToTable(tableName, dbSchema).HasIndex(e => e.EanId).IsUnique();
+            modelBuilder.Entity<Entities.Accommodation>().ToTable(tableName, dbSchema).HasIndex(e => e.EanId).IsUnique();
 
-            modelBuilder.Entity<Accommodation>().HasRequired(a => a.TypeOfAccommodation)
+            modelBuilder.Entity<Entities.Accommodation>().HasRequired(a => a.TypeOfAccommodation)
                 .WithMany(toa => toa.Accommodations).WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Accommodation>().HasRequired(a => a.Creator).WithMany(user => user.Accommodations)
+            modelBuilder.Entity<Entities.Accommodation>().HasRequired(a => a.Creator).WithMany(user => user.Accommodations)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Accommodation>().HasRequired(a => a.Country).WithMany(c => c.Accommodations)
+            modelBuilder.Entity<Entities.Accommodation>().HasRequired(a => a.Country).WithMany(c => c.Accommodations)
                 .WillCascadeOnDelete(false);
         }
     }

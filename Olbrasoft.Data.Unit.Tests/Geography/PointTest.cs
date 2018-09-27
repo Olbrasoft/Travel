@@ -1,11 +1,10 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Olbrasoft.Data.Geography;
 
 namespace Olbrasoft.Data.Unit.Tests.Geography
 {
     [TestFixture]
-    class PointTest
+    internal class PointTest
     {
         [Test]
         public void Instance_Implement_Interface_IPoint()
@@ -17,13 +16,7 @@ namespace Olbrasoft.Data.Unit.Tests.Geography
             var point = new Point();
 
             //Assert
-            Assert.IsInstanceOf(type,point);
+            Assert.IsInstanceOf(type, point);
         }
-
-
-        
-
-      
-            
     }
 }

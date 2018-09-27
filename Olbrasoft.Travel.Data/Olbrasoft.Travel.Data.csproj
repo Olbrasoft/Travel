@@ -180,6 +180,8 @@
     <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accommodation.cs" />
+    <Compile Include="IAccommodation.cs" />
     <Compile Include="ICanClearCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\GetAccommodationDetailById.cs" />
@@ -207,7 +209,6 @@
     <Compile Include="Repository\ITypesOfRegionsRepository.cs" />
     <Compile Include="Repository\ITypesRepository.cs" />
     <Compile Include="Repository\IUsersRepository.cs" />
-    <Compile Include="Transfer\Object\Accommodation.cs" />
     <Compile Include="Transfer\Object\AccommodationDescription.cs" />
     <Compile Include="Transfer\Object\AccommodationDetail.cs" />
     <Compile Include="Transfer\Object\AccommodationItem.cs" />

@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Olbrasoft.Travel.Data.Transfer.Object
+namespace Olbrasoft.Travel.Data
 {
-    public abstract class Accommodation
+    public class Accommodation : IAccommodation
     {
         public int Id { get; set; }
+
+        public decimal StarRating { get; set; }
 
         [Required]
         [StringLength(70)]

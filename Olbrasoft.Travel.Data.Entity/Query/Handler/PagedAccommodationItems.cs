@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Olbrasoft.Data.Query;
+﻿using Olbrasoft.Data.Query;
 using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Query;
@@ -50,12 +48,17 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
             return result;
         }
 
-        private static IQueryable<AccommodationItem> ProjectToAccommodationItems(IQueryable localizedAccommodations)
+        private static IQueryable<AccommodationItem> ProjectToAccommodationItems(IQueryable<LocalizedAccommodation> localizedAccommodations)
         {
-            var config = new MapperConfiguration(expression => expression.CreateMap<LocalizedAccommodation, AccommodationItem>()
-                .ForMember(dto => dto.Address, conf => conf.MapFrom(localizedAccommodation => localizedAccommodation.Accommodation.Address)));
-
-            return localizedAccommodations.ProjectTo<AccommodationItem>(config);
+            return from la in localizedAccommodations
+                   select new AccommodationItem
+                   {
+                       Id = la.Id,
+                       Address = la.Accommodation.Address,
+                       Name = la.Name,
+                       Location = la.Location,
+                       StarRating = la.Accommodation.StarRating
+                   };
         }
 
         private static IQueryable<LocalizedAccommodation> PreHandle(IQueryable<LocalizedAccommodation> source, GetPagedAccommodationItems query)

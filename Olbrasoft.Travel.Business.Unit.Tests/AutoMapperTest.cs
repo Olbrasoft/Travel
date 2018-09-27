@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Olbrasoft.Travel.Data;
 using Olbrasoft.Travel.Data.Entities;
+using Accommodation = Olbrasoft.Travel.Data.Entities.Accommodation;
 
 namespace Olbrasoft.Travel.Business.Unit.Tests
 {

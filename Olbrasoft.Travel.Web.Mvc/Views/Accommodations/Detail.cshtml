@@ -1,4 +1,5 @@
-﻿@model Olbrasoft.Travel.Data.Transfer.Object.AccommodationDetail
+﻿@using Olbrasoft.Extensions
+@model Olbrasoft.Travel.Data.Transfer.Object.AccommodationDetail
 
 @{
     ViewBag.Title = "Detail";
@@ -8,10 +9,15 @@
         width: 350px;
         text-align: center
     }
-
+    i.glyphicon-star, i.glyphicon-star-empty {
+        color: orange;
+    }
     div#map {
         height: 400px;
         width: 100%;
+    }
+    .bis.glyphicon-star {
+        text-shadow:0 0 1px  black,0 0 1px  black,0 0 1px  black,0 0 1px  black ;
     }
 </style>
 
@@ -21,6 +27,16 @@
 
 <h1>@Model.Name</h1>
 
+<ul class="list-inline">
+    @for (var i = 0; i < (int)Model.StarRating; i++)
+    {
+        <li><i title="*" class="glyphicon glyphicon-star "></i></li>
+    }
+    @if (!Model.StarRating.IsInteger())
+    {
+        <li><i class="glyphicon glyphicon-star-empty"></i></li>
+    }
+</ul>
 @Model.Address
 <br />
 <div id="package-carousel" class="carousel slide" data-ride="carousel">
@@ -65,6 +81,8 @@
             map: map,
             icon: image
         });
+
+
 
     }
 </script>
