@@ -82,10 +82,15 @@
     <Compile Include="Query\GetAccommodationDetailByIdTest.cs" />
     <Compile Include="Query\GetPhotosByAccommodationIdTest.cs" />
     <Compile Include="Query\GetPhotosOfAccommodationsTest.cs" />
+    <Compile Include="Query\GetRoomPhotosByAccommodationIdTest.cs" />
+    <Compile Include="Query\GetRoomsTest.cs" />
     <Compile Include="Transfer\Object\AccommodationDetailTest.cs" />
     <Compile Include="Transfer\Object\AccommodationItemPhotoMergerTest.cs" />
     <Compile Include="Transfer\Object\AccommodationItemTest.cs" />
     <Compile Include="Transfer\Object\AccommodationPhotoTest.cs" />
+    <Compile Include="Transfer\Object\PhotoToRoomTest.cs" />
+    <Compile Include="Transfer\Object\RoomPhotoTest.cs" />
+    <Compile Include="Transfer\Object\RoomTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

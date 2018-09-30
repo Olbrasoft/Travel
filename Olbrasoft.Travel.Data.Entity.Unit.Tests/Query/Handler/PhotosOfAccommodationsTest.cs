@@ -24,7 +24,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
             //Arrange
             var type =
                 typeof(HandlerWithDependentSource<GetPhotosOfAccommodations,
-                    IQueryable<Entities.PhotoOfAccommodation>, IEnumerable<AccommodationPhoto>>);
+                    Entities.PhotoOfAccommodation, IEnumerable<AccommodationPhoto>>);
 
             //Act
             var handler = CreateHandler();

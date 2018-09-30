@@ -58,7 +58,10 @@
     <Compile Include="DescriptionToAccommodationDescription.cs" />
     <Compile Include="LocalizedAccommodation\ToAccommodationDetail.cs" />
     <Compile Include="LocalizedAccommodation\ToAccommodationItem.cs" />
+    <Compile Include="LocalizedTypesOfRoomsToRooms.cs" />
     <Compile Include="PhotoOfAccommodationToAccommodationPhoto.cs" />
+    <Compile Include="PhotoOfAccommodationToRoomPhoto.cs" />
+    <Compile Include="PhotoOfAccommodationToTypeOfRoomToPhotoToRoom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

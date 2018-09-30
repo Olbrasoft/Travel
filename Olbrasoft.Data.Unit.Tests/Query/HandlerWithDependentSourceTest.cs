@@ -30,18 +30,7 @@ namespace Olbrasoft.Data.Unit.Tests.Query
             return new SomeHandlerWithDependentSource(source);
         }
 
-        [Test]
-        public void Is_Instance_Of_QueryHandler()
-        {
-            //Arrange
-            var type = typeof(HandlerWithDependentSource<SomQuery, IQueryable<object>, object>);
-
-            //Act
-            var handler = CreateSomeQueryHandler();
-
-            //Assert
-            Assert.IsInstanceOf(type, handler);
-        }
+       
 
         [Test]
         public void Handle()

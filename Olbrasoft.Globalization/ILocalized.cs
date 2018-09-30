@@ -1,7 +1,6 @@
 ﻿namespace Olbrasoft.Globalization
 {
-    public interface ILocalized
+    public interface ILocalized : IHaveLanguageId<int>
     {
-        int LanguageId { get; set; }
     }
 }

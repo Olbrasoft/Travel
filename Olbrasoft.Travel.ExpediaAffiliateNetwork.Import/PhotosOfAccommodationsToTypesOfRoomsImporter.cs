@@ -60,10 +60,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             if (string.IsNullOrEmpty(url) ||
                 !PathsToIds.TryGetValue(ParsePath(url), out var pathToPhotoId) ||
-                !ExtensionsToIds.TryGetValue(Path.GetExtension(url).ToLower(),
+                !ExtensionsToIds.TryGetValue(RemoveDots(Path.GetExtension(url).ToLower()),
                     out var fileExtensionId)) return;
 
-            var tup = new Tuple<int, string, int>(pathToPhotoId, RebuildFileName(url), fileExtensionId);
+            var tup = new Tuple<int, string, int>(pathToPhotoId, RemovePostFix(url), fileExtensionId);
             if (!PathIdsAndFileIdsAndExtensionIdsToIds.TryGetValue(tup, out var photoOfAccommodationId)) return;
 
             if (!int.TryParse(items[1], out var eanRoomTypeId) ||

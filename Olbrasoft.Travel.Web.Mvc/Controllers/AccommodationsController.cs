@@ -4,8 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Olbrasoft.Collections.Generic;
-using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Web.Mvc.Controllers
 {

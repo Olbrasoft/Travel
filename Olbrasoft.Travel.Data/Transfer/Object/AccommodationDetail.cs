@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Olbrasoft.Travel.Data.Transfer.Object
 {
-    public class AccommodationDetail : Accommodation
+    public class AccommodationDetail : Accommodation, IHaveRooms
     {
         public string Description { get; set; }
 
@@ -14,5 +15,6 @@ namespace Olbrasoft.Travel.Data.Transfer.Object
         [Range(typeof(double), "-180", "180")]
         public double Longitude { get; set; }
 
+        public IEnumerable<Room> Rooms { get; set; }
     }
 }

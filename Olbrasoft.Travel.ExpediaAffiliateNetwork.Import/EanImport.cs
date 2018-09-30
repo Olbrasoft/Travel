@@ -131,11 +131,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    pathsExtensionsCaptionsImporter.Import(@"D:\Ean\HotelImageList.txt");
             //}
 
-            using (var photosOfAccommodationsImporter =
-                container.Resolve<IImporter>(nameof(PhotosOfAccommodationsImporter)))
-            {
-                photosOfAccommodationsImporter.Import(@"D:\Ean\HotelImageList.txt");
-            }
+            //using (var photosOfAccommodationsImporter =
+            //    container.Resolve<IImporter>(nameof(PhotosOfAccommodationsImporter)))
+            //{
+            //    photosOfAccommodationsImporter.Import(@"D:\Ean\HotelImageList.txt");
+            //}
 
             //using (var typesOfRoomsImporter = container.Resolve<IImporter>(nameof(TypesOfRoomsImporter)))
             //{
@@ -153,10 +153,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    roomsTypesImagesImporter.Import(@"D:\Ean\RoomTypeList.txt");
             //}
 
-            //using (var photosOfAccommodationsToTypesOfRoomsImporter = container.Resolve<IImporter>(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)))
-            //{
-            //    photosOfAccommodationsToTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
-            //}
+            using (var photosOfAccommodationsToTypesOfRoomsImporter = container.Resolve<IImporter>(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)))
+            {
+                photosOfAccommodationsToTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
+            }
 
             //using (var attributesImporter = container.Resolve<IImporter>(nameof(AttributesImporter)))
             //{
@@ -243,12 +243,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             container.Register(Component.For<TravelContext>().ImplementedBy<TravelContext>());
             container.Register(Component.For<DbContext>().ImplementedBy<TravelContext>().Named(nameof(TravelContext)));
 
-            //container.Register(FromAssemblyNamed("Olbrasoft.Travel.BLL")
-            //    .Where(type => type.Name.EndsWith("Facade"))
-            //    .WithService.AllInterfaces()
-            //);
-
-            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.ExpediaAffiliateNetwork")
+          container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Expedia.Affiliate.Network")
                 .Where(type => type.Name.EndsWith("Parser"))
                 .WithService.AllInterfaces()
             );

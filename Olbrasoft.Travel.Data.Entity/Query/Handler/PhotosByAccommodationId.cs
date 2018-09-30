@@ -31,10 +31,13 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
         private IQueryable<AccommodationPhoto> ProjectToQueryableOfAccommodationPhoto(
             IQueryable<PhotoOfAccommodation> source, GetPhotosByAccommodationId query)
         {
+            var photosOfRooms = Source.SelectMany(p => p.ToTypesOfRooms).Select(p=>p.Id);
+
             var photoOfAccommodations = source
                 .Include(p => p.PathToPhoto)
                 .Include(p => p.FileExtension)
                 .Where(p => p.AccommodationId == query.AccommodationId)
+                .Where(p=>!photosOfRooms.Contains(p.Id))
                 .OrderBy(p => p.IsDefault);
 
             return ProjectTo<AccommodationPhoto>(photoOfAccommodations);

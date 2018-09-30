@@ -186,11 +186,15 @@
     <Compile Include="Accommodation.cs" />
     <Compile Include="IAccommodation.cs" />
     <Compile Include="ICanClearCache.cs" />
+    <Compile Include="IHaveAccommodationId.cs" />
+    <Compile Include="IHaveRooms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\GetAccommodationDetailById.cs" />
     <Compile Include="Query\GetPagedAccommodationItems.cs" />
     <Compile Include="Query\GetPhotosByAccommodationId.cs" />
     <Compile Include="Query\GetPhotosOfAccommodations.cs" />
+    <Compile Include="Query\GetRoomPhotosByAccommodationId.cs" />
+    <Compile Include="Query\GetRooms.cs" />
     <Compile Include="Repository\IAccommodationsToAttributesRepository.cs" />
     <Compile Include="Repository\IAdditionalRegionsInfoRepository.cs" />
     <Compile Include="Repository\IBaseRepository.cs" />
@@ -218,6 +222,9 @@
     <Compile Include="Transfer\Object\AccommodationItemPhotoMerge.cs" />
     <Compile Include="Transfer\Object\AccommodationPhoto.cs" />
     <Compile Include="Transfer\Object\IAccommodationItemPhotoMerge.cs" />
+    <Compile Include="Transfer\Object\PhotoToRoom.cs" />
+    <Compile Include="Transfer\Object\Room.cs" />
+    <Compile Include="Transfer\Object\RoomPhoto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">

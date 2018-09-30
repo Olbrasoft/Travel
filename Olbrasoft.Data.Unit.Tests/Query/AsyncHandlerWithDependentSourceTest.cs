@@ -32,18 +32,7 @@ namespace Olbrasoft.Data.Unit.Tests.Query
             return new SomeAsyncHandlerWithDependentSource(source,projectionMock.Object);
         }
 
-        [Test]
-        public void Is_Instance_Of_QueryHandler()
-        {
-            //Arrange
-            var type = typeof(AsyncHandlerWithDependentSource<SomQuery, IQueryable<object>, object>);
-
-            //Act
-            var handler = SomeAsyncHandler();
-
-            //Assert
-            Assert.IsInstanceOf(type, handler);
-        }
+ 
 
         [Test]
         public void Handle()

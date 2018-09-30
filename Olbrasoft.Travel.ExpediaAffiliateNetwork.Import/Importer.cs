@@ -288,6 +288,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<LocalizedRegion>();
         }
 
+        public string RemoveDots(string source)
+        {
+            return source.Replace(".", string.Empty);
+        }
+
         protected LocalizedRegion[] BuildLocalizedRegions(
             IDictionary<long, Tuple<string, string>> adeptsToLocalizedRegions,
             IReadOnlyDictionary<long, int> eanIdsToIds,
@@ -334,13 +339,13 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return url.Remove(url.Length - 1);
         }
 
-        protected static string RebuildFileName(string url)
+        protected static string RemovePostFix(string url)
         {
+            if (url == null) throw new ArgumentNullException(nameof(url));
+
             url = Path.GetFileNameWithoutExtension(url);
 
-            if (url != null) return url.Remove(url.Length - 2) + "_b";
-
-            throw new NullReferenceException();
+            return url.Remove(url.Length - 2);
         }
 
         protected static string GetSubClassName(string name)

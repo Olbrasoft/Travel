@@ -60,7 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LocalizedTypesOfRoomsToRoomsTest.cs" />
     <Compile Include="MapperTest.cs" />
+    <Compile Include="PhotoOfAccommodationToRoomPhotoTest.cs" />
+    <Compile Include="PhotoOfAccommodationToTypeOfRoomToPhotoToRoomTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

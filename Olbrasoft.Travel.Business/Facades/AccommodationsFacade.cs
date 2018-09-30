@@ -29,21 +29,58 @@ namespace Olbrasoft.Travel.Business.Facades
             return query.Execute();
         }
 
+
+        //EanId=254760 213450
         public async Task<AccommodationDetail> GetAsync(int id, int languageId, CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = GetAccommodationDetailById(id, languageId);
 
             var accommodationDetail = await query.ExecuteAsync(cancellationToken);
 
-            var getPhotosByAccommodationId = GetPhotosByAccommodationId(id);
-
-            var accommodationPhotos = await getPhotosByAccommodationId.ExecuteAsync(cancellationToken);
+            var accommodationPhotos = await GetPhotosByAccommodationId(id).ExecuteAsync(cancellationToken);
 
             accommodationDetail.Photos =
                 accommodationPhotos.Select(p =>
-                    $"https://i.travelapi.com/hotels/{p.Path}/{p.Name}{p.Extension}").ToArray();
+                    $"https://i.travelapi.com/hotels/{p.Path}/{p.Name}_y.{p.Extension}").ToArray();
+
+            var rooms = await GetRoomsQuery(id, languageId).ExecuteAsync(cancellationToken);
+
+            var photosOfRooms = await GetPhotosOfRooms(id).ExecuteAsync(cancellationToken);
+
+            accommodationDetail.Rooms = FillPhotosOfRooms(rooms, photosOfRooms);
 
             return accommodationDetail;
+        }
+
+        private static IEnumerable<Room> FillPhotosOfRooms(IEnumerable<Room> rooms, IEnumerable<RoomPhoto> photosOfRooms)
+        {
+            var photosOfRoomsArray = photosOfRooms.ToArray();
+
+            var ofRooms = rooms as Room[] ?? rooms.ToArray();
+            foreach (var room in ofRooms)
+            {
+                var photos = photosOfRoomsArray.Where(p => p.RoomIds.Contains(room.Id));
+
+                room.Photos = photos.Select(p =>
+                    $"https://i.travelapi.com/hotels/{p.Path}/{p.Name}_b.{p.Extension}").ToArray();
+            }
+
+            return ofRooms;
+        }
+
+        private GetRoomPhotosByAccommodationId GetPhotosOfRooms(int accommodationId)
+        {
+            var query = QueryProvider.Create<GetRoomPhotosByAccommodationId>();
+            query.AccommodationId = accommodationId;
+            return query;
+        }
+
+        private GetRooms GetRoomsQuery(int id, int languageId)
+        {
+            var query = QueryProvider.Create<GetRooms>();
+            query.AccommodationId = id;
+            query.LanguageId = languageId;
+            return query;
         }
 
         private GetPhotosByAccommodationId GetPhotosByAccommodationId(int accommodationId)

@@ -25,19 +25,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             return projection;
         }
-
-        private IQueryable<AccommodationPhoto> ProjectToQueryableOfAccommodationPhoto(IQueryable<PhotoOfAccommodation> source, GetPhotosOfAccommodations query)
-        {
-            var photoOfAccommodations = source.Include(p => p.PathToPhoto).Include(p => p.FileExtension);
-
-            photoOfAccommodations = from p in photoOfAccommodations
-                                    where query.AccommodationIds.Contains(p.AccommodationId)
-                                    select p;
-
-            if (query.OnlyDefaultPhotos) photoOfAccommodations = photoOfAccommodations.Where(p => p.IsDefault);
-
-            return ProjectTo<AccommodationPhoto>(photoOfAccommodations);
-        }
+        
 
         public override async Task<IEnumerable<AccommodationPhoto>> HandleAsync(GetPhotosOfAccommodations query, CancellationToken cancellationToken)
         {
@@ -46,5 +34,18 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
             return await projection.ToArrayAsync(cancellationToken);
         }
 
+
+        private IQueryable<AccommodationPhoto> ProjectToQueryableOfAccommodationPhoto(IQueryable<PhotoOfAccommodation> source, GetPhotosOfAccommodations query)
+        {
+            var photoOfAccommodations = source.Include(p => p.PathToPhoto).Include(p => p.FileExtension);
+
+            photoOfAccommodations = from p in photoOfAccommodations
+                where query.AccommodationIds.Contains(p.AccommodationId)
+                select p;
+
+            if (query.OnlyDefaultPhotos) photoOfAccommodations = photoOfAccommodations.Where(p => p.IsDefault);
+
+            return ProjectTo<AccommodationPhoto>(photoOfAccommodations);
+        }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
@@ -20,15 +15,23 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
             //Act
             var accommodationDetail = new AccommodationDetail()
             {
-
             };
-            
+
+            //Assert
+            Assert.IsInstanceOf(type, accommodationDetail);
+        }
+
+        [Test]
+        public void Instance_Implement_Interface_IHaveRooms()
+        {
+            //Arrange
+            var type = typeof(IHaveRooms);
+
+            //Act
+            var accommodationDetail = new AccommodationDetail();
+
             //Assert
             Assert.IsInstanceOf(type, accommodationDetail);
         }
     }
-
 }
-
-
-

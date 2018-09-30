@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Data.Entity;
-using Olbrasoft.Travel.Data.Entities;
+﻿using Olbrasoft.Data.Entity;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.Data.Entities
 {

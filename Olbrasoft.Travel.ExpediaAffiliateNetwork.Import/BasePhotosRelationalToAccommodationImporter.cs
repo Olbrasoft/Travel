@@ -55,8 +55,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 !int.TryParse(items[0], out var eanHotelId) ||
                 !AccommodationsEanIdsToIds.TryGetValue(eanHotelId, out var accommodationId) ||
                 !PathsToIds.TryGetValue(ParsePath(url), out var pathToPhotoId) ||
-                !ExtensionsToIds.TryGetValue(Path.GetExtension(url).ToLower(),
-                    out var fileExtensionId) 
+                !ExtensionsToIds.TryGetValue(RemoveDots(Path.GetExtension(url).ToLower()),
+                    out var fileExtensionId)
                 )
             {
                 photoOfAccommodation = null;
@@ -67,12 +67,12 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             {
                 AccommodationId = accommodationId,
                 PathToPhotoId = pathToPhotoId,
-                FileName = RebuildFileName(url),
+                FileName = RemovePostFix(url),
                 FileExtensionId = fileExtensionId,
                 CreatorId = CreatorId,
-             };
+            };
 
-            if (items[7] == "1") photoOfAccommodation.IsDefault = true;
+            if (items.Length > 7 && items[7] == "1") photoOfAccommodation.IsDefault = true;
 
             return true;
         }

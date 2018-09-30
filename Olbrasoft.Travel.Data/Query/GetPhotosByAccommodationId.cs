@@ -10,6 +10,7 @@ namespace Olbrasoft.Travel.Data.Query
         
         public GetPhotosByAccommodationId(IProvider queryProvider) : base(queryProvider)
         {
+
         }
     }
 }

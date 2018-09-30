@@ -10,7 +10,7 @@ namespace Olbrasoft.Travel.Data.Transfer.Object
         {
             foreach (var photo in slave)
             {
-                master.Result.First(p => p.Id == photo.AccommodationId).Photo = $"https://i.travelapi.com/hotels/{photo.Path}/{photo.Name}{photo.Extension}";
+                master.Result.First(p => p.Id == photo.AccommodationId).Photo = $"https://i.travelapi.com/hotels/{photo.Path}/{photo.Name}_l.{photo.Extension}";
             }
 
             return master;

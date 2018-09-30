@@ -1,0 +1,57 @@
+﻿using Moq;
+using NUnit.Framework;
+using Olbrasoft.Data;
+using Olbrasoft.Data.Mapping;
+using Olbrasoft.Data.Query;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Query;
+using Olbrasoft.Travel.Data.Transfer.Object;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Olbrasoft.Travel.Data.Entity.Query.Handler;
+
+namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
+{
+    [TestFixture]
+    internal class RoomPhotosByAccommodationIdTest
+    {
+        [Test]
+        public void Instance_Implement_Interface_IHandler_Of_GetRoomPhotosByAccommodationId_IEnumerable_Of_RoomPhoto()
+        {
+            //Arrange
+            var type =
+                typeof(IHandler<GetRoomPhotosByAccommodationId,
+                     IEnumerable<RoomPhoto>>);
+
+            var ownerMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
+
+            var projectorMock = new Mock<IProjection>();
+
+            //Act
+            var handler = new RoomPhotosByAccommodationId(ownerMock.Object, projectorMock.Object);
+
+            //Assert
+            Assert.IsInstanceOf(type, handler);
+        }
+
+        [Test]
+        public void HandleAsync()
+        {
+            //Arrange
+            var ownerMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
+            var projectorMock = new Mock<IProjection>();
+
+            var handler = new RoomPhotosByAccommodationId(ownerMock.Object, projectorMock.Object);
+
+            var providerMock = new Mock<IProvider>();
+            var query = new GetRoomPhotosByAccommodationId(providerMock.Object);
+
+            //Act
+            var result = handler.HandleAsync(query, default(CancellationToken));
+
+            //Assert
+            Assert.IsInstanceOf<Task<IEnumerable<RoomPhoto>>>(result);
+        }
+    }
+}

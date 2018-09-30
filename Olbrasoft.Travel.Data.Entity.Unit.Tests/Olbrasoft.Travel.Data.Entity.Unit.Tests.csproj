@@ -78,6 +78,8 @@
     <Compile Include="Query\Handler\PagedAccommodationsItemsTest.cs" />
     <Compile Include="Query\Handler\PhotosByAccommodationIdTest.cs" />
     <Compile Include="Query\Handler\PhotosOfAccommodationsTest.cs" />
+    <Compile Include="Query\Handler\RoomPhotosByAccommodationIdTest.cs" />
+    <Compile Include="Query\Handler\RoomsTest.cs" />
     <Compile Include="TravelContextTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +94,10 @@
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>
+      <Name>Olbrasoft.Globalization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
       <Project>{91D6B045-C17B-4907-8058-A4DAE3F1DD49}</Project>

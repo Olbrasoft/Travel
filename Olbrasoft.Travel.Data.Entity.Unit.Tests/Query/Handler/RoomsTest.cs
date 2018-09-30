@@ -1,0 +1,56 @@
+﻿using Moq;
+using NUnit.Framework;
+using Olbrasoft.Data;
+using Olbrasoft.Data.Mapping;
+using Olbrasoft.Data.Query;
+using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Query.Handler;
+using Olbrasoft.Travel.Data.Query;
+using Olbrasoft.Travel.Data.Transfer.Object;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
+{
+    [TestFixture]
+    internal class RoomsTest
+    {
+        [Test]
+        public void Instance_Is_AsyncHandlerWithDependentSource()
+        {
+            //Arrange
+            var type =
+                typeof(AsyncHandlerWithDependentSource<GetRooms, TypeOfRoom,
+                    IEnumerable<Room>>);
+
+            var ownerMock = new Mock<IHaveQueryable<TypeOfRoom>>();
+            var projectorMock = new Mock<IProjection>();
+
+            //Act
+            var handler = new Rooms(ownerMock.Object, projectorMock.Object);
+
+            //Assert
+            Assert.IsInstanceOf(type, handler);
+        }
+
+        [Test]
+        public void HandleAsync()
+        {
+            //Arrange
+            var ownerMock = new Mock<IHaveQueryable<TypeOfRoom>>();
+            var projectorMock = new Mock<IProjection>();
+
+            var handler = new Rooms(ownerMock.Object, projectorMock.Object);
+
+            var providerMock = new Mock<IProvider>();
+            var query = new GetRooms(providerMock.Object);
+
+            //Act
+            var result = handler.HandleAsync(query, default(CancellationToken));
+
+            //Assert
+            Assert.IsInstanceOf<Task<IEnumerable<Room>>>(result);
+        }
+    }
+}

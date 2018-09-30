@@ -100,7 +100,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             if (!Paths.Contains(path)) Paths.Add(path);
 
-            var extension = Path.GetExtension(url)?.ToLower();
+            var extension = RemoveDots(Path.GetExtension(url)?.ToLower());
 
             if (!Extensions.Contains(extension)) Extensions.Add(extension);
         }

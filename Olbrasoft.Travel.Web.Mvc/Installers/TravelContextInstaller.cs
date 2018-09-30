@@ -15,6 +15,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Installers
 
             container.Register(Component.For<IHaveQueryable<LocalizedAccommodation>>().ImplementedBy<QueryableOwner<LocalizedAccommodation>>().LifestylePerWebRequest());
             container.Register(Component.For<IHaveQueryable<PhotoOfAccommodation>>().ImplementedBy<QueryableOwner<PhotoOfAccommodation>>().LifestylePerWebRequest());
+            container.Register(Component.For<IHaveQueryable<TypeOfRoom>>().ImplementedBy<QueryableOwner<TypeOfRoom>>().LifestylePerWebRequest());
         }
     }
 }
