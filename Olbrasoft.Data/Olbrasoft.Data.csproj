@@ -63,7 +63,7 @@
     <Compile Include="Entity\IHaveName.cs" />
     <Compile Include="Entity\IHaveUserName.cs" />
     <Compile Include="Entity\User.cs" />
-    <Compile Include="IHaveKeyId.cs" />
+    <Compile Include="IHaveId.cs" />
     <Compile Include="Geography\Point.cs" />
     <Compile Include="IHaveQueryable.cs" />
     <Compile Include="Mapping\AutoMapper\Projector.cs" />

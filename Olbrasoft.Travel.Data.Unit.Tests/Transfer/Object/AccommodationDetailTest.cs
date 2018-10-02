@@ -33,5 +33,19 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
             //Assert
             Assert.IsInstanceOf(type, accommodationDetail);
         }
+
+        [Test]
+        public void Instance_Implement_Interface_IHaveAttributes()
+        {
+            //Arrange
+            var type = typeof(IHaveAttributes);
+
+            //Act
+            var accommodationDetail = new AccommodationDetail();
+
+            //Assert
+            Assert.IsInstanceOf(type, accommodationDetail);
+        }
+
     }
 }

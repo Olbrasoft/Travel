@@ -1,4 +1,5 @@
-﻿@model Olbrasoft.Travel.Data.Transfer.Object.AccommodationDetail
+﻿@using Olbrasoft.Travel.Data.Transfer.Object
+@model Olbrasoft.Travel.Data.Transfer.Object.AccommodationDetail
 
 @{
     Layout = null;
@@ -21,10 +22,9 @@
     <link rel="stylesheet" type="text/css" href="~/Content/isotope.css">
     <link rel="stylesheet" type="text/css" href="~/Content/optionswitch.css">
     <link rel="stylesheet" type="text/css" href="~/Content/settings.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/layers.css"> 
+    <link rel="stylesheet" type="text/css" href="~/Content/layers.css">
     <link rel="stylesheet" type="text/css" href="~/Content/navigation.css">
-
-    <!-- GOOGLE FONT -->
+    <link rel="stylesheet" href="~/Content/font-awesome.css" >
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700' rel='stylesheet' type='text/css'>
 
     <!-- CUSTOM CSS -->
@@ -43,7 +43,6 @@
 
     <style type="text/css">
 
-
         i.glyphicon-star, i.glyphicon-star-empty {
             color: #ff891e;
         }
@@ -56,6 +55,10 @@
         .bis.glyphicon-star {
             text-shadow: 0 0 1px black,0 0 1px black,0 0 1px black,0 0 1px black;
         }
+
+        .payment {
+            font-size: 42px;
+        }
     </style>
 </head>
 
@@ -66,148 +69,138 @@
         <header>
             <nav style="background:rgba(0,0,0,.8); color: white; height:70px;" class="navbar navbar-default navbar-main navbar-fixed-top lightHeader" role="navigation">
                 <div class="row" style="margin-top: 0px; padding-top: 0px;">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div style="margin-left: 5px;">
-                        <h1 style="margin-top: 1px;" class="h5">@Model.Name</h1>
-                        @Html.Raw(Html.AccommodationStarRating(Model.StarRating))
-                        @Model.Address
+                            <h1 style="margin-top: 1px;" class="h5">@Model.Name</h1>
+                            @Html.Raw(Html.AccommodationStarRating(Model.StarRating))
+                            @Model.Address
                         </div>
                     </div>
-               
-                        <div class="navbar-header col-sm-8"  >
-                            
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
 
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                                <ul  class="nav navbar-nav navbar-right" >
-                                    <li class="dropdown singleDrop " >
-                                        @Html.ActionLink("Accommodations", "Index")
-                                    </li>
-                                   
-                                    <li class="dropdown singleDrop ">
-                                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PAGES</a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class=""><a href="about-us.html">About Us</a></li>
-                                            <li class=""><a href="contact.html">Contact Us</a></li>
-                                            <li class="dropdown dropdown-submenu ">
-                                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Gallery <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                                                <ul class="dropdown-menu ">
-                                                    <li class=""><a href="gallery-grid.html">Gallery Grid</a></li>
-                                                    <li class=""><a href="gallery-masonry.html">Gallery Masonry</a></li>
-                                                    <li class=""><a href="gallery-photo-slider.html">Photo Slider</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown dropdown-submenu ">
-                                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Destinations <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-left">
-                                                    <li class=""><a href="destination-cities.html">Destination Cities</a></li>
-                                                    <li class=""><a href="destination-single-city.html">Single Destination</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="404.html">404 Not Found</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown singleDrop ">
-                                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class="dropdown dropdown-submenu">
-                                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Blog Grid View <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                                                <ul class="dropdown-menu">
-                                                    <li class=""><a href="blog-grid-three-col.html">Blog Grid 3 Col</a></li>
-                                                    <li class=""><a href="blog-grid-two-col.html">Blog Grid 2 Col</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown dropdown-submenu">
-                                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Blog List View <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                                                <ul class="dropdown-menu">
-                                                    <li class=""><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                                    <li class=""><a href="blog-list-left-sidebar.html">blog-list-left-sidebar.html</a></li>
-                                                    <li class=""><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown dropdown-submenu">
-                                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Single Blog Post <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                                                <ul class="dropdown-menu">
-                                                    <li class=""><a href="blog-single-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li class=""><a href="blog-single-left-sidebar.html">Left Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown singleDrop ">
-                                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class=""><a href="dashboard.html">Dashboard</a></li>
-                                            <li class=""><a href="booking.html">Booking</a></li>
-                                            <li class=""><a href="profile.html">Profile</a></li>
-                                            <li class=""><a href="setting.html">Settings</a></li>
-                                            <li class=""><a href="" data-toggle="modal" data-target="#signup">Signup</a></li>
-                                            <li class=""><a href="" data-toggle="modal" data-target="#login">Login</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown singleDrop ">
-                                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shortcodes</a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class=""><a href="accordion-and-toggles.html">Accordions &amp; Toggles</a></li>
-                                            <li class=""><a href="tabs-and-dropdown.html">Tabs &amp; Dropdowns</a></li>
-                                            <li class=""><a href="pricing-table.html">Pricing Tables</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown searchBox">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="searchIcon"><i class="fa fa-search" aria-hidden="true"></i></span></a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li>
-                                                <span class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon2">
-                                                    <span class="input-group-addon" id="basic-addon2">Search</span>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="navbar-header col-sm-6">
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown singleDrop ">
+                                    @Html.ActionLink("Accommodations", "Index")
+                                </li>
+
+                                <li class="dropdown singleDrop ">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PAGES</a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class=""><a href="about-us.html">About Us</a></li>
+                                        <li class=""><a href="contact.html">Contact Us</a></li>
+                                        <li class="dropdown dropdown-submenu ">
+                                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Gallery <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                            <ul class="dropdown-menu ">
+                                                <li class=""><a href="gallery-grid.html">Gallery Grid</a></li>
+                                                <li class=""><a href="gallery-masonry.html">Gallery Masonry</a></li>
+                                                <li class=""><a href="gallery-photo-slider.html">Photo Slider</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown dropdown-submenu ">
+                                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Destinations <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-left">
+                                                <li class=""><a href="destination-cities.html">Destination Cities</a></li>
+                                                <li class=""><a href="destination-single-city.html">Single Destination</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="404.html">404 Not Found</a></li>
+                                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown singleDrop ">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class="dropdown dropdown-submenu">
+                                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Blog Grid View <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class=""><a href="blog-grid-three-col.html">Blog Grid 3 Col</a></li>
+                                                <li class=""><a href="blog-grid-two-col.html">Blog Grid 2 Col</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown dropdown-submenu">
+                                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Blog List View <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class=""><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
+                                                <li class=""><a href="blog-list-left-sidebar.html">blog-list-left-sidebar.html</a></li>
+                                                <li class=""><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown dropdown-submenu">
+                                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Single Blog Post <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class=""><a href="blog-single-right-sidebar.html">Right Sidebar</a></li>
+                                                <li class=""><a href="blog-single-left-sidebar.html">Left Sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown singleDrop ">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class=""><a href="dashboard.html">Dashboard</a></li>
+                                        <li class=""><a href="booking.html">Booking</a></li>
+                                        <li class=""><a href="profile.html">Profile</a></li>
+                                        <li class=""><a href="setting.html">Settings</a></li>
+                                        <li class=""><a href="" data-toggle="modal" data-target="#signup">Signup</a></li>
+                                        <li class=""><a href="" data-toggle="modal" data-target="#login">Login</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown singleDrop ">
+                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shortcodes</a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class=""><a href="accordion-and-toggles.html">Accordions &amp; Toggles</a></li>
+                                        <li class=""><a href="tabs-and-dropdown.html">Tabs &amp; Dropdowns</a></li>
+                                        <li class=""><a href="pricing-table.html">Pricing Tables</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown searchBox">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="searchIcon"><i class="fa fa-search" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <span class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon2">
+                                                <span class="input-group-addon" id="basic-addon2">Search</span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
-               
-                    
-                    
-
+                    </div>
                 </div>
-               
-            
-                </nav>
-      
+            </nav>
         </header>
-
-       
 
         <!-- PAGE CONTENT -->
         <section class="mainContentSection singleHotel">
             <div class="container">
-                
+
                 <div class="row">
                     <div class="col-sm-8 col-xs-12">
                         <div class="row">
                             <div class="col-xs-12">
-                                <div id="package-carousel"   class="carousel slide" data-ride="carousel">
+                                <div id="package-carousel" class="carousel slide" data-ride="carousel">
 
                                     @{
                                         var active = "active";
                                     }
-
 
                                     <ol class="carousel-indicators">
                                         <li data-target="#package-carousel" data-slide-to="0" class=""></li>
                                         <li data-target="#package-carousel" data-slide-to="1" class=""></li>
                                         <li data-target="#package-carousel" data-slide-to="2" class="active"></li>
                                     </ol>
-                                    <div class="carousel-inner" >
+                                    <div class="carousel-inner">
 
                                         @foreach (var photo in Model.Photos)
                                         {
@@ -226,18 +219,88 @@
                             </div>
                         </div>
 
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-xs-12">
                                 <div class="description-aria">
                                     <div class="sectionTitle2">
-                                       
+
                                         @Html.Raw(Model.Description)
                                     </div>
-                                   </div>
+
+                                    @{
+                                        var amenitiesOfAccommodation = Model.Attributes.Where(p => p.SubTypeId == 1).ToArray();
+                                    }
+
+                                    <div class="row">
+
+                                        @if (amenitiesOfAccommodation.Length > 0)
+                                        {
+
+                                            var half = amenitiesOfAccommodation.Length / 2;
+
+                                            <div class="col-xs-12 col-sm-6">
+                                                <ul class="descriptionList">
+                                                    @for (var i = 0; i < half; i++)
+                                                    {
+                                                        <li><i class="@Html.GetClass(amenitiesOfAccommodation[i])" aria-hidden="true" style="padding-right: 10px;  color: #ff891e;"></i>@amenitiesOfAccommodation[i].Description@amenitiesOfAccommodation[i].Text</li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            if (amenitiesOfAccommodation.Length > 1)
+                                            {
+                                               
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <ul class="descriptionList">
+                                                        @for (var i = half; i < amenitiesOfAccommodation.Length - 1; i++)
+                                                        {
+                                                            <li><i class="@Html.GetClass(amenitiesOfAccommodation[i])"  style="padding-right: 10px; color: #ff891e;"></i>@amenitiesOfAccommodation[i].Description@amenitiesOfAccommodation[i].Text</li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+
+                                        }
+                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="description-aria">
+                                    <div class="sectionTitle2">
+                                        @Html.Raw(Html.AccommodationPaymentTypes(Model.Attributes.OnlyCreditCards()))
+                                        <i class="fa fa-paw" aria-hidden="true"></i>
+                                        <i class="fas fa-wifi"></i>
+                                    
+                                        <i class="fa fa-smoking"></i>
+                                        <i class="far fa-calendar-alt"></i>
+                                        <i class="fas fa-glass-martini"></i>
+                                        
+                                        <i class="fas fa-luggage-cart"></i>
+                                        <i class="fas fa-language"></i>
+                                        <i class="fas fa-shower"></i>
+                                        <i class="fab fa-accessible-icon"></i>
+                                        <i class="fas fa-hotel"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-bed"></i>
+                                       
+                                        <i class="fas fa-coffee"></i>
+                                        <i class="fas fa-car"></i>
+                                        <i class="fas fa-shuttle-van"></i>
+                                        <i class="fas fa-train"></i>
+                                      
+                                        <i class="fas fa-book"></i>
+                                        <i class="fas fa-table-tennis"></i>
+                                        <i class="fas fa-child"></i>
+                                        <i class="fas fa-books"></i>
+                                        
+                                    </div>
+                                </div>
+                        </div>
+                            </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="rooms-types-aria">
@@ -283,42 +346,41 @@
                                     <script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClWgMtjkbBjUJJx8DunzJKINP8tDouRIY&callback=initMap"></script>
                                     <script>
                                         function initMap() {
-                                            var map = new window.google.maps.Map(document.getElementById('map'),
-                                                {
-                                                    center: {
-                                                        lat:
-                                                            @Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                                                        lng:
-                                                            @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture)
-                                                    },
-                                                    zoom: 8
-                                                });
+                                            
+                                            var mapOptions = {
+                                                center: new window.google.maps.LatLng(@Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture),  @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) ),
+                                                zoom: 4,
+                                                mapTypeId: window.google.maps.MapTypeId.ROADMAP
+                                            };
+
+                                            var map = new window.google.maps.Map(document.getElementById("map"),
+                                                mapOptions);
 
                                             var image =
                                                 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-                                            // ReSharper disable once UnusedLocals
+
+                                            
                                             var marker = new window.google.maps.Marker({
-                                                position: {
-                                                    lat:
-                                                        @Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                                                    lng:
-                                                        @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture)
-                                                },
+                                                position: 
+                                                    new window.google.maps.LatLng(@Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture),  @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) ),
                                                 map: map,
                                                 icon: image
                                             });
 
+                                            var a = marker.position;
                                         }
                                     </script>
                                 </div>
                             </div>
+                            
+                    
                         </div>
                     </div>
                     <aside class="col-sm-4 col-xs-12">
                         <div class="singleCartSidebar">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Check availability</div>
-                                <div class="panel-body">
+                            <div class="panel panel-default" style="border-color: #545454;">
+                                <div class="panel-heading" style="background-color: #e7eaed;">Check availability</div>
+                                <div class="panel-body" >
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <form class="form-horizontal">
@@ -326,9 +388,9 @@
                                                     <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Check in:</label>
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
                                                         <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                                            <input id="In" type="text" class="form-control" placeholder="MM/DD/YYYY">
+                                                            <input id="In"  style="background-color: #f1f3f4;border-color: #545454;" type="text" class="form-control" placeholder="MM/DD/YYYY">
                                                             <div class="input-group-addon">
-                                                                <span class="fa fa-calendar"></span>
+                                                                <span class="far fa-calendar-alt"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -337,9 +399,9 @@
                                                     <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Check out:</label>
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
                                                         <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                                            <input id="Out" type="text" class="form-control" placeholder="MM/DD/YYYY">
+                                                            <input style="background-color: #f1f3f4;border-color:#545454;" id="Out" type="text" class="form-control" placeholder="MM/DD/YYYY">
                                                             <div class="input-group-addon">
-                                                                <span class="fa fa-calendar"></span>
+                                                                <span class="far fa-calendar-alt"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -347,8 +409,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Rooms type:</label>
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
-                                                        <div class="searchFilter">
-                                                            <select name="guiest_id3" id="Rooms" class="select-drop">
+                                                        <div class="searchFilter" style="background-color: #f1f3f4;border-color:#545454;" >
+                                                            <select  style="background-color: #f1f3f4;border-color:#545454;" name="guiest_id3" id="Rooms" class="select-drop">
                                                                 <option value="0">Double Room</option>
                                                                 <option value="1">Single Room</option>
                                                             </select>
@@ -360,19 +422,19 @@
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
                                                         <div class="count-input">
                                                             <a class="incr-btn" data-action="decrease" href="#">–</a>
-                                                            <input class="quantity" type="text" value="1">
+                                                            <input style="background-color: #f1f3f4;border-color:#545454;" class="quantity" type="text" value="1">
                                                             <a class="incr-btn" data-action="increase" href="#">+</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="totalCost">
-                                                    <div class="col-xs-8 totalCostLeft">
+                                                <div class="totalCost" style="border-color:#545454;">
+                                                    <div class="col-xs-8 totalCostLeft" >
                                                         <p>Total Cost</p>
                                                     </div>
                                                     <div class="col-xs-4 totalCostRight">$198</div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <a href="#" class="btn btn-block buttonTransparent">Check now <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                                    <a href="#" style="border-color: #545454" class="btn btn-block buttonTransparent">Check now <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                                 </div>
                                             </form>
                                         </div>

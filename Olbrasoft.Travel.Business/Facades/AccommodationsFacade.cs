@@ -24,32 +24,38 @@ namespace Olbrasoft.Travel.Business.Facades
 
         public AccommodationDetail Get(int id, int languageId)
         {
-            var query = GetAccommodationDetailById(id, languageId);
+            var query = AccommodationDetailQuery(id, languageId);
 
             return query.Execute();
         }
 
-
-        //EanId=254760 213450
         public async Task<AccommodationDetail> GetAsync(int id, int languageId, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var query = GetAccommodationDetailById(id, languageId);
+            var accommodationDetail = await AccommodationDetailQuery(id, languageId).ExecuteAsync(cancellationToken);
 
-            var accommodationDetail = await query.ExecuteAsync(cancellationToken);
-
-            var accommodationPhotos = await GetPhotosByAccommodationId(id).ExecuteAsync(cancellationToken);
+            var accommodationPhotos = await AccommodationPhotosQuery(id).ExecuteAsync(cancellationToken);
 
             accommodationDetail.Photos =
                 accommodationPhotos.Select(p =>
-                    $"https://i.travelapi.com/hotels/{p.Path}/{p.Name}_y.{p.Extension}").ToArray();
+                    $"https://i.travelapi.com/hotels/{p.Path}/{p.Name}_b.{p.Extension}").ToArray();
 
-            var rooms = await GetRoomsQuery(id, languageId).ExecuteAsync(cancellationToken);
+            var rooms = await RoomsQuery(id, languageId).ExecuteAsync(cancellationToken);
 
-            var photosOfRooms = await GetPhotosOfRooms(id).ExecuteAsync(cancellationToken);
+            var photosOfRooms = await PhotosOfRoomsQuery(id).ExecuteAsync(cancellationToken);
 
             accommodationDetail.Rooms = FillPhotosOfRooms(rooms, photosOfRooms);
 
+            accommodationDetail.Attributes = await AttributesQuery(id, languageId).ExecuteAsync(cancellationToken);
+
             return accommodationDetail;
+        }
+
+        private GetAttributesByAccommodationIdAndLanguageId AttributesQuery(int accommodationId, int languageId)
+        {
+            var query = QueryProvider.Create<GetAttributesByAccommodationIdAndLanguageId>();
+            query.AccommodationId = accommodationId;
+            query.LanguageId = languageId;
+            return query;
         }
 
         private static IEnumerable<Room> FillPhotosOfRooms(IEnumerable<Room> rooms, IEnumerable<RoomPhoto> photosOfRooms)
@@ -68,14 +74,14 @@ namespace Olbrasoft.Travel.Business.Facades
             return ofRooms;
         }
 
-        private GetRoomPhotosByAccommodationId GetPhotosOfRooms(int accommodationId)
+        private GetRoomPhotosByAccommodationId PhotosOfRoomsQuery(int accommodationId)
         {
             var query = QueryProvider.Create<GetRoomPhotosByAccommodationId>();
             query.AccommodationId = accommodationId;
             return query;
         }
 
-        private GetRooms GetRoomsQuery(int id, int languageId)
+        private GetRooms RoomsQuery(int id, int languageId)
         {
             var query = QueryProvider.Create<GetRooms>();
             query.AccommodationId = id;
@@ -83,7 +89,7 @@ namespace Olbrasoft.Travel.Business.Facades
             return query;
         }
 
-        private GetPhotosByAccommodationId GetPhotosByAccommodationId(int accommodationId)
+        private GetPhotosByAccommodationId AccommodationPhotosQuery(int accommodationId)
         {
             var query = QueryProvider.Create<GetPhotosByAccommodationId>();
             query.AccommodationId = accommodationId;
@@ -148,7 +154,7 @@ namespace Olbrasoft.Travel.Business.Facades
             return query;
         }
 
-        private GetAccommodationDetailById GetAccommodationDetailById(int id, int languageId)
+        private GetAccommodationDetailById AccommodationDetailQuery(int id, int languageId)
         {
             var query = QueryProvider.Create<GetAccommodationDetailById>();
 

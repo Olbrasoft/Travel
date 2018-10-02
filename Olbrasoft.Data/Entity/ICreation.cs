@@ -2,7 +2,7 @@
 
 namespace Olbrasoft.Data.Entity
 {
-    public interface ICreation<TKey> : IHaveKeyId<TKey>
+    public interface ICreation<TKey> : IHaveId<TKey>
     {
         DateTime DateAndTimeOfCreation { get; set; }
     }

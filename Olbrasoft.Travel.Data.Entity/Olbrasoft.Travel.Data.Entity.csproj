@@ -338,6 +338,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryableOwner.cs" />
     <Compile Include="Query\Handler\AccommodationDetailById.cs" />
+    <Compile Include="Query\Handler\AttributesByAccommodationIdAndLanguageId.cs" />
     <Compile Include="Query\Handler\PagedAccommodationItems.cs" />
     <Compile Include="Query\Handler\PhotosByAccommodationId.cs" />
     <Compile Include="Query\Handler\PhotosOfAccommodations.cs" />

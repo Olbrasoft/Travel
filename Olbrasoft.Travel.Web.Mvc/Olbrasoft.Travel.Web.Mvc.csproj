@@ -147,7 +147,11 @@
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\default.css" />
     <Content Include="Content\fancybox.css" />
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Fonts\fa-brands-400.svg" />
+    <Content Include="Content\Fonts\fa-regular-400.svg" />
+    <Content Include="Content\Fonts\fa-solid-900.svg" />
     <Content Include="Content\green.css" />
     <Content Include="Content\Images\blank.gif" />
     <Content Include="Content\Images\fancybox_loading.gif" />
@@ -169,9 +173,23 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Fonts\fa-brands-400.eot" />
+    <Content Include="Content\Fonts\fa-brands-400.ttf" />
+    <Content Include="Content\Fonts\fa-brands-400.woff" />
+    <Content Include="Content\Fonts\fa-brands-400.woff2" />
+    <Content Include="Content\Fonts\fa-regular-400.eot" />
+    <Content Include="Content\Fonts\fa-regular-400.ttf" />
+    <Content Include="Content\Fonts\fa-regular-400.woff" />
+    <Content Include="Content\Fonts\fa-regular-400.woff2" />
+    <Content Include="Content\Fonts\fa-solid-900.eot" />
+    <Content Include="Content\Fonts\fa-solid-900.ttf" />
+    <Content Include="Content\Fonts\fa-solid-900.woff" />
+    <Content Include="Content\Fonts\fa-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="Content\Images\fancybox_overlay.png" />
     <Content Include="img\logo-color-big.png" />
@@ -244,7 +262,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Html.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Installers\Business.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\Mapping.cs" />

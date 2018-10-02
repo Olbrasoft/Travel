@@ -153,10 +153,10 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    roomsTypesImagesImporter.Import(@"D:\Ean\RoomTypeList.txt");
             //}
 
-            using (var photosOfAccommodationsToTypesOfRoomsImporter = container.Resolve<IImporter>(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)))
-            {
-                photosOfAccommodationsToTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
-            }
+            //using (var photosOfAccommodationsToTypesOfRoomsImporter = container.Resolve<IImporter>(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)))
+            //{
+            //    photosOfAccommodationsToTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
+            //}
 
             //using (var attributesImporter = container.Resolve<IImporter>(nameof(AttributesImporter)))
             //{

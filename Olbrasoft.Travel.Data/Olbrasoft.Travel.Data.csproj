@@ -184,12 +184,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accommodation.cs" />
+    <Compile Include="CreditCard.cs" />
     <Compile Include="IAccommodation.cs" />
     <Compile Include="ICanClearCache.cs" />
     <Compile Include="IHaveAccommodationId.cs" />
+    <Compile Include="IHaveAttributes.cs" />
     <Compile Include="IHaveRooms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\GetAccommodationDetailById.cs" />
+    <Compile Include="Query\GetAttributesByAccommodationIdAndLanguageId.cs" />
     <Compile Include="Query\GetPagedAccommodationItems.cs" />
     <Compile Include="Query\GetPhotosByAccommodationId.cs" />
     <Compile Include="Query\GetPhotosOfAccommodations.cs" />
@@ -221,6 +224,8 @@
     <Compile Include="Transfer\Object\AccommodationItem.cs" />
     <Compile Include="Transfer\Object\AccommodationItemPhotoMerge.cs" />
     <Compile Include="Transfer\Object\AccommodationPhoto.cs" />
+    <Compile Include="Transfer\Object\Attribute.cs" />
+    <Compile Include="Transfer\Object\EnumerableOfAttributeExtensions.cs" />
     <Compile Include="Transfer\Object\IAccommodationItemPhotoMerge.cs" />
     <Compile Include="Transfer\Object\PhotoToRoom.cs" />
     <Compile Include="Transfer\Object\Room.cs" />

@@ -83,6 +83,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Mappi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Mapping", "Olbrasoft.Travel.Data.Mapping\Olbrasoft.Travel.Data.Mapping.csproj", "{1BA2606F-1A5C-4D3A-A2E9-B8872581ED4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Web.Mvc.Unit.Tests", "Olbrasoft.Travel.Web.Mvc.Unit.Tests\Olbrasoft.Travel.Web.Mvc.Unit.Tests.csproj", "{191E7454-DA54-47DA-98CC-72C181545773}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -241,6 +243,10 @@ Global
 		{1BA2606F-1A5C-4D3A-A2E9-B8872581ED4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BA2606F-1A5C-4D3A-A2E9-B8872581ED4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BA2606F-1A5C-4D3A-A2E9-B8872581ED4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{191E7454-DA54-47DA-98CC-72C181545773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{191E7454-DA54-47DA-98CC-72C181545773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{191E7454-DA54-47DA-98CC-72C181545773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{191E7454-DA54-47DA-98CC-72C181545773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,6 +270,7 @@ Global
 		{96BC0EB3-1E1D-4ABD-A6DE-E4ACC537C064} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{B45D401E-7675-4FC3-81A1-F1FA81487141} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{23D83DE9-2120-497A-BA02-ABD2E056D1A0} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
+		{191E7454-DA54-47DA-98CC-72C181545773} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAFDBBA1-285A-4590-BF35-774C3B64E118}

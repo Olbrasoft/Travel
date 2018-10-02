@@ -55,7 +55,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
             var result = merge.Result.FirstOrDefault()?.Photo;
 
             //Assert
-            Assert.IsTrue(result != null && result == "https://i.travelapi.com/hotels/Path/NameExtension");
+            Assert.IsTrue(result != null && result == "https://i.travelapi.com/hotels/Path/Name_l.Extension");
         }
 
         private static AccommodationItemPhotoMerge Merger()

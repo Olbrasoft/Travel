@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Olbrasoft.Travel.Data.Transfer.Object
 {
-    public class AccommodationDetail : Accommodation, IHaveRooms
+    public class AccommodationDetail : Accommodation, IHaveRooms, IHaveAttributes
     {
         public string Description { get; set; }
 
@@ -16,5 +16,7 @@ namespace Olbrasoft.Travel.Data.Transfer.Object
         public double Longitude { get; set; }
 
         public IEnumerable<Room> Rooms { get; set; }
+
+        public IEnumerable<Attribute> Attributes { get; set; }
     }
 }

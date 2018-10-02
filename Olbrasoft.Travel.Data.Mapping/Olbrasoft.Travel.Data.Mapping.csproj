@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationToAttributeToAttribute.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="DescriptionToAccommodationDescription.cs" />
     <Compile Include="LocalizedAccommodation\ToAccommodationDetail.cs" />
