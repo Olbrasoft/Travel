@@ -29,8 +29,10 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
                 .Include(p => p.Attribute)
                 .Include(p => p.Attribute.LocalizedAttributes)
                 .Where(p => p.AccommodationId == query.AccommodationId)
-                .Where(p => p.LanguageId == query.LanguageId);
-
+                .Where(p => p.LanguageId == query.LanguageId)
+                    .OrderBy(p=>p.Attribute.Ban)
+                ;
+                
             return projector.ProjectTo<Attribute>(accommodationsToAttributes);
         }
     }

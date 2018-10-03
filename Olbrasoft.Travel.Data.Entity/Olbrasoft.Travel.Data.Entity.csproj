@@ -334,6 +334,10 @@
     <Compile Include="Migrations\201804141831087_AccommodationsToAttributes.Designer.cs">
       <DependentUpon>201804141831087_AccommodationsToAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810031311469_AddBanToAttribute.cs" />
+    <Compile Include="Migrations\201810031311469_AddBanToAttribute.Designer.cs">
+      <DependentUpon>201810031311469_AddBanToAttribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\TravelMigrationsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryableOwner.cs" />
@@ -499,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804141831087_AccommodationsToAttributes.resx">
       <DependentUpon>201804141831087_AccommodationsToAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810031311469_AddBanToAttribute.resx">
+      <DependentUpon>201810031311469_AddBanToAttribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

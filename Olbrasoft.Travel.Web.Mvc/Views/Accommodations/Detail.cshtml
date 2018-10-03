@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/settings.css">
     <link rel="stylesheet" type="text/css" href="~/Content/layers.css">
     <link rel="stylesheet" type="text/css" href="~/Content/navigation.css">
-    <link rel="stylesheet" href="~/Content/font-awesome.css" >
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700' rel='stylesheet' type='text/css'>
 
     <!-- CUSTOM CSS -->
@@ -58,6 +58,9 @@
 
         .payment {
             font-size: 42px;
+        }
+
+        .quantity {
         }
     </style>
 </head>
@@ -226,81 +229,10 @@
 
                                         @Html.Raw(Model.Description)
                                     </div>
-
-                                    @{
-                                        var amenitiesOfAccommodation = Model.Attributes.Where(p => p.SubTypeId == 1).ToArray();
-                                    }
-
-                                    <div class="row">
-
-                                        @if (amenitiesOfAccommodation.Length > 0)
-                                        {
-
-                                            var half = amenitiesOfAccommodation.Length / 2;
-
-                                            <div class="col-xs-12 col-sm-6">
-                                                <ul class="descriptionList">
-                                                    @for (var i = 0; i < half; i++)
-                                                    {
-                                                        <li><i class="@Html.GetClass(amenitiesOfAccommodation[i])" aria-hidden="true" style="padding-right: 10px;  color: #ff891e;"></i>@amenitiesOfAccommodation[i].Description@amenitiesOfAccommodation[i].Text</li>
-                                                    }
-                                                </ul>
-                                            </div>
-
-                                            if (amenitiesOfAccommodation.Length > 1)
-                                            {
-                                               
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <ul class="descriptionList">
-                                                        @for (var i = half; i < amenitiesOfAccommodation.Length - 1; i++)
-                                                        {
-                                                            <li><i class="@Html.GetClass(amenitiesOfAccommodation[i])"  style="padding-right: 10px; color: #ff891e;"></i>@amenitiesOfAccommodation[i].Description@amenitiesOfAccommodation[i].Text</li>
-                                                        }
-                                                    </ul>
-                                                </div>
-                                            }
-
-                                        }
-                                        
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="description-aria">
-                                    <div class="sectionTitle2">
-                                        @Html.Raw(Html.AccommodationPaymentTypes(Model.Attributes.OnlyCreditCards()))
-                                        <i class="fa fa-paw" aria-hidden="true"></i>
-                                        <i class="fas fa-wifi"></i>
-                                    
-                                        <i class="fa fa-smoking"></i>
-                                        <i class="far fa-calendar-alt"></i>
-                                        <i class="fas fa-glass-martini"></i>
-                                        
-                                        <i class="fas fa-luggage-cart"></i>
-                                        <i class="fas fa-language"></i>
-                                        <i class="fas fa-shower"></i>
-                                        <i class="fab fa-accessible-icon"></i>
-                                        <i class="fas fa-hotel"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-bed"></i>
-                                       
-                                        <i class="fas fa-coffee"></i>
-                                        <i class="fas fa-car"></i>
-                                        <i class="fas fa-shuttle-van"></i>
-                                        <i class="fas fa-train"></i>
-                                      
-                                        <i class="fas fa-book"></i>
-                                        <i class="fas fa-table-tennis"></i>
-                                        <i class="fas fa-child"></i>
-                                        <i class="fas fa-books"></i>
-                                        
-                                    </div>
-                                </div>
-                        </div>
-                            </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="rooms-types-aria">
@@ -346,7 +278,7 @@
                                     <script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClWgMtjkbBjUJJx8DunzJKINP8tDouRIY&callback=initMap"></script>
                                     <script>
                                         function initMap() {
-                                            
+
                                             var mapOptions = {
                                                 center: new window.google.maps.LatLng(@Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture),  @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) ),
                                                 zoom: 4,
@@ -359,9 +291,8 @@
                                             var image =
                                                 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-                                            
                                             var marker = new window.google.maps.Marker({
-                                                position: 
+                                                position:
                                                     new window.google.maps.LatLng(@Model.Latitude.ToString(System.Globalization.CultureInfo.InvariantCulture),  @Model.Longitude.ToString(System.Globalization.CultureInfo.InvariantCulture) ),
                                                 map: map,
                                                 icon: image
@@ -372,15 +303,13 @@
                                     </script>
                                 </div>
                             </div>
-                            
-                    
                         </div>
                     </div>
                     <aside class="col-sm-4 col-xs-12">
                         <div class="singleCartSidebar">
                             <div class="panel panel-default" style="border-color: #545454;">
                                 <div class="panel-heading" style="background-color: #e7eaed;">Check availability</div>
-                                <div class="panel-body" >
+                                <div class="panel-body">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <form class="form-horizontal">
@@ -388,7 +317,7 @@
                                                     <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Check in:</label>
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
                                                         <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                                            <input id="In"  style="background-color: #f1f3f4;border-color: #545454;" type="text" class="form-control" placeholder="MM/DD/YYYY">
+                                                            <input id="In" style="background-color: #f1f3f4;border-color: #545454;" type="text" class="form-control" placeholder="MM/DD/YYYY">
                                                             <div class="input-group-addon">
                                                                 <span class="far fa-calendar-alt"></span>
                                                             </div>
@@ -409,8 +338,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Rooms type:</label>
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
-                                                        <div class="searchFilter" style="background-color: #f1f3f4;border-color:#545454;" >
-                                                            <select  style="background-color: #f1f3f4;border-color:#545454;" name="guiest_id3" id="Rooms" class="select-drop">
+                                                        <div class="searchFilter" style="background-color: #f1f3f4;border-color:#545454;">
+                                                            <select style="background-color: #f1f3f4;border-color:#545454;" name="guiest_id3" id="Rooms" class="select-drop">
                                                                 <option value="0">Double Room</option>
                                                                 <option value="1">Single Room</option>
                                                             </select>
@@ -421,14 +350,14 @@
                                                     <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Guest:</label>
                                                     <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
                                                         <div class="count-input">
-                                                            <a class="incr-btn" data-action="decrease" href="#">–</a>
+                                                            <a class="incr-btn" data-action="decrease" href="#"><i class="fas fa-user-minus" aria-hidden="true" style="font-size: 56%"></i></a>
                                                             <input style="background-color: #f1f3f4;border-color:#545454;" class="quantity" type="text" value="1">
-                                                            <a class="incr-btn" data-action="increase" href="#">+</a>
+                                                            <a class="incr-btn" data-action="increase" href="#"><i class="fas fa-user-plus" aria-hidden="true" style="font-size: 56%"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="totalCost" style="border-color:#545454;">
-                                                    <div class="col-xs-8 totalCostLeft" >
+                                                    <div class="col-xs-8 totalCostLeft">
                                                         <p>Total Cost</p>
                                                     </div>
                                                     <div class="col-xs-4 totalCostRight">$198</div>
@@ -442,6 +371,83 @@
                                 </div>
                             </div>
                         </div>
+
+                        @if(Model.Attributes.Where(p => p.SubTypeId == 1).Any())
+                        { 
+                            <ul class="descriptionList" style="padding-top: 20px;">
+                                @foreach (var amenityOfAccommodation in Model.Attributes.Where(p => p.SubTypeId == 1))
+                                {
+                                    <li style="padding-top: 10px;">
+                                        <span class="fa-stack">
+                                            <i title="@amenityOfAccommodation.Description @amenityOfAccommodation.Text" class="@Html.GetAmenityOfAccommodationClassContent(amenityOfAccommodation) fa-stack-1x" style="color: #ff891e;"></i>
+                                            @if (amenityOfAccommodation.Ban)
+                                            {
+                                                <i class="fa fa-ban fa-stack-2x text-danger" style="color: #ff891e;"></i>
+                                            }
+                                        </span>
+                                        @amenityOfAccommodation.Description @amenityOfAccommodation.Text
+                                    </li>
+
+                                }
+                            </ul>
+                        }
+
+                        @if (Model.Attributes.Where(p => p.SubTypeId == 3 || p.SubTypeId == 4 || p.SubTypeId == 6).Any())
+                        {
+                            <ul class="descriptionList" style="padding-top: 20px;">
+                                @foreach (var amenityOfAccommodation in Model.Attributes.Where(p => p.SubTypeId == 3 || p.SubTypeId == 4 || p.SubTypeId == 6))
+                                {
+                                    <li style="padding-top: 10px;">
+                                        <span class="fa-stack">
+                                            <i title="@amenityOfAccommodation.Description @amenityOfAccommodation.Text" class="@Html.GetClassContent(amenityOfAccommodation) fa-stack-1x" style="color: #ff891e;"></i>
+                                            @if (amenityOfAccommodation.Ban)
+                                            {
+                                                <i class="fa fa-ban fa-stack-2x text-danger" style="color: #ff891e;"></i>
+                                            }
+                                        </span>
+                                        @amenityOfAccommodation.Description @amenityOfAccommodation.Text
+                                    </li>
+                                }
+                            </ul>
+                        }
+
+                        @if (Model.Attributes.Where(p => p.SubTypeId == 5).Any())
+                        {
+                            <ul class="descriptionList" style="padding-top: 20px;">
+                                @foreach (var amenityOfAccommodation in Model.Attributes.Where(p => p.SubTypeId == 5))
+                                {
+                                    <li style="padding-top: 10px;">
+                                        <span class="fa-stack">
+                                            <i title="@amenityOfAccommodation.Description @amenityOfAccommodation.Text" class="@Html.GetPaymentClassContent(amenityOfAccommodation) fa-stack-1x" style="color: #ff891e;"></i>
+                                            @if (amenityOfAccommodation.Ban)
+                                            {
+                                                <i class="fa fa-ban fa-stack-2x text-danger" style="color: #ff891e;"></i>
+                                            }
+                                        </span>
+                                        @amenityOfAccommodation.Description @amenityOfAccommodation.Text
+                                    </li>
+                                }
+                            </ul>
+                        }
+
+                        @if (Model.Attributes.Where(p => p.SubTypeId == 2).Any())
+                        {
+                            <ul class="descriptionList" style="padding-top: 20px;">
+                                @foreach (var amenityOfAccommodation in Model.Attributes.Where(p => p.SubTypeId == 2))
+                                {
+                                    <li style="padding-top: 10px;">
+                                        <span class="fa-stack">
+                                            <i title="@amenityOfAccommodation.Description @amenityOfAccommodation.Text" class="@Html.GetAmenityOfRoomClassContent(amenityOfAccommodation) fa-stack-1x" style="color: #ff891e;"></i>
+                                            @if (amenityOfAccommodation.Ban)
+                                            {
+                                                <i class="fa fa-ban fa-stack-2x text-danger" style="color: #ff891e;"></i>
+                                            }
+                                        </span>
+                                        @amenityOfAccommodation.Description @amenityOfAccommodation.Text
+                                    </li>
+                                }
+                            </ul>
+                        }
                     </aside>
                 </div>
             </div>

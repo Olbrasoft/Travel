@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Constraints;
 using Olbrasoft.Data;
 using Attribute = Olbrasoft.Travel.Data.Transfer.Object.Attribute;
 
@@ -16,7 +17,8 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
                 TypId = int.MinValue,
                 SubTypeId = int.MaxValue,
                 Description = string.Empty,
-                Text = string.Empty
+                Text = string.Empty,
+                Ban=true
             };
 
             //Act
@@ -24,6 +26,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
             var subTypeId = attribute.SubTypeId;
             var description = attribute.Description;
             var text = attribute.Text;
+            var ban = attribute.Ban;
 
             //Assert
             Assert.Multiple(() =>
@@ -32,6 +35,7 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
                 Assert.IsTrue(int.MaxValue == subTypeId);
                 Assert.IsTrue(description == string.Empty);
                 Assert.IsTrue(text == string.Empty);
+                Assert.IsTrue(ban);
             });
         }
 
@@ -47,6 +51,8 @@ namespace Olbrasoft.Travel.Data.Unit.Tests.Transfer.Object
             //Assert
             Assert.IsInstanceOf(type,attribute);
         }
+
+
 
     }
 }

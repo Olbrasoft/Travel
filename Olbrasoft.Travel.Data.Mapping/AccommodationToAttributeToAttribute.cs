@@ -15,6 +15,7 @@ namespace Olbrasoft.Travel.Data.Mapping
                 .ForMember(d => d.SubTypeId, opt => opt.MapFrom(src => src.Attribute.SubTypeOfAttributeId))
                 .ForMember(d => d.Text, opt => opt.MapFrom(src => src.Text))
                 .ForMember(d => d.Description, opt => opt.MapFrom(src => src.Attribute.LocalizedAttributes.FirstOrDefault().Description))
+                .ForMember(d => d.Ban, opt => opt.MapFrom(src => src.Attribute.Ban))
                 ;
         }
     }
