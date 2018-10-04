@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="LocalizedRegionConfigurationTest.cs" />
     <Compile Include="RegionConfigurationTest.cs" />
+    <Compile Include="RegionToRegionConfigurationTest.cs" />
     <Compile Include="RegionToTypeConfigurationTest.cs" />
     <Compile Include="SubClassConfigurationTest.cs" />
     <Compile Include="TypeOfRegionConfigurationTest.cs" />

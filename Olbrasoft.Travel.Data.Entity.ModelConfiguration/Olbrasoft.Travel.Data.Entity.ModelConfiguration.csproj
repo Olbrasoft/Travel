@@ -56,6 +56,7 @@
     <Compile Include="LogOfImportConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionConfiguration.cs" />
+    <Compile Include="RegionToRegionConfiguration.cs" />
     <Compile Include="RegionToTypeConfiguration.cs" />
     <Compile Include="SubClassConfiguration.cs" />
     <Compile Include="TypeOfRegionConfiguration.cs" />

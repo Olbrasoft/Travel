@@ -45,17 +45,7 @@ namespace Olbrasoft.Travel.Data.Entity
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //ModelBuilder = modelBuilder;
-
-            //Add(Get<UserConfiguration>());
-            //Add(Get<LogOfImportConfiguration>());
-
-            //Add(Get<TypeOfRegionConfiguration>());
-            //Add(Get<RegionConfiguration>());
-            //Add(Get<SubClassConfiguration>());
-            //Add(Get<RegionToTypeConfiguration>());
-            //Add(Get<LocalizedRegionConfiguration>());
-
+            
             modelBuilder.Configurations.AddFromAssembly(
                 typeof(Olbrasoft.Travel.Data.Entity.ModelConfiguration.Configuration).Assembly);
 
@@ -78,7 +68,7 @@ namespace Olbrasoft.Travel.Data.Entity
             //OnSubClassesCreating(modelBuilder, dbSchema, nameof(SubClasses));
             //OnRegionsToTypes(modelBuilder, dbSchema, nameof(RegionsToTypes));
             //OnLocalizedRegions(modelBuilder, dbSchema, nameof(LocalizedRegions));
-            OnRegionsToRegionsCreating(modelBuilder, dbSchema, nameof(RegionsToRegions));
+            //OnRegionsToRegionsCreating(modelBuilder, dbSchema, nameof(RegionsToRegions));
             OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
             OnAirportsCreating(modelBuilder, dbSchema, nameof(Airports));
         }
@@ -315,24 +305,24 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<Country>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalCountryProperties).WillCascadeOnDelete(true);
         }
 
-        private static void OnRegionsToRegionsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
-        {
-            modelBuilder.Entity<RegionToRegion>()
-                .ToTable(tableName, dbSchema).HasRequired(rtr => rtr.Creator)
-                .WithMany(u => u.RegionsToRegions).WillCascadeOnDelete(false);
+        //private static void OnRegionsToRegionsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
+        //{
+        //    modelBuilder.Entity<RegionToRegion>()
+        //        .ToTable(tableName, dbSchema).HasRequired(rtr => rtr.Creator)
+        //        .WithMany(u => u.RegionsToRegions).WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<RegionToRegion>()
-                .HasRequired(regionToRegion => regionToRegion.Region)
-                .WithMany(region => region.ToChildRegions)
-                .HasForeignKey(regionToRegion => regionToRegion.Id)
-                .WillCascadeOnDelete(false);
+        //    modelBuilder.Entity<RegionToRegion>()
+        //        .HasRequired(regionToRegion => regionToRegion.Region)
+        //        .WithMany(region => region.ToChildRegions)
+        //        .HasForeignKey(regionToRegion => regionToRegion.Id)
+        //        .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<RegionToRegion>()
-                .HasRequired(regionToRegion => regionToRegion.ParentRegion)
-                .WithMany(region => region.ToParentRegions)
-                .HasForeignKey(regionToRegion => regionToRegion.ToId)
-                .WillCascadeOnDelete(true);
-        }
+        //    modelBuilder.Entity<RegionToRegion>()
+        //        .HasRequired(regionToRegion => regionToRegion.ParentRegion)
+        //        .WithMany(region => region.ToParentRegions)
+        //        .HasForeignKey(regionToRegion => regionToRegion.ToId)
+        //        .WillCascadeOnDelete(true);
+        //}
 
         //private static void OnLocalizedRegions(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         //{
