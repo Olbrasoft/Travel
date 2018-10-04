@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Olbrasoft.Data.Entity
 {
-    public abstract class CreationInfo<TKey> : ICreation<TKey>
+    public abstract class CreationInfo<T> : ICreation<T>
     {
         [Key, Column(Order = 1)]
-        public TKey Id { get; set; }
+        public T Id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime DateAndTimeOfCreation { get; set; }

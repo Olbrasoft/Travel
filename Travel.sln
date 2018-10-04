@@ -85,6 +85,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Mappi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Web.Mvc.Unit.Tests", "Olbrasoft.Travel.Web.Mvc.Unit.Tests\Olbrasoft.Travel.Web.Mvc.Unit.Tests.csproj", "{191E7454-DA54-47DA-98CC-72C181545773}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Entity.ModelConfiguration.Unit.Tests", "Olbrasoft.Travel.Data.Entity.ModelConfiguration.Unit.Tests\Olbrasoft.Travel.Data.Entity.ModelConfiguration.Unit.Tests.csproj", "{FC8E38AB-661A-49DE-B681-5F5CEE11EE1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Entity.ModelConfiguration", "Olbrasoft.Travel.Data.Entity.ModelConfiguration\Olbrasoft.Travel.Data.Entity.ModelConfiguration.csproj", "{85FE7D68-A040-4EE7-A13E-73E8F9BCC7A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -247,6 +251,14 @@ Global
 		{191E7454-DA54-47DA-98CC-72C181545773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{191E7454-DA54-47DA-98CC-72C181545773}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{191E7454-DA54-47DA-98CC-72C181545773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8E38AB-661A-49DE-B681-5F5CEE11EE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8E38AB-661A-49DE-B681-5F5CEE11EE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8E38AB-661A-49DE-B681-5F5CEE11EE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8E38AB-661A-49DE-B681-5F5CEE11EE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85FE7D68-A040-4EE7-A13E-73E8F9BCC7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85FE7D68-A040-4EE7-A13E-73E8F9BCC7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85FE7D68-A040-4EE7-A13E-73E8F9BCC7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85FE7D68-A040-4EE7-A13E-73E8F9BCC7A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -271,6 +283,7 @@ Global
 		{B45D401E-7675-4FC3-81A1-F1FA81487141} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{23D83DE9-2120-497A-BA02-ABD2E056D1A0} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{191E7454-DA54-47DA-98CC-72C181545773} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
+		{FC8E38AB-661A-49DE-B681-5F5CEE11EE1A} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAFDBBA1-285A-4590-BF35-774C3B64E118}
