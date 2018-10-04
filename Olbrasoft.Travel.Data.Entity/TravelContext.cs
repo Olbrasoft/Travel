@@ -47,9 +47,9 @@ namespace Olbrasoft.Travel.Data.Entity
         {
             
             modelBuilder.Configurations.AddFromAssembly(
-                typeof(Olbrasoft.Travel.Data.Entity.ModelConfiguration.Configuration).Assembly);
+                typeof(ModelConfiguration.Configuration).Assembly);
 
-            OnGeoCreating(modelBuilder, "geo");
+           // OnGeoCreating(modelBuilder, "geo");
 
             OnLanguagesCreating(modelBuilder);
 
@@ -61,17 +61,17 @@ namespace Olbrasoft.Travel.Data.Entity
             OnAccoCreating(modelBuilder, "acco");
         }
 
-        private void OnGeoCreating(DbModelBuilder modelBuilder, string dbSchema)
-        {
-            //OnTypesOfRegionsCreating(modelBuilder, dbSchema, nameof(TypesOfRegions));
-            //OnRegionsCreating(modelBuilder, dbSchema, nameof(Regions));
-            //OnSubClassesCreating(modelBuilder, dbSchema, nameof(SubClasses));
-            //OnRegionsToTypes(modelBuilder, dbSchema, nameof(RegionsToTypes));
-            //OnLocalizedRegions(modelBuilder, dbSchema, nameof(LocalizedRegions));
-            //OnRegionsToRegionsCreating(modelBuilder, dbSchema, nameof(RegionsToRegions));
-            //OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
-            OnAirportsCreating(modelBuilder, dbSchema, nameof(Airports));
-        }
+        //private void OnGeoCreating(DbModelBuilder modelBuilder, string dbSchema)
+        //{
+        //    //OnTypesOfRegionsCreating(modelBuilder, dbSchema, nameof(TypesOfRegions));
+        //    //OnRegionsCreating(modelBuilder, dbSchema, nameof(Regions));
+        //    //OnSubClassesCreating(modelBuilder, dbSchema, nameof(SubClasses));
+        //    //OnRegionsToTypes(modelBuilder, dbSchema, nameof(RegionsToTypes));
+        //    //OnLocalizedRegions(modelBuilder, dbSchema, nameof(LocalizedRegions));
+        //    //OnRegionsToRegionsCreating(modelBuilder, dbSchema, nameof(RegionsToRegions));
+        //    //OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
+        //    //OnAirportsCreating(modelBuilder, dbSchema, nameof(Airports));
+        //}
 
         private void OnAccoCreating(DbModelBuilder modelBuilder, string dbSchema)
         {
@@ -284,15 +284,15 @@ namespace Olbrasoft.Travel.Data.Entity
         //        .HasForeignKey(p => p.ToId).WillCascadeOnDelete(false);
         //}
 
-        private static void OnAirportsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
-        {
-            modelBuilder.Entity<Airport>()
-                .ToTable(tableName, dbSchema).HasRequired(c => c.Creator).WithMany(user => user.Airports).WillCascadeOnDelete(false);
+        //private static void OnAirportsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
+        //{
+        //    modelBuilder.Entity<Airport>()
+        //        .ToTable(tableName, dbSchema).HasRequired(c => c.Creator).WithMany(user => user.Airports).WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Airport>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Airport>().HasIndex(c => c.Code).IsUnique();
-            modelBuilder.Entity<Airport>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalAirportProperties).WillCascadeOnDelete(true);
-        }
+        //    modelBuilder.Entity<Airport>().HasIndex(c => c.Id).IsUnique();
+        //    modelBuilder.Entity<Airport>().HasIndex(c => c.Code).IsUnique();
+        //    modelBuilder.Entity<Airport>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalAirportProperties).WillCascadeOnDelete(true);
+        //}
 
         //private static void OnCountriesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         //{

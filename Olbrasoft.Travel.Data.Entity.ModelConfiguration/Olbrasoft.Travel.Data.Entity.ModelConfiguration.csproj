@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirportConfiguration.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationGeography.cs" />
     <Compile Include="ConfigurationWithSchemaName.cs" />
