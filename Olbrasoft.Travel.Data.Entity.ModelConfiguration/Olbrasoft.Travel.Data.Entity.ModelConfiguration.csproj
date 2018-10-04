@@ -51,6 +51,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationGeography.cs" />
     <Compile Include="ConfigurationWithSchemaName.cs" />
+    <Compile Include="CountryConfiguration.cs" />
     <Compile Include="CreationInfoConfiguration.cs" />
     <Compile Include="LocalizedRegionConfiguration.cs" />
     <Compile Include="LogOfImportConfiguration.cs" />

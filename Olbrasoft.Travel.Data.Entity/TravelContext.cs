@@ -64,12 +64,12 @@ namespace Olbrasoft.Travel.Data.Entity
         private void OnGeoCreating(DbModelBuilder modelBuilder, string dbSchema)
         {
             //OnTypesOfRegionsCreating(modelBuilder, dbSchema, nameof(TypesOfRegions));
-            // OnRegionsCreating(modelBuilder, dbSchema, nameof(Regions));
+            //OnRegionsCreating(modelBuilder, dbSchema, nameof(Regions));
             //OnSubClassesCreating(modelBuilder, dbSchema, nameof(SubClasses));
             //OnRegionsToTypes(modelBuilder, dbSchema, nameof(RegionsToTypes));
             //OnLocalizedRegions(modelBuilder, dbSchema, nameof(LocalizedRegions));
             //OnRegionsToRegionsCreating(modelBuilder, dbSchema, nameof(RegionsToRegions));
-            OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
+            //OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
             OnAirportsCreating(modelBuilder, dbSchema, nameof(Airports));
         }
 
@@ -294,16 +294,16 @@ namespace Olbrasoft.Travel.Data.Entity
             modelBuilder.Entity<Airport>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalAirportProperties).WillCascadeOnDelete(true);
         }
 
-        private static void OnCountriesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
-        {
-            modelBuilder.Entity<Country>().ToTable(tableName, dbSchema).HasRequired(c => c.Creator)
-                .WithMany(user => user.Countries).WillCascadeOnDelete(false);
+        //private static void OnCountriesCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
+        //{
+        //    modelBuilder.Entity<Country>().ToTable(tableName, dbSchema).HasRequired(c => c.Creator)
+        //        .WithMany(user => user.Countries).WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Country>().HasIndex(c => c.Id).IsUnique();
-            modelBuilder.Entity<Country>().HasIndex(c => c.Code).IsUnique();
+        //    modelBuilder.Entity<Country>().HasIndex(c => c.Id).IsUnique();
+        //    modelBuilder.Entity<Country>().HasIndex(c => c.Code).IsUnique();
 
-            modelBuilder.Entity<Country>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalCountryProperties).WillCascadeOnDelete(true);
-        }
+        //    modelBuilder.Entity<Country>().HasRequired(c => c.Region).WithOptional(r => r.AdditionalCountryProperties).WillCascadeOnDelete(true);
+        //}
 
         //private static void OnRegionsToRegionsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         //{

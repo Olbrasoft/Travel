@@ -59,6 +59,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountryConfigurationTest.cs" />
     <Compile Include="LocalizedRegionConfigurationTest.cs" />
     <Compile Include="RegionConfigurationTest.cs" />
     <Compile Include="RegionToRegionConfigurationTest.cs" />
