@@ -1,6 +1,7 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

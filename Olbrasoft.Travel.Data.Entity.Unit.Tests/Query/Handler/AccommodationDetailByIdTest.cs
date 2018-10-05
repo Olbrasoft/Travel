@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Entity.Query.Handler;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;

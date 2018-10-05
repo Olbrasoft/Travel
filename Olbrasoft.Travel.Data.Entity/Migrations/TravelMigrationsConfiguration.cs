@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Entity.SqlServer;
 
 namespace Olbrasoft.Travel.Data.Entity.Migrations

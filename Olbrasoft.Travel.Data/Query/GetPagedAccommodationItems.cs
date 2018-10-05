@@ -1,9 +1,9 @@
 ﻿using Olbrasoft.Data.Query;
 using Olbrasoft.Pagination;
-using Olbrasoft.Travel.Data.Entities;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System;
 using System.Linq;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Query
 {

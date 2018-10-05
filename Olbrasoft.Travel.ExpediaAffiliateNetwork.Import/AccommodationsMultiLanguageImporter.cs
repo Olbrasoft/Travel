@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property;

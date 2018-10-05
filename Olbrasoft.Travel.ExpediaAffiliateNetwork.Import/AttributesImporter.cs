@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entities;
+
 using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Repository;
 
-using Attribute = Olbrasoft.Travel.Data.Entities.Attribute;
+using Attribute = Olbrasoft.Travel.Data.Entity.Model.Property.Attribute;
 
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import

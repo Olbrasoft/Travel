@@ -1,8 +1,9 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Olbrasoft.Travel.Data.Entities;
+
 using Olbrasoft.Travel.Data.Entity;
+using Olbrasoft.Travel.Data.Entity.Model;
 
 namespace Olbrasoft.Travel.Web.Api.Installers
 {

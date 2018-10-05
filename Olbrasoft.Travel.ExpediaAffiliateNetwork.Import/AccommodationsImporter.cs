@@ -1,9 +1,11 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
-using Chain = Olbrasoft.Travel.Data.Entities.Chain;
+using Chain = Olbrasoft.Travel.Data.Entity.Model.Property.Chain;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

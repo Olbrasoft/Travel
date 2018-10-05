@@ -1,7 +1,8 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
 using Country = Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography.Country;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
@@ -71,7 +72,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             ImportRegionsToRegions(eanCountries, FactoryOfRepositories.ManyToMany<RegionToRegion>(), regionsEanIdsToIds);
 
-            var countriesRepository = FactoryOfRepositories.AdditionalRegionsInfo<Data.Entities.Country>();
+            var countriesRepository = FactoryOfRepositories.AdditionalRegionsInfo<Data.Entity.Model.Geography.Country>();
 
             ImportCountries(eanCountries, countriesRepository, regionsEanIdsToIds);
 
@@ -79,7 +80,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         }
 
         private void ImportProbablyMissingCoutries(IEnumerable<CandidateCountry> probablyMissingCoutries,
-            IAdditionalRegionsInfoRepository<Data.Entities.Country> countriesRepository, int typeOfRegionCountryId,
+            IAdditionalRegionsInfoRepository<Data.Entity.Model.Geography.Country> countriesRepository, int typeOfRegionCountryId,
             IRegionsRepository regionsRepository)
         {
             foreach (var probablyMissingCoutry in probablyMissingCoutries)
@@ -104,7 +105,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                     CreatorId = CreatorId
                 });
 
-                var country = new Data.Entities.Country
+                var country = new Data.Entity.Model.Geography.Country
                 {
                     Code = probablyMissingCoutry.Code,
                     CreatorId = CreatorId
@@ -117,19 +118,19 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         }
 
         private void ImportCountries(Country[] eanCountries,
-            IAdditionalRegionsInfoRepository<Data.Entities.Country> repository,
+            IAdditionalRegionsInfoRepository<Data.Entity.Model.Geography.Country> repository,
             IReadOnlyDictionary<long, int> regionsEanIdsToIds
            )
         {
-            LogBuild<Data.Entities.Country>();
+            LogBuild<Data.Entity.Model.Geography.Country>();
             var countries = BuildCountries(eanCountries, regionsEanIdsToIds, CreatorId);
             var count = countries.Length;
             LogBuilded(count);
 
             if (count <= 0) return;
-            LogSave<Data.Entities.Country>();
+            LogSave<Data.Entity.Model.Geography.Country>();
             repository.BulkSave(countries);
-            LogSaved<Data.Entities.Country>();
+            LogSaved<Data.Entity.Model.Geography.Country>();
         }
 
         private void ImportRegionsToRegions(
@@ -226,16 +227,16 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return regionsToregions.ToArray();
         }
 
-        public Data.Entities.Country[] BuildCountries(Country[] eanCountries,
+        public Data.Entity.Model.Geography.Country[] BuildCountries(Country[] eanCountries,
             IReadOnlyDictionary<long, int> eanIdsToIds,
             int creatorId)
         {
-            var countries = new Queue<Data.Entities.Country>();
+            var countries = new Queue<Data.Entity.Model.Geography.Country>();
 
             foreach (var eanCountry in eanCountries)
             {
                 if (!eanIdsToIds.TryGetValue(eanCountry.CountryID, out var id)) continue;
-                var country = new Data.Entities.Country
+                var country = new Data.Entity.Model.Geography.Country
                 {
                     Id = id,
                     Code = eanCountry.CountryCode,

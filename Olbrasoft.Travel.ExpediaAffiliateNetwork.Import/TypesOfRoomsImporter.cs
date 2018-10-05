@@ -1,7 +1,9 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using System;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Accommodation = Olbrasoft.Travel.Data.Accommodation;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -13,7 +15,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             get => _accommodationsEanIdsToIds ?? (
                        _accommodationsEanIdsToIds =
-                           FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+                           FactoryOfRepositories.MappedEntities<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().EanIdsToIds);
 
             set => _accommodationsEanIdsToIds = value;
         }

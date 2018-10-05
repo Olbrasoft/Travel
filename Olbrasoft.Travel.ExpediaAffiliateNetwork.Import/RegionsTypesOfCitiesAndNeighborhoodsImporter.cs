@@ -1,10 +1,11 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Text;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
@@ -9,6 +9,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

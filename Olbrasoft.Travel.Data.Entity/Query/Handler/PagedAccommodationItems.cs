@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Data.Query;
 using Olbrasoft.Pagination;
-using Olbrasoft.Travel.Data.Entities;
+using Accommodation= Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Data.Entity;
@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {

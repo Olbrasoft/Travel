@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model;
 using Olbrasoft.Travel.Data.Repository;
 
 

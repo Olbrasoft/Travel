@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
 
 namespace Olbrasoft.Travel.Data.Repository
 {

@@ -1,0 +1,16 @@
+﻿using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model;
+
+namespace Olbrasoft.Travel.Data.Entity.Model.Geography
+{
+    public class Country : CreatorInfo, IAdditionalRegionInfo
+    {
+        //todo change https://en.wikipedia.org/wiki/ISO_3166-1
+
+        public string Code { get; set; }
+
+        public virtual Region Region { get; set; }
+
+        public virtual ICollection<Property.Accommodation> Accommodations { get; set; }
+    }
+}

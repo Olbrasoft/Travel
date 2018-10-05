@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Collections.Generic;
 using Olbrasoft.Data.Unit.Tests;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Transfer.Object;
 
 namespace Olbrasoft.Travel.Data.Unit.Tests

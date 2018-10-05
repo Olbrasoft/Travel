@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using AutoMapper;
 using Olbrasoft.Travel.Data;
-using Olbrasoft.Travel.Data.Entities;
-using Accommodation = Olbrasoft.Travel.Data.Entities.Accommodation;
+
+using Accommodation = Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation;
 
 namespace Olbrasoft.Travel.Business.Unit.Tests
 {

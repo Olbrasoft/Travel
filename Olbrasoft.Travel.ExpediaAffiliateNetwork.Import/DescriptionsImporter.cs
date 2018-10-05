@@ -1,6 +1,7 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Description = Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property.Description;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
@@ -29,7 +30,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         protected int TypeOfDescriptionId { get; set; }
 
-        protected Queue<Data.Entities.Description> Descriptions = new Queue<Data.Entities.Description>();
+        protected Queue<Olbrasoft.Travel.Data.Entity.Model.Property.Description> Descriptions = new Queue<Olbrasoft.Travel.Data.Entity.Model.Property.Description>();
 
         public DescriptionsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
@@ -44,7 +45,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 !LanguagesEanLanguageCodesToIds.TryGetValue(items[1], out var languageId)
             ) return;
 
-            var description = new Data.Entities.Description
+            var description = new Olbrasoft.Travel.Data.Entity.Model.Property.Description
             {
                 AccommodationId = accommodationId,
                 TypeOfDescriptionId = TypeOfDescriptionId,

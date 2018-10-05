@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model;
 using Olbrasoft.Travel.Data.Repository;
 
 namespace Olbrasoft.Travel.Data.Entity.Repositories

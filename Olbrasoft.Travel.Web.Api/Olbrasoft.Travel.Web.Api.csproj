@@ -157,9 +157,9 @@
       <Project>{5C7D643F-6620-48E5-9966-EF30FD6E6272}</Project>
       <Name>Olbrasoft.Travel.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
-      <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
-      <Name>Olbrasoft.Travel.Data.Entities</Name>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj">
+      <Project>{E239B519-2D54-4447-BEBB-AF0600C0A6AA}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{B47EE928-2611-4D10-8316-C1B0B1EE768B}</Project>

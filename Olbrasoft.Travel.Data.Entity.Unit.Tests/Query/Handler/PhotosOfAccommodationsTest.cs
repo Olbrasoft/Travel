@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Entity.Query.Handler;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
@@ -24,7 +24,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
             //Arrange
             var type =
                 typeof(HandlerWithDependentSource<GetPhotosOfAccommodations,
-                    Entities.PhotoOfAccommodation, IEnumerable<AccommodationPhoto>>);
+                  PhotoOfAccommodation, IEnumerable<AccommodationPhoto>>);
 
             //Act
             var handler = CreateHandler();
@@ -66,7 +66,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
 
         private static PhotosOfAccommodations CreateHandler()
         {
-            var photos = new Entities.PhotoOfAccommodation[1].AsQueryable();
+            var photos = new PhotoOfAccommodation[1].AsQueryable();
             var ownPhotosOfAccommodationsMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
 
 

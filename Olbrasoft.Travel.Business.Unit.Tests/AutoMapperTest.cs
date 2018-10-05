@@ -5,8 +5,8 @@ using Olbrasoft.Business;
 using Olbrasoft.Pagination;
 using System.Collections.Generic;
 using System.Linq;
-using Olbrasoft.Travel.Data.Entities;
-using Accommodation = Olbrasoft.Travel.Data.Entities.Accommodation;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Accommodation = Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation;
 
 namespace Olbrasoft.Travel.Business.Unit.Tests
 {

@@ -2,7 +2,7 @@
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using Olbrasoft.Travel.Data.Entities;
+
 using Olbrasoft.Travel.Data.Entity;
 using Olbrasoft.Travel.Data.Entity.Repositories;
 using Olbrasoft.Travel.Data.Repository;
@@ -10,6 +10,7 @@ using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using System;
 using System.Data.Entity;
 using System.Net;
+using Olbrasoft.Travel.Data.Entity.Model;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
-using Olbrasoft.Travel.Data.Entities;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Query;
-using Attribute = Olbrasoft.Travel.Data.Transfer.Object.Attribute;
+using Attribute= Olbrasoft.Travel.Data.Transfer.Object.Attribute;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {

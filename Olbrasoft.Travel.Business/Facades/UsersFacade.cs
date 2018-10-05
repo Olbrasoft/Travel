@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
+using Olbrasoft.Travel.Data.Entity.Model;
 using Olbrasoft.Travel.Data.Repository;
 
 namespace Olbrasoft.Travel.Business.Facades

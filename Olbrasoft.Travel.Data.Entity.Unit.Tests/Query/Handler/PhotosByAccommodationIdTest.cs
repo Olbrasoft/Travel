@@ -1,7 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Data.Query;
-using Olbrasoft.Travel.Data.Entities;
+
 using Olbrasoft.Travel.Data.Entity.Query.Handler;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
 {
@@ -48,7 +49,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
 
         private static PhotosByAccommodationId Handler()
         {
-            var photos = new Entities.PhotoOfAccommodation[1].AsQueryable();
+            var photos = new PhotoOfAccommodation[1].AsQueryable();
             var ownPhotosOfAccommodationsMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
             ownPhotosOfAccommodationsMock.Setup(p => p.Queryable).Returns(photos);
             var projectionMock = new Mock<IProjection>();

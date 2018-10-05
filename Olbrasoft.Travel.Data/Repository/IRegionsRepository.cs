@@ -1,6 +1,6 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Olbrasoft.Data.Repository.Bulk;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
 
 namespace Olbrasoft.Travel.Data.Repository
 {

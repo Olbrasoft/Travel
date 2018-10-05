@@ -1,9 +1,10 @@
 ﻿using log4net;
 using log4net.Config;
-using Olbrasoft.Travel.Data.Entities;
+
 using Olbrasoft.Travel.Data.Repository;
 using System.IO;
 using System.Reflection;
+using Olbrasoft.Travel.Data.Entity.Model;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {

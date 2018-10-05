@@ -1,10 +1,10 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
 using System.Collections.Generic;
-using Country = Olbrasoft.Travel.Data.Entities.Country;
-
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Country = Olbrasoft.Travel.Data.Entity.Model.Geography.Country;
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class AirportsImporter : Importer<AirportCoordinates>

@@ -1,14 +1,18 @@
-﻿using Olbrasoft.Travel.Data.Entities;
+﻿
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using Attribute = Olbrasoft.Travel.Data.Entities.Attribute;
+using Olbrasoft.Travel.Data.Entity.Model;
+using Olbrasoft.Travel.Data.Entity.Model.Configuration;
+using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Attribute = Olbrasoft.Travel.Data.Entity.Model.Property.Attribute;
 
 namespace Olbrasoft.Travel.Data.Entity
 {
     public class TravelContext : DbContext, ITravelContext
     {
         public virtual IDbSet<User> Users { get; set; }
-        public virtual IDbSet<LogOfImport> LogsOfImports { get; set; }
+        public virtual IDbSet<LogOfImport> LogsOfImports { get; set; } 
         public virtual IDbSet<TypeOfRegion> TypesOfRegions { get; set; }
         public virtual IDbSet<Region> Regions { get; set; }
         public virtual IDbSet<SubClass> SubClasses { get; set; }
@@ -21,7 +25,7 @@ namespace Olbrasoft.Travel.Data.Entity
         public virtual IDbSet<TypeOfAccommodation> TypesOfAccommodations { get; set; }
         public virtual IDbSet<LocalizedTypeOfAccommodation> LocalizedTypesOfAccommodations { get; set; }
         public virtual IDbSet<Chain> Chains { get; set; }
-        public virtual IDbSet<Entities.Accommodation> Accommodations { get; set; }
+        public virtual IDbSet<Model.Property.Accommodation> Accommodations { get; set; }
         public virtual IDbSet<LocalizedAccommodation> LocalizedAccommodations { get; set; }
         public virtual IDbSet<TypeOfDescription> TypesOfDescriptions { get; set; }
         public virtual IDbSet<Description> Descriptions { get; set; }
@@ -41,13 +45,13 @@ namespace Olbrasoft.Travel.Data.Entity
 
         public TravelContext() : base("name=Travel")
         {
+            
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
-            modelBuilder.Configurations.AddFromAssembly(
-                typeof(ModelConfiguration.Configuration).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(CreationInfoConfiguration<>).Assembly);
 
            // OnGeoCreating(modelBuilder, "geo");
 
@@ -400,15 +404,15 @@ namespace Olbrasoft.Travel.Data.Entity
 
         private void OnAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         {
-            modelBuilder.Entity<Entities.Accommodation>().ToTable(tableName, dbSchema).HasIndex(e => e.EanId).IsUnique();
+            modelBuilder.Entity<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().ToTable(tableName, dbSchema).HasIndex(e => e.EanId).IsUnique();
 
-            modelBuilder.Entity<Entities.Accommodation>().HasRequired(a => a.TypeOfAccommodation)
+            modelBuilder.Entity<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().HasRequired(a => a.TypeOfAccommodation)
                 .WithMany(toa => toa.Accommodations).WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Entities.Accommodation>().HasRequired(a => a.Creator).WithMany(user => user.Accommodations)
+            modelBuilder.Entity<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().HasRequired(a => a.Creator).WithMany(user => user.Accommodations)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Entities.Accommodation>().HasRequired(a => a.Country).WithMany(c => c.Accommodations)
+            modelBuilder.Entity<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().HasRequired(a => a.Country).WithMany(c => c.Accommodations)
                 .WillCascadeOnDelete(false);
         }
     }

@@ -252,9 +252,9 @@
       <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
       <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entities\Olbrasoft.Travel.Data.Entities.csproj">
-      <Project>{3FBBE85F-BA2D-4925-AA84-371A12710254}</Project>
-      <Name>Olbrasoft.Travel.Data.Entities</Name>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj">
+      <Project>{e239b519-2d54-4447-bebb-af0600c0a6aa}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
-﻿using Olbrasoft.Travel.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Olbrasoft.Data.Repository.Bulk;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Repository
 {
