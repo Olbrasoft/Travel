@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Property
 {
@@ -9,7 +8,6 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public int PathToPhotoId { get; set; }
 
-        [StringLength(50)]
         public string FileName { get; set; }
 
         public int FileExtensionId { get; set; }

@@ -2,9 +2,9 @@
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
 {
-    public class PropertyConfiguration<TEntity> : EntityConfigurationWithSchemaName<TEntity> where TEntity : class
+    public abstract class PropertyConfiguration<TEntity> : EntityConfigurationWithSchemaName<TEntity> where TEntity : class
     {
-        public PropertyConfiguration() : base("acco")
+        protected PropertyConfiguration() : base("acco")
         {
         }
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity.Model;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Geography
 {

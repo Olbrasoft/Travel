@@ -25,14 +25,13 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public decimal StarRating { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        
         public string Address { get; set; }
 
-        [StringLength(50)]
+     
         public string AdditionalAddress { get; set; }
 
-        [Required]
+       
         public  DbGeography CenterCoordinates { get; set; }
 
         public int TypeOfAccommodationId { get; set; }

@@ -59,6 +59,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptionConfigurationTest.cs" />
+    <Compile Include="FileExtensionConfigurationTest.cs" />
     <Compile Include="Geography\AirportConfigurationTest.cs" />
     <Compile Include="Geography\CountryConfigurationTest.cs" />
     <Compile Include="Geography\LocalizedRegionConfigurationTest.cs" />
@@ -68,9 +70,26 @@
     <Compile Include="Geography\SubClassConfigurationTest.cs" />
     <Compile Include="Geography\TypeOfRegionConfigurationTest.cs" />
     <Compile Include="LanguageConfigurationTest.cs" />
+    <Compile Include="LocalizedCaptionConfigurationTest.cs" />
     <Compile Include="LogOfImportConfigurationTest.cs" />
+    <Compile Include="PathToPhotoConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property\AccommodationConfigurationTest.cs" />
+    <Compile Include="Property\AccommodationToAttributeConfigurationTest.cs" />
+    <Compile Include="Property\AttributeConfigurationTest.cs" />
+    <Compile Include="Property\ChainConfigurationTest.cs" />
+    <Compile Include="Property\DescriptionConfigurationTest.cs" />
+    <Compile Include="Property\LocalizedAccommodationConfigurationTest.cs" />
+    <Compile Include="Property\LocalizedAttributeConfigurationTest.cs" />
+    <Compile Include="Property\LocalizedTypeOfAccommodationConfigurationTest.cs" />
+    <Compile Include="Property\LocalizedTypeOfRoomConfigurationTest.cs" />
+    <Compile Include="Property\PhotoOfAccommodationConfigurationTest.cs" />
+    <Compile Include="Property\PhotoOfAccommodationToTypeOfRoomConfigurationTest.cs" />
+    <Compile Include="Property\SubTypeOfAttributeConfigurationTest.cs" />
     <Compile Include="Property\TypeOfAccommodationConfigurationTest.cs" />
+    <Compile Include="Property\TypeOfAttributeConfigurationTest.cs" />
+    <Compile Include="Property\TypeOfDescriptionConfigurationTest.cs" />
+    <Compile Include="Property\TypeOfRoomConfigurationTest.cs" />
     <Compile Include="UserConfigurationTest.cs" />
   </ItemGroup>
   <ItemGroup>

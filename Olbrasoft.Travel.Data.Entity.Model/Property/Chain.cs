@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Olbrasoft.Data.Entity;
+using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Property
 {
@@ -8,9 +7,8 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
     {
         public int EanId { get; set; } = int.MinValue;
 
-        [Required]
-        [StringLength(30)]
         public string Name { get; set; }
+
         public virtual ICollection<Accommodation> Accommodations { get; set; }
     }
 }
