@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 
-namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Properties
+namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
 {
     public class PropertyConfiguration<TEntity> : EntityConfigurationWithSchemaName<TEntity> where TEntity : class
     {

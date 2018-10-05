@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreatorConfiguration.cs" />
     <Compile Include="EntityConfigurationWithSchemaName.cs" />
     <Compile Include="CreationInfoConfiguration.cs" />
     <Compile Include="GeographyConfiguration.cs" />
@@ -58,9 +59,11 @@
     <Compile Include="Geography\RegionToTypeConfiguration.cs" />
     <Compile Include="Geography\SubClassConfiguration.cs" />
     <Compile Include="Geography\TypeOfRegionConfiguration.cs" />
+    <Compile Include="LanguageConfiguration.cs" />
     <Compile Include="LogOfImportConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\PropertyConfiguration.cs" />
+    <Compile Include="Property\PropertyConfiguration.cs" />
+    <Compile Include="Property\TypeOfAccommodationConfiguration.cs" />
     <Compile Include="UserConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>

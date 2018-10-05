@@ -8,6 +8,6 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public virtual ICollection<LocalizedTypeOfAccommodation> LocalizedTypesOfAccommodations { get; set; }
 
-        public virtual ICollection<Property.Accommodation> Accommodations { get; set; }
+        public virtual ICollection<Accommodation> Accommodations { get; set; }
     }
 }

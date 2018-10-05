@@ -67,7 +67,7 @@
     <Compile Include="Geography\RegionToTypeConfigurationTest.cs" />
     <Compile Include="Geography\SubClassConfigurationTest.cs" />
     <Compile Include="Geography\TypeOfRegionConfigurationTest.cs" />
-    <Compile Include="Geography\UserConfigurationTest.cs" />
+    <Compile Include="LanguageConfigurationTest.cs" />
     <Compile Include="LogOfImportConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\TypeOfAccommodationConfigurationTest.cs" />

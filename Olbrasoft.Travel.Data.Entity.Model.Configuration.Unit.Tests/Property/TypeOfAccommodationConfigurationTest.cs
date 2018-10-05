@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
-using Olbrasoft.Travel.Data.Entity.Model.Configuration.Properties;
+using Olbrasoft.Travel.Data.Entity.Model.Configuration.Property;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests.Property
@@ -21,9 +21,10 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests.Property
             var type = typeof(PropertyConfiguration<TypeOfAccommodation>);
 
             //Act
-
+            var configuration = new TypeOfAccommodationConfiguration();
 
             //Assert
+            Assert.IsInstanceOf(type,configuration);
 
         }
     }

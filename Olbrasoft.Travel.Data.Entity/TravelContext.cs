@@ -53,9 +53,9 @@ namespace Olbrasoft.Travel.Data.Entity
         {
             modelBuilder.Configurations.AddFromAssembly(typeof(CreationInfoConfiguration<>).Assembly);
 
-           // OnGeoCreating(modelBuilder, "geo");
+           
 
-            OnLanguagesCreating(modelBuilder);
+
 
             OnPathsToPhotosCreating(modelBuilder);
             OnFilesExtensionsCreating(modelBuilder);
@@ -65,21 +65,11 @@ namespace Olbrasoft.Travel.Data.Entity
             OnAccoCreating(modelBuilder, "acco");
         }
 
-        //private void OnGeoCreating(DbModelBuilder modelBuilder, string dbSchema)
-        //{
-        //    //OnTypesOfRegionsCreating(modelBuilder, dbSchema, nameof(TypesOfRegions));
-        //    //OnRegionsCreating(modelBuilder, dbSchema, nameof(Regions));
-        //    //OnSubClassesCreating(modelBuilder, dbSchema, nameof(SubClasses));
-        //    //OnRegionsToTypes(modelBuilder, dbSchema, nameof(RegionsToTypes));
-        //    //OnLocalizedRegions(modelBuilder, dbSchema, nameof(LocalizedRegions));
-        //    //OnRegionsToRegionsCreating(modelBuilder, dbSchema, nameof(RegionsToRegions));
-        //    //OnCountriesCreating(modelBuilder, dbSchema, nameof(Countries));
-        //    //OnAirportsCreating(modelBuilder, dbSchema, nameof(Airports));
-        //}
+    
 
         private void OnAccoCreating(DbModelBuilder modelBuilder, string dbSchema)
         {
-            OnTypesOfAccommodationsCreating(modelBuilder, dbSchema, nameof(TypesOfAccommodations));
+           // OnTypesOfAccommodationsCreating(modelBuilder, dbSchema, nameof(TypesOfAccommodations));
             OnLocalizedTypesOfAccommodationsCreating(modelBuilder, dbSchema, nameof(LocalizedTypesOfAccommodations));
             OnChainsCreating(modelBuilder, dbSchema, nameof(Chains));
             OnAccommodationsCreating(modelBuilder, dbSchema, nameof(Accommodations));
@@ -270,11 +260,11 @@ namespace Olbrasoft.Travel.Data.Entity
                 .WithMany(l => l.LocalizedTypesOfAccommodations).WillCascadeOnDelete(false);
         }
 
-        private static void OnTypesOfAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
-        {
-            modelBuilder.Entity<TypeOfAccommodation>()
-                .ToTable(tableName, dbSchema).HasIndex(toa => toa.EanId).IsUnique();
-        }
+        //private static void OnTypesOfAccommodationsCreating(DbModelBuilder modelBuilder, string dbSchema, string tableName)
+        //{
+        //    modelBuilder.Entity<TypeOfAccommodation>()
+        //        .ToTable(tableName, dbSchema).HasIndex(toa => toa.EanId).IsUnique();
+        //}
 
         //private static void OnRegionsToTypes(DbModelBuilder modelBuilder, string dbSchema, string tableName)
         //{
@@ -358,22 +348,22 @@ namespace Olbrasoft.Travel.Data.Entity
         //    modelBuilder.Entity<SubClass>().ToTable(tableName, dbSchema).HasIndex(p => p.Name).IsUnique();
         //}
 
-        private void OnLanguagesCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Language>()
-                .ToTable(nameof(Languages))
-                .Property(e => e.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+        //private void OnLanguagesCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Language>()
+        //        .ToTable(nameof(Languages))
+        //        .Property(e => e.Id)
+        //        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            modelBuilder.Entity<Language>()
-                .HasIndex(p => p.EanLanguageCode).IsUnique();
+        //    modelBuilder.Entity<Language>()
+        //        .HasIndex(p => p.EanLanguageCode).IsUnique();
 
-            modelBuilder.Entity<Language>()
-                .Property(e => e.DateAndTimeOfCreation)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
+        //    modelBuilder.Entity<Language>()
+        //        .Property(e => e.DateAndTimeOfCreation)
+        //        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
 
-            modelBuilder.Entity<Language>().HasRequired(l => l.Creator).WithMany(u => u.Languages);
-        }
+        //    modelBuilder.Entity<Language>().HasRequired(l => l.Creator).WithMany(u => u.Languages);
+        //}
 
         //private void OnLogsOfImportsCreating(DbModelBuilder modelBuilder)
         //{
