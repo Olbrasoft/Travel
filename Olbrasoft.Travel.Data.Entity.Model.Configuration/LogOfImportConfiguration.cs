@@ -1,6 +1,4 @@
-﻿
-
-namespace Olbrasoft.Travel.Data.Entity.Model.Configuration
+﻿namespace Olbrasoft.Travel.Data.Entity.Model.Configuration
 {
     public class LogOfImportConfiguration : CreationInfoConfiguration<LogOfImport>
     {

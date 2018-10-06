@@ -1,5 +1,4 @@
 ﻿
-
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration
 {
     public class UserConfiguration : CreationInfoConfiguration<User>

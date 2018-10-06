@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DboContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\Handler\AccommodationDetailByIdTest.cs" />
     <Compile Include="Query\Handler\AttributesByAccommodationIdAndLanguageIdTest.cs" />
