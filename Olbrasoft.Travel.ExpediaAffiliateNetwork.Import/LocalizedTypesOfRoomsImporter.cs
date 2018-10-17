@@ -15,7 +15,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             get =>
 
                 _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
-                    FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+                    FactoryOfRepositories.MappedProperties<Accommodation>().EanIdsToIds);
 
             set => _accommodationsEanIdsToIds = value;
         }
@@ -25,7 +25,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> EanRoomTypeIdsToIds
         {
             get => _eanRoomTypeIdsToIds ??
-               (_eanRoomTypeIdsToIds = FactoryOfRepositories.MappedEntities<TypeOfRoom>().EanIdsToIds);
+               (_eanRoomTypeIdsToIds = FactoryOfRepositories.MappedProperties<TypeOfRoom>().EanIdsToIds);
 
             set => _eanRoomTypeIdsToIds = value;
         }
@@ -60,7 +60,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LoadData(path);
 
             LogSave<LocalizedTypeOfRoom>();
-            FactoryOfRepositories.Localized<LocalizedTypeOfRoom>().BulkSave(LocalizedTypesOfRooms, 270000);
+            FactoryOfRepositories.OfLocalized<LocalizedTypeOfRoom>().BulkSave(LocalizedTypesOfRooms, 270000);
             LogSaved<LocalizedTypeOfRoom>();
         }
 

@@ -8,7 +8,7 @@ namespace Olbrasoft.Travel.Web.Api.Installers.Query
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            var classes = Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity");
+            var classes = Classes.FromAssemblyNamed("Olbrasoft.TravelDatabaseContext.Data.Entity");
             
             container.Register(classes
             .Where(ns=>ns.Namespace != null && ns.Namespace.EndsWith("Query.Handler"))

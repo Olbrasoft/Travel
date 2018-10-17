@@ -315,6 +315,10 @@
       <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
       <Name>Olbrasoft.Collections</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{59A1C67F-284E-480A-A0B4-E9232FAC298A}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{c38f7833-3953-4e1c-af9c-1e9a2c3b738b}</Project>
       <Name>Olbrasoft.Data</Name>

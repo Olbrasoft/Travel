@@ -15,7 +15,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             get => _accommodationsEanIdsToIds ?? (
                        _accommodationsEanIdsToIds =
-                           FactoryOfRepositories.MappedEntities<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().EanIdsToIds);
+                           FactoryOfRepositories.MappedProperties<Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation>().EanIdsToIds);
 
             set => _accommodationsEanIdsToIds = value;
         }
@@ -49,7 +49,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             if (TypesOfRooms.Count <= 0) return;
             LogSave<TypeOfRoom>();
-            FactoryOfRepositories.MappedEntities<TypeOfRoom>().BulkSave(TypesOfRooms, 270000);
+            FactoryOfRepositories.MappedProperties<TypeOfRoom>().BulkSave(TypesOfRooms, 270000);
             LogSaved<TypeOfRoom>();
         }
 

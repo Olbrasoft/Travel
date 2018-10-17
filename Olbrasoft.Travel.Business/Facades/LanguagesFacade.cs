@@ -1,6 +1,8 @@
 ﻿
 using Olbrasoft.Travel.Data.Entity.Model;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Repository.Globalization;
 
 namespace Olbrasoft.Travel.Business.Facades
 {

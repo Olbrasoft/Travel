@@ -2,7 +2,7 @@
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
 {
-    public class TypeOfAccommodationConfiguration:PropertyConfiguration<TypeOfAccommodation>
+    public class TypeOfAccommodationConfiguration : PropertyConfiguration<TypeOfAccommodation>
     {
         public TypeOfAccommodationConfiguration()
         {

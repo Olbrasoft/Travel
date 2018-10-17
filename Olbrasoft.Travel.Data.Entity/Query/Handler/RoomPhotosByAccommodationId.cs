@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Olbrasoft.Data;
-using Olbrasoft.Data.Mapping;
+﻿using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class RoomPhotosByAccommodationId : AsyncHandlerWithDependentSource<GetRoomPhotosByAccommodationId, PhotoOfAccommodation, IEnumerable<RoomPhoto>>
     {
-        public RoomPhotosByAccommodationId(IHaveQueryable<PhotoOfAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
+        public RoomPhotosByAccommodationId(IHavePropertyQueryable<PhotoOfAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 

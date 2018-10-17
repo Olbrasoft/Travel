@@ -9,8 +9,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         public RegionsTypesOfCitiesImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
         {
-            TypeOfRegionId = FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("City");
-            SubClassId = FactoryOfRepositories.BaseNames<SubClass>().GetId("city");
+            TypeOfRegionId = FactoryOfRepositories.GeographyNamesRepository<TypeOfRegion>().GetId("City");
+            SubClassId = FactoryOfRepositories.GeographyNamesRepository<SubClass>().GetId("city");
         }
     }
 }

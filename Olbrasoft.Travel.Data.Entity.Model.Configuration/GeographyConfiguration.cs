@@ -1,16 +1,12 @@
 ﻿using System.Data.Entity.ModelConfiguration;
+using Olbrasoft.Data.Entity;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration
 {
-    public abstract class GeographyConfiguration<TEntity> : EntityConfigurationWithSchemaName<TEntity> where TEntity : class
+    public abstract class GeographyConfiguration<TEntity> : EntityConfigurationWithSchemaName<TEntity> where TEntity : class, IHaveDateTimeOfCreation
     {
-        protected GeographyConfiguration() : base("geo")
+        protected GeographyConfiguration() : base("Geography")
         {
-        }
-
-        protected new EntityTypeConfiguration<TEntity> ToTable(string tableName)
-        {
-            return ToTable(tableName, SchemaName);
         }
     }
 }

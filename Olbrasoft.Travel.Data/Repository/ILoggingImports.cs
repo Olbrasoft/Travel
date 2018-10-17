@@ -4,7 +4,7 @@ namespace Olbrasoft.Travel.Data.Repository
 {
     public interface ILoggingImports
     {
-        void LogIn(LogOfImport log);
+        void LogIn(Log log);
 
         void Log(string textForLogging);
     }

@@ -1,21 +1,19 @@
-﻿using Olbrasoft.Data.Query;
+﻿using Olbrasoft.Data.Mapping;
+using Olbrasoft.Data.Query;
 using Olbrasoft.Pagination;
-using Accommodation= Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Olbrasoft.Data;
-using Olbrasoft.Data.Mapping;
-using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class PagedAccommodationItems : HandlerWithDependentSource<GetPagedAccommodationItems, LocalizedAccommodation, IResultWithTotalCount<AccommodationItem>>
     {
-        public PagedAccommodationItems(IHaveQueryable<LocalizedAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
+        public PagedAccommodationItems(IHaveGlobalizationQueryable<LocalizedAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 
@@ -50,7 +48,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             return result;
         }
-        
+
         private static IQueryable<LocalizedAccommodation> PreHandle(IQueryable<LocalizedAccommodation> source, GetPagedAccommodationItems query)
         {
             var localizedAccommodationQueryable = source.Include(p => p.Accommodation).Where(p => p.LanguageId == query.LanguageId);
@@ -59,7 +57,5 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 
             return localizedAccommodationOrderedQueryable;
         }
-
-       
     }
 }

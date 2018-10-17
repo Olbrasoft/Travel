@@ -1,17 +1,17 @@
-﻿
+﻿using Olbrasoft.Data;
 using System.Linq;
-using Olbrasoft.Data;
-using Olbrasoft.Travel.Data.Entity.Model;
 
 namespace Olbrasoft.Travel.Data.Entity
 {
-    public class QueryableOwner<T> : IHaveQueryable<T> where T : class
+    public abstract class QueryableOwner<TEntity> : IHaveQueryable<TEntity> where TEntity : class
     {
-        public QueryableOwner(ITravelContext context)
+
+
+        protected QueryableOwner(ITravelContext context)
         {
-            Queryable = context.Set<T>();
+            Queryable = context.Set<TEntity>();
         }
 
-        public IQueryable<T> Queryable { get; }
+        public IQueryable<TEntity> Queryable { get; }
     }
 }

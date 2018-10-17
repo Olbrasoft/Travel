@@ -2,7 +2,7 @@
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
 {
-    public class PhotoOfAccommodationConfiguration : Configuration.Property.CreatorConfiguration<PhotoOfAccommodation>
+    public class PhotoOfAccommodationConfiguration : CreatorConfiguration<PhotoOfAccommodation>
     {
         public PhotoOfAccommodationConfiguration()
         {
@@ -18,7 +18,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
 
             HasRequired(poa => poa.FileExtension).WithMany(fe => fe.PhotosOfAccommodations).WillCascadeOnDelete(false);
 
-            HasRequired(p => p.Accommodation).WithMany(p => p.PhotosOfAccommodations).HasForeignKey(p => p.AccommodationId).WillCascadeOnDelete(true);
+           // HasRequired(p => p.Accommodation).WithMany(p => p.PhotosOfAccommodations).HasForeignKey(p => p.AccommodationId).WillCascadeOnDelete(true);
         }
     }
 }

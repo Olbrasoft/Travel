@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Repository.Geography;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -14,7 +16,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<string, int> SubClassesNamesToIds
         {
             get => _subClassesNamesToIds ??
-                   (_subClassesNamesToIds = FactoryOfRepositories.BaseNames<SubClass>().NamesToIds);
+                   (_subClassesNamesToIds = FactoryOfRepositories.GeographyNamesRepository<SubClass>().NamesToIds);
 
             set => _subClassesNamesToIds = value;
         }
@@ -62,14 +64,14 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             Regions = null;
 
-            ImportLocalizedRegions(AdeptsToLocalizedRegions, FactoryOfRepositories.Localized<LocalizedRegion>(), eanIdsToIds, DefaultLanguageId, CreatorId);
+            ImportLocalizedRegions(AdeptsToLocalizedRegions, FactoryOfRepositories.OfLocalized<LocalizedRegion>(), eanIdsToIds, DefaultLanguageId, CreatorId);
 
             var regionsEanIds = AdeptsToLocalizedRegions.Keys;
 
             AdeptsToLocalizedRegions = null;
 
             ImportRegionsToTypes(regionsEanIds, FactoryOfRepositories.RegionsToTypes(), RegionsEanIdsToSubClassIds,
-                eanIdsToIds, FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("Point of Interest"), CreatorId);
+                eanIdsToIds, FactoryOfRepositories.GeographyNamesRepository<TypeOfRegion>().GetId("Point of Interest"), CreatorId);
         }
 
         private void ImportRegionsToTypes(
@@ -84,7 +86,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<RegionToType>();
             var regionsToTypes = BuildRegionsToTypes(regionsEanIds, regionsEanIdsToSubClassIds, eanIdsToIds, typeOfRegionId, creatorId);
             var count = regionsToTypes.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<RegionToType>();

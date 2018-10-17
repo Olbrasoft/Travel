@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Entity.Query.Handler;
 using Olbrasoft.Travel.Data.Query;
@@ -29,7 +30,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         }
 
         //[Test]
-        //public void MyTestMethod()
+        //public void Instance_Implement_Interface_ILocalizedRepository()
         //{
         //    //Arrange
         //    var localizedAccommodationsMock = new Mock<IHaveLocalizedAccommodations>();

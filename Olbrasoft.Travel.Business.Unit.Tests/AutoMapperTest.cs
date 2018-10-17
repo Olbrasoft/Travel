@@ -5,6 +5,7 @@ using Olbrasoft.Business;
 using Olbrasoft.Pagination;
 using System.Collections.Generic;
 using System.Linq;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Accommodation = Olbrasoft.Travel.Data.Entity.Model.Property.Accommodation;
 

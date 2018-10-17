@@ -7,7 +7,7 @@ namespace Olbrasoft.Travel.Data.Mapping.LocalizedAccommodation
     {
         public ToAccommodationItem()
         {
-            CreateMap<Entity.Model.Property.LocalizedAccommodation, AccommodationItem>()
+            CreateMap<Entity.Model.Globalization.LocalizedAccommodation, AccommodationItem>()
                 .ForMember(d => d.Address, opt => opt.MapFrom(src => src.Accommodation.Address))
                 .ForMember(d => d.StarRating, opt => opt.MapFrom(src => src.Accommodation.StarRating))
               ;

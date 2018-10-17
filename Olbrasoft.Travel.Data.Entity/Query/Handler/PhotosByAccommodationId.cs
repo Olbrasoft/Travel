@@ -1,6 +1,6 @@
 ﻿using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
-
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Collections.Generic;
@@ -8,8 +8,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Olbrasoft.Data;
-using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
@@ -17,7 +15,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
         PhotoOfAccommodation,
         IEnumerable<AccommodationPhoto>>
     {
-        public PhotosByAccommodationId(IHaveQueryable<PhotoOfAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
+        public PhotosByAccommodationId(IHavePropertyQueryable<PhotoOfAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 
@@ -32,13 +30,13 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
         private IQueryable<AccommodationPhoto> ProjectToQueryableOfAccommodationPhoto(
             IQueryable<PhotoOfAccommodation> source, GetPhotosByAccommodationId query)
         {
-            var photosOfRooms = Source.SelectMany(p => p.ToTypesOfRooms).Select(p=>p.Id);
+            var photosOfRooms = Source.SelectMany(p => p.ToTypesOfRooms).Select(p => p.Id);
 
             var photoOfAccommodations = source
                 .Include(p => p.PathToPhoto)
                 .Include(p => p.FileExtension)
                 .Where(p => p.AccommodationId == query.AccommodationId)
-                .Where(p=>!photosOfRooms.Contains(p.Id))
+                .Where(p => !photosOfRooms.Contains(p.Id))
                 .OrderBy(p => p.IsDefault);
 
             return ProjectTo<AccommodationPhoto>(photoOfAccommodations);

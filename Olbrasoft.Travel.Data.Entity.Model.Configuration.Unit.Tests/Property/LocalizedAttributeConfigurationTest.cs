@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Internal;
+using Olbrasoft.Travel.Data.Entity.Model.Configuration.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Configuration.Property;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests.Property
@@ -12,7 +14,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests.Property
         public void Instance_Is_LocalizedConfiguration_Of_LocalizedAttribute()
         {
             //Arrange
-            var type = typeof(Configuration.Property.LocalizedConfiguration<LocalizedAttribute>);
+            var type = typeof(LocalizedConfiguration<LocalizedAttribute>);
 
             //Act
             var configuration = new LocalizedAttributeConfiguration();

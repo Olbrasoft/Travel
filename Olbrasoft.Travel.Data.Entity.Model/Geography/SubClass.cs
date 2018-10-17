@@ -4,11 +4,11 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Geography
 {
     public class SubClass : BaseName
     {
-        public virtual ICollection<RegionToType> RegionsToTypes { get; set; }
+       // public virtual ICollection<RegionToType> RegionsToTypes { get; set; }
 
         // public virtual ICollection<RegionToSubClass> RegionsToSubClasses { get; set; }
 
-        //public virtual ICollection<Region> Regions { get; set; }
+       // public virtual ICollection<Region> Regions { get; set; }
 
         // public virtual ICollection<CityToSubClass> CitiesToSubClasses { get; set; }
 

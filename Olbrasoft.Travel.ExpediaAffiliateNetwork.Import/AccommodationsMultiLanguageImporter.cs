@@ -1,4 +1,5 @@
 ﻿
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
@@ -19,8 +20,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             LoadData(path);
 
-            ImportLocalizedAccommodations(EanDataTransferObjects, FactoryOfRepositories.Localized<LocalizedAccommodation>(),
-                FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds, languageId, CreatorId);
+            ImportLocalizedAccommodations(EanDataTransferObjects, FactoryOfRepositories.OfLocalized<LocalizedAccommodation>(),
+                FactoryOfRepositories.MappedProperties<Accommodation>().EanIdsToIds, languageId, CreatorId);
 
             EanDataTransferObjects = null;
         }

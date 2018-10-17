@@ -23,7 +23,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<string, int> TypesOfAttributesNamesToIds
         {
             get => _typesOfAttributesNamesToIds ?? (_typesOfAttributesNamesToIds =
-                       FactoryOfRepositories.BaseNames<TypeOfAttribute>().NamesToIds);
+                       FactoryOfRepositories.PropertyNamesRepository<TypeOfAttribute>().NamesToIds);
 
             set => _typesOfAttributesNamesToIds = value;
         }
@@ -33,7 +33,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<string, int> SubTypesOfAttributesNamesToIds
         {
             get => _subTypesOfAttributesNamesToIds ?? (_subTypesOfAttributesNamesToIds =
-                       FactoryOfRepositories.BaseNames<SubTypeOfAttribute>().NamesToIds);
+                       FactoryOfRepositories.PropertyNamesRepository<SubTypeOfAttribute>().NamesToIds);
 
             set => _subTypesOfAttributesNamesToIds = value;
         }
@@ -82,7 +82,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             if (Attributes.Count <= 0) return;
 
             LogSave<Attribute>();
-            FactoryOfRepositories.MappedEntities<Attribute>().BulkSave(Attributes);
+            FactoryOfRepositories.MappedProperties<Attribute>().BulkSave(Attributes);
             LogSaved<Attribute>();
         }
 

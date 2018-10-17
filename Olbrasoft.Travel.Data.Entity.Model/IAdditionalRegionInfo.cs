@@ -8,6 +8,6 @@ namespace Olbrasoft.Travel.Data.Entity.Model
     {
         string Code { get; set; }
         Region Region { get; set; }
-        ICollection<Property.Accommodation> Accommodations { get; set; }
+       // ICollection<Property.Accommodation> Accommodations { get; set; }
     }
 }

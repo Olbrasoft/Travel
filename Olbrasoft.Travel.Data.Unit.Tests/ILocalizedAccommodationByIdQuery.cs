@@ -1,5 +1,6 @@
 ﻿using Olbrasoft.Data;
 using Olbrasoft.Data.Query;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 

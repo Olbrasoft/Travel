@@ -1,20 +1,18 @@
-﻿using Olbrasoft.Data;
-using Olbrasoft.Data.Mapping;
+﻿using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
-
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Query;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class AccommodationDetailById : HandlerWithDependentSource<GetAccommodationDetailById, LocalizedAccommodation, AccommodationDetail>
     {
-        public AccommodationDetailById(IHaveQueryable<LocalizedAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
+        public AccommodationDetailById(IHaveGlobalizationQueryable<LocalizedAccommodation> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 
@@ -46,7 +44,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
         private IQueryable<AccommodationDescription> ProjectToAccommodationDescriptions(IQueryable<LocalizedAccommodation> source, GetAccommodationDetailById query)
         {
             var descriptions = source
-                    .SelectMany(p => p.Accommodation.Descriptions)
+                    .SelectMany(p => p.Accommodation.LocalizedDescriptionsOfAccommodations)
                     .Where(p => p.AccommodationId == query.Id && p.LanguageId == query.LanguageId);
 
             return ProjectTo<AccommodationDescription>(descriptions);

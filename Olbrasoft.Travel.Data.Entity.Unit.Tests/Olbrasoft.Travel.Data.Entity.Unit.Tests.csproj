@@ -50,17 +50,78 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.1.2\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.2.1.2\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Json.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.2.1.1\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.2.1.1\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=4.10.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.10.0\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="SharpRepository.EfRepository, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpRepository.EfRepository.2.0.2\lib\net451\SharpRepository.EfRepository.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpRepository.Repository, Version=2.0.4.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpRepository.Repository.2.0.4.3\lib\net451\SharpRepository.Repository.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -73,8 +134,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DboContextTest.cs" />
+    <Compile Include="GeographyDatabaseContextTest.cs" />
+    <Compile Include="GlobalizationDatabaseContextTest.cs" />
+    <Compile Include="GlobalizationQueryableOwnerTest.cs" />
+    <Compile Include="IdentityDatabaseContextTest.cs" />
+    <Compile Include="Migrations\IdentityMigrationsConfigurationTest.cs" />
+    <Compile Include="Migrations\PropertyMigrationsConfigurationTest.cs" />
+    <Compile Include="Migrations\RoutingMigrationsConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyDatabaseContextTest.cs" />
+    <Compile Include="PropertyQueryableOwnerTest.cs" />
     <Compile Include="Query\Handler\AccommodationDetailByIdTest.cs" />
     <Compile Include="Query\Handler\AttributesByAccommodationIdAndLanguageIdTest.cs" />
     <Compile Include="Query\Handler\PagedAccommodationsItemsTest.cs" />
@@ -82,16 +151,34 @@
     <Compile Include="Query\Handler\PhotosOfAccommodationsTest.cs" />
     <Compile Include="Query\Handler\RoomPhotosByAccommodationIdTest.cs" />
     <Compile Include="Query\Handler\RoomsTest.cs" />
-    <Compile Include="TravelContextTest.cs" />
+    <Compile Include="Repository\Dbo\LocalizedRepositoryTest.cs" />
+    <Compile Include="Repository\Geography\AdditionalRegionsInfoRepositoryTest.cs" />
+    <Compile Include="Repository\Geography\RegionsRepositoryTest.cs" />
+    <Compile Include="Repository\Geography\RegionsToTypesRepositoryTest.cs" />
+    <Compile Include="Repository\LanguagesRepositoryTest.cs" />
+    <Compile Include="Repository\Property\LocalizedRepositoryTest.cs" />
+    <Compile Include="Repository\Property\ManyToManyRepositoryTest.cs" />
+    <Compile Include="Repository\Property\MappedPropertiesRepositoryTest.cs" />
+    <Compile Include="Repository\Property\PhotosOfAccommodationsRepositoryTest.cs" />
+    <Compile Include="Repository\Routing\FileExtensionsRepositoryTest.cs" />
+    <Compile Include="Repository\Routing\PathsToPhotosRepositoryTest.cs" />
+    <Compile Include="Repository\UsersRepositoryTest.cs" />
+    <Compile Include="RoutingDatabaseContextTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="repository.default.json" />
+    <None Include="repository.ef.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
       <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
       <Name>Olbrasoft.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{59A1C67F-284E-480A-A0B4-E9232FAC298A}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
@@ -105,9 +192,17 @@
       <Project>{91D6B045-C17B-4907-8058-A4DAE3F1DD49}</Project>
       <Name>Olbrasoft.Pagination</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model.Configuration\Olbrasoft.Travel.Data.Entity.Model.Configuration.csproj">
+      <Project>{BFF65FF6-48B9-4109-A407-F7C22CDB3FC5}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity.Model.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj">
       <Project>{e239b519-2d54-4447-bebb-af0600c0a6aa}</Project>
       <Name>Olbrasoft.Travel.Data.Entity.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Repositories\Olbrasoft.Travel.Data.Entity.Repositories.csproj">
+      <Project>{74E808AF-107A-4021-9D05-8136313E8E50}</Project>
+      <Name>Olbrasoft.Travel.Data.Entity.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{B47EE928-2611-4D10-8316-C1B0B1EE768B}</Project>

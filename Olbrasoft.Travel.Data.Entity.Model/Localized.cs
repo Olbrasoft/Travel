@@ -1,12 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Olbrasoft.Globalization;
+﻿using Olbrasoft.Globalization;
+using Language = Olbrasoft.Travel.Data.Entity.Model.Globalization.Language;
 
 namespace Olbrasoft.Travel.Data.Entity.Model
 {
-    public class Localized : CreatorInfo, ILocalized
+    public class Localized : OwnerCreatorIdAndCreator, ILocalized
     {
-        [Key, Column(Order = 2)]
         public int LanguageId { get; set; }
 
         public virtual Language Language { get; set; }

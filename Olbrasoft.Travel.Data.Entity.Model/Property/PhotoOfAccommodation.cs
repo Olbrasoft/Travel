@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Routing;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Property
 {
-    public class PhotoOfAccommodation : CreatorInfo
+    public class PhotoOfAccommodation : OwnerCreatorIdAndCreator
     {
         public int AccommodationId { get; set; }
 
@@ -16,7 +17,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public int? CaptionId { get; set; }
 
-        public Property.Accommodation Accommodation { get; set; }
+        public Accommodation Accommodation { get; set; }
 
         public PathToPhoto PathToPhoto { get; set; }
 

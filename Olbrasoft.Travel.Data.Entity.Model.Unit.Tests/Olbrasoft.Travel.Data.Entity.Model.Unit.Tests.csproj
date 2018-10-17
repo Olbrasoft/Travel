@@ -39,6 +39,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -49,19 +61,31 @@
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Globalization\LanguageTest.cs" />
+    <Compile Include="Identity\RoleTest.cs" />
+    <Compile Include="Identity\UserClaimTest.cs" />
+    <Compile Include="Identity\UserTest.cs" />
+    <Compile Include="LogLevelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LogTypeTest.cs" />
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{bb7c99ff-e9a6-4590-8af3-d3ce93c3f37e}</Project>
+      <Name>Olbrasoft.Globalization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj">
       <Project>{e239b519-2d54-4447-bebb-af0600c0a6aa}</Project>

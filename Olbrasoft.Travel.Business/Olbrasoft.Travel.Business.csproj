@@ -198,7 +198,6 @@
     <Compile Include="Facades\IUsersFacade.cs" />
     <Compile Include="Facades\LanguagesFacade.cs" />
     <Compile Include="Facades\TravelFacade.cs" />
-    <Compile Include="Facades\UsersFacade.cs" />
     <Compile Include="IAccommodations.cs" />
     <Compile Include="ImportsLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

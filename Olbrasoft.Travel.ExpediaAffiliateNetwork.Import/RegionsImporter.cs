@@ -1,10 +1,12 @@
-﻿
-using Olbrasoft.Travel.Data.Repository;
+﻿using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
 using System.Collections.Generic;
 using System.Linq;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Repository.Geography;
+using Olbrasoft.Travel.Data.Repository.Globalization;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -38,14 +40,14 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var eanRegionIdsToIds = ImportRegions(parentRegions, FactoryOfRepositories.Regions(), batchSize, CreatorId,
                 out var subClassNames);
 
-            var subClasses = ImportSubClasses(FactoryOfRepositories.BaseNames<SubClass>(), subClassNames, CreatorId);
+            var subClasses = ImportSubClasses(FactoryOfRepositories.GeographyNamesRepository<SubClass>(), subClassNames, CreatorId);
 
-            ImportRegionsToTypes(parentRegions, FactoryOfRepositories.ManyToMany<RegionToType>(), batchSize,
-                eanRegionIdsToIds, FactoryOfRepositories.BaseNames<TypeOfRegion>().NamesToIds, subClasses, CreatorId);
+            ImportRegionsToTypes(parentRegions, FactoryOfRepositories.GeographyManyToMany<RegionToType>(), batchSize,
+                eanRegionIdsToIds, FactoryOfRepositories.GeographyNamesRepository<TypeOfRegion>().NamesToIds, subClasses, CreatorId);
 
-            ImportLocalized(parentRegions, FactoryOfRepositories.Localized<LocalizedRegion>(), batchSize, eanRegionIdsToIds, DefaultLanguageId, CreatorId);
+            ImportLocalized(parentRegions, FactoryOfRepositories.OfLocalized<LocalizedRegion>(), batchSize, eanRegionIdsToIds, DefaultLanguageId, CreatorId);
 
-            ImportRegionsToRegions(parentRegions, FactoryOfRepositories.ManyToMany<RegionToRegion>(), batchSize, eanRegionIdsToIds, CreatorId);
+            ImportRegionsToRegions(parentRegions, FactoryOfRepositories.GeographyManyToMany<RegionToRegion>(), batchSize, eanRegionIdsToIds, CreatorId);
 
             ParentRegions = null;
         }
@@ -65,7 +67,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             var count = regionsToRegions.Length;
 
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<RegionToRegion>();
@@ -106,7 +108,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         private void ImportLocalized<T>(
             IEnumerable<ParentRegion> parentRegions,
-            ILocalizedRepository<T> repository,
+            IOfLocalized<T> repository,
             int batchSize,
             IReadOnlyDictionary<long, int> eanIdsToIds,
             int languageId,
@@ -117,7 +119,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<T>();
             var localizedEntities = BuildLocalizedRegions<T>(parentRegions, eanIdsToIds, languageId, creatorId);
             var count = localizedEntities.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -192,7 +194,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var regionsTotypes =
                 BuildRegionsToTypes(parentRegions, eanIdsToIds, namesToTypeIds, namesToSubClassIds, creatorId);
             var count = regionsTotypes.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             LogSave<RegionToType>();
             repository.BulkSave(regionsTotypes, batchSize);
@@ -252,12 +254,12 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             return regionsToTypes.ToArray();
         }
 
-        private IReadOnlyDictionary<string, int> ImportSubClasses(ITypesRepository<SubClass> repository, IEnumerable<string> subClassesNames, int creatorId)
+        private IReadOnlyDictionary<string, int> ImportSubClasses(INamesRepository<SubClass> repository, IEnumerable<string> subClassesNames, int creatorId)
         {
             LogBuild<SubClass>();
             var subClasses = subClassesNames.Select(s => new SubClass { Name = s, CreatorId = creatorId }).ToArray();
             var count = subClasses.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.NamesToIds;
             LogSave<SubClass>();
@@ -280,7 +282,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             var regions = BuildRegions(parentRegions, creatorId, out subClassNames);
             var count = regions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.EanIdsToIds;
 

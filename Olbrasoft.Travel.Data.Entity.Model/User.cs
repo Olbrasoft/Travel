@@ -1,41 +1,46 @@
-﻿using System.Collections.Generic;
-using Olbrasoft.Data.Entity;
+﻿using Olbrasoft.Data.Entity;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
-using Olbrasoft.Travel.Data.Entity.Model.Property;
+using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Region = Olbrasoft.Travel.Data.Entity.Model.Geography.Region;
 
 namespace Olbrasoft.Travel.Data.Entity.Model
 {
     public class User : User<int>
     {
-        //#region Child Properties
+        #region Child Properties
 
-        //public virtual ICollection<TypeOfRegion> CreatedTypesOfRegions { get; set; }
+        public virtual ICollection<LogLevel> LogLevels { get; set; }
 
-        ///// <summary>
-        ///// Regions created by the User.
-        ///// </summary>
-        //public virtual ICollection<Region> Regions { get; set; }
+        public virtual ICollection<Log> Logs { get; set; }
 
-        ///// <summary>
-        /////  SubClasses created by the User.
-        ///// </summary>
-        //public virtual ICollection<SubClass> SubClasses { get; set; }
+        public virtual ICollection<TypeOfRegion> TypesOfRegions { get; set; }
 
-        ///// <summary>
-        ///// Languages created by the User.
-        ///// </summary>
-        //public virtual ICollection<Language> Languages { get; set; }
+        /// <summary>
+        /// Regions created by the User.
+        /// </summary>
+        public virtual ICollection<Region> Regions { get; set; }
+
+        /// <summary>
+        /// SubClasses created by the User.
+        /// </summary>
+        public virtual ICollection<SubClass> SubClasses { get; set; }
+
+        /// <summary>
+        /// Languages created by the User.
+        /// </summary>
+        public virtual ICollection<Language> Languages { get; set; }
 
         ///// <summary>
         ///// Linking Regions to (TypesOfRegions and SubClasses)
-        ///// Example Praha is Kreis and City
+        ///// Example Prague is Region and District and City
         ///// </summary>
         //public virtual ICollection<RegionToType> RegionsToTypes { get; set; }
 
         ///// <summary>
         ///// LocalizedRegions created by the User.
         ///// </summary>
-        //public virtual ICollection<LocalizedRegion> LocalizedRegions { get; set; }
+        //public virtual ICollection<Region> LocalizedRegions { get; set; }
 
         ///// <summary>
         ///// Linking Regions To Regions created by the User.
@@ -71,7 +76,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model
         ///// <summary>
         ///// Accommodations created by the User.
         ///// </summary>
-        //public virtual ICollection<Property.Accommodation> Accommodations { get; set; }
+        //public virtual ICollection<Accommodation> Accommodations { get; set; }
 
         /////// <summary>
         /////// LocalizedAccommodations created by the User.
@@ -79,14 +84,14 @@ namespace Olbrasoft.Travel.Data.Entity.Model
         ////public virtual ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
 
         ///// <summary>
-        ///// Types of Descriptions created by the User.
+        ///// Types of LocalizedDescriptionsOfAccommodations created by the User.
         ///// </summary>
         //public virtual ICollection<TypeOfDescription> TypesOfDescriptions { get; set; }
 
         ///// <summary>
-        ///// Descriptions Of Accommodations is Localized and Categorized
+        ///// LocalizedDescriptionsOfAccommodations Of Accommodations is Localized and Categorized
         ///// </summary>
-        //public virtual ICollection<Description> Descriptions { get; set; }
+        //public virtual ICollection<LocalizedDescriptionOfAccommodation> LocalizedDescriptionsOfAccommodations { get; set; }
 
         ///// <summary>
         ///// Paths of Photos created by the User
@@ -158,6 +163,6 @@ namespace Olbrasoft.Travel.Data.Entity.Model
         ///// </summary>
         //public ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
 
-        //#endregion Child Properties
+        #endregion Child Properties
     }
 }

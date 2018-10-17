@@ -9,8 +9,6 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
             ToTable("TypesOfRooms");
 
             HasRequired(tor => tor.Creator).WithMany(u => u.TypesOfRooms).WillCascadeOnDelete(false);
-
-            HasRequired(tor => tor.Accommodation).WithMany(a => a.TypesOfRooms).WillCascadeOnDelete();
         }
     }
 }

@@ -16,10 +16,10 @@ namespace Olbrasoft.Data.Unit.Tests.Entity
         public void Instance_Implement_Interface_ICreation()
         {
             //Arrange
-            var type = typeof(ICreation<int>);
+            var type = typeof(IHaveId<int>);
 
             //Act
-            var creator = new CreatorInfo<int,int>();
+            var creator = new HaveCreatorId<int,int>();
 
             //Assert
             Assert.IsInstanceOf(type,creator);
@@ -32,7 +32,7 @@ namespace Olbrasoft.Data.Unit.Tests.Entity
         {
             //Arrange
            var guid =new Guid();
-            var creatorInfo = new CreatorInfo<int, Guid>()
+            var creatorInfo = new HaveCreatorId<int, Guid>()
             {
                 CreatorId = guid
             };
@@ -49,7 +49,7 @@ namespace Olbrasoft.Data.Unit.Tests.Entity
         {
             //Arrange
             var user = new User<Guid>();
-            var creatorInfo = new CreatorInfo<int, Guid>()
+            var creatorInfo = new HaveCreatorId<int, Guid>()
             {
                 Creator = user
             };

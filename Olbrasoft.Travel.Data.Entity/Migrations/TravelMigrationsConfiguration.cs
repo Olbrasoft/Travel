@@ -6,9 +6,10 @@ using Olbrasoft.Travel.Data.Entity.Model.Geography;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Entity.SqlServer;
 
+
 namespace Olbrasoft.Travel.Data.Entity.Migrations
 {
-    public class TravelMigrationsConfiguration : DbMigrationsConfiguration<TravelContext>
+    public class TravelMigrationsConfiguration : DbMigrationsConfiguration<Entity.TravelDatabaseContext>
     {
         public TravelMigrationsConfiguration()
         {
@@ -16,19 +17,19 @@ namespace Olbrasoft.Travel.Data.Entity.Migrations
             SetSqlGenerator("System.Data.SqlClient", new CustomSqlServerMigrationSqlGenerator());
         }
 
-        protected override void Seed(TravelContext context)
+        protected override void Seed(Entity.TravelDatabaseContext context)
         {
 
-            var travelUser = new User
+            var travelUser = new Olbrasoft.Travel.Data.Entity.Model.Identity.User
             {
-                UserName = "Travel"
+                UserName = "TravelDatabaseContext"
             };
 
-            var storedTravelUser = context.Set<User>().FirstOrDefault(u => u.UserName == travelUser.UserName);
+            var storedTravelUser = context.Set<Model.Identity.User>().FirstOrDefault(u => u.UserName == travelUser.UserName);
 
             if (storedTravelUser == null)
             {
-                context.Set<User>().AddOrUpdate(travelUser);
+                context.Set<Model.Identity.User>().AddOrUpdate(travelUser);
             }
             else
             {

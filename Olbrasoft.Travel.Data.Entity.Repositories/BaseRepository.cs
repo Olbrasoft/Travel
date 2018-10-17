@@ -64,7 +64,7 @@ namespace Olbrasoft.Travel.Data.Entity.Repositories
         {
         }
 
-        public new TResult Min<TResult>( Expression<Func<T, TResult>> selector)
+        public new TResult Min<TResult>(Expression<Func<T, TResult>> selector)
         {
             return Context.Set<T>().Min(selector);
         }
@@ -78,7 +78,7 @@ namespace Olbrasoft.Travel.Data.Entity.Repositories
         {
             if (_existMustBeRefreshed || clearRepositoryCache)
             {
-                _exist =AsQueryable().Any();
+                _exist = AsQueryable().Any();
             }
             return _exist;
         }

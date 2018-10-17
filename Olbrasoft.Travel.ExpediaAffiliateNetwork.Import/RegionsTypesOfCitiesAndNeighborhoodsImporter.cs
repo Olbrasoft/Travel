@@ -6,6 +6,8 @@ using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Text;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Repository.Geography;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -49,7 +51,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             Regions = null;
 
-            ImportLocalizedRegions(AdeptsToLocalizedRegions, FactoryOfRepositories.Localized<LocalizedRegion>(), eanIdsToIds, DefaultLanguageId, CreatorId);
+            ImportLocalizedRegions(AdeptsToLocalizedRegions, FactoryOfRepositories.OfLocalized<LocalizedRegion>(), eanIdsToIds, DefaultLanguageId, CreatorId);
 
             var regionsEanIds = AdeptsToLocalizedRegions.Keys;
 
@@ -71,7 +73,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<RegionToType>();
             var regionsToTypes = BuildRegionsToTypes(regionsEanIds, eanIdsToIds, typeOfRegionId, subClassId, creatorId);
             var count = regionsToTypes.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 

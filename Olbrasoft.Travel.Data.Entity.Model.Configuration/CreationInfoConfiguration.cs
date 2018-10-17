@@ -4,7 +4,7 @@ using Olbrasoft.Data.Entity;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration
 {
-    public abstract class CreationInfoConfiguration<TEntity> : EntityTypeConfiguration<TEntity> where TEntity : CreationInfo<int>
+    public abstract class CreationInfoConfiguration<TEntity> : EntityTypeConfiguration<TEntity>, IConfiguration where TEntity : CreationInfo<int>
     {
         protected CreationInfoConfiguration()
         {

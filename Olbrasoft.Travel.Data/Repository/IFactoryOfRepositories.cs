@@ -1,31 +1,42 @@
 ﻿using Olbrasoft.Data.Entity;
 using Olbrasoft.Travel.Data.Entity.Model;
+using Olbrasoft.Travel.Data.Repository.Geography;
+using Olbrasoft.Travel.Data.Repository.Globalization;
+using Olbrasoft.Travel.Data.Repository.Property;
+using Olbrasoft.Travel.Data.Repository.Routing;
 
 namespace Olbrasoft.Travel.Data.Repository
 {
     public interface IFactoryOfRepositories
     {
-        ITypesRepository<T> BaseNames<T>() where T : CreationInfo<int>, IHaveName;
+        IOfName<T> BaseNames<T>() where T : CreationInfo<int>, IHaveName;
 
-        IManyToManyRepository<T> ManyToMany<T>() where T : ManyToMany;
+        IOfManyToMany<T> ManyToMany<T>() where T : ManyToMany;
 
-        ILocalizedRepository<T> Localized<T>() where T : Localized;
+        Property.IManyToManyRepository<T>PropertyManyToMany<T>() where T : ManyToMany;
+        Geography.IManyToManyRepository<T> GeographyManyToMany<T>() where T : ManyToMany;
 
+        Geography.INamesRepository<T> GeographyNamesRepository<T>() where T : class, IHaveName;
+
+        Property.INamesRepository<T> PropertyNamesRepository<T>() where T : class, IHaveName;
+
+        IOfLocalized<T> OfLocalized<T>() where T : Localized;
+     
         IRegionsRepository Regions();
 
-        IAdditionalRegionsInfoRepository<T> AdditionalRegionsInfo<T>() where T : CreatorInfo, IAdditionalRegionInfo;
+        IAdditionalRegionsInfoRepository<T> AdditionalRegionsInfo<T>() where T : OwnerCreatorIdAndCreator, IAdditionalRegionInfo;
 
         IRegionsToTypesRepository RegionsToTypes();
 
-        IMappedEntitiesRepository<T> MappedEntities<T>() where T : CreationInfo<int>, IHaveEanId<int>;
+        IMappedPropertiesRepository<T> MappedProperties<T>() where T : CreationInfo<int>, IHaveEanId<int>;
 
-        IDescriptionsRepository Descriptions();
+        IDescriptionsOfAccommodationsRepository DescriptionsOfAccommodations();
 
         IFilesExtensionsRepository FilesExtensions();
 
         IPathsToPhotosRepository PathsToPhotos();
 
-        ILocalizedCaptionsRepository LocalizedCaptions();
+        IOfLocalizedCaptions LocalizedCaptions();
 
         IPhotosOfAccommodationsRepository PhotosOfAccommodations();
 

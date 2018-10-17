@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -47,15 +53,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Globalization\Language.cs" />
+    <Compile Include="Globalization\LocalizedAccommodation.cs" />
+    <Compile Include="Globalization\LocalizedAttribute.cs" />
+    <Compile Include="Globalization\LocalizedCaption.cs" />
+    <Compile Include="Globalization\LocalizedDescriptionOfAccommodation.cs" />
+    <Compile Include="Globalization\LocalizedRegion.cs" />
+    <Compile Include="Globalization\LocalizedTypeOfAccommodation.cs" />
+    <Compile Include="Identity\Role.cs" />
+    <Compile Include="Identity\User.cs" />
+    <Compile Include="Identity\UserClaim.cs" />
+    <Compile Include="Identity\UserLogin.cs" />
+    <Compile Include="Identity\Membership.cs" />
+    <Compile Include="LogLevel.cs" />
     <Compile Include="Property\Accommodation.cs" />
     <Compile Include="Property\AccommodationToAttribute.cs" />
     <Compile Include="Property\Attribute.cs" />
     <Compile Include="Property\Caption.cs" />
     <Compile Include="Property\Chain.cs" />
-    <Compile Include="Property\Description.cs" />
-    <Compile Include="Property\LocalizedAccommodation.cs" />
-    <Compile Include="Property\LocalizedAttribute.cs" />
-    <Compile Include="Property\LocalizedTypeOfAccommodation.cs" />
     <Compile Include="Property\LocalizedTypeOfRoom.cs" />
     <Compile Include="Property\PhotoOfAccommodation.cs" />
     <Compile Include="Property\PhotoOfAccommodationToTypeOfRoom.cs" />
@@ -65,11 +80,9 @@
     <Compile Include="Property\TypeOfDescription.cs" />
     <Compile Include="Property\TypeOfRoom.cs" />
     <Compile Include="BaseName.cs" />
-    <Compile Include="CreatorInfo.cs" />
-    <Compile Include="FileExtension.cs" />
+    <Compile Include="OwnerCreatorIdAndCreator.cs" />
     <Compile Include="Geography\Airport.cs" />
     <Compile Include="Geography\Country.cs" />
-    <Compile Include="Geography\LocalizedRegion.cs" />
     <Compile Include="Geography\Region.cs" />
     <Compile Include="Geography\RegionToRegion.cs" />
     <Compile Include="Geography\RegionToType.cs" />
@@ -77,17 +90,20 @@
     <Compile Include="Geography\TypeOfRegion.cs" />
     <Compile Include="IAdditionalRegionInfo.cs" />
     <Compile Include="IHaveEanId.cs" />
-    <Compile Include="ITravelContext.cs" />
-    <Compile Include="Language.cs" />
     <Compile Include="Localized.cs" />
-    <Compile Include="LocalizedCaption.cs" />
-    <Compile Include="LogOfImport.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="ManyToMany.cs" />
-    <Compile Include="PathToPhoto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LogType.cs" />
+    <Compile Include="Routing\FileExtension.cs" />
+    <Compile Include="Routing\PathToPhoto.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
+      <Project>{59a1c67f-284e-480a-a0b4-e9232fac298a}</Project>
+      <Name>Olbrasoft.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>

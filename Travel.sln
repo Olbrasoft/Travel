@@ -91,6 +91,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Entit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Travel.Data.Entity.Model", "Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj", "{E239B519-2D54-4447-BEBB-AF0600C0A6AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Globalization.Unit.Tests", "Olbrasoft.Globalization.Unit.Tests\Olbrasoft.Globalization.Unit.Tests.csproj", "{789D4CBD-C6CC-4D50-9039-7D54341C0611}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olbrasoft.Logging", "Olbrasoft.Logging\Olbrasoft.Logging.csproj", "{B115F539-C5B7-4581-9EE8-369FA7C30340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +269,14 @@ Global
 		{E239B519-2D54-4447-BEBB-AF0600C0A6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E239B519-2D54-4447-BEBB-AF0600C0A6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E239B519-2D54-4447-BEBB-AF0600C0A6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{789D4CBD-C6CC-4D50-9039-7D54341C0611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{789D4CBD-C6CC-4D50-9039-7D54341C0611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{789D4CBD-C6CC-4D50-9039-7D54341C0611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{789D4CBD-C6CC-4D50-9039-7D54341C0611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B115F539-C5B7-4581-9EE8-369FA7C30340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B115F539-C5B7-4581-9EE8-369FA7C30340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B115F539-C5B7-4581-9EE8-369FA7C30340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B115F539-C5B7-4581-9EE8-369FA7C30340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -291,6 +303,7 @@ Global
 		{191E7454-DA54-47DA-98CC-72C181545773} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{3C9950B2-8548-425F-AA18-47D0CA730A72} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 		{238F7923-6E1F-478D-B69B-AA8001AA99FE} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
+		{789D4CBD-C6CC-4D50-9039-7D54341C0611} = {D0F453E2-AD78-4E48-A604-4113A79E3C7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAFDBBA1-285A-4590-BF35-774C3B64E118}

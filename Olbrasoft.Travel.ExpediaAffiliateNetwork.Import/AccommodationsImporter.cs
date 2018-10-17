@@ -3,7 +3,9 @@ using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property;
 using System.Collections.Generic;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Olbrasoft.Travel.Data.Repository.Property;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Chain = Olbrasoft.Travel.Data.Entity.Model.Property.Chain;
 
@@ -22,7 +24,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> TypesOfAccommodationsEanIdsToIds
         {
             get => _typesOfAccommodationsEanIdsToIds ?? (_typesOfAccommodationsEanIdsToIds =
-                       FactoryOfRepositories.MappedEntities<TypeOfAccommodation>().EanIdsToIds);
+                       FactoryOfRepositories.MappedProperties<TypeOfAccommodation>().EanIdsToIds);
 
             set => _typesOfAccommodationsEanIdsToIds = value;
         }
@@ -30,7 +32,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> ChainsEanIdsToIds
         {
             get => _chainsEanIdsToIds ??
-                   (_chainsEanIdsToIds = FactoryOfRepositories.MappedEntities<Chain>().EanIdsToIds);
+                   (_chainsEanIdsToIds = FactoryOfRepositories.MappedProperties<Chain>().EanIdsToIds);
 
             set => _chainsEanIdsToIds = value;
         }
@@ -62,7 +64,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LoadData(path);
 
             var accommodationsEanIdsToIds = ImportAccommodations(EanDataTransferObjects,
-                FactoryOfRepositories.MappedEntities<Accommodation>(), TypesOfAccommodationsEanIdsToIds,
+                FactoryOfRepositories.MappedProperties<Accommodation>(), TypesOfAccommodationsEanIdsToIds,
                 CountriesCodesToIds, AirportsCodesToIds, ChainsEanIdsToIds, CreatorId);
 
             TypesOfAccommodationsEanIdsToIds = null;
@@ -70,7 +72,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             AirportsCodesToIds = null;
             ChainsEanIdsToIds = null;
 
-            ImportLocalizedAccommodations(EanDataTransferObjects, FactoryOfRepositories.Localized<LocalizedAccommodation>(),
+            ImportLocalizedAccommodations(EanDataTransferObjects, FactoryOfRepositories.OfLocalized<LocalizedAccommodation>(),
                 accommodationsEanIdsToIds, DefaultLanguageId, CreatorId);
 
             EanDataTransferObjects = null;
@@ -78,7 +80,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         private IReadOnlyDictionary<int, int> ImportAccommodations(
             IEnumerable<ActiveProperty> activeProperties,
-            IMappedEntitiesRepository<Accommodation> repository,
+            IMappedPropertiesRepository<Accommodation> repository,
             IReadOnlyDictionary<int, int> typesOfAccommodationsEanIdsToIds,
             IReadOnlyDictionary<string, int> countriesCodesToIds,
             IReadOnlyDictionary<string, int> airportsCodesToIds,
@@ -97,7 +99,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 creatorId
             );
             var count = accommodations.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.EanIdsToIds;
 

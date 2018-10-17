@@ -5,9 +5,9 @@ using Olbrasoft.Travel.Data.Repository;
 
 namespace Olbrasoft.Travel.Data.Entity.Repositories
 {
-    public class LogsOfRegionsRepository: BaseRepository<LogOfImport>,ILogsOfImportsRepository
+    public class LogsOfRegionsRepository: BaseRepository<Log>,ILogsOfImportsRepository
     {
-        public LogsOfRegionsRepository(TravelContext context) : base(context)
+        public LogsOfRegionsRepository(TravelDatabaseContext context) : base(context)
         {
         }
     }

@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
-using Attribute=Olbrasoft.Travel.Data.Transfer.Object.Attribute;
+using System.Linq;
+using Attribute = Olbrasoft.Travel.Data.Transfer.Object.Attribute;
 
 namespace Olbrasoft.Travel.Data.Mapping
 {

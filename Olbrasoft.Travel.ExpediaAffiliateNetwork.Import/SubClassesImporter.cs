@@ -33,7 +33,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var subClasses = SubClassesNames.Select(s => new SubClass { Name = s, CreatorId = CreatorId }).ToArray();
             SubClassesNames = null;
             var count = subClasses.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<SubClass>();

@@ -5,7 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Olbrasoft.Travel.Data.Entity.Model;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Olbrasoft.Travel.Data.Entity.Model.Routing;
+using Olbrasoft.Travel.Data.Repository.Routing;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -17,7 +20,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             get =>
             _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
-            FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+            FactoryOfRepositories.MappedProperties<Accommodation>().EanIdsToIds);
             set => _accommodationsEanIdsToIds = value;
         }
 
@@ -47,7 +50,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<PathToPhoto>();
             var pathsToPhotos = paths.Select(p => new PathToPhoto { Path = p, CreatorId = creatorId }).ToArray();
             var count = pathsToPhotos.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<PathToPhoto>();
@@ -62,7 +65,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var filesExtensions = extensions.Select(p => new FileExtension { Extension = p, CreatorId = creatorId })
                 .ToArray();
             var count = filesExtensions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<FileExtension>();
@@ -70,7 +73,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<FileExtension>();
         }
 
-        private void ImportLocalizedCaptions(IEnumerable<string> captions, ILocalizedCaptionsRepository repository,
+        private void ImportLocalizedCaptions(IEnumerable<string> captions, IOfLocalizedCaptions repository,
             int languageId, int creatorId)
         {
             LogBuild<LocalizedCaption>();
@@ -78,7 +81,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 .Select(p => new LocalizedCaption() { Text = p, LanguageId = languageId, CreatorId = creatorId })
                 .ToArray();
             var count = localizedCaptions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<LocalizedCaption>();

@@ -1,10 +1,13 @@
-﻿
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
 using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Repository.Geography;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
 using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Repository.Globalization;
 using Country = Olbrasoft.Travel.Data.Entity.Model.Geography.Country;
+
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
     internal class AirportsImporter : Importer<AirportCoordinates>
@@ -24,32 +27,32 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var regionsEanIdsToIds =
                 ImportRegions(airportsCoordinates, FactoryOfRepositories.Regions(), CreatorId);
 
-            ImportLocalizedRegions(airportsCoordinates, FactoryOfRepositories.Localized<LocalizedRegion>(), regionsEanIdsToIds, DefaultLanguageId, CreatorId);
+            ImportLocalizedRegions(airportsCoordinates, FactoryOfRepositories.OfLocalized<LocalizedRegion>(), regionsEanIdsToIds, DefaultLanguageId, CreatorId);
 
             ImportAirports(airportsCoordinates, FactoryOfRepositories.AdditionalRegionsInfo<Airport>(), regionsEanIdsToIds, CreatorId);
 
             ImportRegionsToTypes(airportsCoordinates, FactoryOfRepositories.RegionsToTypes(), regionsEanIdsToIds,
-                FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("Airport"),
-                FactoryOfRepositories.BaseNames<SubClass>().GetId("airport"));
+                FactoryOfRepositories.GeographyNamesRepository<TypeOfRegion>().GetId("Airport"),
+                FactoryOfRepositories.GeographyNamesRepository<SubClass>().GetId("airport"));
 
-            ImpotRegionsToRegions(airportsCoordinates, FactoryOfRepositories.ManyToMany<RegionToRegion>(),
+            ImportRegionsToRegions(airportsCoordinates, FactoryOfRepositories.GeographyManyToMany<RegionToRegion>(),
                 regionsEanIdsToIds, FactoryOfRepositories.AdditionalRegionsInfo<Country>().CodesToIds,
                 CreatorId);
         }
 
-        private void ImpotRegionsToRegions(
+        private void ImportRegionsToRegions(
             IEnumerable<AirportCoordinates> airportsCoordinates,
-            IManyToManyRepository<RegionToRegion> repository,
+            IOfManyToMany<RegionToRegion> repository,
             IReadOnlyDictionary<long, int> regionsEanIdsToIds,
             IReadOnlyDictionary<string, int> eanCountryCodeToIds,
             int creatorId
         )
         {
             LogBuild<RegionToRegion>();
-            var regionsToRegions = BuildRegionsToregions(airportsCoordinates, regionsEanIdsToIds,
+            var regionsToRegions = BuildRegionsToRegions(airportsCoordinates, regionsEanIdsToIds,
                 eanCountryCodeToIds, creatorId);
             var count = regionsToRegions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<RegionToRegion>();
@@ -57,19 +60,19 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<RegionToRegion>();
         }
 
-        private RegionToRegion[] BuildRegionsToregions(IEnumerable<AirportCoordinates> eanAirportsCoordinates,
+        private RegionToRegion[] BuildRegionsToRegions(IEnumerable<AirportCoordinates> eanAirportsCoordinates,
             IReadOnlyDictionary<long, int> eanRegionIdsToIds,
             IReadOnlyDictionary<string, int> eanCountryCodeToIds,
             int creatorId
         )
         {
-            var regionsToregions = new Queue<RegionToRegion>();
+            var regionToRegions = new Queue<RegionToRegion>();
 
             foreach (var eanAirport in eanAirportsCoordinates)
             {
                 if (!eanRegionIdsToIds.TryGetValue(eanAirport.AirportID, out var id))
                 {
-                    WriteLog($"Nenalezeno AirportID {eanAirport.AirportID}");
+                    WriteLog($"Not found AirportID {eanAirport.AirportID}");
                     continue;
                 }
 
@@ -86,11 +89,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                             CreatorId = creatorId
                         };
 
-                        regionsToregions.Enqueue(regionToRegion);
+                        regionToRegions.Enqueue(regionToRegion);
                     }
                     else
                     {
-                        WriteLog($"Nenalezeno MainCityID {eanAirport.AirportID}");
+                        WriteLog($"Not found MainCityID {eanAirport.AirportID}");
                     }
                 }
 
@@ -103,11 +106,11 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                         CreatorId = creatorId
                     };
 
-                    regionsToregions.Enqueue(regionToRegion);
+                    regionToRegions.Enqueue(regionToRegion);
                 }
             }
 
-            return regionsToregions.ToArray();
+            return regionToRegions.ToArray();
         }
 
         private void ImportRegionsToTypes(
@@ -120,7 +123,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var regionsToTypes =
                 BuildRegionsToTypes(airportsCoordinates, eanIdsToIds, typeOfRegionAirportId, subClassAirportId, CreatorId);
             var count = regionsToTypes.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -132,7 +135,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         private static RegionToType[] BuildRegionsToTypes(IEnumerable<AirportCoordinates> eanAirportsCoordinates,
             IReadOnlyDictionary<long, int> eanAirportIdsToIds,
             int typeOfRegionAirportId,
-            int subClasAirportId,
+            int subClassAirportId,
             int creatorId
         )
         {
@@ -146,7 +149,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 {
                     Id = id,
                     ToId = typeOfRegionAirportId,
-                    SubClassId = subClasAirportId,
+                    SubClassId = subClassAirportId,
                     CreatorId = creatorId
                 };
 
@@ -166,7 +169,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<Airport>();
             var airports = BuildAirports(airportsCoordinates, eanIdsToIds, creatorId);
             var count = airports.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -202,7 +205,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         private void ImportLocalizedRegions(
             IEnumerable<AirportCoordinates> airportsCoordinates,
-            ILocalizedRepository<LocalizedRegion> repository,
+            IOfLocalized<LocalizedRegion> repository,
             IReadOnlyDictionary<long, int> eanIdsToIds,
             int languageId,
             int creatorId
@@ -212,7 +215,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var localizedRegions = BuildLocalizedRegions(airportsCoordinates, eanIdsToIds,
                 languageId, creatorId);
             var count = localizedRegions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -256,7 +259,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<Region>();
             var regions = BuildRegions(airportsCoordinates, creatorId);
             var count = regions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.EanIdsToIds;
 

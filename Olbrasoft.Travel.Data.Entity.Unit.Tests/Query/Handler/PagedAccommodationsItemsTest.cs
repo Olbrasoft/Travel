@@ -9,6 +9,7 @@ using Olbrasoft.Travel.Data.Transfer.Object;
 using System.Linq;
 using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler

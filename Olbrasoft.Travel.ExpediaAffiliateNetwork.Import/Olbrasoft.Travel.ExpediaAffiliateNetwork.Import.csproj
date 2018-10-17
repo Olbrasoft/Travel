@@ -53,6 +53,12 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.1.2\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
     </Reference>
@@ -294,6 +300,10 @@
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>
+      <Name>Olbrasoft.Globalization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj">
       <Project>{E239B519-2D54-4447-BEBB-AF0600C0A6AA}</Project>

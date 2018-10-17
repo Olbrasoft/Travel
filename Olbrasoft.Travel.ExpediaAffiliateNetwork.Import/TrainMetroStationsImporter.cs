@@ -1,9 +1,10 @@
-﻿
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
 using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Repository.Geography;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
 using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -20,18 +21,18 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             var eanIdsToIds = ImportRegions(EanDataTransferObjects, FactoryOfRepositories.Regions(), CreatorId);
 
-            ImportLocalizedRegions(EanDataTransferObjects, FactoryOfRepositories.Localized<LocalizedRegion>(), eanIdsToIds,
+            ImportLocalizedRegions(EanDataTransferObjects, FactoryOfRepositories.OfLocalized<LocalizedRegion>(), eanIdsToIds,
                 DefaultLanguageId, CreatorId);
 
             ImportRegionsToTypes(EanDataTransferObjects, FactoryOfRepositories.RegionsToTypes(), eanIdsToIds,
-                FactoryOfRepositories.BaseNames<TypeOfRegion>().GetId("Train Station"),
-                FactoryOfRepositories.BaseNames<SubClass>().GetId("train"), CreatorId);
+                FactoryOfRepositories.GeographyNamesRepository<TypeOfRegion>().GetId("Train Station"),
+                FactoryOfRepositories.GeographyNamesRepository<SubClass>().GetId("train"), CreatorId);
 
             EanDataTransferObjects = null;
         }
 
         private void ImportRegionsToTypes(
-            IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinateses,
+            IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinates,
             IRegionsToTypesRepository repository,
             IReadOnlyDictionary<long, int> eanIdsToIds,
             int typeOfRegionTrainStationId,
@@ -41,12 +42,12 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             LogBuild<RegionToType>();
 
-            var regionsToTypes = BuildRegionsToTypes(trainsMetroStationCoordinateses, eanIdsToIds,
+            var regionsToTypes = BuildRegionsToTypes(trainsMetroStationCoordinates, eanIdsToIds,
                 typeOfRegionTrainStationId, subClassTrainId, creatorId);
 
             var count = regionsToTypes.Length;
 
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -55,36 +56,16 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogSaved<RegionToType>();
         }
 
-        //private void ImportLocalizedRegions(
-        //    IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinateses,
-        //    ILocalizedRepository<LocalizedRegion> repository,
-        //    IReadOnlyDictionary<long, int> eanIdsToIds,
-        //    int languageId,
-        //    int creatorId
-
-        //    )
-        //{
-        //    LogBuild<LocalizedRegion>();
-        //    var localizedRegions = BuildLocalizedRegions(trainsMetroStationCoordinateses, eanIdsToIds, languageId, creatorId);
-        //    var count = localizedRegions.Length;
-        //    LogBuilded(count);
-
-        //    if (count <= 0) return;
-        //    LogSave<LocalizedRegion>();
-        //    repository.BulkSave(localizedRegions, count);
-        //    LogSaved<LocalizedRegion>();
-        //}
-
         private IReadOnlyDictionary<long, int> ImportRegions(
-            IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinateses,
+            IEnumerable<TrainMetroStationCoordinates> trainsMetroStationCoordinates,
             IRegionsRepository repository,
             int creatorId
             )
         {
             LogBuild<Region>();
-            var regions = BuildRegions(trainsMetroStationCoordinateses, creatorId);
+            var regions = BuildRegions(trainsMetroStationCoordinates, creatorId);
             var count = regions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.EanIdsToIds;
 

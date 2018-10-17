@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Olbrasoft.Travel.Data.Entity.Model
+﻿namespace Olbrasoft.Travel.Data.Entity.Model
 {
-    public class ManyToMany : CreatorInfo
+    public class ManyToMany : OwnerCreatorIdAndCreator
     {
-        [Key]
-        [Column(Order = 2)]
         public int ToId { get; set; }
     }
 }

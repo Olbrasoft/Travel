@@ -1,18 +1,17 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity.Spatial;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using System.Collections.Generic;
+using System.Data.Entity.Spatial;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Property
 {
-
-    public class Accommodation : CreatorInfo , IHaveEanId<int>
+    public class Accommodation : OwnerCreatorIdAndCreator, IHaveEanId<int>
     {
         public Accommodation()
         {
             LocalizedAccommodations = new HashSet<LocalizedAccommodation>();
 
-            Descriptions = new HashSet<Description>();
+            LocalizedDescriptionsOfAccommodations = new HashSet<LocalizedDescriptionOfAccommodation>();
 
             PhotosOfAccommodations = new HashSet<PhotoOfAccommodation>();
 
@@ -25,14 +24,11 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public decimal StarRating { get; set; }
 
-        
         public string Address { get; set; }
 
-     
         public string AdditionalAddress { get; set; }
 
-       
-        public  DbGeography CenterCoordinates { get; set; }
+        public DbGeography CenterCoordinates { get; set; }
 
         public int TypeOfAccommodationId { get; set; }
 
@@ -54,7 +50,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public ICollection<LocalizedAccommodation> LocalizedAccommodations { get; set; }
 
-        public ICollection<Description> Descriptions { get; set; }
+        public ICollection<LocalizedDescriptionOfAccommodation> LocalizedDescriptionsOfAccommodations { get; set; }
 
         public ICollection<PhotoOfAccommodation> PhotosOfAccommodations { get; set; }
 

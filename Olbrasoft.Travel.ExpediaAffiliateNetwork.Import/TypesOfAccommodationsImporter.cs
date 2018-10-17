@@ -1,8 +1,10 @@
-﻿
+﻿using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Repository.Property;
 using System.Collections.Generic;
 using System.Linq;
-using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Repository.Globalization;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -27,17 +29,17 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LoadData(path);
 
             var typesOfAccommodationsEanIdsToIds = ImportTypesOfAccommodations(EanIdsToNames.Keys,
-                FactoryOfRepositories.MappedEntities<TypeOfAccommodation>(), CreatorId);
+                FactoryOfRepositories.MappedProperties<TypeOfAccommodation>(), CreatorId);
 
             ImportLocalizedTypesOfAccommodations(EanIdsToNames,
-                FactoryOfRepositories.Localized<LocalizedTypeOfAccommodation>(), typesOfAccommodationsEanIdsToIds, DefaultLanguageId,
+                FactoryOfRepositories.OfLocalized<LocalizedTypeOfAccommodation>(), typesOfAccommodationsEanIdsToIds, DefaultLanguageId,
                 CreatorId);
 
             EanIdsToNames = null;
         }
 
         private void ImportLocalizedTypesOfAccommodations(IDictionary<int, string> eanIdsToNames,
-            ILocalizedRepository<LocalizedTypeOfAccommodation> repository,
+            IOfLocalized<LocalizedTypeOfAccommodation> repository,
             IReadOnlyDictionary<int, int> typesOfAccommodationsEanIdsToIds,
             int languageId,
             int creatorId)
@@ -82,14 +84,14 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         private IReadOnlyDictionary<int, int> ImportTypesOfAccommodations(
             IEnumerable<int> eanIds,
-            IMappedEntitiesRepository<TypeOfAccommodation> repository,
+            IMappedPropertiesRepository<TypeOfAccommodation> repository,
             int creatorId
         )
         {
             LogBuild<TypeOfAccommodation>();
             var typesOfAccommodations = BuildTypesOfAccommodations(eanIds, creatorId);
             var count = typesOfAccommodations.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.EanIdsToIds;
 

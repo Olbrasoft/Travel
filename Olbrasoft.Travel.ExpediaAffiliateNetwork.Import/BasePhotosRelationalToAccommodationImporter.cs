@@ -16,7 +16,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             get =>
 
                 _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
-                    FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+                    FactoryOfRepositories.MappedProperties<Accommodation>().EanIdsToIds);
 
             set => _accommodationsEanIdsToIds = value;
         }

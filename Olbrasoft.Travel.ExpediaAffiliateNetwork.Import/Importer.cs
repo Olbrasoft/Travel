@@ -1,5 +1,7 @@
-﻿
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Repository.Geography;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
 using System;
@@ -9,8 +11,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Olbrasoft.Travel.Data.Entity.Model.Geography;
-using Olbrasoft.Travel.Data.Entity.Model.Property;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Repository.Globalization;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -40,7 +42,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         protected void ImportLocalizedRegions(
             IEnumerable<IHaveRegionIdRegionName> eanDataTransferObjects,
-            ILocalizedRepository<LocalizedRegion> repository,
+            IOfLocalized<LocalizedRegion> repository,
             IReadOnlyDictionary<long, int> eanIdsToIds,
             int languageId,
             int creatorId
@@ -50,7 +52,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<LocalizedRegion>();
             var localizedRegions = BuildLocalizedRegions(eanDataTransferObjects, eanIdsToIds, languageId, creatorId);
             var count = localizedRegions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
             LogSave<LocalizedRegion>();
@@ -60,7 +62,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         protected void ImportLocalizedAccommodations(
             IEnumerable<IToLocalizedAccommodation> eanDataTransferObjects,
-            ILocalizedRepository<LocalizedAccommodation> repository,
+            IOfLocalized<LocalizedAccommodation> repository,
             IReadOnlyDictionary<int, int> accommodationsEanIdsToIds,
             int languageId,
             int creatorId
@@ -72,7 +74,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             var count = localizedAccommodations.Length;
 
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -152,7 +154,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         }
 
         protected Region[] BuildRegions(IEnumerable<IHaveRegionIdLatitudeLongitude> entities,
-            int cretorId
+            int creatorId
         )
         {
             var regions = new Queue<Region>();
@@ -163,7 +165,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    {
             //        EanId = entity.RegionID,
             //        CenterCoordinates = CreatePoint(entity.Latitude, entity.Longitude),
-            //        CreatorId = cretorId
+            //        CreatorId = creatorId
             //    };
 
             //     regions.Enqueue(region);
@@ -176,7 +178,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 {
                     EanId = entity.RegionID,
                     CenterCoordinates = CreatePoint(entity.Latitude, entity.Longitude),
-                    CreatorId = cretorId
+                    CreatorId = creatorId
                 };
 
                 lock (LockMe)
@@ -226,7 +228,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected readonly int CreatorId;
         protected readonly ILoggingImports Logger;
 
-        private int _countRowsReaded;
+        private int _numberOfRowsLoaded;
 
         protected Importer(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
         {
@@ -239,7 +241,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         protected void Provider_SplittingLine(object sender, string[] items)
         {
-            _countRowsReaded++;
+            _numberOfRowsLoaded++;
             RowLoaded(items);
         }
 
@@ -251,7 +253,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             Provider.SplittingLine += Provider_SplittingLine;
             Provider.ReadToEnd(path);
             Provider.SplittingLine -= Provider_SplittingLine;
-            WriteLog(_countRowsReaded.ToString());
+            WriteLog(_numberOfRowsLoaded.ToString());
         }
 
         public abstract void Import(string path);
@@ -272,7 +274,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         }
 
         protected void ImportLocalizedRegions(IDictionary<long, Tuple<string, string>> adeptsToLocalizedRegions,
-            ILocalizedRepository<LocalizedRegion> repository,
+            IOfLocalized<LocalizedRegion> repository,
             IReadOnlyDictionary<long, int> eanIdsToIds,
             int languageId,
             int creatorId
@@ -281,7 +283,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<LocalizedRegion>();
             var localizedRegions = BuildLocalizedRegions(adeptsToLocalizedRegions, eanIdsToIds, languageId, creatorId);
             var count = localizedRegions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return;
 
@@ -352,6 +354,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         protected static string GetSubClassName(string name)
         {
+            // ReSharper disable once StringLiteralTypo
             return string.IsNullOrEmpty(name) ? null : name.ToLower().Replace("musuems", "museums");
         }
 
@@ -360,7 +363,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             Logger?.Log(obj.ToString());
         }
 
-        protected void LogBuilded(int count)
+        protected void LogAssembled(int count)
         {
             WriteLog(count);
         }

@@ -17,7 +17,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> AttributesEanIdsToIds
         {
             get => _attributesEanIdsToIds ?? (_attributesEanIdsToIds =
-                       FactoryOfRepositories.MappedEntities<Attribute>().EanIdsToIds);
+                       FactoryOfRepositories.MappedProperties<Attribute>().EanIdsToIds);
 
             set => _attributesEanIdsToIds = value;
         }
@@ -25,7 +25,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds
         {
             get => _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
-                       FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+                       FactoryOfRepositories.MappedProperties<Accommodation>().EanIdsToIds);
 
             set => _accommodationsEanIdsToIds = value;
         }

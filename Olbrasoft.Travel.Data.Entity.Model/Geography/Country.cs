@@ -2,7 +2,7 @@
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Geography
 {
-    public class Country : CreatorInfo, IAdditionalRegionInfo
+    public class Country : OwnerCreatorIdAndCreator, IAdditionalRegionInfo
     {
         //todo change https://en.wikipedia.org/wiki/ISO_3166-1
 

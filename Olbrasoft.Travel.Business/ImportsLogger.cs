@@ -14,14 +14,14 @@ namespace Olbrasoft.Travel.Business
             Repository = repository;
         }
 
-        public void LogIn(LogOfImport log)
+        public void LogIn(Log log)
         {
             Repository.Add(log);
         }
 
         public void Log(string textForLogging)
         {
-            LogIn(new LogOfImport() { Log = textForLogging });
+            LogIn(new Log() { Text = textForLogging });
         }
     }
 }

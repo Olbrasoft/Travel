@@ -3,6 +3,7 @@ using Olbrasoft.Pagination;
 using Olbrasoft.Travel.Data.Transfer.Object;
 using System;
 using System.Linq;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Query

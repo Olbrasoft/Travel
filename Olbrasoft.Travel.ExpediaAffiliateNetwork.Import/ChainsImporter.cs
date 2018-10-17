@@ -33,7 +33,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             if (Chains.Count <= 0) return;
 
             LogSave<Chain>();
-            FactoryOfRepositories.MappedEntities<Chain>().BulkSave(Chains);
+            FactoryOfRepositories.MappedProperties<Chain>().BulkSave(Chains);
             LogSaved<Chain>();
 
             Chains = null;

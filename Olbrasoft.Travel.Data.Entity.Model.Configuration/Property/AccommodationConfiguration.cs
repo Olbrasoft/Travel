@@ -8,19 +8,17 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Property
         {
             ToTable("Accommodations");
 
-            HasIndex(e => e.EanId).IsUnique();
+            HasIndex(accommodation => accommodation.EanId).IsUnique();
 
-            Property(p => p.CenterCoordinates).IsRequired();
+            Property(accommodation => accommodation.CenterCoordinates).IsRequired();
 
-            Property(p => p.AdditionalAddress).HasMaxLength(50);
+            Property(accommodation => accommodation.AdditionalAddress).HasMaxLength(50);
 
-            Property(p => p.Address).HasMaxLength(50).IsRequired();
+            Property(accommodation => accommodation.Address).HasMaxLength(50).IsRequired();
 
-            HasRequired(a => a.TypeOfAccommodation).WithMany(toa => toa.Accommodations).WillCascadeOnDelete(true);
+            HasRequired(accommodation => accommodation.Creator).WithMany(user => user.Accommodations).WillCascadeOnDelete(false);
 
-            HasRequired(a => a.Creator).WithMany(user => user.Accommodations).WillCascadeOnDelete(false);
-
-            HasRequired(a => a.Country).WithMany(c => c.Accommodations).WillCascadeOnDelete(false);
+            HasRequired(accommodation => accommodation.Country).WithMany(country => country.Accommodations).WillCascadeOnDelete(false);
         }
     }
 }

@@ -11,6 +11,14 @@ using System;
 using System.Data.Entity;
 using System.Net;
 using Olbrasoft.Travel.Data.Entity.Model;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using Olbrasoft.Travel.Data.Entity.Repositories.Geography;
+using Olbrasoft.Travel.Data.Entity.Repositories.Globalization;
+using Olbrasoft.Travel.Data.Entity.Repositories.Property;
+using Olbrasoft.Travel.Data.Repository.Geography;
+using Olbrasoft.Travel.Data.Repository.Globalization;
+using Olbrasoft.Travel.Data.Repository.Property;
+
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -22,7 +30,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         // ReSharper disable once UnusedParameter.Local
         private static void Main(string[] args)
         {
-            var user = new User
+            var user = new Olbrasoft.Travel.Data.Entity.Model.Identity.User
             {
                 UserName = "EanImport"
             };
@@ -34,15 +42,15 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             var usersRepository = container.Resolve<IFactoryOfRepositories>().Users();
             user = usersRepository.AddIfNotExist(user);
 
-            Write($"Id to a user with a UserName {user.UserName} is {user.Id}.");
+            //Write($"Id to a user with a UserName {user.UserName} is {user.Id}.");
 
-            // var url = "https://www.ian.com/affiliatecenter/include/V2/ParentRegionList.zip";
+            //// var url = "https://www.ian.com/affiliatecenter/include/V2/ParentRegionList.zip";
 
-            //// DownloadFile(url, runningStatus, importsFacade, import);
+            ////// DownloadFile(url, runningStatus, importsFacade, import);
 
-            //// todo Extract
+            ////// todo Extract
 
-            container.Register(Component.For<User>().Instance(user));
+            container.Register(Component.For<Data.Entity.Model.Identity.User>().Instance(user));
 
             var languagesRepository = container.Resolve<ILanguagesRepository>();
 
@@ -108,13 +116,8 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //using (var typesOfAccommodationsImporter = container.Resolve<IImporter>(nameof(TypesOfAccommodationsImporter)))
             //{
             //    typesOfAccommodationsImporter.Import(@"D:\Ean\PropertyTypeList.txt");
-
             //}
 
-            //using (var chainsImporter = container.Resolve<IImporter>(nameof(ChainsImporter)))
-            //{
-            //    chainsImporter.Import(@"D:\Ean\ChainList.txt");
-            //}
 
             //using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
             //{
@@ -174,7 +177,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    accommodationsToAttributesDefaultLanguageImporter.Import(@"D:\Ean\PropertyAttributeLink.txt");
             //}
 
-            var language = languagesRepository.Get(1031);
+            //var language = languagesRepository.Get(1031);
 
             //if (language == null)
             //{
@@ -241,10 +244,17 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         {
             var container = new WindsorContainer();
 
-            container.Register(Component.For<TravelContext>().ImplementedBy<TravelContext>());
-            container.Register(Component.For<DbContext>().ImplementedBy<TravelContext>().Named(nameof(TravelContext)));
+            container.Register(Component.For<RoutingDatabaseContext>().ImplementedBy<RoutingDatabaseContext>());
+            container.Register(Component.For<IdentityDatabaseContext>().ImplementedBy<IdentityDatabaseContext>());
+            container.Register(Component.For<PropertyDatabaseContext>().ImplementedBy<PropertyDatabaseContext>());
+            container.Register(Component.For<GeographyDatabaseContext>().ImplementedBy<GeographyDatabaseContext>());
+            container.Register(Component.For<GlobalizationDatabaseContext>().ImplementedBy<GlobalizationDatabaseContext>());
 
-          container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Expedia.Affiliate.Network")
+
+            //  container.Register(Component.For<TravelDatabaseContext>().ImplementedBy<TravelDatabaseContext>());
+            // container.Register(Component.For<DbContext>().ImplementedBy<TravelDatabaseContext>().Named(nameof(TravelDatabaseContext)));
+
+            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Expedia.Affiliate.Network")
                 .Where(type => type.Name.EndsWith("Parser"))
                 .WithService.AllInterfaces()
             );
@@ -265,13 +275,24 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             container.Register(Component.For(typeof(IAdditionalRegionsInfoRepository<>)).ImplementedBy(typeof(AdditionalRegionsInfoRepository<>)));
 
-            container.Register(Component.For(typeof(ITypesRepository<>)).ImplementedBy(typeof(TypesRepository<>)));
+            container.Register(Component.For(typeof(Data.Repository.Geography.INamesRepository<>))
+                .ImplementedBy(typeof(Data.Entity.Repositories.Geography.NamesRepository<>)));
 
-            container.Register(Component.For(typeof(IManyToManyRepository<>)).ImplementedBy(typeof(ManyToManyRepository<>)));
+            container.Register(Component.For(typeof(Data.Repository.Property.INamesRepository<>))
+                .ImplementedBy(typeof(Data.Entity.Repositories.Property.NamesRepository<>)));
 
-            container.Register(Component.For(typeof(ILocalizedRepository<>)).ImplementedBy(typeof(LocalizedRepository<>)));
 
-            container.Register(Component.For(typeof(IMappedEntitiesRepository<>)).ImplementedBy(typeof(MappedEntitiesRepository<>)));
+            container.Register(Component.For(typeof(Data.Repository.Geography.IManyToManyRepository<>))
+                .ImplementedBy(typeof(Data.Entity.Repositories.Geography.ManyToManyRepository<>)));
+
+            container.Register(Component.For(typeof(Data.Repository.Property.IManyToManyRepository<>))
+                .ImplementedBy(typeof(Data.Entity.Repositories.Property.ManyToManyRepository<>)));
+
+            container.Register(Component.For(typeof(IOfLocalized<>))
+                .ImplementedBy(typeof(LocalizedRepository<>)));
+
+           
+            container.Register(Component.For(typeof(IMappedPropertiesRepository<>)).ImplementedBy(typeof(MappedPropertiesRepository<>)));
 
             container.Register(Component.For<IInterceptor>().ImplementedBy<ImportInterceptor>());
 

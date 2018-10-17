@@ -1,6 +1,7 @@
 ﻿
 using Olbrasoft.Travel.Data.Repository;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Description = Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Property.Description;
 
@@ -13,7 +14,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> AccommodationsEanIdsToIds
         {
             get => _accommodationsEanIdsToIds ?? (_accommodationsEanIdsToIds =
-                       FactoryOfRepositories.MappedEntities<Accommodation>().EanIdsToIds);
+                       FactoryOfRepositories.MappedProperties<Accommodation>().EanIdsToIds);
 
             set => _accommodationsEanIdsToIds = value;
         }
@@ -30,7 +31,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
         protected int TypeOfDescriptionId { get; set; }
 
-        protected Queue<Olbrasoft.Travel.Data.Entity.Model.Property.Description> Descriptions = new Queue<Olbrasoft.Travel.Data.Entity.Model.Property.Description>();
+        protected Queue<LocalizedDescriptionOfAccommodation> Descriptions = new Queue<LocalizedDescriptionOfAccommodation>();
 
         public DescriptionsImporter(IProvider provider, IFactoryOfRepositories factoryOfRepositories, SharedProperties sharedProperties, ILoggingImports logger)
             : base(provider, factoryOfRepositories, sharedProperties, logger)
@@ -45,7 +46,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 !LanguagesEanLanguageCodesToIds.TryGetValue(items[1], out var languageId)
             ) return;
 
-            var description = new Olbrasoft.Travel.Data.Entity.Model.Property.Description
+            var description = new LocalizedDescriptionOfAccommodation
             {
                 AccommodationId = accommodationId,
                 TypeOfDescriptionId = TypeOfDescriptionId,
@@ -60,7 +61,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         public override void Import(string path)
         {
             const string general = "General";
-            var typesOfDescriptionsRepository = FactoryOfRepositories.BaseNames<TypeOfDescription>();
+            var typesOfDescriptionsRepository = FactoryOfRepositories.PropertyNamesRepository<TypeOfDescription>();
 
             if (!typesOfDescriptionsRepository.NamesToIds.ContainsKey(general))
             {
@@ -77,7 +78,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             if (Descriptions.Count <= 0) return;
 
             LogSave<Description>();
-            FactoryOfRepositories.Descriptions().BulkSave(Descriptions, 160000);
+            FactoryOfRepositories.DescriptionsOfAccommodations().BulkSave(Descriptions, 160000);
             LogSaved<Description>();
 
             Descriptions = null;

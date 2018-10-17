@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Geography
 {
-    public class Airport : CreatorInfo, IAdditionalRegionInfo
+    public class Airport : OwnerCreatorIdAndCreator, IAdditionalRegionInfo
     {
         public string Code { get; set; }
 

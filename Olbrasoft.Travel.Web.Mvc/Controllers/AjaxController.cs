@@ -17,7 +17,7 @@ namespace Olbrasoft.Travel.Web.Mvc.Controllers
             //IPageInfo pageInfo = new PageInfo(10, page);
             //ILanguageService languageService = new ThreadCultureLanguageService();
 
-            //var q = new AccommodationPagedQuery(new TravelContext().Accommodations, pageInfo, languageService);
+            //var q = new AccommodationPagedQuery(new TravelDatabaseContext().Accommodations, pageInfo, languageService);
 
             //var accommodations = q.Execute().AsPagedList();
 

@@ -1,20 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Olbrasoft.Data;
+﻿using Olbrasoft.Data;
 using Olbrasoft.Data.Mapping;
 using Olbrasoft.Data.Query;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Olbrasoft.Travel.Data.Query;
-using Attribute= Olbrasoft.Travel.Data.Transfer.Object.Attribute;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Attribute = Olbrasoft.Travel.Data.Transfer.Object.Attribute;
 
 namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
-    public class AttributesByAccommodationIdAndLanguageId: AsyncHandlerWithDependentSource<GetAttributesByAccommodationIdAndLanguageId,AccommodationToAttribute,IEnumerable<Attribute>>
+    public class AttributesByAccommodationIdAndLanguageId : AsyncHandlerWithDependentSource<GetAttributesByAccommodationIdAndLanguageId, AccommodationToAttribute, IEnumerable<Attribute>>
     {
-        public AttributesByAccommodationIdAndLanguageId(IHaveQueryable<AccommodationToAttribute> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
+        public AttributesByAccommodationIdAndLanguageId(IHavePropertyQueryable<AccommodationToAttribute> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 
@@ -30,9 +30,9 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
                 .Include(p => p.Attribute.LocalizedAttributes)
                 .Where(p => p.AccommodationId == query.AccommodationId)
                 .Where(p => p.LanguageId == query.LanguageId)
-                    .OrderBy(p=>p.Attribute.Ban)
+                    .OrderBy(p => p.Attribute.Ban)
                 ;
-                
+
             return projector.ProjectTo<Attribute>(accommodationsToAttributes);
         }
     }

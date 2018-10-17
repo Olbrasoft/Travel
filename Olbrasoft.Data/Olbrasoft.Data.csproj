@@ -58,8 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\CreationInfo.cs" />
-    <Compile Include="Entity\CreatorInfo.cs" />
-    <Compile Include="Entity\ICreation.cs" />
+    <Compile Include="Entity\HaveCreatorId.cs" />
+    <Compile Include="Entity\IHaveCreatorId.cs" />
+    <Compile Include="Entity\IHaveDateTimeOfCreation.cs" />
+    <Compile Include="Entity\IHaveDescription.cs" />
     <Compile Include="Entity\IHaveName.cs" />
     <Compile Include="Entity\IHaveUserName.cs" />
     <Compile Include="Entity\User.cs" />

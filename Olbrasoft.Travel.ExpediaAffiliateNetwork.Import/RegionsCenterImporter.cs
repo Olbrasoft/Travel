@@ -1,9 +1,10 @@
-﻿
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
 using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Repository.Geography;
 using Olbrasoft.Travel.Expedia.Affiliate.Network;
 using Olbrasoft.Travel.Expedia.Affiliate.Network.Data.Transfer.Object.Geography;
 using System.Collections.Generic;
-using Olbrasoft.Travel.Data.Entity.Model.Geography;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -20,8 +21,9 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 
             var eanIdsToIds = ImportRegions(EanDataTransferObjects, FactoryOfRepositories.Regions(), CreatorId);
 
-            ImportLocalizedRegions(EanDataTransferObjects, FactoryOfRepositories.Localized<LocalizedRegion>(), eanIdsToIds,
-                DefaultLanguageId, CreatorId);
+            ImportLocalizedRegions(EanDataTransferObjects,
+                FactoryOfRepositories.OfLocalized<LocalizedRegion>(), eanIdsToIds, DefaultLanguageId,
+                CreatorId);
 
             EanDataTransferObjects = null;
         }
@@ -35,7 +37,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             LogBuild<Region>();
             var regions = BuildRegions(regionsCenter, creatorId);
             var count = regions.Length;
-            LogBuilded(count);
+            LogAssembled(count);
 
             if (count <= 0) return repository.EanIdsToIds;
 

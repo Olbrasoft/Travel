@@ -20,5 +20,19 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests.Property
             //Assert
             Assert.IsInstanceOf(type, configuration);
         }
+
+        [Test]
+        public void Instance_Is_PropertyConfiguration_Of_PhotoOfAccommodation()
+        {
+            //Arrange
+            var type = typeof(PropertyConfiguration<PhotoOfAccommodation>);
+
+            //Act
+            var configuration = new PhotoOfAccommodationConfiguration();
+
+            //Assert
+            Assert.IsInstanceOf(type, configuration);
+
+        }
     }
 }

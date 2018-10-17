@@ -11,7 +11,7 @@ namespace Olbrasoft.Data.Unit.Tests.Entity
         public void Instance_Implement_Interface_ICreation()
         {
             //Arrange
-            var type = typeof(ICreation<int>);
+            var type = typeof(IHaveId<int>);
 
             //Act
             var childCreationInfo = new ChildCreationInfo();

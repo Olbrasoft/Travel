@@ -4,13 +4,14 @@ using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests.Property
 {
+    [TestFixture]
     internal class ChainConfigurationTest
     {
-        [NUnit.Framework.Test]
+        [Test]
         public void Instance_Is_CreatorConfiguration_Of_Chain()
         {
             //Arrange
-            var type = typeof(Configuration.Property.CreatorConfiguration<Chain>);
+            var type = typeof(PropertyConfiguration<Chain>);
 
             //Act
             var configuration = new ChainConfiguration();

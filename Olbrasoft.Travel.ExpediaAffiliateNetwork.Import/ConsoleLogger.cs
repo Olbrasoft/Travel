@@ -21,9 +21,9 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             Logger = LogManager.GetLogger(typeof(EanImport));
         }
 
-        public void LogIn(LogOfImport log)
+        public void LogIn(Log log)
         {
-            Log(log.Log);
+            Log(log.Text);
         }
 
         public void Log(string message)

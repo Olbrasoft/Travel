@@ -2,11 +2,11 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Olbrasoft.Travel.Data.Entity.Unit.Tests")]
+[assembly: AssemblyTitle("Olbrasoft.TravelDatabaseContext.Data.Entity.Unit.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Olbrasoft.Travel.Data.Entity.Unit.Tests")]
+[assembly: AssemblyProduct("Olbrasoft.TravelDatabaseContext.Data.Entity.Unit.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

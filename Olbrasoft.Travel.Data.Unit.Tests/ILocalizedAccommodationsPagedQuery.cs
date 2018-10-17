@@ -1,4 +1,5 @@
 ﻿using Olbrasoft.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 
 

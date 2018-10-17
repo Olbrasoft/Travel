@@ -11,7 +11,7 @@ namespace Olbrasoft.Travel.Web.Api.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<ITravelContext>().ImplementedBy<TravelContext>().LifestylePerWebRequest());
+            //container.Register(Component.For<ITravelContext>().ImplementedBy<TravelDatabaseContext>().LifestylePerWebRequest());
         }
     }
 }

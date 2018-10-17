@@ -1,6 +1,4 @@
-﻿
-
-using Olbrasoft.Travel.Data.Entity.Model.Geography;
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Geography
 {

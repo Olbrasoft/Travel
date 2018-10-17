@@ -1,6 +1,4 @@
-﻿
-
-using Olbrasoft.Travel.Data.Entity.Model.Geography;
+﻿using Olbrasoft.Travel.Data.Entity.Model.Geography;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Geography
 {
@@ -8,15 +6,15 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Geography
     {
         public RegionToTypeConfiguration()
         {
-            ToTable("RegionsToTypes").HasRequired(rtp => rtp.Creator).WithMany(user => user.RegionsToTypes)
-                .WillCascadeOnDelete(false);
+            ToTable("RegionsToTypes");
 
             HasKey(p => new { p.Id, p.ToId });
 
             HasRequired(rtp => rtp.Region).WithMany(region => region.RegionsToTypes).WillCascadeOnDelete(true);
 
-            HasRequired(rtt => rtt.TypeOfRegion).WithMany(tor => tor.RegionsToTypes)
-                .HasForeignKey(p => p.ToId).WillCascadeOnDelete(false);
+            HasRequired(regionToType => regionToType.Creator).WithMany(user => user.RegionsToTypes).WillCascadeOnDelete(false);
+
+            HasRequired(regionToType => regionToType.TypeOfRegion).WithMany(typeOfRegion => typeOfRegion.RegionsToTypes).HasForeignKey(p => p.ToId).WillCascadeOnDelete(false);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Olbrasoft.Travel.Data.Repository;
 using System;
 using System.Collections.Generic;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
 using Attribute = Olbrasoft.Travel.Data.Entity.Model.Property.Attribute;
 
@@ -14,7 +15,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
         protected IReadOnlyDictionary<int, int> AttributesEanIdsToIds
         {
             get => _attributesEanIdsToIds ?? (_attributesEanIdsToIds =
-                       FactoryOfRepositories.MappedEntities<Attribute>().EanIdsToIds);
+                       FactoryOfRepositories.MappedProperties<Attribute>().EanIdsToIds);
 
             set => _attributesEanIdsToIds = value;
         }
@@ -50,7 +51,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             if (LocalizedAttributes.Count <= 0) return;
 
             LogSave<LocalizedAttribute>();
-            FactoryOfRepositories.Localized<LocalizedAttribute>().BulkSave(LocalizedAttributes);
+            FactoryOfRepositories.OfLocalized<LocalizedAttribute>().BulkSave(LocalizedAttributes);
             LocalizedAttributes = null;
             LogSaved<LocalizedAttribute>();
         }

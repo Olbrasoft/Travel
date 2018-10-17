@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Olbrasoft.Travel.Web.Mvc")]
+[assembly: AssemblyTitle("Olbrasoft.TravelDatabaseContext.Web.Mvc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Olbrasoft.Travel.Web.Mvc")]
+[assembly: AssemblyProduct("Olbrasoft.TravelDatabaseContext.Web.Mvc")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

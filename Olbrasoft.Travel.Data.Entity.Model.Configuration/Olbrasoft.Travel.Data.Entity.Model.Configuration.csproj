@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,9 +54,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreationInfoConfiguration.cs" />
-    <Compile Include="LogOfImportConfiguration.cs" />
+    <Compile Include="CreatorConfiguration.cs" />
+    <Compile Include="EntityConfigurationWithSchemaName.cs" />
+    <Compile Include="GeographyConfiguration.cs" />
+    <Compile Include="Geography\AirportConfiguration.cs" />
+    <Compile Include="Geography\CountryConfiguration.cs" />
+    <Compile Include="Geography\CreatorConfiguration.cs" />
+    <Compile Include="Geography\NameConfiguration.cs" />
+    <Compile Include="Geography\RegionConfiguration.cs" />
+    <Compile Include="Geography\RegionToRegionConfiguration.cs" />
+    <Compile Include="Geography\RegionToTypeConfiguration.cs" />
+    <Compile Include="Geography\SubClassConfiguration.cs" />
+    <Compile Include="Geography\TypeOfRegionConfiguration.cs" />
+    <Compile Include="GlobalizationConfiguration.cs" />
+    <Compile Include="Globalization\LanguageConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedAccommodationConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedAttributeConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedCaptionConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedDescriptionOfAccommodationConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedRegionConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedTypeOfAccommodationConfiguration.cs" />
+    <Compile Include="Globalization\LocalizedTypeOfRoomConfiguration.cs" />
+    <Compile Include="IConfiguration.cs" />
+    <Compile Include="Identity\IdentityConfiguration.cs" />
+    <Compile Include="Identity\RoleConfiguration.cs" />
+    <Compile Include="Identity\UserClaimConfiguration.cs" />
+    <Compile Include="Identity\UserConfiguration.cs" />
+    <Compile Include="Identity\UserLoginConfiguration.cs" />
+    <Compile Include="Identity\MembershipConfiguration.cs" />
+    <Compile Include="LogLevelConfiguration.cs" />
+    <Compile Include="LogConfiguration.cs" />
+    <Compile Include="LogTypeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserConfiguration.cs" />
+    <Compile Include="PropertyConfiguration.cs" />
+    <Compile Include="Property\AccommodationConfiguration.cs" />
+    <Compile Include="Property\AccommodationToAttributeConfiguration.cs" />
+    <Compile Include="Property\AttributeConfiguration.cs" />
+    <Compile Include="Property\CaptionConfiguration.cs" />
+    <Compile Include="Property\ChainConfiguration.cs" />
+    <Compile Include="Property\CreatorConfiguration.cs" />
+    <Compile Include="Property\ManyToManyConfiguration.cs" />
+    <Compile Include="Property\NameConfiguration.cs" />
+    <Compile Include="Property\PhotoOfAccommodationConfiguration.cs" />
+    <Compile Include="Property\PhotoOfAccommodationToTypeOfRoomConfiguration.cs" />
+    <Compile Include="Property\SubTypeOfAttributeConfiguration.cs" />
+    <Compile Include="Property\TypeOfAccommodationConfiguration.cs" />
+    <Compile Include="Property\TypeOfAttributeConfiguration.cs" />
+    <Compile Include="Property\TypeOfDescriptionConfiguration.cs" />
+    <Compile Include="Property\TypeOfRoomConfiguration.cs" />
+    <Compile Include="RoutingConfiguration.cs" />
+    <Compile Include="Routing\FileExtensionConfiguration.cs" />
+    <Compile Include="Routing\PathToPhotoConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
@@ -60,6 +115,10 @@
     <ProjectReference Include="..\Olbrasoft.Data\Olbrasoft.Data.csproj">
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
+      <Project>{BB7C99FF-E9A6-4590-8AF3-D3CE93C3F37E}</Project>
+      <Name>Olbrasoft.Globalization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Model\Olbrasoft.Travel.Data.Entity.Model.csproj">
       <Project>{e239b519-2d54-4447-bebb-af0600c0a6aa}</Project>

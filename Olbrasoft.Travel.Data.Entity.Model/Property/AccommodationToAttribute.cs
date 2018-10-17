@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Olbrasoft.Data.Entity;
+using Olbrasoft.Travel.Data.Entity.Model.Globalization;
+using System;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Property
 {
-    public class AccommodationToAttribute
+    public class AccommodationToAttribute : IHaveDateTimeOfCreation
     {
         public int AccommodationId { get; set; }
 
@@ -16,7 +18,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Property
 
         public DateTime DateAndTimeOfCreation { get; set; }
 
-        public User Creator { get; set; }
+        public Identity.User Creator { get; set; }
 
         public Accommodation Accommodation { get; set; }
 
