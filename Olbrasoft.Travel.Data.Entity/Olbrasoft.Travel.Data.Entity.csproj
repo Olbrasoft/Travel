@@ -453,10 +453,6 @@
       <Project>{C38F7833-3953-4E1C-AF9C-1E9A2C3B738B}</Project>
       <Name>Olbrasoft.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
-      <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
-      <Name>Olbrasoft.Design.Pattern</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Globalization\Olbrasoft.Globalization.csproj">
       <Project>{bb7c99ff-e9a6-4590-8af3-d3ce93c3f37e}</Project>
       <Name>Olbrasoft.Globalization</Name>

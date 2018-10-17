@@ -327,10 +327,6 @@
       <Project>{83F1CF06-CC30-4EE3-9AC2-8F6F5AA4A7EB}</Project>
       <Name>Olbrasoft.Dependence</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Design.Pattern\Olbrasoft.Design.Pattern.csproj">
-      <Project>{3F5C7AE5-8796-44B4-84D2-1617E0CC308E}</Project>
-      <Name>Olbrasoft.Design.Pattern</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Extensions\Olbrasoft.Extensions.csproj">
       <Project>{2c48af1d-9528-4996-bc30-3a767902c830}</Project>
       <Name>Olbrasoft.Extensions</Name>
