@@ -50,7 +50,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         private static PhotosByAccommodationId Handler()
         {
             var photos = new PhotoOfAccommodation[1].AsQueryable();
-            var ownPhotosOfAccommodationsMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
+            var ownPhotosOfAccommodationsMock = new Mock<IHavePropertyQueryable<PhotoOfAccommodation>>();
             ownPhotosOfAccommodationsMock.Setup(p => p.Queryable).Returns(photos);
             var projectionMock = new Mock<IProjection>();
 

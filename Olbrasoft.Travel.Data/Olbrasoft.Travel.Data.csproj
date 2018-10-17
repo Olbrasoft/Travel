@@ -216,7 +216,6 @@
     <Compile Include="Repository\ILogsOfImportsRepository.cs" />
     <Compile Include="Repository\IOfManyToMany.cs" />
     <Compile Include="Repository\IPhotosOfAccommodationsRepository.cs" />
-    <Compile Include="Repository\IRegionsToRegionsRepository.cs" />
     <Compile Include="Repository\IOfName.cs" />
     <Compile Include="Repository\IUsersRepository.cs" />
     <Compile Include="Repository\Property\IManyToManyRepository.cs" />

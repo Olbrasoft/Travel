@@ -22,7 +22,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         {
             //Arrange
             var type = typeof(IHandler<GetAttributesByAccommodationIdAndLanguageId, IEnumerable<Attribute>>);
-            var ownerMock = new Mock<IHaveQueryable<AccommodationToAttribute>>();
+            var ownerMock = new Mock<IHaveGlobalizationQueryable<AccommodationToAttribute>>();
             var projectorMock = new Mock<IProjection>();
 
             //Act
@@ -36,7 +36,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         public void HandleAsync()
         {
             //Arrange
-            var ownerMock = new Mock<IHaveQueryable<AccommodationToAttribute>>();
+            var ownerMock = new Mock<IHaveGlobalizationQueryable<AccommodationToAttribute>>();
             var projectorMock = new Mock<IProjection>();
 
             var handler = new AttributesByAccommodationIdAndLanguageId(ownerMock.Object, projectorMock.Object);

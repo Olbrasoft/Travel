@@ -25,7 +25,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
                 typeof(AsyncHandlerWithDependentSource<GetRooms, TypeOfRoom,
                     IEnumerable<Room>>);
 
-            var ownerMock = new Mock<IHaveQueryable<TypeOfRoom>>();
+            var ownerMock = new Mock<IHavePropertyQueryable<TypeOfRoom>>();
             var projectorMock = new Mock<IProjection>();
 
             //Act
@@ -39,7 +39,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         public void HandleAsync()
         {
             //Arrange
-            var ownerMock = new Mock<IHaveQueryable<TypeOfRoom>>();
+            var ownerMock = new Mock<IHavePropertyQueryable<TypeOfRoom>>();
             var projectorMock = new Mock<IProjection>();
 
             var handler = new Rooms(ownerMock.Object, projectorMock.Object);

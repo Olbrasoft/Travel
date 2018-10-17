@@ -67,7 +67,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         private static PhotosOfAccommodations CreateHandler()
         {
             var photos = new PhotoOfAccommodation[1].AsQueryable();
-            var ownPhotosOfAccommodationsMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
+            var ownPhotosOfAccommodationsMock = new Mock<IHavePropertyQueryable<PhotoOfAccommodation>>();
 
 
             ownPhotosOfAccommodationsMock.Setup(p => p.Queryable).Returns(photos);

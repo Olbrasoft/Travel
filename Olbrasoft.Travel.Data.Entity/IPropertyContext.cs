@@ -16,6 +16,6 @@ namespace Olbrasoft.Travel.Data.Entity
         IDbSet<TypeOfAttribute> TypesOfAttributes { get; set; }
         IDbSet<SubTypeOfAttribute> SubTypesOfAttributes { get; set; }
         IDbSet<Attribute> Attributes { get; set; }
-        IDbSet<AccommodationToAttribute> AccommodationsToAttributes { get; set; }
+   
     }
 }

@@ -14,7 +14,7 @@ namespace Olbrasoft.Travel.Data.Entity.Query.Handler
 {
     public class AttributesByAccommodationIdAndLanguageId : AsyncHandlerWithDependentSource<GetAttributesByAccommodationIdAndLanguageId, AccommodationToAttribute, IEnumerable<Attribute>>
     {
-        public AttributesByAccommodationIdAndLanguageId(IHavePropertyQueryable<AccommodationToAttribute> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
+        public AttributesByAccommodationIdAndLanguageId(IHaveGlobalizationQueryable<AccommodationToAttribute> ownerQueryable, IProjection projector) : base(ownerQueryable, projector)
         {
         }
 

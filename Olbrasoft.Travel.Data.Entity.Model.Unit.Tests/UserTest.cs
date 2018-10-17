@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Olbrasoft.Data.Entity;
+using Olbrasoft.Travel.Data.Entity.Model.Identity;
 
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Unit.Tests
@@ -11,7 +12,7 @@ namespace Olbrasoft.Travel.Data.Entity.Model.Unit.Tests
         public void Instance_Is_Of_User_Of_Integer()
         {
             //Arrange
-            var type = typeof(User<int>);
+            var type = typeof(Microsoft.AspNet.Identity.EntityFramework.IdentityUser<int,UserLogin,Membership,UserClaim>);
 
             //Act
             var user = new User();

@@ -93,6 +93,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SharpRepository.EfRepository, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpRepository.EfRepository.2.0.2\lib\net451\SharpRepository.EfRepository.dll</HintPath>
+    </Reference>
     <Reference Include="SharpRepository.Repository, Version=2.0.4.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpRepository.Repository.2.0.4.3\lib\net451\SharpRepository.Repository.dll</HintPath>
     </Reference>
@@ -200,7 +203,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context.cs" />
+    <Compile Include="ExDbContext.cs" />
+    <Compile Include="ExIEnumerable.cs" />
     <Compile Include="GeographyDatabaseContext.cs" />
     <Compile Include="GlobalizationDatabaseContext.cs" />
     <Compile Include="GlobalizationQueryableOwner.cs" />
@@ -264,13 +268,9 @@
     <Compile Include="Migrations\Geography\201810140717013_SpatialIndexToRegionsOnCoordinates.Designer.cs">
       <DependentUpon>201810140717013_SpatialIndexToRegionsOnCoordinates.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Geography\201810140721212_SpatialIndexToRegionsOnCenterCoordinates.cs" />
-    <Compile Include="Migrations\Geography\201810140721212_SpatialIndexToRegionsOnCenterCoordinates.Designer.cs">
-      <DependentUpon>201810140721212_SpatialIndexToRegionsOnCenterCoordinates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Geography\201810141801293_Controll.cs" />
-    <Compile Include="Migrations\Geography\201810141801293_Controll.Designer.cs">
-      <DependentUpon>201810141801293_Controll.cs</DependentUpon>
+    <Compile Include="Migrations\Geography\201810171147057_SpatialIndexToRegionsOnCenterCoordinates.cs" />
+    <Compile Include="Migrations\Geography\201810171147057_SpatialIndexToRegionsOnCenterCoordinates.Designer.cs">
+      <DependentUpon>201810171147057_SpatialIndexToRegionsOnCenterCoordinates.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GlobalizationMigrationsConfiguration.cs" />
     <Compile Include="Migrations\Globalization\201810111601481_Initialization.cs" />
@@ -305,26 +305,22 @@
     <Compile Include="Migrations\Globalization\201810160616290_LocalizedTypesOfRooms.Designer.cs">
       <DependentUpon>201810160616290_LocalizedTypesOfRooms.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Globalization\201810161821275_LocalizedAttributes.cs" />
-    <Compile Include="Migrations\Globalization\201810161821275_LocalizedAttributes.Designer.cs">
-      <DependentUpon>201810161821275_LocalizedAttributes.cs</DependentUpon>
+    <Compile Include="Migrations\Globalization\201810171113331_LocalizedAttributes.cs" />
+    <Compile Include="Migrations\Globalization\201810171113331_LocalizedAttributes.Designer.cs">
+      <DependentUpon>201810171113331_LocalizedAttributes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Globalization\201810170734399_Controll.cs" />
-    <Compile Include="Migrations\Globalization\201810170734399_Controll.Designer.cs">
-      <DependentUpon>201810170734399_Controll.cs</DependentUpon>
+    <Compile Include="Migrations\Globalization\201810171118498_AccommodationsToAttributes.cs" />
+    <Compile Include="Migrations\Globalization\201810171118498_AccommodationsToAttributes.Designer.cs">
+      <DependentUpon>201810171118498_AccommodationsToAttributes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\IdentityMigrationsConfiguration.cs" />
     <Compile Include="Migrations\Identity\201810122050521_Initialization.cs" />
     <Compile Include="Migrations\Identity\201810122050521_Initialization.Designer.cs">
       <DependentUpon>201810122050521_Initialization.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Identity\201810122054539_IdentityTables.cs" />
-    <Compile Include="Migrations\Identity\201810122054539_IdentityTables.Designer.cs">
-      <DependentUpon>201810122054539_IdentityTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Identity\201810161833007_Controll.cs" />
-    <Compile Include="Migrations\Identity\201810161833007_Controll.Designer.cs">
-      <DependentUpon>201810161833007_Controll.cs</DependentUpon>
+    <Compile Include="Migrations\Identity\201810171157284_IdentityTables.cs" />
+    <Compile Include="Migrations\Identity\201810171157284_IdentityTables.Designer.cs">
+      <DependentUpon>201810171157284_IdentityTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\PropertyMigrationsConfiguration.cs" />
     <Compile Include="Migrations\Property\201810140858270_Initialization.cs" />
@@ -375,17 +371,9 @@
     <Compile Include="Migrations\Property\201810161619125_SubTypesOfAttributes.Designer.cs">
       <DependentUpon>201810161619125_SubTypesOfAttributes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Property\201810161712268_Attributes.cs" />
-    <Compile Include="Migrations\Property\201810161712268_Attributes.Designer.cs">
-      <DependentUpon>201810161712268_Attributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Property\201810161729327_AccommodationsToAttributes.cs" />
-    <Compile Include="Migrations\Property\201810161729327_AccommodationsToAttributes.Designer.cs">
-      <DependentUpon>201810161729327_AccommodationsToAttributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Property\201810170526592_Controll.cs" />
-    <Compile Include="Migrations\Property\201810170526592_Controll.Designer.cs">
-      <DependentUpon>201810170526592_Controll.cs</DependentUpon>
+    <Compile Include="Migrations\Property\201810171126274_Attributes.cs" />
+    <Compile Include="Migrations\Property\201810171126274_Attributes.Designer.cs">
+      <DependentUpon>201810171126274_Attributes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\RoutingMigrationsConfiguration.cs" />
     <Compile Include="Migrations\Routing\201810150731232_Initialization.cs" />
@@ -396,13 +384,9 @@
     <Compile Include="Migrations\Routing\201810150843466_PathsToPhotos.Designer.cs">
       <DependentUpon>201810150843466_PathsToPhotos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Routing\201810150849140_FilesExtensions.cs" />
-    <Compile Include="Migrations\Routing\201810150849140_FilesExtensions.Designer.cs">
-      <DependentUpon>201810150849140_FilesExtensions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Routing\201810160707296_Controll.cs" />
-    <Compile Include="Migrations\Routing\201810160707296_Controll.Designer.cs">
-      <DependentUpon>201810160707296_Controll.cs</DependentUpon>
+    <Compile Include="Migrations\Routing\201810171135280_FilesExtensions.cs" />
+    <Compile Include="Migrations\Routing\201810171135280_FilesExtensions.Designer.cs">
+      <DependentUpon>201810171135280_FilesExtensions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\TravelConfiguration.cs" />
     <Compile Include="Migrations\GeographyMigrationsConfiguration.cs" />
@@ -410,7 +394,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyDatabaseContext.cs" />
     <Compile Include="PropertyQueryableOwner.cs" />
-    <Compile Include="QueryableOwner.cs" />
     <Compile Include="Query\Handler\AccommodationDetailById.cs" />
     <Compile Include="Query\Handler\AttributesByAccommodationIdAndLanguageId.cs" />
     <Compile Include="Query\Handler\PagedAccommodationItems.cs" />
@@ -418,6 +401,31 @@
     <Compile Include="Query\Handler\PhotosOfAccommodations.cs" />
     <Compile Include="Query\Handler\RoomPhotosByAccommodationId.cs" />
     <Compile Include="Query\Handler\Rooms.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\GeographyRepository.cs" />
+    <Compile Include="Repository\Geography\AdditionalRegionsInfoRepository.cs" />
+    <Compile Include="Repository\Geography\ManyToManyRepository.cs" />
+    <Compile Include="Repository\Geography\NamesRepository.cs" />
+    <Compile Include="Repository\Geography\RegionsRepository.cs" />
+    <Compile Include="Repository\Geography\RegionsToTypesRepository.cs" />
+    <Compile Include="Repository\GlobalizationRepository.cs" />
+    <Compile Include="Repository\Globalization\AccommodationsToAttributesRepository.cs" />
+    <Compile Include="Repository\Globalization\DescriptionsOfAccommodationsRepository.cs" />
+    <Compile Include="Repository\Globalization\LanguagesRepository.cs" />
+    <Compile Include="Repository\Globalization\LocalizedCaptionsRepository.cs" />
+    <Compile Include="Repository\Globalization\LocalizedRepository.cs" />
+    <Compile Include="Repository\IdentityRepository.cs" />
+    <Compile Include="Repository\Identity\UsersRepository.cs" />
+    <Compile Include="Repository\OfManyToMany.cs" />
+    <Compile Include="Repository\OfName.cs" />
+    <Compile Include="Repository\PropertyRepository.cs" />
+    <Compile Include="Repository\Property\ManyToManyRepository.cs" />
+    <Compile Include="Repository\Property\MappedPropertiesRepository.cs" />
+    <Compile Include="Repository\Property\NamesRepository.cs" />
+    <Compile Include="Repository\Property\PhotosOfAccommodationsRepository.cs" />
+    <Compile Include="Repository\RoutingRepository.cs" />
+    <Compile Include="Repository\Routing\FilesExtensionsRepository.cs" />
+    <Compile Include="Repository\Routing\PathsToPhotosRepository.cs" />
     <Compile Include="RoutingDatabaseContext.cs" />
     <Compile Include="SqlServer\CustomSqlServerMigrationSqlGenerator.cs" />
     <Compile Include="TravelDatabaseContext.cs" />
@@ -426,11 +434,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="repository.default.json" />
+    <None Include="repository.ef.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Collections\Olbrasoft.Collections.csproj">
       <Project>{60E9C8DE-CAD1-4BC3-8BBD-249B0437FBEE}</Project>
       <Name>Olbrasoft.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Olbrasoft.Data.Entity.Bulk\Olbrasoft.Data.Entity.Bulk.csproj">
+      <Project>{96F5E96A-B233-4E65-A114-1733DD1A49D5}</Project>
+      <Name>Olbrasoft.Data.Entity.Bulk</Name>
     </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">
       <Project>{59A1C67F-284E-480A-A0B4-E9232FAC298A}</Project>
@@ -517,11 +530,8 @@
     <EmbeddedResource Include="Migrations\Geography\201810140717013_SpatialIndexToRegionsOnCoordinates.resx">
       <DependentUpon>201810140717013_SpatialIndexToRegionsOnCoordinates.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Geography\201810140721212_SpatialIndexToRegionsOnCenterCoordinates.resx">
-      <DependentUpon>201810140721212_SpatialIndexToRegionsOnCenterCoordinates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Geography\201810141801293_Controll.resx">
-      <DependentUpon>201810141801293_Controll.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Geography\201810171147057_SpatialIndexToRegionsOnCenterCoordinates.resx">
+      <DependentUpon>201810171147057_SpatialIndexToRegionsOnCenterCoordinates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Globalization\201810111601481_Initialization.resx">
       <DependentUpon>201810111601481_Initialization.cs</DependentUpon>
@@ -547,20 +557,17 @@
     <EmbeddedResource Include="Migrations\Globalization\201810160616290_LocalizedTypesOfRooms.resx">
       <DependentUpon>201810160616290_LocalizedTypesOfRooms.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Globalization\201810161821275_LocalizedAttributes.resx">
-      <DependentUpon>201810161821275_LocalizedAttributes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Globalization\201810171113331_LocalizedAttributes.resx">
+      <DependentUpon>201810171113331_LocalizedAttributes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Globalization\201810170734399_Controll.resx">
-      <DependentUpon>201810170734399_Controll.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Globalization\201810171118498_AccommodationsToAttributes.resx">
+      <DependentUpon>201810171118498_AccommodationsToAttributes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201810122050521_Initialization.resx">
       <DependentUpon>201810122050521_Initialization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Identity\201810122054539_IdentityTables.resx">
-      <DependentUpon>201810122054539_IdentityTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Identity\201810161833007_Controll.resx">
-      <DependentUpon>201810161833007_Controll.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Identity\201810171157284_IdentityTables.resx">
+      <DependentUpon>201810171157284_IdentityTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Property\201810140858270_Initialization.resx">
       <DependentUpon>201810140858270_Initialization.cs</DependentUpon>
@@ -598,14 +605,8 @@
     <EmbeddedResource Include="Migrations\Property\201810161619125_SubTypesOfAttributes.resx">
       <DependentUpon>201810161619125_SubTypesOfAttributes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Property\201810161712268_Attributes.resx">
-      <DependentUpon>201810161712268_Attributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Property\201810161729327_AccommodationsToAttributes.resx">
-      <DependentUpon>201810161729327_AccommodationsToAttributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Property\201810170526592_Controll.resx">
-      <DependentUpon>201810170526592_Controll.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Property\201810171126274_Attributes.resx">
+      <DependentUpon>201810171126274_Attributes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Routing\201810150731232_Initialization.resx">
       <DependentUpon>201810150731232_Initialization.cs</DependentUpon>
@@ -613,11 +614,8 @@
     <EmbeddedResource Include="Migrations\Routing\201810150843466_PathsToPhotos.resx">
       <DependentUpon>201810150843466_PathsToPhotos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Routing\201810150849140_FilesExtensions.resx">
-      <DependentUpon>201810150849140_FilesExtensions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Routing\201810160707296_Controll.resx">
-      <DependentUpon>201810160707296_Controll.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Routing\201810171135280_FilesExtensions.resx">
+      <DependentUpon>201810171135280_FilesExtensions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

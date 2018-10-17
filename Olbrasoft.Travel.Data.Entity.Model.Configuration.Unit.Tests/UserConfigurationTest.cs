@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using NUnit.Framework;
+using Olbrasoft.Travel.Data.Entity.Model.Configuration.Identity;
+using Olbrasoft.Travel.Data.Entity.Model.Identity;
 
 namespace Olbrasoft.Travel.Data.Entity.Model.Configuration.Unit.Tests
 {

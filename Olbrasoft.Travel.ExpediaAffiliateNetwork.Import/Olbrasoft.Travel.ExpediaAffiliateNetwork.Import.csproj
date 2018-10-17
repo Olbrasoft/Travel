@@ -309,10 +309,6 @@
       <Project>{E239B519-2D54-4447-BEBB-AF0600C0A6AA}</Project>
       <Name>Olbrasoft.Travel.Data.Entity.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity.Repositories\Olbrasoft.Travel.Data.Entity.Repositories.csproj">
-      <Project>{74E808AF-107A-4021-9D05-8136313E8E50}</Project>
-      <Name>Olbrasoft.Travel.Data.Entity.Repositories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Travel.Data.Entity\Olbrasoft.Travel.Data.Entity.csproj">
       <Project>{b47ee928-2611-4d10-8316-c1b0b1ee768b}</Project>
       <Name>Olbrasoft.Travel.Data.Entity</Name>

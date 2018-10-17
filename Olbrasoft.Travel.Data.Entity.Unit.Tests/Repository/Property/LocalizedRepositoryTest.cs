@@ -2,9 +2,7 @@
 using NUnit.Framework;
 using Olbrasoft.Travel.Data.Entity.Model.Globalization;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
-using Olbrasoft.Travel.Data.Entity.Repositories;
-using Olbrasoft.Travel.Data.Entity.Repositories.Globalization;
-using Olbrasoft.Travel.Data.Entity.Repositories.Property;
+using Olbrasoft.Travel.Data.Entity.Repository.Globalization;
 using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Data.Repository.Globalization;
 

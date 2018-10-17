@@ -3,7 +3,8 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Olbrasoft.Travel.Data.Entity.Model;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
-using Olbrasoft.Travel.Data.Entity.Repositories.Property;
+using Olbrasoft.Travel.Data.Entity.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository.Property
 {

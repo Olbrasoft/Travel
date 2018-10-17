@@ -34,6 +34,7 @@ namespace Olbrasoft.Travel.Data.Entity.Migrations.Globalization
             DropIndex("Globalization.LocalizedTypesOfRooms", new[] { "CreatorId" });
             DropIndex("Globalization.LocalizedTypesOfRooms", new[] { "LanguageId" });
             DropIndex("Globalization.LocalizedTypesOfRooms", new[] { "Id" });
+            DropTable("Globalization.LocalizedTypesOfRooms");
         }
     }
 }

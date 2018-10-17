@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Olbrasoft.Travel.Data.Entity.Model.Geography;
-using Olbrasoft.Travel.Data.Entity.Repositories.Geography;
+using Olbrasoft.Travel.Data.Entity.Repository.Geography;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository.Geography
 {

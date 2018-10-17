@@ -14,5 +14,6 @@ namespace Olbrasoft.Travel.Data.Entity
         IDbSet<LocalizedCaption> LocalizedCaptions { get; set; }
         IDbSet<LocalizedTypeOfRoom> LocalizedTypesOfRooms { get; set; }
         IDbSet<LocalizedAttribute> LocalizedAttributes { get; set; }
+        IDbSet<AccommodationToAttribute> AccommodationsToAttributes { get; set; }
     }
 }

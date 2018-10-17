@@ -1,8 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Travel.Data.Entity.Model.Routing;
-using Olbrasoft.Travel.Data.Entity.Repositories;
-using Olbrasoft.Travel.Data.Entity.Repositories.Routing;
+using Olbrasoft.Travel.Data.Entity.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository.Routing;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository.Routing
 {

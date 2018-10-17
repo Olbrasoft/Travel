@@ -1,7 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Travel.Data.Entity.Model.Property;
-using Olbrasoft.Travel.Data.Entity.Repositories.Property;
+using Olbrasoft.Travel.Data.Entity.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository.Property;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository.Property
 {

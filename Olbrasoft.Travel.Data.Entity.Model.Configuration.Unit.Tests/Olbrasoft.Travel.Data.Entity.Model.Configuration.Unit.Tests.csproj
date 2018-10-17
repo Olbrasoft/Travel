@@ -71,6 +71,7 @@
     <Compile Include="Geography\RegionToTypeConfigurationTest.cs" />
     <Compile Include="Geography\SubClassConfigurationTest.cs" />
     <Compile Include="Geography\TypeOfRegionConfigurationTest.cs" />
+    <Compile Include="Globalization\AccommodationToAttributeConfigurationTest.cs" />
     <Compile Include="Globalization\LanguageConfigurationTest.cs" />
     <Compile Include="Globalization\LocalizedAccommodationConfigurationTest.cs" />
     <Compile Include="Globalization\LocalizedCaptionConfigurationTest.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="LogTypeConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\AccommodationConfigurationTest.cs" />
-    <Compile Include="Property\AccommodationToAttributeConfigurationTest.cs" />
     <Compile Include="Property\AttributeConfigurationTest.cs" />
     <Compile Include="Property\CaptionConfigurationTest.cs" />
     <Compile Include="Property\ChainConfigurationTest.cs" />

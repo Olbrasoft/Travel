@@ -97,7 +97,6 @@
     <Compile Include="LogType.cs" />
     <Compile Include="Routing\FileExtension.cs" />
     <Compile Include="Routing\PathToPhoto.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Olbrasoft.Data.Entity\Olbrasoft.Data.Entity.csproj">

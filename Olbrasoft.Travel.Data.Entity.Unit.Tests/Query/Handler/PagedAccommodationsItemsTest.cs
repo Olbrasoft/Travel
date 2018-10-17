@@ -23,7 +23,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
             //Arrange
             var localizedAccommodationsQueryableMock = new Mock<IQueryable<LocalizedAccommodation>>();
 
-            var localizedAccommodationsMock = new Mock<IHaveQueryable<LocalizedAccommodation>>();
+            var localizedAccommodationsMock = new Mock<IHaveGlobalizationQueryable<LocalizedAccommodation>>();
             localizedAccommodationsMock.Setup(p => p.Queryable).Returns(localizedAccommodationsQueryableMock.Object);
 
             var projectionMock = new Mock<IProjection>();

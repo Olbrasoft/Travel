@@ -18,7 +18,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         public void Instance_Implement_Interface_IHandler()
         {
             //Arrange
-            var localizedAccommodationsMock = new Mock<IHaveQueryable<LocalizedAccommodation>>();
+            var localizedAccommodationsMock = new Mock<IHaveGlobalizationQueryable<LocalizedAccommodation>>();
 
             var projectionMock = new Mock<IProjection>();
 

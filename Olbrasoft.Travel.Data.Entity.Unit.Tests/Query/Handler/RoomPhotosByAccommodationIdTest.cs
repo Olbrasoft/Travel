@@ -25,7 +25,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
                 typeof(IHandler<GetRoomPhotosByAccommodationId,
                      IEnumerable<RoomPhoto>>);
 
-            var ownerMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
+            var ownerMock = new Mock<IHavePropertyQueryable<PhotoOfAccommodation>>();
 
             var projectorMock = new Mock<IProjection>();
 
@@ -40,7 +40,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Query.Handler
         public void HandleAsync()
         {
             //Arrange
-            var ownerMock = new Mock<IHaveQueryable<PhotoOfAccommodation>>();
+            var ownerMock = new Mock<IHavePropertyQueryable<PhotoOfAccommodation>>();
             var projectorMock = new Mock<IProjection>();
 
             var handler = new RoomPhotosByAccommodationId(ownerMock.Object, projectorMock.Object);

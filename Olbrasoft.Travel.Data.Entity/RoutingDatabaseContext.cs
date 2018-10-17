@@ -12,21 +12,21 @@ namespace Olbrasoft.Travel.Data.Entity
         public IDbSet<PathToPhoto> PathsToPhotos { get; set; }
         public IDbSet<FileExtension> FilesExtensions { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserLoginConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<MembershipConfiguration>());
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserLoginConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<MembershipConfiguration>());
 
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<AirportConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<AirportConfiguration>());
 
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<LocalizedDescriptionOfAccommodationConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<LocalizedDescriptionOfAccommodationConfiguration>());
 
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<PathToPhotoConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<FileExtensionConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<PathToPhotoConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<FileExtensionConfiguration>());
 
 
-        }
+        //}
     }
 }

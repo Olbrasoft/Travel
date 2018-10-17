@@ -1,9 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
-using Olbrasoft.Travel.Data.Entity.Model;
-using Olbrasoft.Travel.Data.Entity.Repositories;
-using Olbrasoft.Travel.Data.Entity.Repositories.Geography;
+using Olbrasoft.Travel.Data.Entity.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository.Geography;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository.Geography
 {
@@ -15,13 +13,13 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository.Geography
         {
             //Arrange
             var type = typeof(GeographyRepository<Data.Entity.Model.Geography.Country>);
-            var context = new Mock<Entity.GeographyDatabaseContext>();
+            var context = new Mock<GeographyDatabaseContext>();
 
             //Act
             var repository = new AdditionalRegionsInfoRepository<Model.Geography.Country>(context.Object);
 
             //Assert
-            Assert.IsInstanceOf(type,repository);
+            Assert.IsInstanceOf(type, repository);
         }
     }
 }

@@ -16,20 +16,20 @@ namespace Olbrasoft.Travel.Data.Entity
         public IDbSet<Country> Countries { get; set; }
         public IDbSet<Airport> Airports { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<MembershipConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserLoginConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<TypeOfRegionConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<SubClassConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionToTypeConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionToRegionConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<CountryConfiguration>());
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<AirportConfiguration>());
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<MembershipConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<UserLoginConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<TypeOfRegionConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<SubClassConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionToTypeConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<RegionToRegionConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<CountryConfiguration>());
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<AirportConfiguration>());
 
-            modelBuilder.Configurations.Add(ConfigurationFactory.Create<LocalizedRegionConfiguration>());
-        }
+        //    modelBuilder.Configurations.Add(ConfigurationFactory.Create<LocalizedRegionConfiguration>());
+        //}
     }
 }

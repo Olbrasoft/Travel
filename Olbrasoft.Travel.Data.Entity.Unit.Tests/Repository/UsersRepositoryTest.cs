@@ -1,8 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Olbrasoft.Travel.Data.Entity.Model;
-using Olbrasoft.Travel.Data.Entity.Repositories;
-using Olbrasoft.Travel.Data.Entity.Repositories.Identity;
+using Olbrasoft.Travel.Data.Entity.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository.Identity;
 using Olbrasoft.Travel.Data.Repository;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository
@@ -14,7 +14,7 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository
         public void Instance_Is_BaseRepository_Of_User()
         {
             //Arrange
-            var type = typeof(BaseRepository<Olbrasoft.Travel.Data.Entity.Model.Identity.User>);
+            var type = typeof(BaseRepository<Model.Identity.User>);
 
             //act
             var repository = CreateRepository();

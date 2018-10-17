@@ -1,10 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Olbrasoft.Travel.Data.Entity.Model;
 using Olbrasoft.Travel.Data.Entity.Model.Globalization;
-using Olbrasoft.Travel.Data.Entity.Repositories;
-using Olbrasoft.Travel.Data.Entity.Repositories.Globalization;
-using Olbrasoft.Travel.Data.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository;
+using Olbrasoft.Travel.Data.Entity.Repository.Globalization;
 using Olbrasoft.Travel.Data.Repository.Globalization;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository
@@ -44,15 +42,12 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests.Repository
             //Arrange
             var type = typeof(GlobalizationRepository<Language>);
 
-          
             //Act
             var repository = CreateRepository();
 
             //Assert
             Assert.IsInstanceOf(type, repository);
-
         }
-
 
         //[Test]
         //public void EanLanguageCodesToIds_Result_IReadOnlyDictionary_Of_String_Integer()

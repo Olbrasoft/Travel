@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Olbrasoft.Data.Entity;
 
 namespace Olbrasoft.Travel.Data.Entity.Unit.Tests
 {
@@ -7,10 +6,10 @@ namespace Olbrasoft.Travel.Data.Entity.Unit.Tests
     internal class GlobalizationDatabaseContextTest
     {
         [Test]
-        public void Instance_Is_DbContextWithInjectionConfigurationFactory()
+        public void Instance_Is_TravelDatabaseContext()
         {
             //Arrange
-            var type = typeof(DbContextWithInjectionConfigurationFactory);
+            var type = typeof(TravelDatabaseContext);
 
             //Act
             var context = new GlobalizationDatabaseContext();

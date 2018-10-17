@@ -2,23 +2,18 @@
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-
 using Olbrasoft.Travel.Data.Entity;
-using Olbrasoft.Travel.Data.Entity.Repositories;
-using Olbrasoft.Travel.Data.Repository;
-using Olbrasoft.Travel.Expedia.Affiliate.Network;
-using System;
-using System.Data.Entity;
-using System.Net;
-using Olbrasoft.Travel.Data.Entity.Model;
 using Olbrasoft.Travel.Data.Entity.Model.Globalization;
-using Olbrasoft.Travel.Data.Entity.Repositories.Geography;
-using Olbrasoft.Travel.Data.Entity.Repositories.Globalization;
-using Olbrasoft.Travel.Data.Entity.Repositories.Property;
+using Olbrasoft.Travel.Data.Entity.Repository.Geography;
+using Olbrasoft.Travel.Data.Entity.Repository.Globalization;
+using Olbrasoft.Travel.Data.Entity.Repository.Property;
+using Olbrasoft.Travel.Data.Repository;
 using Olbrasoft.Travel.Data.Repository.Geography;
 using Olbrasoft.Travel.Data.Repository.Globalization;
 using Olbrasoft.Travel.Data.Repository.Property;
-
+using Olbrasoft.Travel.Expedia.Affiliate.Network;
+using System;
+using System.Net;
 
 namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
 {
@@ -113,69 +108,68 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             //    regionsCenterImporter.Import(@"D:\Ean\RegionCenterCoordinatesList.txt");
             //}
 
-            //using (var typesOfAccommodationsImporter = container.Resolve<IImporter>(nameof(TypesOfAccommodationsImporter)))
-            //{
-            //    typesOfAccommodationsImporter.Import(@"D:\Ean\PropertyTypeList.txt");
-            //}
+            using (var typesOfAccommodationsImporter = container.Resolve<IImporter>(nameof(TypesOfAccommodationsImporter)))
+            {
+                typesOfAccommodationsImporter.Import(@"D:\Ean\PropertyTypeList.txt");
+            }
 
+            using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
+            {
+                accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
+            }
 
-            //using (var accommodationsImporter = container.Resolve<IImporter>(nameof(AccommodationsImporter)))
-            //{
-            //    accommodationsImporter.Import(@"D:\Ean\ActivePropertyList.txt");
-            //}
+            using (var descriptionsImporter = container.Resolve<IImporter>(nameof(DescriptionsImporter)))
+            {
+                descriptionsImporter.Import(@"D:\Ean\PropertyDescriptionList.txt");
+            }
 
-            //using (var descriptionsImporter = container.Resolve<IImporter>(nameof(DescriptionsImporter)))
-            //{
-            //    descriptionsImporter.Import(@"D:\Ean\PropertyDescriptionList.txt");
-            //}
+            using (var pathsExtensionsCaptionsImporter =
+                container.Resolve<IImporter>(nameof(PathsExtensionsCaptionsImporter)))
+            {
+                pathsExtensionsCaptionsImporter.Import(@"D:\Ean\HotelImageList.txt");
+            }
 
-            //using (var pathsExtensionsCaptionsImporter =
-            //    container.Resolve<IImporter>(nameof(PathsExtensionsCaptionsImporter)))
-            //{
-            //    pathsExtensionsCaptionsImporter.Import(@"D:\Ean\HotelImageList.txt");
-            //}
+            using (var photosOfAccommodationsImporter =
+                container.Resolve<IImporter>(nameof(PhotosOfAccommodationsImporter)))
+            {
+                photosOfAccommodationsImporter.Import(@"D:\Ean\HotelImageList.txt");
+            }
 
-            //using (var photosOfAccommodationsImporter =
-            //    container.Resolve<IImporter>(nameof(PhotosOfAccommodationsImporter)))
-            //{
-            //    photosOfAccommodationsImporter.Import(@"D:\Ean\HotelImageList.txt");
-            //}
+            using (var typesOfRoomsImporter = container.Resolve<IImporter>(nameof(TypesOfRoomsImporter)))
+            {
+                typesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
+            }
 
-            //using (var typesOfRoomsImporter = container.Resolve<IImporter>(nameof(TypesOfRoomsImporter)))
-            //{
-            //    typesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
-            //}
+            using (var localizedTypesOfRoomsImporter =
+                container.Resolve<IImporter>(nameof(LocalizedTypesOfRoomsImporter)))
+            {
+                localizedTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
+            }
 
-            //using (var localizedTypesOfRoomsImporter =
-            //    container.Resolve<IImporter>(nameof(LocalizedTypesOfRoomsImporter)))
-            //{
-            //    localizedTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
-            //}
+            using (var roomsTypesImagesImporter = container.Resolve<IImporter>(nameof(RoomsTypesImagesImporter)))
+            {
+                roomsTypesImagesImporter.Import(@"D:\Ean\RoomTypeList.txt");
+            }
 
-            //using (var roomsTypesImagesImporter = container.Resolve<IImporter>(nameof(RoomsTypesImagesImporter)))
-            //{
-            //    roomsTypesImagesImporter.Import(@"D:\Ean\RoomTypeList.txt");
-            //}
+            using (var photosOfAccommodationsToTypesOfRoomsImporter = container.Resolve<IImporter>(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)))
+            {
+                photosOfAccommodationsToTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
+            }
 
-            //using (var photosOfAccommodationsToTypesOfRoomsImporter = container.Resolve<IImporter>(nameof(PhotosOfAccommodationsToTypesOfRoomsImporter)))
-            //{
-            //    photosOfAccommodationsToTypesOfRoomsImporter.Import(@"D:\Ean\RoomTypeList.txt");
-            //}
+            using (var attributesImporter = container.Resolve<IImporter>(nameof(AttributesImporter)))
+            {
+                attributesImporter.Import(@"D:\Ean\AttributeList.txt");
+            }
 
-            //using (var attributesImporter = container.Resolve<IImporter>(nameof(AttributesImporter)))
-            //{
-            //    attributesImporter.Import(@"D:\Ean\AttributeList.txt");
-            //}
+            using (var attributesImporter = container.Resolve<IImporter>(nameof(LocalizedAttributesDefaultLanguageImporter)))
+            {
+                attributesImporter.Import(@"D:\Ean\AttributeList.txt");
+            }
 
-            //using (var attributesImporter = container.Resolve<IImporter>(nameof(LocalizedAttributesDefaultLanguageImporter)))
-            //{
-            //    attributesImporter.Import(@"D:\Ean\AttributeList.txt");
-            //}
-
-            //using (var accommodationsToAttributesDefaultLanguageImporter = container.Resolve<IImporter>(nameof(AccommodationsToAttributesDefaultLanguageImporter)))
-            //{
-            //    accommodationsToAttributesDefaultLanguageImporter.Import(@"D:\Ean\PropertyAttributeLink.txt");
-            //}
+            using (var accommodationsToAttributesDefaultLanguageImporter = container.Resolve<IImporter>(nameof(AccommodationsToAttributesDefaultLanguageImporter)))
+            {
+                accommodationsToAttributesDefaultLanguageImporter.Import(@"D:\Ean\PropertyAttributeLink.txt");
+            }
 
             //var language = languagesRepository.Get(1031);
 
@@ -250,7 +244,6 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             container.Register(Component.For<GeographyDatabaseContext>().ImplementedBy<GeographyDatabaseContext>());
             container.Register(Component.For<GlobalizationDatabaseContext>().ImplementedBy<GlobalizationDatabaseContext>());
 
-
             //  container.Register(Component.For<TravelDatabaseContext>().ImplementedBy<TravelDatabaseContext>());
             // container.Register(Component.For<DbContext>().ImplementedBy<TravelDatabaseContext>().Named(nameof(TravelDatabaseContext)));
 
@@ -259,7 +252,7 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
                 .WithService.AllInterfaces()
             );
 
-            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity.Repositories")
+            container.Register(Classes.FromAssemblyNamed("Olbrasoft.Travel.Data.Entity")
                    .Where(type => type.Name.EndsWith("Repository"))
                    .WithService.AllInterfaces()
                );
@@ -276,22 +269,20 @@ namespace Olbrasoft.Travel.ExpediaAffiliateNetwork.Import
             container.Register(Component.For(typeof(IAdditionalRegionsInfoRepository<>)).ImplementedBy(typeof(AdditionalRegionsInfoRepository<>)));
 
             container.Register(Component.For(typeof(Data.Repository.Geography.INamesRepository<>))
-                .ImplementedBy(typeof(Data.Entity.Repositories.Geography.NamesRepository<>)));
+                .ImplementedBy(typeof(Data.Entity.Repository.Geography.NamesRepository<>)));
 
             container.Register(Component.For(typeof(Data.Repository.Property.INamesRepository<>))
-                .ImplementedBy(typeof(Data.Entity.Repositories.Property.NamesRepository<>)));
-
+                .ImplementedBy(typeof(Data.Entity.Repository.Property.NamesRepository<>)));
 
             container.Register(Component.For(typeof(Data.Repository.Geography.IManyToManyRepository<>))
-                .ImplementedBy(typeof(Data.Entity.Repositories.Geography.ManyToManyRepository<>)));
+                .ImplementedBy(typeof(Data.Entity.Repository.Geography.ManyToManyRepository<>)));
 
             container.Register(Component.For(typeof(Data.Repository.Property.IManyToManyRepository<>))
-                .ImplementedBy(typeof(Data.Entity.Repositories.Property.ManyToManyRepository<>)));
+                .ImplementedBy(typeof(Data.Entity.Repository.Property.ManyToManyRepository<>)));
 
             container.Register(Component.For(typeof(IOfLocalized<>))
                 .ImplementedBy(typeof(LocalizedRepository<>)));
 
-           
             container.Register(Component.For(typeof(IMappedPropertiesRepository<>)).ImplementedBy(typeof(MappedPropertiesRepository<>)));
 
             container.Register(Component.For<IInterceptor>().ImplementedBy<ImportInterceptor>());
