@@ -1,6 +1,4 @@
-﻿using Olbrasoft.Travel.Business.Unit.Tests;
-
-namespace Olbrasoft.Travel.Business.UnitTest
+﻿namespace Olbrasoft.Travel.Business.Unit.Tests
 {
 
     public class AccommodationDetailDto : AccommodationDto

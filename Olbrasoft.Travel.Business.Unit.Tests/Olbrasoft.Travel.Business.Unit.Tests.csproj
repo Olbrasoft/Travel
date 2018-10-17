@@ -77,6 +77,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationDetailDto.cs" />
+    <Compile Include="AccommodationDetailDtoTest.cs" />
     <Compile Include="AccommodationDto.cs" />
     <Compile Include="AccommodationDtoTest.cs" />
     <Compile Include="AccommodationProfile.cs" />

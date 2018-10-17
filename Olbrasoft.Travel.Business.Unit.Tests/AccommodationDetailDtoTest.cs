@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using Olbrasoft.Travel.Business.Unit.Tests;
 
-namespace Olbrasoft.Travel.Business.UnitTest
+namespace Olbrasoft.Travel.Business.Unit.Tests
 {
     [TestFixture]
     public class AccommodationDetailDtoTest
