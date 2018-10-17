@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Internal;
 
-namespace Olbrasoft.Pagination.Unit.Test
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     internal class ResultWithTotalCountTest

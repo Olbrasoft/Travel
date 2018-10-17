@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
+using NUnit.Framework;
 
-namespace Olbrasoft.Pagination.Unit.Test
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     internal class PageInfoExtensionsTest

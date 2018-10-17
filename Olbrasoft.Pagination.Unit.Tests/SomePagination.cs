@@ -1,4 +1,4 @@
-﻿namespace Olbrasoft.Pagination.UnitTest
+﻿namespace Olbrasoft.Pagination.Unit.Tests
 {
     internal class SomePagination : BasePagination
     {

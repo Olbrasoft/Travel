@@ -1,11 +1,12 @@
-﻿using Moq;
-using NUnit.Framework;
-using Olbrasoft.Collections.Generic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Moq;
+using NUnit.Framework;
+using Olbrasoft.Collections.Generic;
 
-namespace Olbrasoft.Pagination.Unit.Test
+
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     internal class QueryableExtensionsTest
@@ -16,6 +17,7 @@ namespace Olbrasoft.Pagination.Unit.Test
             //Arrange
             var source = new List<object>().AsQueryable();
             var pagingMock = new Mock<IPageInfo>();
+            pagingMock.Setup(p => p.NumberOfSelectedPage).Returns(1);
 
             //Act
             var result = source.AsPagedList(pagingMock.Object);

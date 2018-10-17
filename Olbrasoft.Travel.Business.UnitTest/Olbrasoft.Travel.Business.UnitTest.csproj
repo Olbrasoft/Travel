@@ -89,10 +89,6 @@
       <Project>{3f5c7ae5-8796-44b4-84d2-1617e0cc308e}</Project>
       <Name>Olbrasoft.Design.Pattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Olbrasoft.Pagination.UnitTest\Olbrasoft.Pagination.UnitTest.csproj">
-      <Project>{9349A072-F80E-4CB2-972A-2298671832B3}</Project>
-      <Name>Olbrasoft.Pagination.UnitTest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Olbrasoft.Pagination\Olbrasoft.Pagination.csproj">
       <Project>{91d6b045-c17b-4907-8058-a4dae3f1dd49}</Project>
       <Name>Olbrasoft.Pagination</Name>

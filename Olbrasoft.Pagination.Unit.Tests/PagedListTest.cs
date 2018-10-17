@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Olbrasoft.Pagination.UnitTest
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     public class PagedListTest
@@ -71,40 +71,40 @@ namespace Olbrasoft.Pagination.UnitTest
         public void TotalItemCount_is_150()
         {
             //Arrange
-            var subSet = new string[13];
-            var pageInfo = new Mock<IPageInfo>();
+            var subSet = new string[150];
+            var pageInfoMock = new Mock<IPageInfo>();
+            pageInfoMock.Setup(p => p.NumberOfSelectedPage).Returns(1);
             var mockOfPagination = new Mock<IPagination>();
-            mockOfPagination.Setup(p => p.PageInfo).Returns(pageInfo.Object);
+            mockOfPagination.Setup(p => p.PageInfo).Returns(pageInfoMock.Object);
             mockOfPagination.Setup(p => p.CountWithOutPaging()).Returns(150);
 
             var pagedStrings = subSet.ToPagedList(mockOfPagination.Object);
 
             //Act
-            var totelItemCount = pagedStrings.TotalItemCount;
+            var totalItemCount = pagedStrings.TotalItemCount;
 
             //Assert
-            Assert.IsTrue(totelItemCount == 150);
+            Assert.IsTrue(totalItemCount == 150);
         }
 
         [Test]
         public void TotalItemCount_Is_1000()
         {
             //Arrange
-            var subSet = new object[100];
+            var subSet = new object[1000];
 
             var mockOfPagination = new Mock<IPagination>();
-            var pageInfo = new Mock<IPageInfo>();
-            mockOfPagination.Setup(p => p.PageInfo).Returns(pageInfo.Object);
+            var pageInfoMock = new Mock<IPageInfo>();
+            pageInfoMock.Setup(p => p.NumberOfSelectedPage).Returns(1);
+
+            mockOfPagination.Setup(p => p.PageInfo).Returns(pageInfoMock.Object);
             mockOfPagination.Setup(p => p.CountWithOutPaging()).Returns(1000);
-            
+
             //Act
             var pagedListOfAccommodation = subSet.ToPagedList(mockOfPagination.Object);
 
             //Assert
-            Assert.IsTrue(pagedListOfAccommodation.TotalItemCount== 1000);
-
-
+            Assert.IsTrue(pagedListOfAccommodation.TotalItemCount == 1000);
         }
-
     }
 }

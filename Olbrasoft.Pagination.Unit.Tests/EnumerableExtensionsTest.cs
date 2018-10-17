@@ -1,10 +1,11 @@
 ﻿using System;
-using NUnit.Framework;
-using Olbrasoft.Collections.Generic;
 using System.Collections.Generic;
 using Moq;
+using NUnit.Framework;
+using Olbrasoft.Collections.Generic;
 
-namespace Olbrasoft.Pagination.Unit.Test
+
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     internal class EnumerableExtensionsTest

@@ -1,7 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
 
-namespace Olbrasoft.Pagination.UnitTest
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     internal class BasePaginationTest

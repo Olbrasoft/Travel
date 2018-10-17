@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Olbrasoft.Pagination.UnitTest
+namespace Olbrasoft.Pagination.Unit.Tests
 {
     [TestFixture]
     public class PageInfoUnitTest
