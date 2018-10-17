@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Olbrasoft.Travel.Data.Entity
 {
-    public static class ExIEnumerable
+    public static class EnumerableExtensions
     {
         public static IEnumerable<List<T>> SplitToEnumerableOfList<T>(this IEnumerable<T> locations, int maxListSize = 7000)
         {

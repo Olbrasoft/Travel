@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace Olbrasoft.Travel.Data.Entity
 {
-    public class TravelDatabaseContext : DbContext, ITravelContext
+    public abstract class TravelDatabaseContext : DbContext, ITravelContext
     {
         protected TravelDatabaseContext() : base("name=TravelConnectionString")
         {

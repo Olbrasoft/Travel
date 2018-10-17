@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace Olbrasoft.Travel.Data.Entity
 {
-    public static class ExDbContext
+    public static class DbContextExtensions
     {
 
         /// <summary>
@@ -77,10 +77,10 @@ namespace Olbrasoft.Travel.Data.Entity
         public static void  BulkInsert<T>(this DbContext context, IEnumerable<T> entities, Action<EventArgs> onSaved, int batchSize = 90000, params Expression<Func<T, object>>[] ignoreProperties) where T : class
         {
             var batchesToInsert = entities.SplitToEnumerableOfList(batchSize);
-            var ignoreColmnsInsert = new HashSet<string>(ignoreProperties.Select(GetPropertyName));
+            var ignoreColumnsInsert = new HashSet<string>(ignoreProperties.Select(GetPropertyName));
             
             const string createDateColumn = "DateAndTimeOfCreation";
-            if (!ignoreColmnsInsert.Contains(createDateColumn)) ignoreColmnsInsert.Add(createDateColumn);
+            if (!ignoreColumnsInsert.Contains(createDateColumn)) ignoreColumnsInsert.Add(createDateColumn);
 
             if (batchSize == 90000)
             {
@@ -94,7 +94,7 @@ namespace Olbrasoft.Travel.Data.Entity
                     {
                         BatchSize = batchSize,
                         BulkCopyTimeout = 480,
-                        IgnoreColumns = ignoreColmnsInsert
+                        IgnoreColumns = ignoreColumnsInsert
                     });
                 
                 onSaved(EventArgs.Empty);
